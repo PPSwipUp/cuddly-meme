@@ -38,8 +38,8 @@ import numpy as np
 # ─── Constants ────────────────────────────────────────────────────────────────
 
 DEFAULT_STARTING_CAPITAL = 10_000.0   # £10,000 default
-DEFAULT_MAX_RISK         = 0.04       # 2% of capital per trade
-DEFAULT_KELLY_FRACTION   = 0.9        # half-Kelly
+DEFAULT_MAX_RISK         = 0.1       # 2% of capital per trade
+DEFAULT_KELLY_FRACTION   = 0.7        # half-Kelly
 DEFAULT_MIN_PROB         = 0.57       # minimum confidence to trade
 DEFAULT_MAX_POSITION     = 0.20       # never more than 20% of capital in one trade
 TRANSACTION_COST         = 0.0005     # 0.05% round-trip
@@ -208,6 +208,8 @@ def run_backtest(
     true_directions: np.ndarray,
     sizer:           PositionSizer,
     resolution:      str = "1D",
+    calendar_years:  float | None = None,
+    n_instruments:   int = 1,
 ) -> dict:
     """
     Run a full backtest using probability-scaled position sizing.
@@ -219,12 +221,14 @@ def run_backtest(
     capital      = sizer.starting_capital
     equity       = [capital]
     trade_log    = []
-    n_long       = 0
-    n_short      = 0
-    n_no_trade   = 0
-    gross_profit = 0.0
-    gross_loss   = 0.0
-    prev_dir     = 0
+    n_long        = 0
+    n_short       = 0
+    n_no_trade    = 0
+    gross_profit  = 0.0
+    gross_loss    = 0.0
+    prev_dir      = 0
+    current_hold  = 0          # bars held in the current open position
+    hold_durations = []        # completed hold lengths (bars)
 
     for i in range(n):
         frac, direction, notional = sizer.size(probs[i], capital)
@@ -257,12 +261,46 @@ def run_backtest(
             "correct": correct, "pnl": pnl, "capital": capital,
         })
 
+        # Track position hold duration
+        if dir_val != prev_dir and prev_dir != 0:
+            # Direction flipped — record the just-closed hold
+            hold_durations.append(current_hold)
+            current_hold = 1
+        else:
+            current_hold += 1
+
         prev_dir = dir_val
+
+    # Close final open position
+    if current_hold > 0 and prev_dir != 0:
+        hold_durations.append(current_hold)
 
     equity_arr = np.array(equity)
 
-    n_trades      = n_long + n_short
-    n_years       = n / BARS_PER_YEAR
+    n_trades = n_long + n_short
+    # Use calendar_years if provided — avoids bar-count inflation for multi-instrument data
+    n_years  = calendar_years if calendar_years is not None else n / BARS_PER_YEAR
+
+    # Hold duration statistics
+    BAR_LABEL = {"1D": "days", "4H": "4H bars", "1H": "hours", "1W": "weeks"}
+    bar_label = BAR_LABEL.get(resolution, "bars")
+    # Convert bars to calendar time for readability
+    BAR_TO_HOURS = {"1D": 24, "4H": 4, "1H": 1, "1W": 168}
+    hours_per_bar = BAR_TO_HOURS.get(resolution, 24)
+
+    if hold_durations:
+        arr_h = np.array(hold_durations, dtype=float)
+        avg_hold     = float(arr_h.mean())
+        med_hold     = float(np.median(arr_h))
+        min_hold     = int(arr_h.min())
+        max_hold     = int(arr_h.max())
+        pct_1bar     = float((arr_h == 1).mean() * 100)   # flipped next bar
+        pct_le5      = float((arr_h <= 5).mean() * 100)
+        avg_hold_hrs = avg_hold * hours_per_bar
+    else:
+        avg_hold = med_hold = avg_hold_hrs = 0.0
+        min_hold = max_hold = 0
+        pct_1bar = pct_le5 = 0.0
     total_return  = (capital - sizer.starting_capital) / sizer.starting_capital
     annual_return = (1 + total_return) ** (1 / max(n_years, 0.01)) - 1
 
@@ -296,10 +334,20 @@ def run_backtest(
         "n_long":             n_long,
         "n_short":            n_short,
         "n_no_trade":         n_no_trade,
+        # Hold duration
+        "avg_hold_bars":      round(avg_hold, 1),
+        "avg_hold_hrs":       round(avg_hold_hrs, 1),
+        "med_hold_bars":      round(med_hold, 1),
+        "min_hold_bars":      min_hold,
+        "max_hold_bars":      max_hold,
+        "pct_held_1bar":      round(pct_1bar, 1),
+        "pct_held_le5bars":   round(pct_le5, 1),
+        "hold_bar_label":     bar_label,
         "trades_per_year":    round(trades_per_year, 1),
         "bars_per_trade":     round(bars_per_trade, 1),
         "pct_bars_traded":    round(100 * n_trades / n, 1),
         "n_years":            round(n_years, 2),
+        "n_instruments":      n_instruments,
         "win_rate_pct":       round(win_rate * 100, 2),
         "profit_factor":      round(profit_factor, 3),
         "avg_win":            round(avg_win, 4),
@@ -366,6 +414,23 @@ def print_backtest_report(results: dict, label: str = ""):
     print(f"    Gross profit       :  {currency}{results['gross_profit']:,.2f}")
     print(f"    Gross loss         :  {currency}{results['gross_loss']:,.2f}")
 
+    # Trade duration
+    avg_h = results.get("avg_hold_bars", 0)
+    med_h = results.get("med_hold_bars", 0)
+    min_h = results.get("min_hold_bars", 0)
+    max_h = results.get("max_hold_bars", 0)
+    avg_d = results.get("avg_hold_hrs", 0) / 24 if results.get("resolution") in ("1H","4H")             else avg_h  # for daily, bars = days
+    p1    = results.get("pct_held_1bar", 0)
+    p5    = results.get("pct_held_le5bars", 0)
+    unit  = results.get("hold_bar_label", "bars")
+
+    print(f"\n  Trade Duration:")
+    print(f"    Avg hold           :  {avg_h:.1f} {unit}  (~{avg_d:.1f} calendar days)")
+    print(f"    Median hold        :  {med_h:.1f} {unit}")
+    print(f"    Min / Max hold     :  {min_h} / {max_h} {unit}")
+    print(f"    Held 1 bar only    :  {p1:.1f}%  (flipped next bar)")
+    print(f"    Held ≤5 bars       :  {p5:.1f}%  of all trades")
+
     print(f"\n  Sizing config:")
     print(f"    Kelly fraction     :  {results['kelly_fraction']:.1f}x")
     print(f"    Max risk/trade     :  {results['max_risk_per_trade']*100:.1f}%")
@@ -382,8 +447,8 @@ if __name__ == "__main__":
 
     sizer = PositionSizer(
         starting_capital=10_000,
-        max_risk_per_trade=0.04,
-        kelly_fraction=0.9,
+        max_risk_per_trade=0.1,
+        kelly_fraction=0.7,
         min_prob=0.57,
     )
 

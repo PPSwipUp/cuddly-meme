@@ -66,8 +66,8 @@ VAL_TEST_SHARPE_GAP = 0.5
 
 # Backtest / position sizing defaults
 STARTING_CAPITAL    = 10_000.0   # £10,000 — change to your actual capital
-KELLY_FRACTION      = 0.9        # half-Kelly
-MAX_RISK_PER_TRADE  = 0.04       # 2% of capital per trade
+KELLY_FRACTION      = 0.7        # half-Kelly
+MAX_RISK_PER_TRADE  = 0.1       # 2% of capital per trade
 MIN_PROB_THRESHOLD  = 0.57       # minimum confidence to trade
 
 os.makedirs(LOG_DIR, exist_ok=True)
@@ -396,6 +396,39 @@ def report(m, label, val_sh=None):
         pct_traded = float(bt.get("pct_bars_traded", 0))
         log.info("    Total trades taken :  %s  (%.1f%% of bars)", nt_str, pct_traded)
         log.info("    No-trade bars      :  %s  (prob < %.0f%%)", nnt_str, MIN_PROB_THRESHOLD*100)
+
+        # ── Trade duration section ────────────────────────────────────────
+        avg_h   = float(bt.get("avg_hold_bars", 0))
+        med_h   = float(bt.get("med_hold_bars", 0))
+        min_h   = int(bt.get("min_hold_bars", 0))
+        max_h   = int(bt.get("max_hold_bars", 0))
+        p1      = float(bt.get("pct_held_1bar", 0))
+        p5      = float(bt.get("pct_held_le5bars", 0))
+        lbl     = bt.get("hold_bar_label", "bars")
+        avg_hrs = float(bt.get("avg_hold_hrs", 0))
+
+        # Express average hold in human-readable calendar time
+        res = bt.get("resolution", "1D")
+        if res == "1D":
+            cal_str = f"{avg_h:.1f} trading days"
+        elif res == "4H":
+            cal_str = f"{avg_hrs:.1f} hrs  (~{avg_hrs/6.5:.1f} trading days)"
+        elif res == "1H":
+            cal_str = f"{avg_hrs:.1f} hrs  (~{avg_hrs/6.5:.1f} trading days)"
+        elif res == "1W":
+            cal_str = f"{avg_h:.1f} weeks"
+        else:
+            cal_str = f"{avg_h:.1f} {lbl}"
+
+        log.info("\n  Trade Duration:")
+        log.info("    Avg hold           :  %s  (%s)", f"{avg_h:.1f} {lbl}", cal_str)
+        log.info("    Median hold        :  %.1f %s", med_h, lbl)
+        log.info("    Min / Max hold     :  %d / %d %s", min_h, max_h, lbl)
+        log.info("    Held 1 bar only    :  %.1f%%  (position flipped next bar)", p1)
+        log.info("    Held 5 bars or less:  %.1f%%  of all trades", p5)
+        if p1 > 70:
+            log.warning("    ⚠  %.1f%% of positions flip every bar — "
+                        "very high turnover relative to signal persistence.", p1)
 
     log.info("─" * 58)
     return ok
