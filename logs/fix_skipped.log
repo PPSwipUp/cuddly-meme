@@ -1,0 +1,70 @@
+2026-03-26 14:55:35,426  INFO      ============================================================
+2026-03-26 14:55:35,427  INFO      Phase 1: Auditing 47 skipped files
+2026-03-26 14:55:35,427  INFO      ============================================================
+2026-03-26 14:55:35,428  INFO      
+Issue: FILE MISSING — 47 files
+2026-03-26 14:55:35,428  INFO        ASX_ANZAX_1H_20240330_20260320.csv
+2026-03-26 14:55:35,428  INFO          cols=[]  rows=0
+2026-03-26 14:55:35,428  INFO        ASX_ANZAX_1W_20150101_20260320.csv
+2026-03-26 14:55:35,429  INFO          cols=[]  rows=0
+2026-03-26 14:55:35,429  INFO        ASX_BHPAX_1H_20240330_20260320.csv
+2026-03-26 14:55:35,429  INFO          cols=[]  rows=0
+2026-03-26 14:55:35,429  INFO      
+============================================================
+2026-03-26 14:55:35,429  INFO      Phase 2: Fixing files
+2026-03-26 14:55:35,430  INFO      ============================================================
+2026-03-26 14:55:35,430  WARNING     [MISS]  ASX_ANZAX_1H_20240330_20260320.csv — not found in data/raw/
+2026-03-26 14:55:35,430  WARNING     [MISS]  ASX_ANZAX_1W_20150101_20260320.csv — not found in data/raw/
+2026-03-26 14:55:35,430  WARNING     [MISS]  ASX_BHPAX_1H_20240330_20260320.csv — not found in data/raw/
+2026-03-26 14:55:35,430  WARNING     [MISS]  ASX_BHPAX_1W_20150101_20260320.csv — not found in data/raw/
+2026-03-26 14:55:35,431  WARNING     [MISS]  ASX_CBAAX_1H_20240330_20260320.csv — not found in data/raw/
+2026-03-26 14:55:35,431  WARNING     [MISS]  ASX_CBAAX_1W_20150101_20260320.csv — not found in data/raw/
+2026-03-26 14:55:35,431  WARNING     [MISS]  ASX_CSLAX_1H_20240330_20260320.csv — not found in data/raw/
+2026-03-26 14:55:35,431  WARNING     [MISS]  ASX_CSLAX_1W_20150101_20260320.csv — not found in data/raw/
+2026-03-26 14:55:35,432  WARNING     [MISS]  ASX_WBCAX_1H_20240330_20260320.csv — not found in data/raw/
+2026-03-26 14:55:35,432  WARNING     [MISS]  ASX_WBCAX_1W_20150101_20260320.csv — not found in data/raw/
+2026-03-26 14:55:35,432  WARNING     [MISS]  CRYPTO_BTC-USD_1H_20240330_20260320.csv — not found in data/raw/
+2026-03-26 14:55:35,433  WARNING     [MISS]  CRYPTO_ETH-USD_1H_20240330_20260320.csv — not found in data/raw/
+2026-03-26 14:55:35,433  WARNING     [MISS]  CRYPTO_ETH-USD_1W_20150101_20260320.csv — not found in data/raw/
+2026-03-26 14:55:35,433  WARNING     [MISS]  DAX_GDAXI_1H_20240330_20260320.csv — not found in data/raw/
+2026-03-26 14:55:35,433  WARNING     [MISS]  DAX_GDAXI_1W_20150101_20260320.csv — not found in data/raw/
+2026-03-26 14:55:35,433  WARNING     [MISS]  EURONEXT_ASMLAS_1H_20240330_20260320.csv — not found in data/raw/
+2026-03-26 14:55:35,434  WARNING     [MISS]  EURONEXT_ASMLAS_1W_20150101_20260320.csv — not found in data/raw/
+2026-03-26 14:55:35,434  WARNING     [MISS]  EURONEXT_MCPA_1H_20240330_20260320.csv — not found in data/raw/
+2026-03-26 14:55:35,434  WARNING     [MISS]  EURONEXT_MCPA_1W_20150101_20260320.csv — not found in data/raw/
+2026-03-26 14:55:35,434  WARNING     [MISS]  EURONEXT_SAPDE_1H_20240330_20260320.csv — not found in data/raw/
+2026-03-26 14:55:35,435  WARNING     [MISS]  EURONEXT_SAPDE_1W_20150101_20260320.csv — not found in data/raw/
+2026-03-26 14:55:35,435  WARNING     [MISS]  EURONEXT_SIEDE_1H_20240330_20260320.csv — not found in data/raw/
+2026-03-26 14:55:35,435  WARNING     [MISS]  EURONEXT_SIEDE_1W_20150101_20260320.csv — not found in data/raw/
+2026-03-26 14:55:35,435  WARNING     [MISS]  EURONEXT_TTEPA_1H_20240330_20260320.csv — not found in data/raw/
+2026-03-26 14:55:35,436  WARNING     [MISS]  EURONEXT_TTEPA_1W_20150101_20260320.csv — not found in data/raw/
+2026-03-26 14:55:35,436  WARNING     [MISS]  FOREXCOM_AUDNZDX_1H_20240330_20260320.csv — not found in data/raw/
+2026-03-26 14:55:35,436  WARNING     [MISS]  FOREXCOM_AUDUSDX_1H_20240330_20260320.csv — not found in data/raw/
+2026-03-26 14:55:35,436  WARNING     [MISS]  FOREXCOM_EURCHFX_1H_20240330_20260320.csv — not found in data/raw/
+2026-03-26 14:55:35,436  WARNING     [MISS]  FOREXCOM_EURGBPX_1H_20240330_20260320.csv — not found in data/raw/
+2026-03-26 14:55:35,437  WARNING     [MISS]  FOREXCOM_EURUSDX_1H_20240330_20260320.csv — not found in data/raw/
+2026-03-26 14:55:35,439  WARNING     [MISS]  FOREXCOM_GBPJPYX_1H_20240330_20260320.csv — not found in data/raw/
+2026-03-26 14:55:35,439  WARNING     [MISS]  FOREXCOM_GBPUSDX_1H_20240330_20260320.csv — not found in data/raw/
+2026-03-26 14:55:35,439  WARNING     [MISS]  FOREXCOM_USDCADX_1H_20240330_20260320.csv — not found in data/raw/
+2026-03-26 14:55:35,439  WARNING     [MISS]  FOREXCOM_USDCHFX_1H_20240330_20260320.csv — not found in data/raw/
+2026-03-26 14:55:35,439  WARNING     [MISS]  FOREXCOM_USDJPYX_1H_20240330_20260320.csv — not found in data/raw/
+2026-03-26 14:55:35,440  WARNING     [MISS]  FTSE_FTSE_1H_20240330_20260320.csv — not found in data/raw/
+2026-03-26 14:55:35,440  WARNING     [MISS]  HSI_HSI_1H_20240330_20260320.csv — not found in data/raw/
+2026-03-26 14:55:35,440  WARNING     [MISS]  HSI_HSI_1W_20150101_20260320.csv — not found in data/raw/
+2026-03-26 14:55:35,441  WARNING     [MISS]  HSI_HSI_4H_20240330_20260320.csv — not found in data/raw/
+2026-03-26 14:55:35,441  WARNING     [MISS]  LSE_AZNL_1H_20240330_20260320.csv — not found in data/raw/
+2026-03-26 14:55:35,441  WARNING     [MISS]  LSE_BPL_1H_20240330_20260320.csv — not found in data/raw/
+2026-03-26 14:55:35,441  WARNING     [MISS]  LSE_GSKL_1H_20240330_20260320.csv — not found in data/raw/
+2026-03-26 14:55:35,441  WARNING     [MISS]  LSE_HSBAL_1H_20240330_20260320.csv — not found in data/raw/
+2026-03-26 14:55:35,442  WARNING     [MISS]  LSE_SHELL_1H_20240330_20260320.csv — not found in data/raw/
+2026-03-26 14:55:35,442  WARNING     [MISS]  NIKKEI_N225_1H_20240330_20260320.csv — not found in data/raw/
+2026-03-26 14:55:35,442  WARNING     [MISS]  NIKKEI_N225_1W_20150101_20260320.csv — not found in data/raw/
+2026-03-26 14:55:35,442  WARNING     [MISS]  NIKKEI_N225_4H_20240330_20260320.csv — not found in data/raw/
+2026-03-26 14:55:35,442  INFO      
+============================================================
+2026-03-26 14:55:35,442  INFO      Fix summary
+2026-03-26 14:55:35,442  INFO      ============================================================
+2026-03-26 14:55:35,443  INFO        Fixed successfully : 0
+2026-03-26 14:55:35,443  INFO        Failed to fix      : 0
+2026-03-26 14:55:35,443  INFO        Missing files      : 47
+2026-03-26 14:55:35,443  INFO      No files were fixed — nothing to reprocess.

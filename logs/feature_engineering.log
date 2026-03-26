@@ -1,0 +1,1013 @@
+2026-03-26 14:55:47,066  INFO      Stage 2 Feature Engineering — Start
+2026-03-26 14:55:47,066  INFO      Raw data dir  : /workspaces/cuddly-meme/data/raw
+2026-03-26 14:55:47,066  INFO      Output dir    : /workspaces/cuddly-meme/data/processed
+2026-03-26 14:55:47,067  INFO      Found 236 CSV files
+2026-03-26 14:55:47,076  INFO      [IDX]  Loaded index ref for 1D: SP500_GSPC_1D_20150101_20260326.csv
+2026-03-26 14:55:47,081  INFO      [IDX]  Loaded index ref for 1W: SP500_GSPC_1W_20150101_20260326.csv
+2026-03-26 14:55:47,108  INFO      [IDX]  Loaded index ref for 1H: SP500_GSPC_1H_20240405_20260326.csv
+2026-03-26 14:55:47,121  INFO      [IDX]  Loaded index ref for 4H: SP500_GSPC_4H_20240405_20260326.csv
+2026-03-26 14:55:47,123  INFO      [PROC] ASX_ANZAX_1D_20150101_20260326.csv
+2026-03-26 14:55:47,268  INFO        ✓  2664 windows × 29 features
+2026-03-26 14:55:47,268  WARNING     ⚠  Regime class 0 is only 0.3% of samples
+2026-03-26 14:55:47,268  WARNING     ⚠  Regime class 2 is only 1.4% of samples
+2026-03-26 14:55:47,268  WARNING     ⚠  Regime class 3 is only 1.0% of samples
+2026-03-26 14:59:37,942  INFO      Stage 2 Feature Engineering — Start
+2026-03-26 14:59:37,943  INFO      Raw data dir  : /workspaces/cuddly-meme/data/raw
+2026-03-26 14:59:37,943  INFO      Output dir    : /workspaces/cuddly-meme/data/processed
+2026-03-26 14:59:37,944  INFO      Found 236 CSV files
+2026-03-26 14:59:37,957  INFO      [IDX]  Loaded index ref for 1D: SP500_GSPC_1D_20150101_20260326.csv
+2026-03-26 14:59:37,962  INFO      [IDX]  Loaded index ref for 1W: SP500_GSPC_1W_20150101_20260326.csv
+2026-03-26 14:59:37,979  INFO      [IDX]  Loaded index ref for 1H: SP500_GSPC_1H_20240405_20260326.csv
+2026-03-26 14:59:37,985  INFO      [IDX]  Loaded index ref for 4H: SP500_GSPC_4H_20240405_20260326.csv
+2026-03-26 14:59:37,985  INFO      [PROC] ASX_ANZAX_1D_20150101_20260326.csv
+2026-03-26 14:59:38,179  INFO        ✓  2664 windows × 29 features
+2026-03-26 14:59:38,183  WARNING     ⚠  Regime class 0 is only 0.3% of samples
+2026-03-26 14:59:38,183  WARNING     ⚠  Regime class 2 is only 1.4% of samples
+2026-03-26 14:59:38,183  WARNING     ⚠  Regime class 3 is only 1.0% of samples
+2026-03-26 14:59:38,332  INFO        → Inspect CSV written: ASX_ANZAX_1D_20150101_20260326_inspect.csv
+2026-03-26 14:59:38,332  INFO      [PROC] ASX_ANZAX_1H_20240405_20260326.csv
+2026-03-26 14:59:38,426  WARNING     ✗  No valid windows produced for ASX_ANZAX_1H_20240405_20260326.csv
+2026-03-26 14:59:38,427  INFO      [PROC] ASX_ANZAX_1W_20150101_20260326.csv
+2026-03-26 14:59:38,492  WARNING     ✗  No valid windows produced for ASX_ANZAX_1W_20150101_20260326.csv
+2026-03-26 14:59:38,493  INFO      [PROC] ASX_ANZAX_4H_20240405_20260326.csv
+2026-03-26 14:59:38,577  INFO        ✓  341 windows × 35 features
+2026-03-26 14:59:38,605  INFO        → Inspect CSV written: ASX_ANZAX_4H_20240405_20260326_inspect.csv
+2026-03-26 14:59:38,606  INFO      [PROC] ASX_BHPAX_1D_20150101_20260326.csv
+2026-03-26 14:59:38,760  INFO        ✓  2664 windows × 29 features
+2026-03-26 14:59:38,760  WARNING     ⚠  Regime class 2 is only 3.0% of samples
+2026-03-26 14:59:38,886  INFO        → Inspect CSV written: ASX_BHPAX_1D_20150101_20260326_inspect.csv
+2026-03-26 14:59:38,886  INFO      [PROC] ASX_BHPAX_1H_20240405_20260326.csv
+2026-03-26 14:59:38,981  WARNING     ✗  No valid windows produced for ASX_BHPAX_1H_20240405_20260326.csv
+2026-03-26 14:59:38,981  INFO      [PROC] ASX_BHPAX_1W_20150101_20260326.csv
+2026-03-26 14:59:39,049  WARNING     ✗  No valid windows produced for ASX_BHPAX_1W_20150101_20260326.csv
+2026-03-26 14:59:39,049  INFO      [PROC] ASX_BHPAX_4H_20240405_20260326.csv
+2026-03-26 14:59:39,132  INFO        ✓  341 windows × 35 features
+2026-03-26 14:59:39,132  WARNING     ⚠  Regime class 2 is only 0.3% of samples
+2026-03-26 14:59:39,152  INFO        → Inspect CSV written: ASX_BHPAX_4H_20240405_20260326_inspect.csv
+2026-03-26 14:59:39,152  INFO      [PROC] ASX_CBAAX_1D_20150101_20260326.csv
+2026-03-26 14:59:39,312  INFO        ✓  2664 windows × 29 features
+2026-03-26 14:59:39,312  WARNING     ⚠  Regime class 0 is only 0.4% of samples
+2026-03-26 14:59:39,312  WARNING     ⚠  Regime class 2 is only 0.8% of samples
+2026-03-26 14:59:39,312  WARNING     ⚠  Regime class 3 is only 2.6% of samples
+2026-03-26 14:59:39,312  WARNING     ⚠  Regime class 5 is only 4.6% of samples
+2026-03-26 14:59:39,438  INFO        → Inspect CSV written: ASX_CBAAX_1D_20150101_20260326_inspect.csv
+2026-03-26 14:59:39,438  INFO      [PROC] ASX_CBAAX_1H_20240405_20260326.csv
+2026-03-26 14:59:39,532  WARNING     ✗  No valid windows produced for ASX_CBAAX_1H_20240405_20260326.csv
+2026-03-26 14:59:39,532  INFO      [PROC] ASX_CBAAX_1W_20150101_20260326.csv
+2026-03-26 14:59:39,600  WARNING     ✗  No valid windows produced for ASX_CBAAX_1W_20150101_20260326.csv
+2026-03-26 14:59:39,600  INFO      [PROC] ASX_CBAAX_4H_20240405_20260326.csv
+2026-03-26 14:59:39,685  INFO        ✓  341 windows × 35 features
+2026-03-26 14:59:39,714  INFO        → Inspect CSV written: ASX_CBAAX_4H_20240405_20260326_inspect.csv
+2026-03-26 14:59:39,714  INFO      [PROC] ASX_CSLAX_1D_20150101_20260326.csv
+2026-03-26 14:59:39,847  INFO        ✓  2664 windows × 29 features
+2026-03-26 14:59:39,847  WARNING     ⚠  Regime class 2 is only 3.0% of samples
+2026-03-26 14:59:39,967  INFO        → Inspect CSV written: ASX_CSLAX_1D_20150101_20260326_inspect.csv
+2026-03-26 14:59:39,967  INFO      [PROC] ASX_CSLAX_1H_20240405_20260326.csv
+2026-03-26 14:59:40,059  WARNING     ✗  No valid windows produced for ASX_CSLAX_1H_20240405_20260326.csv
+2026-03-26 14:59:40,060  INFO      [PROC] ASX_CSLAX_1W_20150101_20260326.csv
+2026-03-26 14:59:40,129  WARNING     ✗  No valid windows produced for ASX_CSLAX_1W_20150101_20260326.csv
+2026-03-26 14:59:40,129  INFO      [PROC] ASX_CSLAX_4H_20240405_20260326.csv
+2026-03-26 14:59:40,207  INFO        ✓  341 windows × 35 features
+2026-03-26 14:59:40,207  WARNING     ⚠  Regime class 1 is only 4.4% of samples
+2026-03-26 14:59:40,207  WARNING     ⚠  Regime class 5 is only 3.8% of samples
+2026-03-26 14:59:40,236  INFO        → Inspect CSV written: ASX_CSLAX_4H_20240405_20260326_inspect.csv
+2026-03-26 14:59:40,236  INFO      [PROC] ASX_WBCAX_1D_20150101_20260326.csv
+2026-03-26 14:59:40,354  INFO        ✓  2664 windows × 29 features
+2026-03-26 14:59:40,354  WARNING     ⚠  Regime class 2 is only 1.4% of samples
+2026-03-26 14:59:40,354  WARNING     ⚠  Regime class 3 is only 1.7% of samples
+2026-03-26 14:59:40,477  INFO        → Inspect CSV written: ASX_WBCAX_1D_20150101_20260326_inspect.csv
+2026-03-26 14:59:40,478  INFO      [PROC] ASX_WBCAX_1H_20240405_20260326.csv
+2026-03-26 14:59:40,571  WARNING     ✗  No valid windows produced for ASX_WBCAX_1H_20240405_20260326.csv
+2026-03-26 14:59:40,572  INFO      [PROC] ASX_WBCAX_1W_20150101_20260326.csv
+2026-03-26 14:59:40,647  WARNING     ✗  No valid windows produced for ASX_WBCAX_1W_20150101_20260326.csv
+2026-03-26 14:59:40,648  INFO      [PROC] ASX_WBCAX_4H_20240405_20260326.csv
+2026-03-26 14:59:40,766  INFO        ✓  341 windows × 35 features
+2026-03-26 14:59:40,787  INFO        → Inspect CSV written: ASX_WBCAX_4H_20240405_20260326_inspect.csv
+2026-03-26 14:59:40,787  INFO      [PROC] CBOT_ZWF_1D_20150101_20260326.csv
+2026-03-26 14:59:40,923  INFO        ✓  2643 windows × 29 features
+2026-03-26 14:59:41,077  INFO        → Inspect CSV written: CBOT_ZWF_1D_20150101_20260326_inspect.csv
+2026-03-26 14:59:41,077  INFO      [PROC] CBOT_ZWF_1H_20240405_20260326.csv
+2026-03-26 14:59:41,350  INFO        ✓  2326 windows × 35 features
+2026-03-26 14:59:41,351  WARNING     ⚠  Regime class 1 is only 2.6% of samples
+2026-03-26 14:59:41,351  WARNING     ⚠  Regime class 4 is only 3.8% of samples
+2026-03-26 14:59:41,351  WARNING     ⚠  Regime class 5 is only 3.1% of samples
+2026-03-26 14:59:41,482  INFO        → Inspect CSV written: CBOT_ZWF_1H_20240405_20260326_inspect.csv
+2026-03-26 14:59:41,482  INFO      [PROC] CBOT_ZWF_1W_20150101_20260326.csv
+2026-03-26 14:59:41,555  INFO        ✓  407 windows × 29 features
+2026-03-26 14:59:41,577  INFO        → Inspect CSV written: CBOT_ZWF_1W_20150101_20260326_inspect.csv
+2026-03-26 14:59:41,577  INFO      [PROC] CBOT_ZWF_4H_20240405_20260326.csv
+2026-03-26 14:59:41,702  INFO        ✓  2247 windows × 35 features
+2026-03-26 14:59:41,826  INFO        → Inspect CSV written: CBOT_ZWF_4H_20240405_20260326_inspect.csv
+2026-03-26 14:59:41,826  INFO      [PROC] COMEX_GCF_1D_20150101_20260326.csv
+2026-03-26 14:59:41,945  INFO        ✓  2643 windows × 29 features
+2026-03-26 14:59:41,946  WARNING     ⚠  Regime class 2 is only 0.5% of samples
+2026-03-26 14:59:41,946  WARNING     ⚠  Regime class 5 is only 1.9% of samples
+2026-03-26 14:59:42,070  INFO        → Inspect CSV written: COMEX_GCF_1D_20150101_20260326_inspect.csv
+2026-03-26 14:59:42,070  INFO      [PROC] COMEX_GCF_1H_20240405_20260326.csv
+2026-03-26 14:59:42,271  INFO        ✓  2910 windows × 35 features
+2026-03-26 14:59:42,271  WARNING     ⚠  Regime class 1 is only 2.3% of samples
+2026-03-26 14:59:42,271  WARNING     ⚠  Regime class 4 is only 3.7% of samples
+2026-03-26 14:59:42,423  INFO        → Inspect CSV written: COMEX_GCF_1H_20240405_20260326_inspect.csv
+2026-03-26 14:59:42,423  INFO      [PROC] COMEX_GCF_1W_20150101_20260326.csv
+2026-03-26 14:59:42,489  INFO        ✓  407 windows × 29 features
+2026-03-26 14:59:42,516  INFO        → Inspect CSV written: COMEX_GCF_1W_20150101_20260326_inspect.csv
+2026-03-26 14:59:42,517  INFO      [PROC] COMEX_GCF_4H_20240405_20260326.csv
+2026-03-26 14:59:42,668  INFO        ✓  2885 windows × 35 features
+2026-03-26 14:59:42,670  WARNING     ⚠  Regime class 2 is only 0.8% of samples
+2026-03-26 14:59:42,671  WARNING     ⚠  Regime class 5 is only 0.8% of samples
+2026-03-26 14:59:42,941  INFO        → Inspect CSV written: COMEX_GCF_4H_20240405_20260326_inspect.csv
+2026-03-26 14:59:42,941  INFO      [PROC] COMEX_HGF_1D_20150101_20260326.csv
+2026-03-26 14:59:43,153  INFO        ✓  2644 windows × 29 features
+2026-03-26 14:59:43,154  WARNING     ⚠  Regime class 0 is only 0.9% of samples
+2026-03-26 14:59:43,154  WARNING     ⚠  Regime class 2 is only 1.5% of samples
+2026-03-26 14:59:43,155  WARNING     ⚠  Regime class 3 is only 2.6% of samples
+2026-03-26 14:59:43,399  INFO        → Inspect CSV written: COMEX_HGF_1D_20150101_20260326_inspect.csv
+2026-03-26 14:59:43,399  INFO      [PROC] COMEX_HGF_1H_20240405_20260326.csv
+2026-03-26 14:59:43,628  INFO        ✓  2908 windows × 35 features
+2026-03-26 14:59:43,629  WARNING     ⚠  Regime class 1 is only 3.7% of samples
+2026-03-26 14:59:43,629  WARNING     ⚠  Regime class 5 is only 0.1% of samples
+2026-03-26 14:59:43,835  INFO        → Inspect CSV written: COMEX_HGF_1H_20240405_20260326_inspect.csv
+2026-03-26 14:59:43,835  INFO      [PROC] COMEX_HGF_1W_20150101_20260326.csv
+2026-03-26 14:59:43,982  INFO        ✓  407 windows × 29 features
+2026-03-26 14:59:43,982  WARNING     ⚠  Regime class 1 is only 0.2% of samples
+2026-03-26 14:59:44,013  INFO        → Inspect CSV written: COMEX_HGF_1W_20150101_20260326_inspect.csv
+2026-03-26 14:59:44,014  INFO      [PROC] COMEX_HGF_4H_20240405_20260326.csv
+2026-03-26 14:59:44,162  INFO        ✓  2885 windows × 35 features
+2026-03-26 14:59:44,163  WARNING     ⚠  Regime class 2 is only 0.6% of samples
+2026-03-26 14:59:44,163  WARNING     ⚠  Regime class 5 is only 1.6% of samples
+2026-03-26 14:59:44,316  INFO        → Inspect CSV written: COMEX_HGF_4H_20240405_20260326_inspect.csv
+2026-03-26 14:59:44,316  INFO      [PROC] COMEX_SIF_1D_20150101_20260326.csv
+2026-03-26 14:59:44,448  INFO        ✓  2643 windows × 29 features
+2026-03-26 14:59:44,448  WARNING     ⚠  Regime class 0 is only 1.4% of samples
+2026-03-26 14:59:44,448  WARNING     ⚠  Regime class 2 is only 1.7% of samples
+2026-03-26 14:59:44,571  INFO        → Inspect CSV written: COMEX_SIF_1D_20150101_20260326_inspect.csv
+2026-03-26 14:59:44,571  INFO      [PROC] COMEX_SIF_1H_20240405_20260326.csv
+2026-03-26 14:59:44,773  INFO        ✓  2909 windows × 35 features
+2026-03-26 14:59:44,773  WARNING     ⚠  Regime class 1 is only 4.0% of samples
+2026-03-26 14:59:44,774  WARNING     ⚠  Regime class 4 is only 3.7% of samples
+2026-03-26 14:59:44,774  WARNING     ⚠  Regime class 5 is only 0.1% of samples
+2026-03-26 14:59:44,930  INFO        → Inspect CSV written: COMEX_SIF_1H_20240405_20260326_inspect.csv
+2026-03-26 14:59:44,931  INFO      [PROC] COMEX_SIF_1W_20150101_20260326.csv
+2026-03-26 14:59:44,995  INFO        ✓  407 windows × 29 features
+2026-03-26 14:59:44,996  WARNING     ⚠  Regime class 4 is only 1.0% of samples
+2026-03-26 14:59:45,027  INFO        → Inspect CSV written: COMEX_SIF_1W_20150101_20260326_inspect.csv
+2026-03-26 14:59:45,027  INFO      [PROC] COMEX_SIF_4H_20240405_20260326.csv
+2026-03-26 14:59:45,174  INFO        ✓  2885 windows × 35 features
+2026-03-26 14:59:45,174  WARNING     ⚠  Regime class 2 is only 1.4% of samples
+2026-03-26 14:59:45,323  INFO        → Inspect CSV written: COMEX_SIF_4H_20240405_20260326_inspect.csv
+2026-03-26 14:59:45,323  INFO      [PROC] CRYPTO_BTC-USD_1D_20150101_20260326.csv
+2026-03-26 14:59:45,515  INFO        ✓  3923 windows × 29 features
+2026-03-26 14:59:45,516  WARNING     ⚠  Regime class 0 is only 0.0% of samples
+2026-03-26 14:59:45,516  WARNING     ⚠  Regime class 1 is only 2.3% of samples
+2026-03-26 14:59:45,516  WARNING     ⚠  Regime class 3 is only 1.1% of samples
+2026-03-26 14:59:45,696  INFO        → Inspect CSV written: CRYPTO_BTC-USD_1D_20150101_20260326_inspect.csv
+2026-03-26 14:59:45,696  INFO      [PROC] CRYPTO_BTC-USD_1H_20240405_20260326.csv
+2026-03-26 14:59:45,901  WARNING     ✗  No valid windows produced for CRYPTO_BTC-USD_1H_20240405_20260326.csv
+2026-03-26 14:59:45,901  INFO      [PROC] CRYPTO_BTC-USD_1W_20150101_20260326.csv
+2026-03-26 14:59:45,975  INFO        ✓  407 windows × 29 features
+2026-03-26 14:59:45,997  INFO        → Inspect CSV written: CRYPTO_BTC-USD_1W_20150101_20260326_inspect.csv
+2026-03-26 14:59:45,997  INFO      [PROC] CRYPTO_BTC-USD_4H_20240405_20260326.csv
+2026-03-26 14:59:46,166  INFO        ✓  3602 windows × 35 features
+2026-03-26 14:59:46,167  WARNING     ⚠  Regime class 2 is only 0.6% of samples
+2026-03-26 14:59:46,167  WARNING     ⚠  Regime class 5 is only 3.3% of samples
+2026-03-26 14:59:46,438  INFO        → Inspect CSV written: CRYPTO_BTC-USD_4H_20240405_20260326_inspect.csv
+2026-03-26 14:59:46,438  INFO      [PROC] CRYPTO_ETH-USD_1D_20150101_20260326.csv
+2026-03-26 14:59:46,579  INFO        ✓  2880 windows × 29 features
+2026-03-26 14:59:46,580  WARNING     ⚠  Regime class 1 is only 0.8% of samples
+2026-03-26 14:59:46,580  WARNING     ⚠  Regime class 4 is only 2.6% of samples
+2026-03-26 14:59:46,742  INFO        → Inspect CSV written: CRYPTO_ETH-USD_1D_20150101_20260326_inspect.csv
+2026-03-26 14:59:46,742  INFO      [PROC] CRYPTO_ETH-USD_1H_20240405_20260326.csv
+2026-03-26 14:59:46,952  WARNING     ✗  No valid windows produced for CRYPTO_ETH-USD_1H_20240405_20260326.csv
+2026-03-26 14:59:46,952  INFO      [PROC] CRYPTO_ETH-USD_1W_20150101_20260326.csv
+2026-03-26 14:59:47,029  WARNING     ✗  No valid windows produced for CRYPTO_ETH-USD_1W_20150101_20260326.csv
+2026-03-26 14:59:47,029  INFO      [PROC] CRYPTO_ETH-USD_4H_20240405_20260326.csv
+2026-03-26 14:59:47,190  INFO        ✓  3602 windows × 35 features
+2026-03-26 14:59:47,191  WARNING     ⚠  Regime class 0 is only 0.8% of samples
+2026-03-26 14:59:47,191  WARNING     ⚠  Regime class 2 is only 2.1% of samples
+2026-03-26 14:59:47,191  WARNING     ⚠  Regime class 3 is only 3.2% of samples
+2026-03-26 14:59:47,468  INFO        → Inspect CSV written: CRYPTO_ETH-USD_4H_20240405_20260326_inspect.csv
+2026-03-26 14:59:47,468  INFO      [PROC] DAX_GDAXI_1D_20150101_20260326.csv
+2026-03-26 14:59:47,734  INFO        ✓  2670 windows × 29 features
+2026-03-26 14:59:47,734  WARNING     ⚠  Regime class 0 is only 3.0% of samples
+2026-03-26 14:59:47,735  WARNING     ⚠  Regime class 2 is only 1.0% of samples
+2026-03-26 14:59:47,736  WARNING     ⚠  Regime class 5 is only 4.6% of samples
+2026-03-26 14:59:48,089  INFO        → Inspect CSV written: DAX_GDAXI_1D_20150101_20260326_inspect.csv
+2026-03-26 14:59:48,089  INFO      [PROC] DAX_GDAXI_1H_20240405_20260326.csv
+2026-03-26 14:59:48,453  WARNING     ✗  No valid windows produced for DAX_GDAXI_1H_20240405_20260326.csv
+2026-03-26 14:59:48,454  INFO      [PROC] DAX_GDAXI_1W_20150101_20260326.csv
+2026-03-26 14:59:48,730  WARNING     ✗  No valid windows produced for DAX_GDAXI_1W_20150101_20260326.csv
+2026-03-26 14:59:48,731  INFO      [PROC] DAX_GDAXI_4H_20240405_20260326.csv
+2026-03-26 14:59:48,916  INFO        ✓  1325 windows × 35 features
+2026-03-26 14:59:48,916  WARNING     ⚠  Regime class 1 is only 0.5% of samples
+2026-03-26 14:59:48,917  WARNING     ⚠  Regime class 5 is only 1.1% of samples
+2026-03-26 14:59:49,030  INFO        → Inspect CSV written: DAX_GDAXI_4H_20240405_20260326_inspect.csv
+2026-03-26 14:59:49,030  INFO      [PROC] EURONEXT_ASMLAS_1D_20150101_20260326.csv
+2026-03-26 14:59:49,456  INFO        ✓  2695 windows × 29 features
+2026-03-26 14:59:49,722  INFO        → Inspect CSV written: EURONEXT_ASMLAS_1D_20150101_20260326_inspect.csv
+2026-03-26 14:59:49,723  INFO      [PROC] EURONEXT_ASMLAS_1H_20240405_20260326.csv
+2026-03-26 14:59:50,000  WARNING     ✗  No valid windows produced for EURONEXT_ASMLAS_1H_20240405_20260326.csv
+2026-03-26 14:59:50,001  INFO      [PROC] EURONEXT_ASMLAS_1W_20150101_20260326.csv
+2026-03-26 14:59:50,473  WARNING     ✗  No valid windows produced for EURONEXT_ASMLAS_1W_20150101_20260326.csv
+2026-03-26 14:59:50,473  INFO      [PROC] EURONEXT_ASMLAS_4H_20240405_20260326.csv
+2026-03-26 14:59:50,566  INFO        ✓  1329 windows × 35 features
+2026-03-26 14:59:50,567  WARNING     ⚠  Regime class 0 is only 0.5% of samples
+2026-03-26 14:59:50,567  WARNING     ⚠  Regime class 2 is only 1.4% of samples
+2026-03-26 14:59:50,567  WARNING     ⚠  Regime class 3 is only 0.8% of samples
+2026-03-26 14:59:50,698  INFO        → Inspect CSV written: EURONEXT_ASMLAS_4H_20240405_20260326_inspect.csv
+2026-03-26 14:59:50,698  INFO      [PROC] EURONEXT_MCPA_1D_20150101_20260326.csv
+2026-03-26 14:59:50,872  INFO        ✓  2696 windows × 29 features
+2026-03-26 14:59:50,873  WARNING     ⚠  Regime class 3 is only 0.3% of samples
+2026-03-26 14:59:51,015  INFO        → Inspect CSV written: EURONEXT_MCPA_1D_20150101_20260326_inspect.csv
+2026-03-26 14:59:51,016  INFO      [PROC] EURONEXT_MCPA_1H_20240405_20260326.csv
+2026-03-26 14:59:51,116  WARNING     ✗  No valid windows produced for EURONEXT_MCPA_1H_20240405_20260326.csv
+2026-03-26 14:59:51,116  INFO      [PROC] EURONEXT_MCPA_1W_20150101_20260326.csv
+2026-03-26 14:59:51,181  WARNING     ✗  No valid windows produced for EURONEXT_MCPA_1W_20150101_20260326.csv
+2026-03-26 14:59:51,182  INFO      [PROC] EURONEXT_MCPA_4H_20240405_20260326.csv
+2026-03-26 14:59:51,278  INFO        ✓  1329 windows × 35 features
+2026-03-26 14:59:51,279  WARNING     ⚠  Regime class 0 is only 1.4% of samples
+2026-03-26 14:59:51,279  WARNING     ⚠  Regime class 5 is only 2.4% of samples
+2026-03-26 14:59:51,378  INFO        → Inspect CSV written: EURONEXT_MCPA_4H_20240405_20260326_inspect.csv
+2026-03-26 14:59:51,378  INFO      [PROC] EURONEXT_SAPDE_1D_20150101_20260326.csv
+2026-03-26 14:59:51,524  INFO        ✓  2675 windows × 29 features
+2026-03-26 14:59:51,524  WARNING     ⚠  Regime class 0 is only 0.2% of samples
+2026-03-26 14:59:51,524  WARNING     ⚠  Regime class 2 is only 2.6% of samples
+2026-03-26 14:59:51,524  WARNING     ⚠  Regime class 3 is only 0.9% of samples
+2026-03-26 14:59:51,663  INFO        → Inspect CSV written: EURONEXT_SAPDE_1D_20150101_20260326_inspect.csv
+2026-03-26 14:59:51,663  INFO      [PROC] EURONEXT_SAPDE_1H_20240405_20260326.csv
+2026-03-26 14:59:51,837  WARNING     ✗  No valid windows produced for EURONEXT_SAPDE_1H_20240405_20260326.csv
+2026-03-26 14:59:51,837  INFO      [PROC] EURONEXT_SAPDE_1W_20150101_20260326.csv
+2026-03-26 14:59:51,896  WARNING     ✗  No valid windows produced for EURONEXT_SAPDE_1W_20150101_20260326.csv
+2026-03-26 14:59:51,896  INFO      [PROC] EURONEXT_SAPDE_4H_20240405_20260326.csv
+2026-03-26 14:59:52,002  INFO        ✓  1319 windows × 35 features
+2026-03-26 14:59:52,002  WARNING     ⚠  Regime class 0 is only 2.9% of samples
+2026-03-26 14:59:52,002  WARNING     ⚠  Regime class 2 is only 0.3% of samples
+2026-03-26 14:59:52,002  WARNING     ⚠  Regime class 5 is only 3.3% of samples
+2026-03-26 14:59:52,093  INFO        → Inspect CSV written: EURONEXT_SAPDE_4H_20240405_20260326_inspect.csv
+2026-03-26 14:59:52,093  INFO      [PROC] EURONEXT_SIEDE_1D_20150101_20260326.csv
+2026-03-26 14:59:52,269  INFO        ✓  2675 windows × 29 features
+2026-03-26 14:59:52,269  WARNING     ⚠  Regime class 0 is only 0.1% of samples
+2026-03-26 14:59:52,269  WARNING     ⚠  Regime class 3 is only 0.1% of samples
+2026-03-26 14:59:52,404  INFO        → Inspect CSV written: EURONEXT_SIEDE_1D_20150101_20260326_inspect.csv
+2026-03-26 14:59:52,404  INFO      [PROC] EURONEXT_SIEDE_1H_20240405_20260326.csv
+2026-03-26 14:59:52,509  WARNING     ✗  No valid windows produced for EURONEXT_SIEDE_1H_20240405_20260326.csv
+2026-03-26 14:59:52,509  INFO      [PROC] EURONEXT_SIEDE_1W_20150101_20260326.csv
+2026-03-26 14:59:52,575  WARNING     ✗  No valid windows produced for EURONEXT_SIEDE_1W_20150101_20260326.csv
+2026-03-26 14:59:52,575  INFO      [PROC] EURONEXT_SIEDE_4H_20240405_20260326.csv
+2026-03-26 14:59:52,683  INFO        ✓  1319 windows × 35 features
+2026-03-26 14:59:52,684  WARNING     ⚠  Regime class 0 is only 4.4% of samples
+2026-03-26 14:59:52,684  WARNING     ⚠  Regime class 2 is only 0.2% of samples
+2026-03-26 14:59:52,684  WARNING     ⚠  Regime class 5 is only 2.9% of samples
+2026-03-26 14:59:52,777  INFO        → Inspect CSV written: EURONEXT_SIEDE_4H_20240405_20260326_inspect.csv
+2026-03-26 14:59:52,777  INFO      [PROC] EURONEXT_TTEPA_1D_20150101_20260326.csv
+2026-03-26 14:59:53,087  INFO        ✓  2696 windows × 29 features
+2026-03-26 14:59:53,089  WARNING     ⚠  Regime class 3 is only 0.4% of samples
+2026-03-26 14:59:53,315  INFO        → Inspect CSV written: EURONEXT_TTEPA_1D_20150101_20260326_inspect.csv
+2026-03-26 14:59:53,315  INFO      [PROC] EURONEXT_TTEPA_1H_20240405_20260326.csv
+2026-03-26 14:59:54,217  WARNING     ✗  No valid windows produced for EURONEXT_TTEPA_1H_20240405_20260326.csv
+2026-03-26 14:59:54,218  INFO      [PROC] EURONEXT_TTEPA_1W_20150101_20260326.csv
+2026-03-26 14:59:54,507  WARNING     ✗  No valid windows produced for EURONEXT_TTEPA_1W_20150101_20260326.csv
+2026-03-26 14:59:54,507  INFO      [PROC] EURONEXT_TTEPA_4H_20240405_20260326.csv
+2026-03-26 14:59:54,684  INFO        ✓  1329 windows × 35 features
+2026-03-26 14:59:54,684  WARNING     ⚠  Regime class 5 is only 1.3% of samples
+2026-03-26 14:59:54,806  INFO        → Inspect CSV written: EURONEXT_TTEPA_4H_20240405_20260326_inspect.csv
+2026-03-26 14:59:54,807  INFO      [PROC] FOREXCOM_AUDNZDX_1D_20150101_20260326.csv
+2026-03-26 14:59:55,170  INFO        ✓  2745 windows × 29 features
+2026-03-26 14:59:55,170  WARNING     ⚠  Regime class 1 is only 1.8% of samples
+2026-03-26 14:59:55,170  WARNING     ⚠  Regime class 4 is only 2.9% of samples
+2026-03-26 14:59:55,356  INFO        → Inspect CSV written: FOREXCOM_AUDNZDX_1D_20150101_20260326_inspect.csv
+2026-03-26 14:59:55,356  INFO      [PROC] FOREXCOM_AUDNZDX_1H_20240405_20260326.csv
+2026-03-26 14:59:55,692  WARNING     ✗  No valid windows produced for FOREXCOM_AUDNZDX_1H_20240405_20260326.csv
+2026-03-26 14:59:55,693  INFO      [PROC] FOREXCOM_AUDNZDX_1W_20150101_20260326.csv
+2026-03-26 14:59:55,786  INFO        ✓  407 windows × 29 features
+2026-03-26 14:59:55,786  WARNING     ⚠  Regime class 0 is only 2.2% of samples
+2026-03-26 14:59:55,787  WARNING     ⚠  Regime class 3 is only 2.2% of samples
+2026-03-26 14:59:55,825  INFO        → Inspect CSV written: FOREXCOM_AUDNZDX_1W_20150101_20260326_inspect.csv
+2026-03-26 14:59:55,825  INFO      [PROC] FOREXCOM_AUDNZDX_4H_20240405_20260326.csv
+2026-03-26 14:59:55,970  INFO        ✓  2965 windows × 35 features
+2026-03-26 14:59:56,125  INFO        → Inspect CSV written: FOREXCOM_AUDNZDX_4H_20240405_20260326_inspect.csv
+2026-03-26 14:59:56,125  INFO      [PROC] FOREXCOM_AUDUSDX_1D_20150101_20260326.csv
+2026-03-26 14:59:56,258  INFO        ✓  2743 windows × 29 features
+2026-03-26 14:59:56,258  WARNING     ⚠  Regime class 2 is only 0.0% of samples
+2026-03-26 14:59:56,258  WARNING     ⚠  Regime class 5 is only 0.9% of samples
+2026-03-26 14:59:56,380  INFO        → Inspect CSV written: FOREXCOM_AUDUSDX_1D_20150101_20260326_inspect.csv
+2026-03-26 14:59:56,380  INFO      [PROC] FOREXCOM_AUDUSDX_1H_20240405_20260326.csv
+2026-03-26 14:59:56,540  WARNING     ✗  No valid windows produced for FOREXCOM_AUDUSDX_1H_20240405_20260326.csv
+2026-03-26 14:59:56,541  INFO      [PROC] FOREXCOM_AUDUSDX_1W_20150101_20260326.csv
+2026-03-26 14:59:56,612  INFO        ✓  407 windows × 29 features
+2026-03-26 14:59:56,635  INFO        → Inspect CSV written: FOREXCOM_AUDUSDX_1W_20150101_20260326_inspect.csv
+2026-03-26 14:59:56,635  INFO      [PROC] FOREXCOM_AUDUSDX_4H_20240405_20260326.csv
+2026-03-26 14:59:56,805  INFO        ✓  2965 windows × 35 features
+2026-03-26 14:59:56,805  WARNING     ⚠  Regime class 1 is only 0.1% of samples
+2026-03-26 14:59:56,805  WARNING     ⚠  Regime class 4 is only 0.8% of samples
+2026-03-26 14:59:56,948  INFO        → Inspect CSV written: FOREXCOM_AUDUSDX_4H_20240405_20260326_inspect.csv
+2026-03-26 14:59:56,948  INFO      [PROC] FOREXCOM_EURCHFX_1D_20150101_20260326.csv
+2026-03-26 14:59:57,089  INFO        ✓  2744 windows × 29 features
+2026-03-26 14:59:57,089  WARNING     ⚠  Regime class 1 is only 1.6% of samples
+2026-03-26 14:59:57,089  WARNING     ⚠  Regime class 2 is only 0.0% of samples
+2026-03-26 14:59:57,089  WARNING     ⚠  Regime class 4 is only 1.5% of samples
+2026-03-26 14:59:57,214  INFO        → Inspect CSV written: FOREXCOM_EURCHFX_1D_20150101_20260326_inspect.csv
+2026-03-26 14:59:57,215  INFO      [PROC] FOREXCOM_EURCHFX_1H_20240405_20260326.csv
+2026-03-26 14:59:57,401  WARNING     ✗  No valid windows produced for FOREXCOM_EURCHFX_1H_20240405_20260326.csv
+2026-03-26 14:59:57,401  INFO      [PROC] FOREXCOM_EURCHFX_1W_20150101_20260326.csv
+2026-03-26 14:59:57,475  INFO        ✓  407 windows × 29 features
+2026-03-26 14:59:57,475  WARNING     ⚠  Regime class 2 is only 0.7% of samples
+2026-03-26 14:59:57,502  INFO        → Inspect CSV written: FOREXCOM_EURCHFX_1W_20150101_20260326_inspect.csv
+2026-03-26 14:59:57,502  INFO      [PROC] FOREXCOM_EURCHFX_4H_20240405_20260326.csv
+2026-03-26 14:59:57,677  INFO        ✓  2957 windows × 35 features
+2026-03-26 14:59:57,902  INFO        → Inspect CSV written: FOREXCOM_EURCHFX_4H_20240405_20260326_inspect.csv
+2026-03-26 14:59:57,903  INFO      [PROC] FOREXCOM_EURGBPX_1D_20150101_20260326.csv
+2026-03-26 14:59:58,155  INFO        ✓  2744 windows × 29 features
+2026-03-26 14:59:58,155  WARNING     ⚠  Regime class 1 is only 4.0% of samples
+2026-03-26 14:59:58,155  WARNING     ⚠  Regime class 2 is only 0.1% of samples
+2026-03-26 14:59:58,155  WARNING     ⚠  Regime class 5 is only 0.0% of samples
+2026-03-26 14:59:58,276  INFO        → Inspect CSV written: FOREXCOM_EURGBPX_1D_20150101_20260326_inspect.csv
+2026-03-26 14:59:58,276  INFO      [PROC] FOREXCOM_EURGBPX_1H_20240405_20260326.csv
+2026-03-26 14:59:58,440  WARNING     ✗  No valid windows produced for FOREXCOM_EURGBPX_1H_20240405_20260326.csv
+2026-03-26 14:59:58,440  INFO      [PROC] FOREXCOM_EURGBPX_1W_20150101_20260326.csv
+2026-03-26 14:59:58,510  INFO        ✓  407 windows × 29 features
+2026-03-26 14:59:58,510  WARNING     ⚠  Regime class 0 is only 3.7% of samples
+2026-03-26 14:59:58,510  WARNING     ⚠  Regime class 5 is only 1.0% of samples
+2026-03-26 14:59:58,542  INFO        → Inspect CSV written: FOREXCOM_EURGBPX_1W_20150101_20260326_inspect.csv
+2026-03-26 14:59:58,542  INFO      [PROC] FOREXCOM_EURGBPX_4H_20240405_20260326.csv
+2026-03-26 14:59:58,723  INFO        ✓  2959 windows × 35 features
+2026-03-26 14:59:58,876  INFO        → Inspect CSV written: FOREXCOM_EURGBPX_4H_20240405_20260326_inspect.csv
+2026-03-26 14:59:58,876  INFO      [PROC] FOREXCOM_EURUSDX_1D_20150101_20260326.csv
+2026-03-26 14:59:59,029  INFO        ✓  2743 windows × 29 features
+2026-03-26 14:59:59,029  WARNING     ⚠  Regime class 1 is only 2.7% of samples
+2026-03-26 14:59:59,152  INFO        → Inspect CSV written: FOREXCOM_EURUSDX_1D_20150101_20260326_inspect.csv
+2026-03-26 14:59:59,152  INFO      [PROC] FOREXCOM_EURUSDX_1H_20240405_20260326.csv
+2026-03-26 14:59:59,314  WARNING     ✗  No valid windows produced for FOREXCOM_EURUSDX_1H_20240405_20260326.csv
+2026-03-26 14:59:59,314  INFO      [PROC] FOREXCOM_EURUSDX_1W_20150101_20260326.csv
+2026-03-26 14:59:59,380  INFO        ✓  407 windows × 29 features
+2026-03-26 14:59:59,381  WARNING     ⚠  Regime class 0 is only 0.2% of samples
+2026-03-26 14:59:59,381  WARNING     ⚠  Regime class 3 is only 2.5% of samples
+2026-03-26 14:59:59,381  WARNING     ⚠  Regime class 5 is only 4.4% of samples
+2026-03-26 14:59:59,406  INFO        → Inspect CSV written: FOREXCOM_EURUSDX_1W_20150101_20260326_inspect.csv
+2026-03-26 14:59:59,406  INFO      [PROC] FOREXCOM_EURUSDX_4H_20240405_20260326.csv
+2026-03-26 14:59:59,557  INFO        ✓  2956 windows × 35 features
+2026-03-26 14:59:59,707  INFO        → Inspect CSV written: FOREXCOM_EURUSDX_4H_20240405_20260326_inspect.csv
+2026-03-26 14:59:59,707  INFO      [PROC] FOREXCOM_GBPJPYX_1D_20150101_20260326.csv
+2026-03-26 14:59:59,834  INFO        ✓  2744 windows × 29 features
+2026-03-26 14:59:59,834  WARNING     ⚠  Regime class 5 is only 1.1% of samples
+2026-03-26 14:59:59,955  INFO        → Inspect CSV written: FOREXCOM_GBPJPYX_1D_20150101_20260326_inspect.csv
+2026-03-26 14:59:59,955  INFO      [PROC] FOREXCOM_GBPJPYX_1H_20240405_20260326.csv
+2026-03-26 15:00:00,269  WARNING     ✗  No valid windows produced for FOREXCOM_GBPJPYX_1H_20240405_20260326.csv
+2026-03-26 15:00:00,270  INFO      [PROC] FOREXCOM_GBPJPYX_1W_20150101_20260326.csv
+2026-03-26 15:00:00,399  INFO        ✓  407 windows × 29 features
+2026-03-26 15:00:00,399  WARNING     ⚠  Regime class 2 is only 4.9% of samples
+2026-03-26 15:00:00,430  INFO        → Inspect CSV written: FOREXCOM_GBPJPYX_1W_20150101_20260326_inspect.csv
+2026-03-26 15:00:00,430  INFO      [PROC] FOREXCOM_GBPJPYX_4H_20240405_20260326.csv
+2026-03-26 15:00:00,718  INFO        ✓  2957 windows × 35 features
+2026-03-26 15:00:00,718  WARNING     ⚠  Regime class 4 is only 0.6% of samples
+2026-03-26 15:00:00,941  INFO        → Inspect CSV written: FOREXCOM_GBPJPYX_4H_20240405_20260326_inspect.csv
+2026-03-26 15:00:00,941  INFO      [PROC] FOREXCOM_GBPUSDX_1D_20150101_20260326.csv
+2026-03-26 15:00:01,078  INFO        ✓  2743 windows × 29 features
+2026-03-26 15:00:01,078  WARNING     ⚠  Regime class 2 is only 0.1% of samples
+2026-03-26 15:00:01,078  WARNING     ⚠  Regime class 5 is only 0.7% of samples
+2026-03-26 15:00:01,224  INFO        → Inspect CSV written: FOREXCOM_GBPUSDX_1D_20150101_20260326_inspect.csv
+2026-03-26 15:00:01,225  INFO      [PROC] FOREXCOM_GBPUSDX_1H_20240405_20260326.csv
+2026-03-26 15:00:01,402  WARNING     ✗  No valid windows produced for FOREXCOM_GBPUSDX_1H_20240405_20260326.csv
+2026-03-26 15:00:01,402  INFO      [PROC] FOREXCOM_GBPUSDX_1W_20150101_20260326.csv
+2026-03-26 15:00:01,474  INFO        ✓  407 windows × 29 features
+2026-03-26 15:00:01,474  WARNING     ⚠  Regime class 2 is only 0.7% of samples
+2026-03-26 15:00:01,509  INFO        → Inspect CSV written: FOREXCOM_GBPUSDX_1W_20150101_20260326_inspect.csv
+2026-03-26 15:00:01,510  INFO      [PROC] FOREXCOM_GBPUSDX_4H_20240405_20260326.csv
+2026-03-26 15:00:01,654  INFO        ✓  2956 windows × 35 features
+2026-03-26 15:00:01,801  INFO        → Inspect CSV written: FOREXCOM_GBPUSDX_4H_20240405_20260326_inspect.csv
+2026-03-26 15:00:01,801  INFO      [PROC] FOREXCOM_USDCADX_1D_20150101_20260326.csv
+2026-03-26 15:00:01,939  INFO        ✓  2743 windows × 29 features
+2026-03-26 15:00:01,939  WARNING     ⚠  Regime class 1 is only 1.0% of samples
+2026-03-26 15:00:02,061  INFO        → Inspect CSV written: FOREXCOM_USDCADX_1D_20150101_20260326_inspect.csv
+2026-03-26 15:00:02,061  INFO      [PROC] FOREXCOM_USDCADX_1H_20240405_20260326.csv
+2026-03-26 15:00:02,253  WARNING     ✗  No valid windows produced for FOREXCOM_USDCADX_1H_20240405_20260326.csv
+2026-03-26 15:00:02,253  INFO      [PROC] FOREXCOM_USDCADX_1W_20150101_20260326.csv
+2026-03-26 15:00:02,325  INFO        ✓  407 windows × 29 features
+2026-03-26 15:00:02,325  WARNING     ⚠  Regime class 0 is only 3.2% of samples
+2026-03-26 15:00:02,325  WARNING     ⚠  Regime class 2 is only 2.2% of samples
+2026-03-26 15:00:02,325  WARNING     ⚠  Regime class 5 is only 2.9% of samples
+2026-03-26 15:00:02,347  INFO        → Inspect CSV written: FOREXCOM_USDCADX_1W_20150101_20260326_inspect.csv
+2026-03-26 15:00:02,347  INFO      [PROC] FOREXCOM_USDCADX_4H_20240405_20260326.csv
+2026-03-26 15:00:02,486  INFO        ✓  2965 windows × 35 features
+2026-03-26 15:00:02,765  INFO        → Inspect CSV written: FOREXCOM_USDCADX_4H_20240405_20260326_inspect.csv
+2026-03-26 15:00:02,765  INFO      [PROC] FOREXCOM_USDCHFX_1D_20150101_20260326.csv
+2026-03-26 15:00:03,105  INFO        ✓  2743 windows × 29 features
+2026-03-26 15:00:03,106  WARNING     ⚠  Regime class 1 is only 3.2% of samples
+2026-03-26 15:00:03,310  INFO        → Inspect CSV written: FOREXCOM_USDCHFX_1D_20150101_20260326_inspect.csv
+2026-03-26 15:00:03,310  INFO      [PROC] FOREXCOM_USDCHFX_1H_20240405_20260326.csv
+2026-03-26 15:00:04,044  WARNING     ✗  No valid windows produced for FOREXCOM_USDCHFX_1H_20240405_20260326.csv
+2026-03-26 15:00:04,044  INFO      [PROC] FOREXCOM_USDCHFX_1W_20150101_20260326.csv
+2026-03-26 15:00:04,151  INFO        ✓  407 windows × 29 features
+2026-03-26 15:00:04,152  WARNING     ⚠  Regime class 2 is only 1.2% of samples
+2026-03-26 15:00:04,152  WARNING     ⚠  Regime class 3 is only 1.2% of samples
+2026-03-26 15:00:04,152  WARNING     ⚠  Regime class 5 is only 0.5% of samples
+2026-03-26 15:00:04,192  INFO        → Inspect CSV written: FOREXCOM_USDCHFX_1W_20150101_20260326_inspect.csv
+2026-03-26 15:00:04,192  INFO      [PROC] FOREXCOM_USDCHFX_4H_20240405_20260326.csv
+2026-03-26 15:00:04,781  INFO        ✓  2957 windows × 35 features
+2026-03-26 15:00:04,781  WARNING     ⚠  Regime class 4 is only 0.2% of samples
+2026-03-26 15:00:05,011  INFO        → Inspect CSV written: FOREXCOM_USDCHFX_4H_20240405_20260326_inspect.csv
+2026-03-26 15:00:05,011  INFO      [PROC] FOREXCOM_USDJPYX_1D_20150101_20260326.csv
+2026-03-26 15:00:05,639  INFO        ✓  2743 windows × 29 features
+2026-03-26 15:00:05,868  INFO        → Inspect CSV written: FOREXCOM_USDJPYX_1D_20150101_20260326_inspect.csv
+2026-03-26 15:00:05,868  INFO      [PROC] FOREXCOM_USDJPYX_1H_20240405_20260326.csv
+2026-03-26 15:00:06,146  WARNING     ✗  No valid windows produced for FOREXCOM_USDJPYX_1H_20240405_20260326.csv
+2026-03-26 15:00:06,147  INFO      [PROC] FOREXCOM_USDJPYX_1W_20150101_20260326.csv
+2026-03-26 15:00:06,224  INFO        ✓  407 windows × 29 features
+2026-03-26 15:00:06,224  WARNING     ⚠  Regime class 3 is only 0.5% of samples
+2026-03-26 15:00:06,246  INFO        → Inspect CSV written: FOREXCOM_USDJPYX_1W_20150101_20260326_inspect.csv
+2026-03-26 15:00:06,246  INFO      [PROC] FOREXCOM_USDJPYX_4H_20240405_20260326.csv
+2026-03-26 15:00:06,429  INFO        ✓  2949 windows × 35 features
+2026-03-26 15:00:06,429  WARNING     ⚠  Regime class 4 is only 0.4% of samples
+2026-03-26 15:00:06,573  INFO        → Inspect CSV written: FOREXCOM_USDJPYX_4H_20240405_20260326_inspect.csv
+2026-03-26 15:00:06,573  INFO      [PROC] FTSE_FTSE_1D_20150101_20260326.csv
+2026-03-26 15:00:06,709  INFO        ✓  2658 windows × 29 features
+2026-03-26 15:00:06,709  WARNING     ⚠  Regime class 2 is only 0.3% of samples
+2026-03-26 15:00:06,710  WARNING     ⚠  Regime class 5 is only 2.0% of samples
+2026-03-26 15:00:06,829  INFO        → Inspect CSV written: FTSE_FTSE_1D_20150101_20260326_inspect.csv
+2026-03-26 15:00:06,829  INFO      [PROC] FTSE_FTSE_1H_20240405_20260326.csv
+2026-03-26 15:00:06,924  WARNING     ✗  No valid windows produced for FTSE_FTSE_1H_20240405_20260326.csv
+2026-03-26 15:00:06,925  INFO      [PROC] FTSE_FTSE_1W_20150101_20260326.csv
+2026-03-26 15:00:06,996  INFO        ✓  407 windows × 29 features
+2026-03-26 15:00:07,026  INFO        → Inspect CSV written: FTSE_FTSE_1W_20150101_20260326_inspect.csv
+2026-03-26 15:00:07,027  INFO      [PROC] FTSE_FTSE_4H_20240405_20260326.csv
+2026-03-26 15:00:07,123  INFO        ✓  1313 windows × 35 features
+2026-03-26 15:00:07,124  WARNING     ⚠  Regime class 1 is only 0.5% of samples
+2026-03-26 15:00:07,124  WARNING     ⚠  Regime class 4 is only 3.1% of samples
+2026-03-26 15:00:07,124  WARNING     ⚠  Regime class 5 is only 0.1% of samples
+2026-03-26 15:00:07,198  INFO        → Inspect CSV written: FTSE_FTSE_4H_20240405_20260326_inspect.csv
+2026-03-26 15:00:07,198  INFO      [PROC] HSI_HSI_1D_20150101_20260326.csv
+2026-03-26 15:00:07,333  INFO        ✓  2583 windows × 29 features
+2026-03-26 15:00:07,333  WARNING     ⚠  Regime class 0 is only 0.2% of samples
+2026-03-26 15:00:07,333  WARNING     ⚠  Regime class 2 is only 0.7% of samples
+2026-03-26 15:00:07,453  INFO        → Inspect CSV written: HSI_HSI_1D_20150101_20260326_inspect.csv
+2026-03-26 15:00:07,453  INFO      [PROC] HSI_HSI_1H_20240405_20260326.csv
+2026-03-26 15:00:07,545  WARNING     ✗  No valid windows produced for HSI_HSI_1H_20240405_20260326.csv
+2026-03-26 15:00:07,545  INFO      [PROC] HSI_HSI_1W_20150101_20260326.csv
+2026-03-26 15:00:07,611  WARNING     ✗  No valid windows produced for HSI_HSI_1W_20150101_20260326.csv
+2026-03-26 15:00:07,612  INFO      [PROC] HSI_HSI_4H_20240405_20260326.csv
+2026-03-26 15:00:07,683  WARNING     ✗  No valid windows produced for HSI_HSI_4H_20240405_20260326.csv
+2026-03-26 15:00:07,683  INFO      [PROC] ICE_BZF_1D_20150101_20260326.csv
+2026-03-26 15:00:07,818  INFO        ✓  2645 windows × 29 features
+2026-03-26 15:00:07,962  INFO        → Inspect CSV written: ICE_BZF_1D_20150101_20260326_inspect.csv
+2026-03-26 15:00:07,962  INFO      [PROC] ICE_BZF_1H_20240405_20260326.csv
+2026-03-26 15:00:08,188  INFO        ✓  2908 windows × 35 features
+2026-03-26 15:00:08,189  WARNING     ⚠  Regime class 2 is only 0.7% of samples
+2026-03-26 15:00:08,189  WARNING     ⚠  Regime class 5 is only 0.9% of samples
+2026-03-26 15:00:08,443  INFO        → Inspect CSV written: ICE_BZF_1H_20240405_20260326_inspect.csv
+2026-03-26 15:00:08,443  INFO      [PROC] ICE_BZF_1W_20150101_20260326.csv
+2026-03-26 15:00:08,530  INFO        ✓  407 windows × 29 features
+2026-03-26 15:00:08,575  INFO        → Inspect CSV written: ICE_BZF_1W_20150101_20260326_inspect.csv
+2026-03-26 15:00:08,575  INFO      [PROC] ICE_BZF_4H_20240405_20260326.csv
+2026-03-26 15:00:08,733  INFO        ✓  2865 windows × 35 features
+2026-03-26 15:00:08,734  WARNING     ⚠  Regime class 2 is only 2.8% of samples
+2026-03-26 15:00:08,943  INFO        → Inspect CSV written: ICE_BZF_4H_20240405_20260326_inspect.csv
+2026-03-26 15:00:08,943  INFO      [PROC] LSE_AZNL_1D_20150101_20260326.csv
+2026-03-26 15:00:09,113  INFO        ✓  2659 windows × 29 features
+2026-03-26 15:00:09,241  INFO        → Inspect CSV written: LSE_AZNL_1D_20150101_20260326_inspect.csv
+2026-03-26 15:00:09,241  INFO      [PROC] LSE_AZNL_1H_20240405_20260326.csv
+2026-03-26 15:00:09,403  WARNING     ✗  No valid windows produced for LSE_AZNL_1H_20240405_20260326.csv
+2026-03-26 15:00:09,403  INFO      [PROC] LSE_AZNL_1W_20150101_20260326.csv
+2026-03-26 15:00:09,475  INFO        ✓  407 windows × 29 features
+2026-03-26 15:00:09,498  INFO        → Inspect CSV written: LSE_AZNL_1W_20150101_20260326_inspect.csv
+2026-03-26 15:00:09,498  INFO      [PROC] LSE_AZNL_4H_20240405_20260326.csv
+2026-03-26 15:00:09,595  INFO        ✓  1313 windows × 35 features
+2026-03-26 15:00:09,595  WARNING     ⚠  Regime class 0 is only 3.5% of samples
+2026-03-26 15:00:09,596  WARNING     ⚠  Regime class 2 is only 0.1% of samples
+2026-03-26 15:00:09,596  WARNING     ⚠  Regime class 5 is only 1.4% of samples
+2026-03-26 15:00:09,679  INFO        → Inspect CSV written: LSE_AZNL_4H_20240405_20260326_inspect.csv
+2026-03-26 15:00:09,679  INFO      [PROC] LSE_BPL_1D_20150101_20260326.csv
+2026-03-26 15:00:09,804  INFO        ✓  2658 windows × 29 features
+2026-03-26 15:00:09,946  INFO        → Inspect CSV written: LSE_BPL_1D_20150101_20260326_inspect.csv
+2026-03-26 15:00:09,946  INFO      [PROC] LSE_BPL_1H_20240405_20260326.csv
+2026-03-26 15:00:10,045  WARNING     ✗  No valid windows produced for LSE_BPL_1H_20240405_20260326.csv
+2026-03-26 15:00:10,046  INFO      [PROC] LSE_BPL_1W_20150101_20260326.csv
+2026-03-26 15:00:10,118  INFO        ✓  407 windows × 29 features
+2026-03-26 15:00:10,143  INFO        → Inspect CSV written: LSE_BPL_1W_20150101_20260326_inspect.csv
+2026-03-26 15:00:10,143  INFO      [PROC] LSE_BPL_4H_20240405_20260326.csv
+2026-03-26 15:00:10,248  INFO        ✓  1313 windows × 35 features
+2026-03-26 15:00:10,248  WARNING     ⚠  Regime class 0 is only 1.3% of samples
+2026-03-26 15:00:10,248  WARNING     ⚠  Regime class 2 is only 0.5% of samples
+2026-03-26 15:00:10,248  WARNING     ⚠  Regime class 5 is only 3.0% of samples
+2026-03-26 15:00:10,368  INFO        → Inspect CSV written: LSE_BPL_4H_20240405_20260326_inspect.csv
+2026-03-26 15:00:10,368  INFO      [PROC] LSE_GSKL_1D_20150101_20260326.csv
+2026-03-26 15:00:10,572  INFO        ✓  2659 windows × 29 features
+2026-03-26 15:00:10,573  WARNING     ⚠  Regime class 0 is only 0.0% of samples
+2026-03-26 15:00:10,573  WARNING     ⚠  Regime class 3 is only 0.2% of samples
+2026-03-26 15:00:10,722  INFO        → Inspect CSV written: LSE_GSKL_1D_20150101_20260326_inspect.csv
+2026-03-26 15:00:10,723  INFO      [PROC] LSE_GSKL_1H_20240405_20260326.csv
+2026-03-26 15:00:10,818  WARNING     ✗  No valid windows produced for LSE_GSKL_1H_20240405_20260326.csv
+2026-03-26 15:00:10,818  INFO      [PROC] LSE_GSKL_1W_20150101_20260326.csv
+2026-03-26 15:00:10,888  INFO        ✓  407 windows × 29 features
+2026-03-26 15:00:10,919  INFO        → Inspect CSV written: LSE_GSKL_1W_20150101_20260326_inspect.csv
+2026-03-26 15:00:10,919  INFO      [PROC] LSE_GSKL_4H_20240405_20260326.csv
+2026-03-26 15:00:11,029  INFO        ✓  1313 windows × 35 features
+2026-03-26 15:00:11,029  WARNING     ⚠  Regime class 0 is only 4.6% of samples
+2026-03-26 15:00:11,029  WARNING     ⚠  Regime class 2 is only 0.1% of samples
+2026-03-26 15:00:11,029  WARNING     ⚠  Regime class 5 is only 1.3% of samples
+2026-03-26 15:00:11,110  INFO        → Inspect CSV written: LSE_GSKL_4H_20240405_20260326_inspect.csv
+2026-03-26 15:00:11,111  INFO      [PROC] LSE_HSBAL_1D_20150101_20260326.csv
+2026-03-26 15:00:11,241  INFO        ✓  2659 windows × 29 features
+2026-03-26 15:00:11,242  WARNING     ⚠  Regime class 0 is only 0.2% of samples
+2026-03-26 15:00:11,242  WARNING     ⚠  Regime class 2 is only 4.6% of samples
+2026-03-26 15:00:11,242  WARNING     ⚠  Regime class 3 is only 0.2% of samples
+2026-03-26 15:00:11,375  INFO        → Inspect CSV written: LSE_HSBAL_1D_20150101_20260326_inspect.csv
+2026-03-26 15:00:11,375  INFO      [PROC] LSE_HSBAL_1H_20240405_20260326.csv
+2026-03-26 15:00:11,473  WARNING     ✗  No valid windows produced for LSE_HSBAL_1H_20240405_20260326.csv
+2026-03-26 15:00:11,474  INFO      [PROC] LSE_HSBAL_1W_20150101_20260326.csv
+2026-03-26 15:00:11,567  INFO        ✓  407 windows × 29 features
+2026-03-26 15:00:11,588  INFO        → Inspect CSV written: LSE_HSBAL_1W_20150101_20260326_inspect.csv
+2026-03-26 15:00:11,588  INFO      [PROC] LSE_HSBAL_4H_20240405_20260326.csv
+2026-03-26 15:00:11,688  INFO        ✓  1313 windows × 35 features
+2026-03-26 15:00:11,688  WARNING     ⚠  Regime class 2 is only 0.5% of samples
+2026-03-26 15:00:11,688  WARNING     ⚠  Regime class 5 is only 2.7% of samples
+2026-03-26 15:00:11,813  INFO        → Inspect CSV written: LSE_HSBAL_4H_20240405_20260326_inspect.csv
+2026-03-26 15:00:11,813  INFO      [PROC] LSE_SHELL_1D_20150101_20260326.csv
+2026-03-26 15:00:12,271  INFO        ✓  2659 windows × 29 features
+2026-03-26 15:00:12,272  WARNING     ⚠  Regime class 3 is only 0.3% of samples
+2026-03-26 15:00:12,472  INFO        → Inspect CSV written: LSE_SHELL_1D_20150101_20260326_inspect.csv
+2026-03-26 15:00:12,472  INFO      [PROC] LSE_SHELL_1H_20240405_20260326.csv
+2026-03-26 15:00:12,965  WARNING     ✗  No valid windows produced for LSE_SHELL_1H_20240405_20260326.csv
+2026-03-26 15:00:12,968  INFO      [PROC] LSE_SHELL_1W_20150101_20260326.csv
+2026-03-26 15:00:13,221  INFO        ✓  407 windows × 29 features
+2026-03-26 15:00:13,255  INFO        → Inspect CSV written: LSE_SHELL_1W_20150101_20260326_inspect.csv
+2026-03-26 15:00:13,255  INFO      [PROC] LSE_SHELL_4H_20240405_20260326.csv
+2026-03-26 15:00:13,726  INFO        ✓  1313 windows × 35 features
+2026-03-26 15:00:13,728  WARNING     ⚠  Regime class 5 is only 1.4% of samples
+2026-03-26 15:00:13,833  INFO        → Inspect CSV written: LSE_SHELL_4H_20240405_20260326_inspect.csv
+2026-03-26 15:00:13,833  INFO      [PROC] NIKKEI_N225_1D_20150101_20260326.csv
+2026-03-26 15:00:14,846  INFO        ✓  2563 windows × 29 features
+2026-03-26 15:00:14,847  WARNING     ⚠  Regime class 0 is only 3.4% of samples
+2026-03-26 15:00:14,847  WARNING     ⚠  Regime class 2 is only 0.4% of samples
+2026-03-26 15:00:14,848  WARNING     ⚠  Regime class 5 is only 4.8% of samples
+2026-03-26 15:00:15,139  INFO        → Inspect CSV written: NIKKEI_N225_1D_20150101_20260326_inspect.csv
+2026-03-26 15:00:15,140  INFO      [PROC] NIKKEI_N225_1H_20240405_20260326.csv
+2026-03-26 15:00:15,801  WARNING     ✗  No valid windows produced for NIKKEI_N225_1H_20240405_20260326.csv
+2026-03-26 15:00:15,802  INFO      [PROC] NIKKEI_N225_1W_20150101_20260326.csv
+2026-03-26 15:00:15,917  WARNING     ✗  No valid windows produced for NIKKEI_N225_1W_20150101_20260326.csv
+2026-03-26 15:00:15,918  INFO      [PROC] NIKKEI_N225_4H_20240405_20260326.csv
+2026-03-26 15:00:16,047  WARNING     ✗  No valid windows produced for NIKKEI_N225_4H_20240405_20260326.csv
+2026-03-26 15:00:16,047  INFO      [PROC] NYMEX_CLF_1D_20150101_20260326.csv
+2026-03-26 15:00:16,177  INFO        ✓  2643 windows × 29 features
+2026-03-26 15:00:16,177  WARNING     ⚠  Regime class 1 is only 4.4% of samples
+2026-03-26 15:00:16,314  INFO        → Inspect CSV written: NYMEX_CLF_1D_20150101_20260326_inspect.csv
+2026-03-26 15:00:16,314  INFO      [PROC] NYMEX_CLF_1H_20240405_20260326.csv
+2026-03-26 15:00:16,534  INFO        ✓  2835 windows × 35 features
+2026-03-26 15:00:16,534  WARNING     ⚠  Regime class 1 is only 1.7% of samples
+2026-03-26 15:00:16,534  WARNING     ⚠  Regime class 2 is only 0.1% of samples
+2026-03-26 15:00:16,741  INFO        → Inspect CSV written: NYMEX_CLF_1H_20240405_20260326_inspect.csv
+2026-03-26 15:00:16,742  INFO      [PROC] NYMEX_CLF_1W_20150101_20260326.csv
+2026-03-26 15:00:16,820  INFO        ✓  407 windows × 29 features
+2026-03-26 15:00:16,841  INFO        → Inspect CSV written: NYMEX_CLF_1W_20150101_20260326_inspect.csv
+2026-03-26 15:00:16,841  INFO      [PROC] NYMEX_CLF_4H_20240405_20260326.csv
+2026-03-26 15:00:17,050  INFO        ✓  2846 windows × 35 features
+2026-03-26 15:00:17,051  WARNING     ⚠  Regime class 2 is only 0.9% of samples
+2026-03-26 15:00:17,051  WARNING     ⚠  Regime class 5 is only 4.9% of samples
+2026-03-26 15:00:17,199  INFO        → Inspect CSV written: NYMEX_CLF_4H_20240405_20260326_inspect.csv
+2026-03-26 15:00:17,199  INFO      [PROC] NYMEX_NGF_1D_20150101_20260326.csv
+2026-03-26 15:00:17,343  INFO        ✓  2645 windows × 29 features
+2026-03-26 15:00:17,343  WARNING     ⚠  Regime class 1 is only 2.2% of samples
+2026-03-26 15:00:17,465  INFO        → Inspect CSV written: NYMEX_NGF_1D_20150101_20260326_inspect.csv
+2026-03-26 15:00:17,465  INFO      [PROC] NYMEX_NGF_1H_20240405_20260326.csv
+2026-03-26 15:00:17,667  INFO        ✓  2834 windows × 35 features
+2026-03-26 15:00:17,667  WARNING     ⚠  Regime class 2 is only 0.1% of samples
+2026-03-26 15:00:17,668  WARNING     ⚠  Regime class 5 is only 0.1% of samples
+2026-03-26 15:00:17,844  INFO        → Inspect CSV written: NYMEX_NGF_1H_20240405_20260326_inspect.csv
+2026-03-26 15:00:17,844  INFO      [PROC] NYMEX_NGF_1W_20150101_20260326.csv
+2026-03-26 15:00:17,917  INFO        ✓  407 windows × 29 features
+2026-03-26 15:00:17,940  INFO        → Inspect CSV written: NYMEX_NGF_1W_20150101_20260326_inspect.csv
+2026-03-26 15:00:17,940  INFO      [PROC] NYMEX_NGF_4H_20240405_20260326.csv
+2026-03-26 15:00:18,085  INFO        ✓  2806 windows × 35 features
+2026-03-26 15:00:18,356  INFO        → Inspect CSV written: NYMEX_NGF_4H_20240405_20260326_inspect.csv
+2026-03-26 15:00:18,356  INFO      [PROC] NYSE_AAPL_1D_20150101_20260326.csv
+2026-03-26 15:00:19,108  INFO        ✓  2644 windows × 29 features
+2026-03-26 15:00:19,108  WARNING     ⚠  Regime class 3 is only 1.1% of samples
+2026-03-26 15:00:19,251  INFO        → Inspect CSV written: NYSE_AAPL_1D_20150101_20260326_inspect.csv
+2026-03-26 15:00:19,252  INFO      [PROC] NYSE_AAPL_1H_20240405_20260326.csv
+2026-03-26 15:00:19,402  INFO        ✓  3255 windows × 35 features
+2026-03-26 15:00:19,403  WARNING     ⚠  Regime class 1 is only 1.3% of samples
+2026-03-26 15:00:19,403  WARNING     ⚠  Regime class 5 is only 1.2% of samples
+2026-03-26 15:00:19,597  INFO        → Inspect CSV written: NYSE_AAPL_1H_20240405_20260326_inspect.csv
+2026-03-26 15:00:19,598  INFO      [PROC] NYSE_AAPL_1W_20150101_20260326.csv
+2026-03-26 15:00:19,734  INFO        ✓  407 windows × 29 features
+2026-03-26 15:00:19,759  INFO        → Inspect CSV written: NYSE_AAPL_1W_20150101_20260326_inspect.csv
+2026-03-26 15:00:19,760  INFO      [PROC] NYSE_AAPL_4H_20240405_20260326.csv
+2026-03-26 15:00:19,867  INFO        ✓  972 windows × 35 features
+2026-03-26 15:00:19,867  WARNING     ⚠  Regime class 5 is only 3.7% of samples
+2026-03-26 15:00:19,929  INFO        → Inspect CSV written: NYSE_AAPL_4H_20240405_20260326_inspect.csv
+2026-03-26 15:00:19,929  INFO      [PROC] NYSE_AMZN_1D_20150101_20260326.csv
+2026-03-26 15:00:20,087  INFO        ✓  2644 windows × 29 features
+2026-03-26 15:00:20,088  WARNING     ⚠  Regime class 3 is only 1.0% of samples
+2026-03-26 15:00:20,315  INFO        → Inspect CSV written: NYSE_AMZN_1D_20150101_20260326_inspect.csv
+2026-03-26 15:00:20,315  INFO      [PROC] NYSE_AMZN_1H_20240405_20260326.csv
+2026-03-26 15:00:20,478  INFO        ✓  3255 windows × 35 features
+2026-03-26 15:00:20,479  WARNING     ⚠  Regime class 1 is only 3.6% of samples
+2026-03-26 15:00:20,479  WARNING     ⚠  Regime class 2 is only 0.2% of samples
+2026-03-26 15:00:20,479  WARNING     ⚠  Regime class 5 is only 1.2% of samples
+2026-03-26 15:00:20,658  INFO        → Inspect CSV written: NYSE_AMZN_1H_20240405_20260326_inspect.csv
+2026-03-26 15:00:20,658  INFO      [PROC] NYSE_AMZN_1W_20150101_20260326.csv
+2026-03-26 15:00:20,734  INFO        ✓  407 windows × 29 features
+2026-03-26 15:00:20,791  INFO        → Inspect CSV written: NYSE_AMZN_1W_20150101_20260326_inspect.csv
+2026-03-26 15:00:20,791  INFO      [PROC] NYSE_AMZN_4H_20240405_20260326.csv
+2026-03-26 15:00:20,882  INFO        ✓  972 windows × 35 features
+2026-03-26 15:00:20,882  WARNING     ⚠  Regime class 0 is only 0.5% of samples
+2026-03-26 15:00:20,882  WARNING     ⚠  Regime class 2 is only 0.6% of samples
+2026-03-26 15:00:20,952  INFO        → Inspect CSV written: NYSE_AMZN_4H_20240405_20260326_inspect.csv
+2026-03-26 15:00:20,952  INFO      [PROC] NYSE_BAC_1D_20150101_20260326.csv
+2026-03-26 15:00:21,110  INFO        ✓  2644 windows × 29 features
+2026-03-26 15:00:21,238  INFO        → Inspect CSV written: NYSE_BAC_1D_20150101_20260326_inspect.csv
+2026-03-26 15:00:21,238  INFO      [PROC] NYSE_BAC_1H_20240405_20260326.csv
+2026-03-26 15:00:21,418  INFO        ✓  3255 windows × 35 features
+2026-03-26 15:00:21,418  WARNING     ⚠  Regime class 1 is only 1.0% of samples
+2026-03-26 15:00:21,419  WARNING     ⚠  Regime class 5 is only 1.1% of samples
+2026-03-26 15:00:21,795  INFO        → Inspect CSV written: NYSE_BAC_1H_20240405_20260326_inspect.csv
+2026-03-26 15:00:21,795  INFO      [PROC] NYSE_BAC_1W_20150101_20260326.csv
+2026-03-26 15:00:21,872  INFO        ✓  407 windows × 29 features
+2026-03-26 15:00:21,896  INFO        → Inspect CSV written: NYSE_BAC_1W_20150101_20260326_inspect.csv
+2026-03-26 15:00:21,896  INFO      [PROC] NYSE_BAC_4H_20240405_20260326.csv
+2026-03-26 15:00:21,993  INFO        ✓  972 windows × 35 features
+2026-03-26 15:00:21,993  WARNING     ⚠  Regime class 0 is only 4.6% of samples
+2026-03-26 15:00:21,993  WARNING     ⚠  Regime class 2 is only 0.4% of samples
+2026-03-26 15:00:21,994  WARNING     ⚠  Regime class 5 is only 3.2% of samples
+2026-03-26 15:00:22,065  INFO        → Inspect CSV written: NYSE_BAC_4H_20240405_20260326_inspect.csv
+2026-03-26 15:00:22,065  INFO      [PROC] NYSE_CVX_1D_20150101_20260326.csv
+2026-03-26 15:00:22,191  INFO        ✓  2644 windows × 29 features
+2026-03-26 15:00:22,191  WARNING     ⚠  Regime class 3 is only 0.3% of samples
+2026-03-26 15:00:22,317  INFO        → Inspect CSV written: NYSE_CVX_1D_20150101_20260326_inspect.csv
+2026-03-26 15:00:22,317  INFO      [PROC] NYSE_CVX_1H_20240405_20260326.csv
+2026-03-26 15:00:22,481  INFO        ✓  3255 windows × 35 features
+2026-03-26 15:00:22,481  WARNING     ⚠  Regime class 1 is only 1.2% of samples
+2026-03-26 15:00:22,481  WARNING     ⚠  Regime class 4 is only 4.7% of samples
+2026-03-26 15:00:22,481  WARNING     ⚠  Regime class 5 is only 0.1% of samples
+2026-03-26 15:00:22,645  INFO        → Inspect CSV written: NYSE_CVX_1H_20240405_20260326_inspect.csv
+2026-03-26 15:00:22,645  INFO      [PROC] NYSE_CVX_1W_20150101_20260326.csv
+2026-03-26 15:00:22,721  INFO        ✓  407 windows × 29 features
+2026-03-26 15:00:22,744  INFO        → Inspect CSV written: NYSE_CVX_1W_20150101_20260326_inspect.csv
+2026-03-26 15:00:22,744  INFO      [PROC] NYSE_CVX_4H_20240405_20260326.csv
+2026-03-26 15:00:22,898  INFO        ✓  972 windows × 35 features
+2026-03-26 15:00:22,899  WARNING     ⚠  Regime class 0 is only 4.7% of samples
+2026-03-26 15:00:22,899  WARNING     ⚠  Regime class 5 is only 2.6% of samples
+2026-03-26 15:00:22,978  INFO        → Inspect CSV written: NYSE_CVX_4H_20240405_20260326_inspect.csv
+2026-03-26 15:00:22,978  INFO      [PROC] NYSE_GOOGL_1D_20150101_20260326.csv
+2026-03-26 15:00:23,176  INFO        ✓  2644 windows × 29 features
+2026-03-26 15:00:23,177  WARNING     ⚠  Regime class 0 is only 0.0% of samples
+2026-03-26 15:00:23,178  WARNING     ⚠  Regime class 3 is only 1.2% of samples
+2026-03-26 15:00:23,399  INFO        → Inspect CSV written: NYSE_GOOGL_1D_20150101_20260326_inspect.csv
+2026-03-26 15:00:23,399  INFO      [PROC] NYSE_GOOGL_1H_20240405_20260326.csv
+2026-03-26 15:00:23,945  INFO        ✓  3255 windows × 35 features
+2026-03-26 15:00:23,946  WARNING     ⚠  Regime class 1 is only 4.2% of samples
+2026-03-26 15:00:23,946  WARNING     ⚠  Regime class 5 is only 0.1% of samples
+2026-03-26 15:00:24,368  INFO        → Inspect CSV written: NYSE_GOOGL_1H_20240405_20260326_inspect.csv
+2026-03-26 15:00:24,368  INFO      [PROC] NYSE_GOOGL_1W_20150101_20260326.csv
+2026-03-26 15:00:24,491  INFO        ✓  407 windows × 29 features
+2026-03-26 15:00:24,528  INFO        → Inspect CSV written: NYSE_GOOGL_1W_20150101_20260326_inspect.csv
+2026-03-26 15:00:24,528  INFO      [PROC] NYSE_GOOGL_4H_20240405_20260326.csv
+2026-03-26 15:00:24,665  INFO        ✓  972 windows × 35 features
+2026-03-26 15:00:24,665  WARNING     ⚠  Regime class 0 is only 1.4% of samples
+2026-03-26 15:00:24,666  WARNING     ⚠  Regime class 2 is only 0.2% of samples
+2026-03-26 15:00:24,666  WARNING     ⚠  Regime class 3 is only 4.2% of samples
+2026-03-26 15:00:24,666  WARNING     ⚠  Regime class 5 is only 3.5% of samples
+2026-03-26 15:00:24,745  INFO        → Inspect CSV written: NYSE_GOOGL_4H_20240405_20260326_inspect.csv
+2026-03-26 15:00:24,745  INFO      [PROC] NYSE_JNJ_1D_20150101_20260326.csv
+2026-03-26 15:00:25,080  INFO        ✓  2644 windows × 29 features
+2026-03-26 15:00:25,080  WARNING     ⚠  Regime class 0 is only 0.6% of samples
+2026-03-26 15:00:25,081  WARNING     ⚠  Regime class 2 is only 1.6% of samples
+2026-03-26 15:00:25,081  WARNING     ⚠  Regime class 5 is only 2.0% of samples
+2026-03-26 15:00:25,395  INFO        → Inspect CSV written: NYSE_JNJ_1D_20150101_20260326_inspect.csv
+2026-03-26 15:00:25,395  INFO      [PROC] NYSE_JNJ_1H_20240405_20260326.csv
+2026-03-26 15:00:25,781  INFO        ✓  3255 windows × 35 features
+2026-03-26 15:00:25,782  WARNING     ⚠  Regime class 1 is only 0.2% of samples
+2026-03-26 15:00:25,782  WARNING     ⚠  Regime class 4 is only 1.8% of samples
+2026-03-26 15:00:26,062  INFO        → Inspect CSV written: NYSE_JNJ_1H_20240405_20260326_inspect.csv
+2026-03-26 15:00:26,062  INFO      [PROC] NYSE_JNJ_1W_20150101_20260326.csv
+2026-03-26 15:00:26,570  INFO        ✓  407 windows × 29 features
+2026-03-26 15:00:26,570  WARNING     ⚠  Regime class 4 is only 0.2% of samples
+2026-03-26 15:00:26,610  INFO        → Inspect CSV written: NYSE_JNJ_1W_20150101_20260326_inspect.csv
+2026-03-26 15:00:26,610  INFO      [PROC] NYSE_JNJ_4H_20240405_20260326.csv
+2026-03-26 15:00:26,701  INFO        ✓  972 windows × 35 features
+2026-03-26 15:00:26,701  WARNING     ⚠  Regime class 1 is only 4.1% of samples
+2026-03-26 15:00:26,702  WARNING     ⚠  Regime class 5 is only 0.7% of samples
+2026-03-26 15:00:26,759  INFO        → Inspect CSV written: NYSE_JNJ_4H_20240405_20260326_inspect.csv
+2026-03-26 15:00:26,760  INFO      [PROC] NYSE_JPM_1D_20150101_20260326.csv
+2026-03-26 15:00:26,893  INFO        ✓  2644 windows × 29 features
+2026-03-26 15:00:26,893  WARNING     ⚠  Regime class 0 is only 0.2% of samples
+2026-03-26 15:00:26,894  WARNING     ⚠  Regime class 3 is only 0.2% of samples
+2026-03-26 15:00:27,051  INFO        → Inspect CSV written: NYSE_JPM_1D_20150101_20260326_inspect.csv
+2026-03-26 15:00:27,052  INFO      [PROC] NYSE_JPM_1H_20240405_20260326.csv
+2026-03-26 15:00:27,221  INFO        ✓  3255 windows × 35 features
+2026-03-26 15:00:27,221  WARNING     ⚠  Regime class 1 is only 1.2% of samples
+2026-03-26 15:00:27,221  WARNING     ⚠  Regime class 2 is only 0.1% of samples
+2026-03-26 15:00:27,221  WARNING     ⚠  Regime class 5 is only 0.7% of samples
+2026-03-26 15:00:27,390  INFO        → Inspect CSV written: NYSE_JPM_1H_20240405_20260326_inspect.csv
+2026-03-26 15:00:27,390  INFO      [PROC] NYSE_JPM_1W_20150101_20260326.csv
+2026-03-26 15:00:27,472  INFO        ✓  407 windows × 29 features
+2026-03-26 15:00:27,494  INFO        → Inspect CSV written: NYSE_JPM_1W_20150101_20260326_inspect.csv
+2026-03-26 15:00:27,494  INFO      [PROC] NYSE_JPM_4H_20240405_20260326.csv
+2026-03-26 15:00:27,587  INFO        ✓  972 windows × 35 features
+2026-03-26 15:00:27,587  WARNING     ⚠  Regime class 0 is only 2.7% of samples
+2026-03-26 15:00:27,587  WARNING     ⚠  Regime class 2 is only 0.2% of samples
+2026-03-26 15:00:27,587  WARNING     ⚠  Regime class 5 is only 2.0% of samples
+2026-03-26 15:00:27,664  INFO        → Inspect CSV written: NYSE_JPM_4H_20240405_20260326_inspect.csv
+2026-03-26 15:00:27,665  INFO      [PROC] NYSE_META_1D_20150101_20260326.csv
+2026-03-26 15:00:27,787  INFO        ✓  2644 windows × 29 features
+2026-03-26 15:00:27,788  WARNING     ⚠  Regime class 1 is only 4.9% of samples
+2026-03-26 15:00:27,788  WARNING     ⚠  Regime class 3 is only 0.3% of samples
+2026-03-26 15:00:27,945  INFO        → Inspect CSV written: NYSE_META_1D_20150101_20260326_inspect.csv
+2026-03-26 15:00:27,945  INFO      [PROC] NYSE_META_1H_20240405_20260326.csv
+2026-03-26 15:00:28,099  INFO        ✓  3255 windows × 35 features
+2026-03-26 15:00:28,100  WARNING     ⚠  Regime class 2 is only 0.2% of samples
+2026-03-26 15:00:28,100  WARNING     ⚠  Regime class 5 is only 1.0% of samples
+2026-03-26 15:00:28,267  INFO        → Inspect CSV written: NYSE_META_1H_20240405_20260326_inspect.csv
+2026-03-26 15:00:28,268  INFO      [PROC] NYSE_META_1W_20150101_20260326.csv
+2026-03-26 15:00:28,347  INFO        ✓  407 windows × 29 features
+2026-03-26 15:00:28,369  INFO        → Inspect CSV written: NYSE_META_1W_20150101_20260326_inspect.csv
+2026-03-26 15:00:28,369  INFO      [PROC] NYSE_META_4H_20240405_20260326.csv
+2026-03-26 15:00:28,459  INFO        ✓  972 windows × 35 features
+2026-03-26 15:00:28,459  WARNING     ⚠  Regime class 0 is only 0.4% of samples
+2026-03-26 15:00:28,459  WARNING     ⚠  Regime class 2 is only 0.6% of samples
+2026-03-26 15:00:28,459  WARNING     ⚠  Regime class 3 is only 1.9% of samples
+2026-03-26 15:00:28,520  INFO        → Inspect CSV written: NYSE_META_4H_20240405_20260326_inspect.csv
+2026-03-26 15:00:28,521  INFO      [PROC] NYSE_MSFT_1D_20150101_20260326.csv
+2026-03-26 15:00:28,709  INFO        ✓  2644 windows × 29 features
+2026-03-26 15:00:28,711  WARNING     ⚠  Regime class 3 is only 1.2% of samples
+2026-03-26 15:00:28,924  INFO        → Inspect CSV written: NYSE_MSFT_1D_20150101_20260326_inspect.csv
+2026-03-26 15:00:28,924  INFO      [PROC] NYSE_MSFT_1H_20240405_20260326.csv
+2026-03-26 15:00:29,115  INFO        ✓  3255 windows × 35 features
+2026-03-26 15:00:29,115  WARNING     ⚠  Regime class 1 is only 1.2% of samples
+2026-03-26 15:00:29,116  WARNING     ⚠  Regime class 2 is only 0.1% of samples
+2026-03-26 15:00:29,386  INFO        → Inspect CSV written: NYSE_MSFT_1H_20240405_20260326_inspect.csv
+2026-03-26 15:00:29,386  INFO      [PROC] NYSE_MSFT_1W_20150101_20260326.csv
+2026-03-26 15:00:29,464  INFO        ✓  407 windows × 29 features
+2026-03-26 15:00:29,492  INFO        → Inspect CSV written: NYSE_MSFT_1W_20150101_20260326_inspect.csv
+2026-03-26 15:00:29,492  INFO      [PROC] NYSE_MSFT_4H_20240405_20260326.csv
+2026-03-26 15:00:29,589  INFO        ✓  972 windows × 35 features
+2026-03-26 15:00:29,589  WARNING     ⚠  Regime class 2 is only 0.8% of samples
+2026-03-26 15:00:29,589  WARNING     ⚠  Regime class 5 is only 1.4% of samples
+2026-03-26 15:00:29,654  INFO        → Inspect CSV written: NYSE_MSFT_4H_20240405_20260326_inspect.csv
+2026-03-26 15:00:29,654  INFO      [PROC] NYSE_NVDA_1D_20150101_20260326.csv
+2026-03-26 15:00:29,789  INFO        ✓  2644 windows × 29 features
+2026-03-26 15:00:29,789  WARNING     ⚠  Regime class 1 is only 0.6% of samples
+2026-03-26 15:00:29,934  INFO        → Inspect CSV written: NYSE_NVDA_1D_20150101_20260326_inspect.csv
+2026-03-26 15:00:29,934  INFO      [PROC] NYSE_NVDA_1H_20240405_20260326.csv
+2026-03-26 15:00:30,140  INFO        ✓  3255 windows × 35 features
+2026-03-26 15:00:30,141  WARNING     ⚠  Regime class 2 is only 0.8% of samples
+2026-03-26 15:00:30,141  WARNING     ⚠  Regime class 5 is only 3.4% of samples
+2026-03-26 15:00:30,364  INFO        → Inspect CSV written: NYSE_NVDA_1H_20240405_20260326_inspect.csv
+2026-03-26 15:00:30,364  INFO      [PROC] NYSE_NVDA_1W_20150101_20260326.csv
+2026-03-26 15:00:30,437  INFO        ✓  407 windows × 29 features
+2026-03-26 15:00:30,462  INFO        → Inspect CSV written: NYSE_NVDA_1W_20150101_20260326_inspect.csv
+2026-03-26 15:00:30,462  INFO      [PROC] NYSE_NVDA_4H_20240405_20260326.csv
+2026-03-26 15:00:30,557  INFO        ✓  972 windows × 35 features
+2026-03-26 15:00:30,558  WARNING     ⚠  Regime class 3 is only 0.2% of samples
+2026-03-26 15:00:30,624  INFO        → Inspect CSV written: NYSE_NVDA_4H_20240405_20260326_inspect.csv
+2026-03-26 15:00:30,624  INFO      [PROC] NYSE_PG_1D_20150101_20260326.csv
+2026-03-26 15:00:30,791  INFO        ✓  2644 windows × 29 features
+2026-03-26 15:00:30,791  WARNING     ⚠  Regime class 0 is only 1.2% of samples
+2026-03-26 15:00:30,792  WARNING     ⚠  Regime class 2 is only 1.3% of samples
+2026-03-26 15:00:30,792  WARNING     ⚠  Regime class 5 is only 2.8% of samples
+2026-03-26 15:00:30,931  INFO        → Inspect CSV written: NYSE_PG_1D_20150101_20260326_inspect.csv
+2026-03-26 15:00:30,932  INFO      [PROC] NYSE_PG_1H_20240405_20260326.csv
+2026-03-26 15:00:31,146  INFO        ✓  3255 windows × 35 features
+2026-03-26 15:00:31,146  WARNING     ⚠  Regime class 1 is only 0.6% of samples
+2026-03-26 15:00:31,146  WARNING     ⚠  Regime class 4 is only 1.3% of samples
+2026-03-26 15:00:31,464  INFO        → Inspect CSV written: NYSE_PG_1H_20240405_20260326_inspect.csv
+2026-03-26 15:00:31,465  INFO      [PROC] NYSE_PG_1W_20150101_20260326.csv
+2026-03-26 15:00:31,573  INFO        ✓  407 windows × 29 features
+2026-03-26 15:00:31,574  WARNING     ⚠  Regime class 4 is only 2.5% of samples
+2026-03-26 15:00:31,623  INFO        → Inspect CSV written: NYSE_PG_1W_20150101_20260326_inspect.csv
+2026-03-26 15:00:31,624  INFO      [PROC] NYSE_PG_4H_20240405_20260326.csv
+2026-03-26 15:00:31,878  INFO        ✓  972 windows × 35 features
+2026-03-26 15:00:31,975  INFO        → Inspect CSV written: NYSE_PG_4H_20240405_20260326_inspect.csv
+2026-03-26 15:00:31,976  INFO      [PROC] NYSE_TSLA_1D_20150101_20260326.csv
+2026-03-26 15:00:32,348  INFO        ✓  2644 windows × 29 features
+2026-03-26 15:00:32,348  WARNING     ⚠  Regime class 1 is only 0.6% of samples
+2026-03-26 15:00:32,348  WARNING     ⚠  Regime class 4 is only 2.5% of samples
+2026-03-26 15:00:32,562  INFO        → Inspect CSV written: NYSE_TSLA_1D_20150101_20260326_inspect.csv
+2026-03-26 15:00:32,562  INFO      [PROC] NYSE_TSLA_1H_20240405_20260326.csv
+2026-03-26 15:00:32,956  INFO        ✓  3255 windows × 35 features
+2026-03-26 15:00:32,957  WARNING     ⚠  Regime class 0 is only 2.2% of samples
+2026-03-26 15:00:32,957  WARNING     ⚠  Regime class 2 is only 0.6% of samples
+2026-03-26 15:00:33,303  INFO        → Inspect CSV written: NYSE_TSLA_1H_20240405_20260326_inspect.csv
+2026-03-26 15:00:33,303  INFO      [PROC] NYSE_TSLA_1W_20150101_20260326.csv
+2026-03-26 15:00:33,666  INFO        ✓  407 windows × 29 features
+2026-03-26 15:00:33,699  INFO        → Inspect CSV written: NYSE_TSLA_1W_20150101_20260326_inspect.csv
+2026-03-26 15:00:33,700  INFO      [PROC] NYSE_TSLA_4H_20240405_20260326.csv
+2026-03-26 15:00:33,849  INFO        ✓  972 windows × 35 features
+2026-03-26 15:00:33,946  INFO        → Inspect CSV written: NYSE_TSLA_4H_20240405_20260326_inspect.csv
+2026-03-26 15:00:33,947  INFO      [PROC] NYSE_UNH_1D_20150101_20260326.csv
+2026-03-26 15:00:34,191  INFO        ✓  2644 windows × 29 features
+2026-03-26 15:00:34,192  WARNING     ⚠  Regime class 3 is only 1.0% of samples
+2026-03-26 15:00:34,414  INFO        → Inspect CSV written: NYSE_UNH_1D_20150101_20260326_inspect.csv
+2026-03-26 15:00:34,415  INFO      [PROC] NYSE_UNH_1H_20240405_20260326.csv
+2026-03-26 15:00:34,719  INFO        ✓  3255 windows × 35 features
+2026-03-26 15:00:34,720  WARNING     ⚠  Regime class 1 is only 4.4% of samples
+2026-03-26 15:00:34,720  WARNING     ⚠  Regime class 5 is only 1.4% of samples
+2026-03-26 15:00:35,001  INFO        → Inspect CSV written: NYSE_UNH_1H_20240405_20260326_inspect.csv
+2026-03-26 15:00:35,001  INFO      [PROC] NYSE_UNH_1W_20150101_20260326.csv
+2026-03-26 15:00:35,127  INFO        ✓  407 windows × 29 features
+2026-03-26 15:00:35,165  INFO        → Inspect CSV written: NYSE_UNH_1W_20150101_20260326_inspect.csv
+2026-03-26 15:00:35,166  INFO      [PROC] NYSE_UNH_4H_20240405_20260326.csv
+2026-03-26 15:00:35,335  INFO        ✓  972 windows × 35 features
+2026-03-26 15:00:35,335  WARNING     ⚠  Regime class 0 is only 0.4% of samples
+2026-03-26 15:00:35,335  WARNING     ⚠  Regime class 2 is only 1.3% of samples
+2026-03-26 15:00:35,336  WARNING     ⚠  Regime class 3 is only 3.2% of samples
+2026-03-26 15:00:35,457  INFO        → Inspect CSV written: NYSE_UNH_4H_20240405_20260326_inspect.csv
+2026-03-26 15:00:35,458  INFO      [PROC] NYSE_V_1D_20150101_20260326.csv
+2026-03-26 15:00:35,749  INFO        ✓  2644 windows × 29 features
+2026-03-26 15:00:35,750  WARNING     ⚠  Regime class 0 is only 0.3% of samples
+2026-03-26 15:00:35,750  WARNING     ⚠  Regime class 3 is only 2.8% of samples
+2026-03-26 15:00:35,881  INFO        → Inspect CSV written: NYSE_V_1D_20150101_20260326_inspect.csv
+2026-03-26 15:00:35,881  INFO      [PROC] NYSE_V_1H_20240405_20260326.csv
+2026-03-26 15:00:36,095  INFO        ✓  3255 windows × 35 features
+2026-03-26 15:00:36,095  WARNING     ⚠  Regime class 1 is only 0.4% of samples
+2026-03-26 15:00:36,095  WARNING     ⚠  Regime class 4 is only 3.5% of samples
+2026-03-26 15:00:36,095  WARNING     ⚠  Regime class 5 is only 0.0% of samples
+2026-03-26 15:00:36,305  INFO        → Inspect CSV written: NYSE_V_1H_20240405_20260326_inspect.csv
+2026-03-26 15:00:36,305  INFO      [PROC] NYSE_V_1W_20150101_20260326.csv
+2026-03-26 15:00:36,385  INFO        ✓  407 windows × 29 features
+2026-03-26 15:00:36,385  WARNING     ⚠  Regime class 4 is only 0.5% of samples
+2026-03-26 15:00:36,414  INFO        → Inspect CSV written: NYSE_V_1W_20150101_20260326_inspect.csv
+2026-03-26 15:00:36,415  INFO      [PROC] NYSE_V_4H_20240405_20260326.csv
+2026-03-26 15:00:36,509  INFO        ✓  972 windows × 35 features
+2026-03-26 15:00:36,509  WARNING     ⚠  Regime class 2 is only 0.1% of samples
+2026-03-26 15:00:36,509  WARNING     ⚠  Regime class 5 is only 1.4% of samples
+2026-03-26 15:00:36,585  INFO        → Inspect CSV written: NYSE_V_4H_20240405_20260326_inspect.csv
+2026-03-26 15:00:36,585  INFO      [PROC] NYSE_XOM_1D_20150101_20260326.csv
+2026-03-26 15:00:36,726  INFO        ✓  2644 windows × 29 features
+2026-03-26 15:00:36,727  WARNING     ⚠  Regime class 0 is only 0.6% of samples
+2026-03-26 15:00:36,727  WARNING     ⚠  Regime class 3 is only 3.3% of samples
+2026-03-26 15:00:36,887  INFO        → Inspect CSV written: NYSE_XOM_1D_20150101_20260326_inspect.csv
+2026-03-26 15:00:36,887  INFO      [PROC] NYSE_XOM_1H_20240405_20260326.csv
+2026-03-26 15:00:37,055  INFO        ✓  3255 windows × 35 features
+2026-03-26 15:00:37,055  WARNING     ⚠  Regime class 1 is only 1.9% of samples
+2026-03-26 15:00:37,055  WARNING     ⚠  Regime class 5 is only 0.1% of samples
+2026-03-26 15:00:37,243  INFO        → Inspect CSV written: NYSE_XOM_1H_20240405_20260326_inspect.csv
+2026-03-26 15:00:37,244  INFO      [PROC] NYSE_XOM_1W_20150101_20260326.csv
+2026-03-26 15:00:37,321  INFO        ✓  407 windows × 29 features
+2026-03-26 15:00:37,345  INFO        → Inspect CSV written: NYSE_XOM_1W_20150101_20260326_inspect.csv
+2026-03-26 15:00:37,345  INFO      [PROC] NYSE_XOM_4H_20240405_20260326.csv
+2026-03-26 15:00:37,437  INFO        ✓  972 windows × 35 features
+2026-03-26 15:00:37,438  WARNING     ⚠  Regime class 2 is only 1.0% of samples
+2026-03-26 15:00:37,438  WARNING     ⚠  Regime class 5 is only 0.9% of samples
+2026-03-26 15:00:37,544  INFO        → Inspect CSV written: NYSE_XOM_4H_20240405_20260326_inspect.csv
+2026-03-26 15:00:37,545  INFO      [PROC] SP500_GSPC_1D_20150101_20260326.csv
+2026-03-26 15:00:37,676  INFO        ✓  2644 windows × 29 features
+2026-03-26 15:00:37,677  WARNING     ⚠  Regime class 0 is only 3.1% of samples
+2026-03-26 15:00:37,677  WARNING     ⚠  Regime class 2 is only 0.2% of samples
+2026-03-26 15:00:37,677  WARNING     ⚠  Regime class 5 is only 3.8% of samples
+2026-03-26 15:00:37,920  INFO        → Inspect CSV written: SP500_GSPC_1D_20150101_20260326_inspect.csv
+2026-03-26 15:00:37,920  INFO      [PROC] SP500_GSPC_1H_20240405_20260326.csv
+2026-03-26 15:00:38,271  INFO        ✓  3255 windows × 35 features
+2026-03-26 15:00:38,271  WARNING     ⚠  Regime class 1 is only 0.2% of samples
+2026-03-26 15:00:38,271  WARNING     ⚠  Regime class 4 is only 1.8% of samples
+2026-03-26 15:00:38,271  WARNING     ⚠  Regime class 5 is only 0.0% of samples
+2026-03-26 15:00:38,443  INFO        → Inspect CSV written: SP500_GSPC_1H_20240405_20260326_inspect.csv
+2026-03-26 15:00:38,443  INFO      [PROC] SP500_GSPC_1W_20150101_20260326.csv
+2026-03-26 15:00:39,073  INFO        ✓  407 windows × 29 features
+2026-03-26 15:00:39,073  WARNING     ⚠  Regime class 1 is only 0.2% of samples
+2026-03-26 15:00:39,119  INFO        → Inspect CSV written: SP500_GSPC_1W_20150101_20260326_inspect.csv
+2026-03-26 15:00:39,119  INFO      [PROC] SP500_GSPC_4H_20240405_20260326.csv
+2026-03-26 15:00:39,424  INFO        ✓  972 windows × 35 features
+2026-03-26 15:00:39,424  WARNING     ⚠  Regime class 1 is only 2.8% of samples
+2026-03-26 15:00:39,425  WARNING     ⚠  Regime class 5 is only 1.3% of samples
+2026-03-26 15:00:39,528  INFO        → Inspect CSV written: SP500_GSPC_4H_20240405_20260326_inspect.csv
+2026-03-26 15:00:39,532  INFO      [PROC] TSX_CNRTO_1D_20150101_20260326.csv
+2026-03-26 15:00:40,026  INFO        ✓  2639 windows × 29 features
+2026-03-26 15:00:40,027  WARNING     ⚠  Regime class 0 is only 0.1% of samples
+2026-03-26 15:00:40,027  WARNING     ⚠  Regime class 2 is only 2.0% of samples
+2026-03-26 15:00:40,027  WARNING     ⚠  Regime class 3 is only 0.3% of samples
+2026-03-26 15:00:40,027  WARNING     ⚠  Regime class 5 is only 4.7% of samples
+2026-03-26 15:00:40,217  INFO        → Inspect CSV written: TSX_CNRTO_1D_20150101_20260326_inspect.csv
+2026-03-26 15:00:40,217  INFO      [PROC] TSX_CNRTO_1H_20240405_20260326.csv
+2026-03-26 15:00:40,382  INFO        ✓  3274 windows × 35 features
+2026-03-26 15:00:40,382  WARNING     ⚠  Regime class 1 is only 1.1% of samples
+2026-03-26 15:00:40,382  WARNING     ⚠  Regime class 4 is only 2.4% of samples
+2026-03-26 15:00:40,554  INFO        → Inspect CSV written: TSX_CNRTO_1H_20240405_20260326_inspect.csv
+2026-03-26 15:00:40,554  INFO      [PROC] TSX_CNRTO_1W_20150101_20260326.csv
+2026-03-26 15:00:40,631  INFO        ✓  407 windows × 29 features
+2026-03-26 15:00:40,657  INFO        → Inspect CSV written: TSX_CNRTO_1W_20150101_20260326_inspect.csv
+2026-03-26 15:00:40,657  INFO      [PROC] TSX_CNRTO_4H_20240405_20260326.csv
+2026-03-26 15:00:40,749  INFO        ✓  980 windows × 35 features
+2026-03-26 15:00:40,749  WARNING     ⚠  Regime class 2 is only 0.3% of samples
+2026-03-26 15:00:40,749  WARNING     ⚠  Regime class 5 is only 0.6% of samples
+2026-03-26 15:00:40,841  INFO        → Inspect CSV written: TSX_CNRTO_4H_20240405_20260326_inspect.csv
+2026-03-26 15:00:40,841  INFO      [PROC] TSX_MFCTO_1D_20150101_20260326.csv
+2026-03-26 15:00:41,003  INFO        ✓  2639 windows × 29 features
+2026-03-26 15:00:41,004  WARNING     ⚠  Regime class 0 is only 0.2% of samples
+2026-03-26 15:00:41,004  WARNING     ⚠  Regime class 2 is only 2.2% of samples
+2026-03-26 15:00:41,004  WARNING     ⚠  Regime class 3 is only 0.3% of samples
+2026-03-26 15:00:41,138  INFO        → Inspect CSV written: TSX_MFCTO_1D_20150101_20260326_inspect.csv
+2026-03-26 15:00:41,138  INFO      [PROC] TSX_MFCTO_1H_20240405_20260326.csv
+2026-03-26 15:00:41,420  INFO        ✓  3274 windows × 35 features
+2026-03-26 15:00:41,420  WARNING     ⚠  Regime class 1 is only 0.4% of samples
+2026-03-26 15:00:41,420  WARNING     ⚠  Regime class 4 is only 4.1% of samples
+2026-03-26 15:00:41,421  WARNING     ⚠  Regime class 5 is only 0.3% of samples
+2026-03-26 15:00:41,769  INFO        → Inspect CSV written: TSX_MFCTO_1H_20240405_20260326_inspect.csv
+2026-03-26 15:00:41,769  INFO      [PROC] TSX_MFCTO_1W_20150101_20260326.csv
+2026-03-26 15:00:42,000  INFO        ✓  407 windows × 29 features
+2026-03-26 15:00:42,039  INFO        → Inspect CSV written: TSX_MFCTO_1W_20150101_20260326_inspect.csv
+2026-03-26 15:00:42,039  INFO      [PROC] TSX_MFCTO_4H_20240405_20260326.csv
+2026-03-26 15:00:42,201  INFO        ✓  980 windows × 35 features
+2026-03-26 15:00:42,202  WARNING     ⚠  Regime class 5 is only 1.9% of samples
+2026-03-26 15:00:42,286  INFO        → Inspect CSV written: TSX_MFCTO_4H_20240405_20260326_inspect.csv
+2026-03-26 15:00:42,288  INFO      [PROC] TSX_RYTO_1D_20150101_20260326.csv
+2026-03-26 15:00:42,495  INFO        ✓  2639 windows × 29 features
+2026-03-26 15:00:42,495  WARNING     ⚠  Regime class 0 is only 3.4% of samples
+2026-03-26 15:00:42,496  WARNING     ⚠  Regime class 2 is only 0.2% of samples
+2026-03-26 15:00:42,496  WARNING     ⚠  Regime class 5 is only 3.8% of samples
+2026-03-26 15:00:42,633  INFO        → Inspect CSV written: TSX_RYTO_1D_20150101_20260326_inspect.csv
+2026-03-26 15:00:42,634  INFO      [PROC] TSX_RYTO_1H_20240405_20260326.csv
+2026-03-26 15:00:42,786  INFO        ✓  3274 windows × 35 features
+2026-03-26 15:00:42,786  WARNING     ⚠  Regime class 1 is only 0.2% of samples
+2026-03-26 15:00:42,786  WARNING     ⚠  Regime class 4 is only 1.5% of samples
+2026-03-26 15:00:42,977  INFO        → Inspect CSV written: TSX_RYTO_1H_20240405_20260326_inspect.csv
+2026-03-26 15:00:42,977  INFO      [PROC] TSX_RYTO_1W_20150101_20260326.csv
+2026-03-26 15:00:43,051  INFO        ✓  407 windows × 29 features
+2026-03-26 15:00:43,051  WARNING     ⚠  Regime class 1 is only 3.9% of samples
+2026-03-26 15:00:43,073  INFO        → Inspect CSV written: TSX_RYTO_1W_20150101_20260326_inspect.csv
+2026-03-26 15:00:43,073  INFO      [PROC] TSX_RYTO_4H_20240405_20260326.csv
+2026-03-26 15:00:43,240  INFO        ✓  980 windows × 35 features
+2026-03-26 15:00:43,241  WARNING     ⚠  Regime class 1 is only 2.3% of samples
+2026-03-26 15:00:43,241  WARNING     ⚠  Regime class 5 is only 0.5% of samples
+2026-03-26 15:00:43,291  INFO        → Inspect CSV written: TSX_RYTO_4H_20240405_20260326_inspect.csv
+2026-03-26 15:00:43,291  INFO      [PROC] TSX_SUTO_1D_20150101_20260326.csv
+2026-03-26 15:00:43,424  INFO        ✓  2639 windows × 29 features
+2026-03-26 15:00:43,551  INFO        → Inspect CSV written: TSX_SUTO_1D_20150101_20260326_inspect.csv
+2026-03-26 15:00:43,551  INFO      [PROC] TSX_SUTO_1H_20240405_20260326.csv
+2026-03-26 15:00:43,696  INFO        ✓  3274 windows × 35 features
+2026-03-26 15:00:43,697  WARNING     ⚠  Regime class 1 is only 1.3% of samples
+2026-03-26 15:00:43,697  WARNING     ⚠  Regime class 5 is only 0.4% of samples
+2026-03-26 15:00:43,905  INFO        → Inspect CSV written: TSX_SUTO_1H_20240405_20260326_inspect.csv
+2026-03-26 15:00:43,905  INFO      [PROC] TSX_SUTO_1W_20150101_20260326.csv
+2026-03-26 15:00:43,977  INFO        ✓  407 windows × 29 features
+2026-03-26 15:00:44,001  INFO        → Inspect CSV written: TSX_SUTO_1W_20150101_20260326_inspect.csv
+2026-03-26 15:00:44,001  INFO      [PROC] TSX_SUTO_4H_20240405_20260326.csv
+2026-03-26 15:00:44,092  INFO        ✓  980 windows × 35 features
+2026-03-26 15:00:44,092  WARNING     ⚠  Regime class 0 is only 3.0% of samples
+2026-03-26 15:00:44,093  WARNING     ⚠  Regime class 2 is only 0.2% of samples
+2026-03-26 15:00:44,093  WARNING     ⚠  Regime class 5 is only 1.9% of samples
+2026-03-26 15:00:44,173  INFO        → Inspect CSV written: TSX_SUTO_4H_20240405_20260326_inspect.csv
+2026-03-26 15:00:44,173  INFO      [PROC] TSX_TDTO_1D_20150101_20260326.csv
+2026-03-26 15:00:44,325  INFO        ✓  2639 windows × 29 features
+2026-03-26 15:00:44,326  WARNING     ⚠  Regime class 0 is only 3.3% of samples
+2026-03-26 15:00:44,326  WARNING     ⚠  Regime class 2 is only 0.8% of samples
+2026-03-26 15:00:44,326  WARNING     ⚠  Regime class 5 is only 3.1% of samples
+2026-03-26 15:00:44,587  INFO        → Inspect CSV written: TSX_TDTO_1D_20150101_20260326_inspect.csv
+2026-03-26 15:00:44,587  INFO      [PROC] TSX_TDTO_1H_20240405_20260326.csv
+2026-03-26 15:00:44,895  INFO        ✓  3274 windows × 35 features
+2026-03-26 15:00:44,896  WARNING     ⚠  Regime class 1 is only 0.2% of samples
+2026-03-26 15:00:44,896  WARNING     ⚠  Regime class 4 is only 1.9% of samples
+2026-03-26 15:00:45,162  INFO        → Inspect CSV written: TSX_TDTO_1H_20240405_20260326_inspect.csv
+2026-03-26 15:00:45,162  INFO      [PROC] TSX_TDTO_1W_20150101_20260326.csv
+2026-03-26 15:00:45,444  INFO        ✓  407 windows × 29 features
+2026-03-26 15:00:45,445  WARNING     ⚠  Regime class 1 is only 3.2% of samples
+2026-03-26 15:00:45,485  INFO        → Inspect CSV written: TSX_TDTO_1W_20150101_20260326_inspect.csv
+2026-03-26 15:00:45,485  INFO      [PROC] TSX_TDTO_4H_20240405_20260326.csv
+2026-03-26 15:00:45,640  INFO        ✓  980 windows × 35 features
+2026-03-26 15:00:45,641  WARNING     ⚠  Regime class 1 is only 4.9% of samples
+2026-03-26 15:00:45,641  WARNING     ⚠  Regime class 5 is only 0.1% of samples
+2026-03-26 15:00:45,758  INFO        → Inspect CSV written: TSX_TDTO_4H_20240405_20260326_inspect.csv
+2026-03-26 15:00:45,758  INFO      ============================================================
+2026-03-26 15:00:45,758  INFO      Feature engineering complete.
+2026-03-26 15:00:45,759  INFO        Processed : 189 files
+2026-03-26 15:00:45,759  INFO        Skipped   : 47 files
+2026-03-26 15:00:45,759  INFO        Skipped list: ['ASX_ANZAX_1H_20240405_20260326.csv', 'ASX_ANZAX_1W_20150101_20260326.csv', 'ASX_BHPAX_1H_20240405_20260326.csv', 'ASX_BHPAX_1W_20150101_20260326.csv', 'ASX_CBAAX_1H_20240405_20260326.csv', 'ASX_CBAAX_1W_20150101_20260326.csv', 'ASX_CSLAX_1H_20240405_20260326.csv', 'ASX_CSLAX_1W_20150101_20260326.csv', 'ASX_WBCAX_1H_20240405_20260326.csv', 'ASX_WBCAX_1W_20150101_20260326.csv', 'CRYPTO_BTC-USD_1H_20240405_20260326.csv', 'CRYPTO_ETH-USD_1H_20240405_20260326.csv', 'CRYPTO_ETH-USD_1W_20150101_20260326.csv', 'DAX_GDAXI_1H_20240405_20260326.csv', 'DAX_GDAXI_1W_20150101_20260326.csv', 'EURONEXT_ASMLAS_1H_20240405_20260326.csv', 'EURONEXT_ASMLAS_1W_20150101_20260326.csv', 'EURONEXT_MCPA_1H_20240405_20260326.csv', 'EURONEXT_MCPA_1W_20150101_20260326.csv', 'EURONEXT_SAPDE_1H_20240405_20260326.csv', 'EURONEXT_SAPDE_1W_20150101_20260326.csv', 'EURONEXT_SIEDE_1H_20240405_20260326.csv', 'EURONEXT_SIEDE_1W_20150101_20260326.csv', 'EURONEXT_TTEPA_1H_20240405_20260326.csv', 'EURONEXT_TTEPA_1W_20150101_20260326.csv', 'FOREXCOM_AUDNZDX_1H_20240405_20260326.csv', 'FOREXCOM_AUDUSDX_1H_20240405_20260326.csv', 'FOREXCOM_EURCHFX_1H_20240405_20260326.csv', 'FOREXCOM_EURGBPX_1H_20240405_20260326.csv', 'FOREXCOM_EURUSDX_1H_20240405_20260326.csv', 'FOREXCOM_GBPJPYX_1H_20240405_20260326.csv', 'FOREXCOM_GBPUSDX_1H_20240405_20260326.csv', 'FOREXCOM_USDCADX_1H_20240405_20260326.csv', 'FOREXCOM_USDCHFX_1H_20240405_20260326.csv', 'FOREXCOM_USDJPYX_1H_20240405_20260326.csv', 'FTSE_FTSE_1H_20240405_20260326.csv', 'HSI_HSI_1H_20240405_20260326.csv', 'HSI_HSI_1W_20150101_20260326.csv', 'HSI_HSI_4H_20240405_20260326.csv', 'LSE_AZNL_1H_20240405_20260326.csv', 'LSE_BPL_1H_20240405_20260326.csv', 'LSE_GSKL_1H_20240405_20260326.csv', 'LSE_HSBAL_1H_20240405_20260326.csv', 'LSE_SHELL_1H_20240405_20260326.csv', 'NIKKEI_N225_1H_20240405_20260326.csv', 'NIKKEI_N225_1W_20150101_20260326.csv', 'NIKKEI_N225_4H_20240405_20260326.csv']
+2026-03-26 15:00:45,759  INFO        ✓  No NaN or Inf values detected in any output array.
+2026-03-26 15:00:45,759  INFO        Total training windows: 359357
+2026-03-26 15:00:46,156  INFO      
+Global regime class distribution:
+2026-03-26 15:00:46,157  INFO        Class 0: 33263 samples  (  9.3%)
+2026-03-26 15:00:46,157  INFO        Class 1: 31380 samples  (  8.7%)
+2026-03-26 15:00:46,157  INFO        Class 2: 13982 samples  (  3.9%) ⚠  BELOW 5%
+2026-03-26 15:00:46,158  INFO        Class 3: 121299 samples  ( 33.8%)
+2026-03-26 15:00:46,158  INFO        Class 4: 113241 samples  ( 31.5%)
+2026-03-26 15:00:46,159  INFO        Class 5: 46192 samples  ( 12.9%)
+2026-03-26 15:00:46,159  INFO      
+Feature columns (29 total):
+2026-03-26 15:00:46,159  INFO        - log_return
+2026-03-26 15:00:46,159  INFO        - body_ratio
+2026-03-26 15:00:46,159  INFO        - upper_wick_ratio
+2026-03-26 15:00:46,159  INFO        - lower_wick_ratio
+2026-03-26 15:00:46,159  INFO        - range_zscore
+2026-03-26 15:00:46,159  INFO        - volume_zscore
+2026-03-26 15:00:46,159  INFO        - volume_delta
+2026-03-26 15:00:46,159  INFO        - gap
+2026-03-26 15:00:46,159  INFO        - atr7_norm
+2026-03-26 15:00:46,159  INFO        - atr14_norm
+2026-03-26 15:00:46,159  INFO        - atr28_norm
+2026-03-26 15:00:46,159  INFO        - atr_ratio
+2026-03-26 15:00:46,159  INFO        - rsi14
+2026-03-26 15:00:46,160  INFO        - rsi28
+2026-03-26 15:00:46,160  INFO        - macd_hist
+2026-03-26 15:00:46,160  INFO        - roc_5
+2026-03-26 15:00:46,160  INFO        - roc_10
+2026-03-26 15:00:46,160  INFO        - roc_20
+2026-03-26 15:00:46,160  INFO        - roc_60
+2026-03-26 15:00:46,160  INFO        - bb_position
+2026-03-26 15:00:46,160  INFO        - dist_sma20
+2026-03-26 15:00:46,160  INFO        - dist_sma50
+2026-03-26 15:00:46,160  INFO        - range_percentile
+2026-03-26 15:00:46,160  INFO        - corr_index
+2026-03-26 15:00:46,160  INFO        - dow_sin
+2026-03-26 15:00:46,160  INFO        - dow_cos
+2026-03-26 15:00:46,160  INFO        - month_sin
+2026-03-26 15:00:46,160  INFO        - month_cos
+2026-03-26 15:00:46,160  INFO        - quarter_end_flag

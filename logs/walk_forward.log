@@ -1,0 +1,85 @@
+2026-03-26 15:01:51,792  INFO      Stage 3 Walk-Forward Split Generation — Start
+2026-03-26 15:01:52,765  INFO      Loaded 359357 total windows from 189 files
+2026-03-26 15:01:52,773  INFO      Data range: 2015-06-29 → 2026-03-26
+2026-03-26 15:01:52,773  INFO      Folds generated: 3
+2026-03-26 15:01:52,773  WARNING   Only 3 folds generated — blueprint requires minimum 4. Consider extending data history or reducing TRAIN_YEARS.
+2026-03-26 15:01:52,773  INFO      ============================================================
+2026-03-26 15:01:52,773  INFO      Fold 1:
+2026-03-26 15:01:52,773  INFO        Train : 2015-06-29 → 2021-06-29
+2026-03-26 15:01:52,773  INFO        Val   : 2021-06-29 → 2022-06-29
+2026-03-26 15:01:52,773  INFO        Test  : 2022-06-29 → 2023-06-29
+2026-03-26 15:01:52,986  INFO        Samples — Train: 94067  Val: 15466  Test: 17508
+2026-03-26 15:01:52,986  INFO        Regime distribution [Fold 1 TRAIN]:
+2026-03-26 15:01:52,988  INFO          Class 0:  4112  (  4.4%)  ⚠  BELOW 5%
+2026-03-26 15:01:52,988  INFO          Class 1: 10377  ( 11.0%)
+2026-03-26 15:01:52,991  INFO          Class 2:  5660  (  6.0%)
+2026-03-26 15:01:52,992  INFO          Class 3: 13411  ( 14.3%)
+2026-03-26 15:01:52,994  INFO          Class 4: 40294  ( 42.8%)
+2026-03-26 15:01:52,995  INFO          Class 5: 20213  ( 21.5%)
+2026-03-26 15:01:52,995  INFO        Regime distribution [Fold 1 VAL]:
+2026-03-26 15:01:52,996  INFO          Class 0:   698  (  4.5%)  ⚠  BELOW 5%
+2026-03-26 15:01:52,997  INFO          Class 1:  1709  ( 11.1%)
+2026-03-26 15:01:52,998  INFO          Class 2:  1171  (  7.6%)
+2026-03-26 15:01:52,999  INFO          Class 3:  1649  ( 10.7%)
+2026-03-26 15:01:53,000  INFO          Class 4:  5307  ( 34.3%)
+2026-03-26 15:01:53,000  INFO          Class 5:  4932  ( 31.9%)
+2026-03-26 15:01:53,065  INFO        Saved: data/splits/fold_1_train.parquet
+2026-03-26 15:01:53,066  INFO        Saved: data/splits/fold_1_val.parquet
+2026-03-26 15:01:53,066  INFO        Saved: data/splits/fold_1_test.parquet
+2026-03-26 15:01:53,066  INFO      ============================================================
+2026-03-26 15:01:53,066  INFO      Fold 2:
+2026-03-26 15:01:53,066  INFO        Train : 2016-06-29 → 2022-06-29
+2026-03-26 15:01:53,066  INFO        Val   : 2022-06-29 → 2023-06-29
+2026-03-26 15:01:53,066  INFO        Test  : 2023-06-29 → 2024-06-29
+2026-03-26 15:01:53,457  INFO        Samples — Train: 99916  Val: 15428  Test: 26319
+2026-03-26 15:01:53,458  INFO        Regime distribution [Fold 2 TRAIN]:
+2026-03-26 15:01:53,459  INFO          Class 0:  4549  (  4.6%)  ⚠  BELOW 5%
+2026-03-26 15:01:53,459  INFO          Class 1: 10700  ( 10.7%)
+2026-03-26 15:01:53,460  INFO          Class 2:  6111  (  6.1%)
+2026-03-26 15:01:53,460  INFO          Class 3: 14346  ( 14.4%)
+2026-03-26 15:01:53,460  INFO          Class 4: 40957  ( 41.0%)
+2026-03-26 15:01:53,461  INFO          Class 5: 23253  ( 23.3%)
+2026-03-26 15:01:53,461  INFO        Regime distribution [Fold 2 VAL]:
+2026-03-26 15:01:53,462  INFO          Class 0:   472  (  3.1%)  ⚠  BELOW 5%
+2026-03-26 15:01:53,462  INFO          Class 1:  1899  ( 12.3%)
+2026-03-26 15:01:53,462  INFO          Class 2:  1485  (  9.6%)
+2026-03-26 15:01:53,463  INFO          Class 3:  1126  (  7.3%)
+2026-03-26 15:01:53,463  INFO          Class 4:  6173  ( 40.0%)
+2026-03-26 15:01:53,465  INFO          Class 5:  4273  ( 27.7%)
+2026-03-26 15:01:53,529  INFO        Saved: data/splits/fold_2_train.parquet
+2026-03-26 15:01:53,529  INFO        Saved: data/splits/fold_2_val.parquet
+2026-03-26 15:01:53,529  INFO        Saved: data/splits/fold_2_test.parquet
+2026-03-26 15:01:53,529  INFO      ============================================================
+2026-03-26 15:01:53,529  INFO      Fold 3:
+2026-03-26 15:01:53,529  INFO        Train : 2017-06-29 → 2023-06-29
+2026-03-26 15:01:53,529  INFO        Val   : 2023-06-29 → 2024-06-29
+2026-03-26 15:01:53,529  INFO        Test  : 2024-06-29 → 2025-06-29
+2026-03-26 15:01:53,813  WARNING     ⚠  6 instruments had fewer than 20 val rows — fully removed by purge gap.
+2026-03-26 15:01:53,837  INFO        Samples — Train: 102600  Val: 23431  Test: 123645
+2026-03-26 15:01:53,838  INFO        Regime distribution [Fold 3 TRAIN]:
+2026-03-26 15:01:53,839  INFO          Class 0:  4312  (  4.2%)  ⚠  BELOW 5%
+2026-03-26 15:01:53,839  INFO          Class 1: 10826  ( 10.6%)
+2026-03-26 15:01:53,840  INFO          Class 2:  7603  (  7.4%)
+2026-03-26 15:01:53,840  INFO          Class 3: 12857  ( 12.5%)
+2026-03-26 15:01:53,841  INFO          Class 4: 39926  ( 38.9%)
+2026-03-26 15:01:53,841  INFO          Class 5: 27076  ( 26.4%)
+2026-03-26 15:01:53,842  INFO        Regime distribution [Fold 3 VAL]:
+2026-03-26 15:01:53,842  INFO          Class 0:  2061  (  8.8%)
+2026-03-26 15:01:53,843  INFO          Class 1:  2257  (  9.6%)
+2026-03-26 15:01:53,843  INFO          Class 2:   868  (  3.7%)  ⚠  BELOW 5%
+2026-03-26 15:01:53,844  INFO          Class 3:  7359  ( 31.4%)
+2026-03-26 15:01:53,844  INFO          Class 4:  8111  ( 34.6%)
+2026-03-26 15:01:53,845  INFO          Class 5:  2775  ( 11.8%)
+2026-03-26 15:01:53,881  INFO        Saved: data/splits/fold_3_train.parquet
+2026-03-26 15:01:53,881  INFO        Saved: data/splits/fold_3_val.parquet
+2026-03-26 15:01:53,882  INFO        Saved: data/splits/fold_3_test.parquet
+2026-03-26 15:01:53,882  INFO      ============================================================
+2026-03-26 15:01:53,882  INFO      Walk-Forward Split Summary:
+2026-03-26 15:01:53,885  INFO      
+ fold train_start  train_end  val_start    val_end test_start   test_end  n_train  n_val  n_test
+    1  2015-06-29 2021-06-29 2021-06-29 2022-06-29 2022-06-29 2023-06-29    94067  15466   17508
+    2  2016-06-29 2022-06-29 2022-06-29 2023-06-29 2023-06-29 2024-06-29    99916  15428   26319
+    3  2017-06-29 2023-06-29 2023-06-29 2024-06-29 2024-06-29 2025-06-29   102600  23431  123645
+2026-03-26 15:01:53,889  INFO      
+Summary saved to data/splits/fold_summary.csv
+2026-03-26 15:01:53,889  INFO      Stage 3 complete — 3 folds ready for training.
