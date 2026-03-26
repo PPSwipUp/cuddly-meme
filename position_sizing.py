@@ -38,9 +38,9 @@ import numpy as np
 # ─── Constants ────────────────────────────────────────────────────────────────
 
 DEFAULT_STARTING_CAPITAL = 10_000.0   # £10,000 default
-DEFAULT_MAX_RISK         = 0.02       # 2% of capital per trade
-DEFAULT_KELLY_FRACTION   = 0.5        # half-Kelly
-DEFAULT_MIN_PROB         = 0.53       # minimum confidence to trade
+DEFAULT_MAX_RISK         = 0.04       # 2% of capital per trade
+DEFAULT_KELLY_FRACTION   = 0.9        # half-Kelly
+DEFAULT_MIN_PROB         = 0.57       # minimum confidence to trade
 DEFAULT_MAX_POSITION     = 0.20       # never more than 20% of capital in one trade
 TRANSACTION_COST         = 0.0005     # 0.05% round-trip
 
@@ -382,9 +382,9 @@ if __name__ == "__main__":
 
     sizer = PositionSizer(
         starting_capital=10_000,
-        max_risk_per_trade=0.02,
-        kelly_fraction=0.5,
-        min_prob=0.53,
+        max_risk_per_trade=0.04,
+        kelly_fraction=0.9,
+        min_prob=0.57,
     )
 
     # Show how size scales with probability

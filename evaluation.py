@@ -66,9 +66,9 @@ VAL_TEST_SHARPE_GAP = 0.5
 
 # Backtest / position sizing defaults
 STARTING_CAPITAL    = 10_000.0   # £10,000 — change to your actual capital
-KELLY_FRACTION      = 0.5        # half-Kelly
-MAX_RISK_PER_TRADE  = 0.02       # 2% of capital per trade
-MIN_PROB_THRESHOLD  = 0.53       # minimum confidence to trade
+KELLY_FRACTION      = 0.9        # half-Kelly
+MAX_RISK_PER_TRADE  = 0.04       # 2% of capital per trade
+MIN_PROB_THRESHOLD  = 0.57       # minimum confidence to trade
 
 os.makedirs(LOG_DIR, exist_ok=True)
 logging.basicConfig(
