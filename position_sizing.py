@@ -38,9 +38,9 @@ import numpy as np
 # ─── Constants ────────────────────────────────────────────────────────────────
 
 DEFAULT_STARTING_CAPITAL = 10_000.0   # £10,000 default
-DEFAULT_MAX_RISK         = 0.1       # 2% of capital per trade
-DEFAULT_KELLY_FRACTION   = 0.7        # half-Kelly
-DEFAULT_MIN_PROB         = 0.57       # minimum confidence to trade
+DEFAULT_MAX_RISK         = 0.02       # 2% of capital per trade
+DEFAULT_KELLY_FRACTION   = 0.5        # half-Kelly
+DEFAULT_MIN_PROB         = 0.53       # minimum confidence to trade
 DEFAULT_MAX_POSITION     = 0.20       # never more than 20% of capital in one trade
 TRANSACTION_COST         = 0.0005     # 0.05% round-trip
 
@@ -203,19 +203,98 @@ class PositionSizer:
 
 # ─── Full backtest simulation ─────────────────────────────────────────────────
 
+
+# ─── Leverage limits by asset class (UK FCA retail) ─────────────────────────
+
+LEVERAGE_BY_CLASS = {
+    "forex_major":  30.0,
+    "forex_minor":  20.0,
+    "gold":         20.0,
+    "index_major":  20.0,
+    "commodity":    10.0,
+    "equity":        5.0,
+    "crypto":        2.0,
+    "default":       1.0,
+}
+
+FOREX_MAJORS = {"EURUSD", "GBPUSD", "USDJPY", "USDCHF", "USDCAD", "AUDUSD"}
+
+# Minimum probability required to apply leverage.
+# Below this threshold the position is taken at 1:1 (no leverage).
+# Above this threshold leverage scales linearly from 1× up to the asset maximum,
+# reaching full leverage at LEVERAGE_MAX_PROB.
+# This means only the highest-confidence signals get amplified exposure.
+LEVERAGE_MIN_PROB = 0.62   # minimum prob to start applying leverage
+LEVERAGE_MAX_PROB = 0.72   # prob at which full asset-class leverage is reached
+
+def get_leverage_for_source(source_file: str) -> float:
+    """Infer leverage from source filename. Format: EXCHANGE_TICKER_RES"""
+    p = source_file.upper().replace(".NPY","").replace(".CSV","").split("_")
+    if not p: return LEVERAGE_BY_CLASS["default"]
+    exchange = p[0]; ticker = p[1] if len(p) > 1 else ""
+    if exchange == "FOREXCOM":
+        base = ticker.replace("=X","").replace("-","")[:6]
+        return LEVERAGE_BY_CLASS["forex_major"] if base in FOREX_MAJORS \
+               else LEVERAGE_BY_CLASS["forex_minor"]
+    if exchange == "COMEX" and "GC" in ticker: return LEVERAGE_BY_CLASS["gold"]
+    if exchange in ("COMEX","NYMEX","ICE","CBOT"): return LEVERAGE_BY_CLASS["commodity"]
+    if exchange in ("SP500","DAX","NIKKEI","FTSE","HSI"): return LEVERAGE_BY_CLASS["index_major"]
+    if exchange == "CRYPTO": return LEVERAGE_BY_CLASS["crypto"]
+    if exchange in ("NYSE","LSE","ASX","TSX","EURONEXT"): return LEVERAGE_BY_CLASS["equity"]
+    return LEVERAGE_BY_CLASS["default"]
+
+
 def run_backtest(
-    probs:           np.ndarray,
-    true_directions: np.ndarray,
-    sizer:           PositionSizer,
-    resolution:      str = "1D",
-    calendar_years:  float | None = None,
-    n_instruments:   int = 1,
+    probs:                 np.ndarray,
+    true_directions:       np.ndarray,
+    sizer:                 PositionSizer,
+    resolution:            str = "1D",
+    calendar_years:        float | None = None,
+    n_instruments:         int = 1,
+    instrument_boundaries: set | None = None,
+    leverage_per_bar:      np.ndarray | None = None,
+    capital_size_cap:      float = 3.0,
+    lev_min_prob:          float | None = None,
+    lev_max_prob:          float | None = None,
 ) -> dict:
     """
     Run a full backtest using probability-scaled position sizing.
+
+    calendar_years: actual calendar span of the test period. Without this,
+        elapsed time is computed from bar count which is inflated by
+        multi-instrument concatenation (100 instruments x 252 bars = 25,200
+        bars but only 1 calendar year of real time).
+
+    instrument_boundaries: set of bar indices where a new instrument begins.
+        Resets the position/hold tracker so that a long position on
+        instrument A does not bleed into instrument B, producing
+        artificially long hold durations (55 days instead of ~2-3 days).
     """
     BARS_PER_YEAR = {"1D": 252, "4H": 1575, "1H": 6300, "1W": 52}.get(resolution, 252)
-    UNIT_RETURN = {"1D": 0.010, "4H": 0.004, "1H": 0.002, "1W": 0.020}.get(resolution, 0.010)
+
+    # S1 FIX: Asset-class-specific typical bar return (not a universal fixed value).
+    # These are median absolute daily moves for liquid instruments in each class.
+    # Used as the win/loss payoff per bar — more realistic than a single 1% for all.
+    # Sources: historical average true range (ATR) as % of price across asset classes.
+    UNIT_RETURN_BY_CLASS = {
+        "equity":       {"1D": 0.012, "4H": 0.006, "1H": 0.003, "1W": 0.022},
+        "forex_major":  {"1D": 0.006, "4H": 0.003, "1H": 0.0015,"1W": 0.011},
+        "forex_minor":  {"1D": 0.008, "4H": 0.004, "1H": 0.002, "1W": 0.015},
+        "gold":         {"1D": 0.010, "4H": 0.005, "1H": 0.0025,"1W": 0.018},
+        "commodity":    {"1D": 0.018, "4H": 0.009, "1H": 0.0045,"1W": 0.032},
+        "index_major":  {"1D": 0.010, "4H": 0.005, "1H": 0.0025,"1W": 0.018},
+        "crypto":       {"1D": 0.035, "4H": 0.018, "1H": 0.009, "1W": 0.065},
+        "default":      {"1D": 0.010, "4H": 0.004, "1H": 0.002, "1W": 0.020},
+    }
+
+    def _asset_class_from_leverage(lev: float) -> str:
+        """Back-infer asset class from its leverage limit for UNIT_RETURN lookup."""
+        if lev >= 28:  return "forex_major"
+        if lev >= 18:  return "forex_minor"   # also covers gold, indices at 20x
+        if lev >= 8:   return "commodity"
+        if lev >= 4:   return "equity"
+        if lev >= 1.5: return "crypto"
+        return "default"
 
     n            = len(probs)
     capital      = sizer.starting_capital
@@ -227,23 +306,62 @@ def run_backtest(
     gross_profit  = 0.0
     gross_loss    = 0.0
     prev_dir      = 0
-    current_hold  = 0          # bars held in the current open position
-    hold_durations = []        # completed hold lengths (bars)
+    current_hold       = 0     # bars held in the current open position
+    hold_durations     = []    # completed hold lengths (bars)
+    total_leverage_sum = 0.0   # for avg leverage reporting
+    n_leveraged_bars   = 0     # bars where leverage > 1
 
     for i in range(n):
-        frac, direction, notional = sizer.size(probs[i], capital)
+        # Cap capital base to prevent exponential runaway across many instruments
+        sizing_capital = min(capital, sizer.starting_capital * capital_size_cap)
+        frac, direction, notional = sizer.size(probs[i], sizing_capital)
 
         if direction == "no_trade":
             n_no_trade += 1
             equity.append(capital)
             continue
 
-        dir_val    = 1 if direction == "long" else -1
-        correct    = (dir_val > 0) == (true_directions[i] > 0.5)
-        bar_return = UNIT_RETURN if correct else -UNIT_RETURN
+        dir_val  = 1 if direction == "long" else -1
+        correct  = (dir_val > 0) == (true_directions[i] > 0.5)
 
-        tx_cost  = TRANSACTION_COST * notional if dir_val != prev_dir and prev_dir != 0 else 0.0
-        pnl      = notional * bar_return - tx_cost
+        # S1 FIX: Use asset-class-specific bar return for this instrument.
+        bar_lev_raw = float(leverage_per_bar[i]) if leverage_per_bar is not None else 1.0
+        asset_cls   = _asset_class_from_leverage(bar_lev_raw)
+        unit        = UNIT_RETURN_BY_CLASS[asset_cls].get(resolution, 0.010)
+        bar_return  = unit if correct else -unit
+
+
+        # Probability-gated leverage.
+        # Leverage is only applied when the model is sufficiently certain.
+        # Below LEVERAGE_MIN_PROB  → 1:1 (no leverage, direction still traded)
+        # Between min and max prob → leverage scales linearly from 1× to max
+        # At LEVERAGE_MAX_PROB+    → full asset-class leverage
+        # This concentrates amplified exposure on the highest-conviction signals.
+        max_lev = float(leverage_per_bar[i]) if leverage_per_bar is not None else 1.0
+        max_lev = max(max_lev, 1.0)
+
+        # S5 FIX: Use explicit parameters instead of mutable module globals.
+        _lev_min = lev_min_prob if lev_min_prob is not None else LEVERAGE_MIN_PROB
+        _lev_max = lev_max_prob if lev_max_prob is not None else LEVERAGE_MAX_PROB
+
+        p_for_lev = float(probs[i]) if dir_val > 0 else 1 - float(probs[i])
+        if p_for_lev <= _lev_min:
+            lev = 1.0
+        elif p_for_lev >= _lev_max:
+            lev = max_lev
+        else:
+            ramp = (p_for_lev - _lev_min) / (_lev_max - _lev_min)
+            lev  = 1.0 + ramp * (max_lev - 1.0)
+
+        lev_notional = notional * lev
+        total_leverage_sum += lev
+        if lev > 1.0: n_leveraged_bars += 1
+        # S3 FIX: Charge transaction cost on every position entry or direction change.
+        # Previously: free entry when coming from no-position (prev_dir == 0).
+        # Correct:    always pay spread when a new position starts.
+        tx_cost  = TRANSACTION_COST * lev_notional if dir_val != prev_dir else 0.0
+        raw_pnl  = lev_notional * bar_return - tx_cost
+        pnl      = max(raw_pnl, -notional)  # margin call cap: can't lose more than margin
 
         capital += pnl
         capital  = max(capital, 0.01)
@@ -261,9 +379,18 @@ def run_backtest(
             "correct": correct, "pnl": pnl, "capital": capital,
         })
 
-        # Track position hold duration
-        if dir_val != prev_dir and prev_dir != 0:
-            # Direction flipped — record the just-closed hold
+        # Track position hold duration.
+        # Reset at instrument boundaries so holds from instrument A
+        # do not bleed into instrument B when direction happens to match.
+        at_boundary = (instrument_boundaries is not None
+                       and i in instrument_boundaries)
+
+        if at_boundary:
+            if prev_dir != 0 and current_hold > 0:
+                hold_durations.append(current_hold)
+            current_hold = 1
+            prev_dir     = 0
+        elif dir_val != prev_dir and prev_dir != 0:
             hold_durations.append(current_hold)
             current_hold = 1
         else:
@@ -278,6 +405,8 @@ def run_backtest(
     equity_arr = np.array(equity)
 
     n_trades = n_long + n_short
+    avg_leverage  = total_leverage_sum / max(n_trades, 1)
+    pct_leveraged = 100 * n_leveraged_bars / max(n_trades, 1)
     # Use calendar_years if provided — avoids bar-count inflation for multi-instrument data
     n_years  = calendar_years if calendar_years is not None else n / BARS_PER_YEAR
 
@@ -303,16 +432,24 @@ def run_backtest(
         pct_1bar = pct_le5 = 0.0
     total_return  = (capital - sizer.starting_capital) / sizer.starting_capital
     annual_return = (1 + total_return) ** (1 / max(n_years, 0.01)) - 1
+    annual_return_per_inst = annual_return / max(n_instruments, 1)
 
     peak   = np.maximum.accumulate(equity_arr)
     max_dd = float(np.abs(((equity_arr - peak) / (peak + 1e-10)).min()))
 
-    pred_dir    = (probs >= 0.5).astype(float)
-    true_dir    = (true_directions > 0.5).astype(float)
-    p_acc       = (pred_dir == true_dir).mean()
-    e_r         = 2 * p_acc - 1
-    std_r       = 2 * np.sqrt(p_acc * (1 - p_acc) + 1e-10)
-    sharpe      = float(e_r / std_r * np.sqrt(BARS_PER_YEAR))
+    # S4 FIX: Compute Sharpe only on bars where a trade was actually taken.
+    # Including no-trade bars (probs below threshold) overstates accuracy
+    # by counting 'virtual' correct predictions on positions never entered.
+    traded_mask = probs >= sizer.min_prob
+    if traded_mask.sum() >= 10:
+        pred_dir_t = (probs[traded_mask] >= 0.5).astype(float)
+        true_dir_t = (true_directions[traded_mask] > 0.5).astype(float)
+        p_acc      = (pred_dir_t == true_dir_t).mean()
+    else:
+        p_acc      = 0.5   # fallback if too few traded bars
+    e_r    = 2 * p_acc - 1
+    std_r  = 2 * np.sqrt(p_acc * (1 - p_acc) + 1e-10)
+    sharpe = float(e_r / std_r * np.sqrt(BARS_PER_YEAR))
 
     wins          = sum(1 for t in trade_log if t["correct"])
     win_rate      = wins / n_trades if n_trades > 0 else 0.0
@@ -321,12 +458,48 @@ def run_backtest(
     avg_loss      = gross_loss   / (n_trades - wins + 1e-10)
     bars_per_trade  = n / n_trades if n_trades > 0 else float("inf")
     trades_per_year = n_trades / max(n_years, 0.01)
+    # Distinct positions = actual direction changes (not bar count)
+    distinct_positions = len(hold_durations) if hold_durations else 0
+    pos_per_year       = distinct_positions / max(n_years, 0.01)
+    pos_per_inst_year  = pos_per_year / max(n_instruments, 1)
+
+    # ── Average P&L per trade (£ and %) ──────────────────────────────────
+    # Net P&L = gross_profit - gross_loss (after transaction costs already deducted)
+    net_pnl          = gross_profit - gross_loss
+
+    # avg_pnl_dollar is net P&L per BAR holding a position (n_trades = bars)
+    # avg_pnl_per_pos is net P&L per DIRECTION CHANGE — the more meaningful figure
+    # since it reflects what you actually earn each time you open a new position.
+    avg_pnl_dollar   = net_pnl / n_trades if n_trades > 0 else 0.0
+    avg_pnl_pct      = (avg_pnl_dollar / sizer.starting_capital) * 100 if n_trades > 0 else 0.0
+    avg_pnl_per_pos  = net_pnl / max(distinct_positions, 1)
+    avg_pnl_pos_pct  = (avg_pnl_per_pos / sizer.starting_capital) * 100
+
+    # ── Total elapsed time since first trade ──────────────────────────────
+    # Expressed in calendar days using the resolution's bar-to-day conversion
+    BAR_TO_DAYS_MAP = {"1D": 1.0, "4H": 4/24, "1H": 1/24, "1W": 7.0}
+    bar_to_days = BAR_TO_DAYS_MAP.get(resolution, 1.0)
+    # Total bars in which a trade was active (n minus no-trade bars)
+    active_bars       = n - n_no_trade
+    if calendar_years is not None:
+        elapsed_days  = calendar_years * 365.25
+    else:
+        elapsed_days  = n * bar_to_days
+    elapsed_years     = elapsed_days / 365.25
+    elapsed_str_parts = []
+    if int(elapsed_years) > 0:
+        elapsed_str_parts.append(f"{int(elapsed_years)}yr")
+    remaining_days = elapsed_days - int(elapsed_years) * 365.25
+    if int(remaining_days) > 0:
+        elapsed_str_parts.append(f"{int(remaining_days)}d")
+    elapsed_str = " ".join(elapsed_str_parts) if elapsed_str_parts else f"{elapsed_days:.1f}d"
 
     return {
         "starting_capital":   sizer.starting_capital,
         "ending_capital":     round(capital, 2),
         "total_return_pct":   round(total_return * 100, 2),
         "annual_return_pct":  round(annual_return * 100, 2),
+        "annual_return_per_inst_pct": round(annual_return_per_inst * 100, 2),
         "max_drawdown_pct":   round(max_dd * 100, 2),
         "sharpe_ratio":       round(sharpe, 3),
         "n_bars_total":       n,
@@ -348,16 +521,29 @@ def run_backtest(
         "pct_bars_traded":    round(100 * n_trades / n, 1),
         "n_years":            round(n_years, 2),
         "n_instruments":      n_instruments,
+        "distinct_positions":        distinct_positions,
+        "pos_per_year":              round(pos_per_year, 1),
+        "pos_per_inst_year":         round(pos_per_inst_year, 2),
         "win_rate_pct":       round(win_rate * 100, 2),
         "profit_factor":      round(profit_factor, 3),
         "avg_win":            round(avg_win, 4),
         "avg_loss":           round(avg_loss, 4),
+        "avg_pnl_dollar":     round(avg_pnl_dollar, 4),   # P&L per bar
+        "avg_pnl_pct":        round(avg_pnl_pct, 4),       # P&L per bar as % of capital
+        "avg_pnl_per_pos":    round(avg_pnl_per_pos, 4),   # P&L per direction change
+        "avg_pnl_pos_pct":    round(avg_pnl_pos_pct, 4),   # P&L per direction change as %
         "gross_profit":       round(gross_profit, 2),
         "gross_loss":         round(gross_loss, 2),
+        "net_pnl":            round(net_pnl, 2),
+        "elapsed_days":       round(elapsed_days, 1),
+        "elapsed_str":        elapsed_str,
         "kelly_fraction":     sizer.kelly_fraction,
         "max_risk_per_trade": sizer.max_risk_per_trade,
         "min_prob_threshold": sizer.min_prob,
         "resolution":         resolution,
+        "capital_size_cap":   capital_size_cap,
+        "avg_leverage":       round(avg_leverage, 2),
+        "pct_leveraged_bars": round(pct_leveraged, 1),
         "equity_curve":       equity_arr.tolist(),
         "trade_log":          trade_log,
     }
@@ -406,13 +592,22 @@ def print_backtest_report(results: dict, label: str = ""):
     print(f"    Bars per trade     :  {results['bars_per_trade']:.1f}")
     print(f"    Timespan           :  {results['n_years']:.1f} years")
 
+    avg_pnl_d = results.get("avg_pnl_dollar", 0)
+    avg_pnl_p = results.get("avg_pnl_pct", 0)
+    elapsed   = results.get("elapsed_str", "?")
+    net_pnl   = results.get("net_pnl", 0)
+    pnl_flag  = PASS if avg_pnl_d > 0 else FAIL
+
     print(f"\n  Edge:")
     wr_flag = PASS if wr >= 53 else (WARN if wr >= 51 else FAIL)
     print(f"    Win rate           :  {wr:.2f}%  {wr_flag}")
+    print(f"    Avg P&L / trade    :  {currency}{avg_pnl_d:+.4f}  ({avg_pnl_p:+.4f}% of capital)  {pnl_flag}")
     print(f"    Avg win            :  {currency}{results['avg_win']:.4f}")
     print(f"    Avg loss           :  {currency}{results['avg_loss']:.4f}")
+    print(f"    Net P&L            :  {currency}{net_pnl:,.2f}")
     print(f"    Gross profit       :  {currency}{results['gross_profit']:,.2f}")
     print(f"    Gross loss         :  {currency}{results['gross_loss']:,.2f}")
+    print(f"    Time elapsed       :  {elapsed}  ({results.get('elapsed_days',0):.0f} calendar days)")
 
     # Trade duration
     avg_h = results.get("avg_hold_bars", 0)
@@ -447,9 +642,9 @@ if __name__ == "__main__":
 
     sizer = PositionSizer(
         starting_capital=10_000,
-        max_risk_per_trade=0.1,
-        kelly_fraction=0.7,
-        min_prob=0.57,
+        max_risk_per_trade=0.02,
+        kelly_fraction=0.5,
+        min_prob=0.53,
     )
 
     # Show how size scales with probability

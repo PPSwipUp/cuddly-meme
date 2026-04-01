@@ -1,0 +1,63 @@
+2026-04-01 01:53:04,350  INFO      Stage 7 — device=cpu
+2026-04-01 01:53:04,351  INFO      ============================================================
+2026-04-01 01:53:04,351  INFO      BASE MODEL — All Test Folds
+2026-04-01 01:53:04,351  INFO      ============================================================
+2026-04-01 01:53:04,377  INFO      Checkpoint: checkpoint_base_v1.pt  val_loss=0.3481
+2026-04-01 01:53:04,377  INFO      
+Fold 1:
+2026-04-01 01:53:15,888  INFO      ──────────────────────────────────────────────────────────
+2026-04-01 01:53:15,888  INFO      REPORT — Fold 1 Test  (n=17508)
+2026-04-01 01:53:15,888  INFO      ──────────────────────────────────────────────────────────
+2026-04-01 01:53:15,888  INFO      
+  Directional Accuracy:
+2026-04-01 01:53:15,888  INFO          H1 : 0.544  (need 0.53)  ✓
+2026-04-01 01:53:15,888  INFO          H5 : 0.544  (need 0.52)  ✓
+2026-04-01 01:53:15,888  INFO          H20: 0.528  (need 0.52)  ✓
+2026-04-01 01:53:15,888  INFO      
+  Strategy (long/short, 0.05%% tx cost):
+2026-04-01 01:53:15,888  INFO          H1 : Sharpe=1.404 ✓   MaxDD=2.7% ✓
+2026-04-01 01:53:15,889  INFO          H5 : Sharpe=1.413 ✓   MaxDD=3.0% ✓
+2026-04-01 01:53:15,889  INFO          H20: Sharpe=0.903 ✓   MaxDD=4.3% ✓
+2026-04-01 01:53:15,889  INFO      
+  Regime Accuracy (H1):
+2026-04-01 01:53:15,889  INFO          Class 0 (Range/LowVol)  : 0.551  ✓
+2026-04-01 01:53:15,889  INFO          Class 1 (Range/NormVol) : 0.571  ✓
+2026-04-01 01:53:15,889  INFO          Class 2 (Range/HighVol) : 0.562  ✓
+2026-04-01 01:53:15,889  INFO          Class 3 (Trend/LowVol)  : 0.525  ✓
+2026-04-01 01:53:15,889  INFO          Class 4 (Trend/NormVol) : 0.539  ✓
+2026-04-01 01:53:15,889  INFO          Class 5 (Trend/HighVol) : 0.537  ✓
+2026-04-01 01:53:15,889  INFO          -> 6/6 pass 51%  ✓
+2026-04-01 01:53:15,889  INFO      
+  Calibration (H1):
+2026-04-01 01:53:15,889  INFO          p=0.35 -> 0.368  ███████
+2026-04-01 01:53:15,889  INFO          p=0.45 -> 0.465  █████████
+2026-04-01 01:53:15,889  INFO          p=0.55 -> 0.541  ██████████
+2026-04-01 01:53:15,889  INFO          p=0.65 -> 0.606  ████████████
+2026-04-01 01:53:15,889  INFO      
+  Yearly P&L (H1):
+2026-04-01 01:53:15,889  INFO          2022: +811.6827
+2026-04-01 01:53:15,890  INFO          2023: +683.1958
+2026-04-01 01:53:15,890  INFO      
+  ✓ No red flags.
+2026-04-01 01:53:15,890  INFO      
+  VERDICT: ✅  PRODUCTION READY
+2026-04-01 01:53:15,890  INFO        Capital Simulation (prob-scaled sizing, half-Kelly, 2%% max risk):
+2026-04-01 01:53:15,890  INFO          Starting capital   : £   10,000.00
+2026-04-01 01:53:15,890  INFO          Ending capital     : £   11,743.34  (+17.43%)
+2026-04-01 01:53:15,890  INFO          Annualised return  :  +17.50%  (combined, 104 instruments)
+2026-04-01 01:53:15,890  INFO          Per-instrument     :  +0.17%  (realistic single-instrument equivalent)
+2026-04-01 01:53:15,890  INFO          Sharpe (backtest)  :  1.404  ✓
+2026-04-01 01:53:15,890  INFO          Max drawdown       :  0.25%  ✓
+2026-04-01 01:53:15,890  INFO          Profit factor      :  1.334
+2026-04-01 01:53:15,890  INFO          Win rate           :  55.95%  ✓
+Traceback (most recent call last):
+  File "/workspaces/cuddly-meme/evaluation.py", line 617, in <module>
+    main()
+  File "/workspaces/cuddly-meme/evaluation.py", line 611, in main
+    eval_base(device)
+  File "/workspaces/cuddly-meme/evaluation.py", line 522, in eval_base
+    report(m, f"Fold {fn} Test")
+  File "/workspaces/cuddly-meme/evaluation.py", line 450, in report
+    avg_pnl_d, avg_pnl_p, pnl_flag)
+    ^^^^^^^^^
+UnboundLocalError: cannot access local variable 'avg_pnl_d' where it is not associated with a value
