@@ -1,0 +1,60 @@
+2026-04-04 22:27:53,406  INFO      ============================================================
+2026-04-04 22:27:53,406  INFO      Stage 6 Fine-Tuning — Start
+2026-04-04 22:27:53,406  INFO      Instrument  : COMEX_SIF
+2026-04-04 22:27:53,407  INFO      Resolution  : 1H
+2026-04-04 22:27:53,407  INFO      Device      : cpu
+2026-04-04 22:27:53,407  INFO      Base checkpoint: models/base/checkpoint_base_v1.pt
+2026-04-04 22:27:53,409  INFO      Loading: COMEX_SIF_1H_20240405_20260326.npy
+2026-04-04 22:27:55,555  INFO        Shape: (2909, 60, 48)  (2909 windows)
+2026-04-04 22:27:55,571  INFO        Date range: 2025-01-03 → 2025-07-07  (0.5 years)
+2026-04-04 22:27:55,571  INFO        Train windows: 1464  Val windows: 1445
+2026-04-04 22:27:55,571  INFO      Years of data: 0.5
+2026-04-04 22:27:55,588  INFO      Loading base checkpoint: models/base/checkpoint_base_v1.pt
+2026-04-04 22:27:55,601  INFO        Base val_loss: 0.2466  (fold 2, epoch 28)
+2026-04-04 22:27:55,601  INFO      --------------------------------------------------
+2026-04-04 22:27:55,601  INFO      Phase 1 — Head-only adaptation (encoder frozen)
+2026-04-04 22:27:58,620  INFO        P1 Epoch  1 | TrainLoss 0.2477 | ValLoss 0.2467 | ValAcc H1=0.539 H5=0.540 H20=0.495
+2026-04-04 22:28:00,780  INFO        P1 Epoch  2 | TrainLoss 0.2476 | ValLoss 0.2466 | ValAcc H1=0.541 H5=0.541 H20=0.492
+2026-04-04 22:28:02,844  INFO        P1 Epoch  3 | TrainLoss 0.2476 | ValLoss 0.2465 | ValAcc H1=0.544 H5=0.545 H20=0.498
+2026-04-04 22:28:05,117  INFO        P1 Epoch  4 | TrainLoss 0.2477 | ValLoss 0.2465 | ValAcc H1=0.546 H5=0.546 H20=0.499
+2026-04-04 22:28:07,044  INFO        P1 Epoch  5 | TrainLoss 0.2476 | ValLoss 0.2465 | ValAcc H1=0.546 H5=0.545 H20=0.504
+2026-04-04 22:28:09,195  INFO        P1 Epoch  6 | TrainLoss 0.2473 | ValLoss 0.2464 | ValAcc H1=0.548 H5=0.546 H20=0.504
+2026-04-04 22:28:11,332  INFO        P1 Epoch  7 | TrainLoss 0.2475 | ValLoss 0.2464 | ValAcc H1=0.547 H5=0.545 H20=0.507
+2026-04-04 22:28:13,440  INFO        P1 Epoch  8 | TrainLoss 0.2473 | ValLoss 0.2464 | ValAcc H1=0.548 H5=0.542 H20=0.508
+2026-04-04 22:28:15,820  INFO        P1 Epoch  9 | TrainLoss 0.2474 | ValLoss 0.2464 | ValAcc H1=0.548 H5=0.542 H20=0.506
+2026-04-04 22:28:17,771  INFO        P1 Epoch 10 | TrainLoss 0.2471 | ValLoss 0.2464 | ValAcc H1=0.549 H5=0.540 H20=0.512
+2026-04-04 22:28:19,998  INFO        P1 Epoch 11 | TrainLoss 0.2473 | ValLoss 0.2464 | ValAcc H1=0.549 H5=0.538 H20=0.506
+2026-04-04 22:28:22,057  INFO        P1 Epoch 12 | TrainLoss 0.2473 | ValLoss 0.2464 | ValAcc H1=0.547 H5=0.534 H20=0.507
+2026-04-04 22:28:24,313  INFO        P1 Epoch 13 | TrainLoss 0.2472 | ValLoss 0.2464 | ValAcc H1=0.547 H5=0.535 H20=0.508
+2026-04-04 22:28:26,481  INFO        P1 Epoch 14 | TrainLoss 0.2473 | ValLoss 0.2464 | ValAcc H1=0.546 H5=0.538 H20=0.509
+2026-04-04 22:28:28,380  INFO        P1 Epoch 15 | TrainLoss 0.2471 | ValLoss 0.2464 | ValAcc H1=0.546 H5=0.537 H20=0.507
+2026-04-04 22:28:30,707  INFO        P1 Epoch 16 | TrainLoss 0.2471 | ValLoss 0.2464 | ValAcc H1=0.546 H5=0.534 H20=0.511
+2026-04-04 22:28:30,708  INFO        Phase 1 early stopping at epoch 16
+2026-04-04 22:28:31,676  INFO        Phase 1 complete. Best val_loss: 0.2464  H1=0.548 H5=0.546 H20=0.504
+2026-04-04 22:28:31,680  INFO      Phase 1 checkpoint saved: models/fine_tuned/checkpoint_COMEX_SIF_1H_phase1_20260404.pt
+2026-04-04 22:28:31,681  INFO      Loading base checkpoint: models/base/checkpoint_base_v1.pt
+2026-04-04 22:28:31,690  INFO        Base val_loss: 0.2466  (fold 2, epoch 28)
+2026-04-04 22:28:32,673  INFO      Base model H1 accuracy on instrument val set: 0.536
+2026-04-04 22:28:32,674  INFO      Fine-tuned  H1 accuracy (Phase 1)           : 0.548
+2026-04-04 22:28:32,674  INFO      --------------------------------------------------
+2026-04-04 22:28:32,674  INFO      Phase 2 — Verification gate
+2026-04-04 22:28:32,674  INFO        Fine-tuned accuracy — H1=0.548  H5=0.546  H20=0.504  Mean=0.533
+2026-04-04 22:28:32,674  INFO        Minimum required (mean across horizons) : 0.510
+2026-04-04 22:28:32,674  INFO        ✓ Phase 2 PASSED (H1=0.548  H5=0.546  H20=0.504) — proceeding to Phase 3
+2026-04-04 22:28:32,674  INFO      --------------------------------------------------
+2026-04-04 22:28:32,674  INFO      Phase 3 — Selective encoder unfreeze
+2026-04-04 22:28:32,674  WARNING     ✗ Skipping Phase 3 — only 0.5 years of data (need 2.0)
+2026-04-04 22:28:32,674  WARNING     Using Phase 1 checkpoint as final output.
+2026-04-04 22:28:32,675  INFO      Reverted to Phase 1 checkpoint.
+2026-04-04 22:28:33,760  INFO      Phase 1 H1 accuracy (recheck): 0.548
+2026-04-04 22:28:33,760  INFO      ============================================================
+2026-04-04 22:28:33,760  INFO      Fine-Tuning Summary
+2026-04-04 22:28:33,760  INFO        Instrument     : COMEX_SIF 1H
+2026-04-04 22:28:33,760  INFO        Final phase    : 1
+2026-04-04 22:28:33,760  INFO        Final checkpoint: models/fine_tuned/checkpoint_COMEX_SIF_1H_phase1_20260404.pt
+2026-04-04 22:28:35,113  INFO        Base model — H1=0.536  H5=0.537  H20=0.494  Mean=0.522
+2026-04-04 22:28:35,114  INFO        Fine-tuned — H1=0.548  H5=0.546  H20=0.504  Mean=0.533  (Phase 1)
+2026-04-04 22:28:35,114  INFO        Delta mean accuracy : +0.010  ✓ Fine-tuning improved accuracy.
+2026-04-04 22:28:35,114  INFO        Per-horizon delta   :  H1=+0.012  H5=+0.008  H20=+0.011
+2026-04-04 22:28:35,116  INFO        Metrics saved  : logs/finetune/COMEX_SIF_1H_20260404_metrics.csv
+2026-04-04 22:28:35,116  INFO      Stage 6 complete.

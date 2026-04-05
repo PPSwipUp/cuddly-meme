@@ -1,0 +1,55 @@
+2026-04-04 23:51:01,123  INFO      ============================================================
+2026-04-04 23:51:01,123  INFO      Stage 6 Fine-Tuning — Start
+2026-04-04 23:51:01,123  INFO      Instrument  : NYSE_MSFT
+2026-04-04 23:51:01,123  INFO      Resolution  : 4H
+2026-04-04 23:51:01,123  INFO      Device      : cpu
+2026-04-04 23:51:01,123  INFO      Base checkpoint: models/base/checkpoint_base_v1.pt
+2026-04-04 23:51:01,124  INFO      Loading: NYSE_MSFT_4H_20240405_20260326.npy
+2026-04-04 23:51:02,015  INFO        Shape: (972, 60, 48)  (972 windows)
+2026-04-04 23:51:02,022  INFO        Date range: 2024-08-14 → 2026-03-25  (1.6 years)
+2026-04-04 23:51:02,022  INFO        Train windows: 802  Val windows: 170
+2026-04-04 23:51:02,022  INFO      Years of data: 1.6
+2026-04-04 23:51:02,027  INFO      Loading base checkpoint: models/base/checkpoint_base_v1.pt
+2026-04-04 23:51:02,040  INFO        Base val_loss: 0.2466  (fold 2, epoch 28)
+2026-04-04 23:51:02,041  INFO      --------------------------------------------------
+2026-04-04 23:51:02,041  INFO      Phase 1 — Head-only adaptation (encoder frozen)
+2026-04-04 23:51:03,784  INFO        P1 Epoch  1 | TrainLoss 0.2453 | ValLoss 0.2429 | ValAcc H1=0.587 H5=0.597 H20=0.520
+2026-04-04 23:51:04,445  INFO        P1 Epoch  2 | TrainLoss 0.2454 | ValLoss 0.2429 | ValAcc H1=0.568 H5=0.584 H20=0.518
+2026-04-04 23:51:05,158  INFO        P1 Epoch  3 | TrainLoss 0.2452 | ValLoss 0.2428 | ValAcc H1=0.565 H5=0.584 H20=0.518
+2026-04-04 23:51:05,936  INFO        P1 Epoch  4 | TrainLoss 0.2451 | ValLoss 0.2428 | ValAcc H1=0.594 H5=0.571 H20=0.523
+2026-04-04 23:51:06,612  INFO        P1 Epoch  5 | TrainLoss 0.2452 | ValLoss 0.2428 | ValAcc H1=0.594 H5=0.571 H20=0.507
+2026-04-04 23:51:07,339  INFO        P1 Epoch  6 | TrainLoss 0.2457 | ValLoss 0.2428 | ValAcc H1=0.587 H5=0.558 H20=0.504
+2026-04-04 23:51:08,059  INFO        P1 Epoch  7 | TrainLoss 0.2451 | ValLoss 0.2428 | ValAcc H1=0.581 H5=0.558 H20=0.504
+2026-04-04 23:51:08,728  INFO        P1 Epoch  8 | TrainLoss 0.2454 | ValLoss 0.2428 | ValAcc H1=0.581 H5=0.550 H20=0.504
+2026-04-04 23:51:09,399  INFO        P1 Epoch  9 | TrainLoss 0.2452 | ValLoss 0.2428 | ValAcc H1=0.587 H5=0.542 H20=0.509
+2026-04-04 23:51:10,102  INFO        P1 Epoch 10 | TrainLoss 0.2452 | ValLoss 0.2428 | ValAcc H1=0.587 H5=0.542 H20=0.509
+2026-04-04 23:51:10,951  INFO        P1 Epoch 11 | TrainLoss 0.2448 | ValLoss 0.2428 | ValAcc H1=0.587 H5=0.542 H20=0.509
+2026-04-04 23:51:10,952  INFO        Phase 1 early stopping at epoch 11
+2026-04-04 23:51:11,070  INFO        Phase 1 complete. Best val_loss: 0.2429  H1=0.587 H5=0.597 H20=0.520
+2026-04-04 23:51:11,077  INFO      Phase 1 checkpoint saved: models/fine_tuned/checkpoint_NYSE_MSFT_4H_phase1_20260404.pt
+2026-04-04 23:51:11,077  INFO      Loading base checkpoint: models/base/checkpoint_base_v1.pt
+2026-04-04 23:51:11,089  INFO        Base val_loss: 0.2466  (fold 2, epoch 28)
+2026-04-04 23:51:11,201  INFO      Base model H1 accuracy on instrument val set: 0.590
+2026-04-04 23:51:11,201  INFO      Fine-tuned  H1 accuracy (Phase 1)           : 0.587
+2026-04-04 23:51:11,201  INFO      --------------------------------------------------
+2026-04-04 23:51:11,202  INFO      Phase 2 — Verification gate
+2026-04-04 23:51:11,202  INFO        Fine-tuned accuracy — H1=0.587  H5=0.597  H20=0.520  Mean=0.568
+2026-04-04 23:51:11,202  INFO        Minimum required (mean across horizons) : 0.510
+2026-04-04 23:51:11,202  INFO        ✓ Phase 2 PASSED (H1=0.587  H5=0.597  H20=0.520) — proceeding to Phase 3
+2026-04-04 23:51:11,202  INFO      --------------------------------------------------
+2026-04-04 23:51:11,202  INFO      Phase 3 — Selective encoder unfreeze
+2026-04-04 23:51:11,202  WARNING     ✗ Skipping Phase 3 — only 1.6 years of data (need 2.0)
+2026-04-04 23:51:11,202  WARNING     Using Phase 1 checkpoint as final output.
+2026-04-04 23:51:11,203  INFO      Reverted to Phase 1 checkpoint.
+2026-04-04 23:51:11,314  INFO      Phase 1 H1 accuracy (recheck): 0.587
+2026-04-04 23:51:11,314  INFO      ============================================================
+2026-04-04 23:51:11,314  INFO      Fine-Tuning Summary
+2026-04-04 23:51:11,315  INFO        Instrument     : NYSE_MSFT 4H
+2026-04-04 23:51:11,315  INFO        Final phase    : 1
+2026-04-04 23:51:11,315  INFO        Final checkpoint: models/fine_tuned/checkpoint_NYSE_MSFT_4H_phase1_20260404.pt
+2026-04-04 23:51:11,428  INFO        Base model — H1=0.590  H5=0.597  H20=0.520  Mean=0.569
+2026-04-04 23:51:11,428  INFO        Fine-tuned — H1=0.587  H5=0.597  H20=0.520  Mean=0.568  (Phase 1)
+2026-04-04 23:51:11,428  INFO        Delta mean accuracy : -0.001  = Fine-tuning matched base model.
+2026-04-04 23:51:11,428  INFO        Per-horizon delta   :  H1=-0.003  H5=+0.000  H20=+0.000
+2026-04-04 23:51:11,430  INFO        Metrics saved  : logs/finetune/NYSE_MSFT_4H_20260404_metrics.csv
+2026-04-04 23:51:11,431  INFO      Stage 6 complete.

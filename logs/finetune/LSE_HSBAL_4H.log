@@ -1,0 +1,54 @@
+2026-04-04 23:21:01,611  INFO      ============================================================
+2026-04-04 23:21:01,611  INFO      Stage 6 Fine-Tuning — Start
+2026-04-04 23:21:01,611  INFO      Instrument  : LSE_HSBAL
+2026-04-04 23:21:01,611  INFO      Resolution  : 4H
+2026-04-04 23:21:01,611  INFO      Device      : cpu
+2026-04-04 23:21:01,611  INFO      Base checkpoint: models/base/checkpoint_base_v1.pt
+2026-04-04 23:21:01,613  INFO      Loading: LSE_HSBAL_4H_20240405_20260326.npy
+2026-04-04 23:21:02,722  INFO        Shape: (1313, 60, 48)  (1313 windows)
+2026-04-04 23:21:02,732  INFO        Date range: 2024-07-01 → 2026-03-25  (1.7 years)
+2026-04-04 23:21:02,732  INFO        Train windows: 1129  Val windows: 184
+2026-04-04 23:21:02,732  INFO      Years of data: 1.7
+2026-04-04 23:21:02,741  INFO      Loading base checkpoint: models/base/checkpoint_base_v1.pt
+2026-04-04 23:21:02,754  INFO        Base val_loss: 0.2466  (fold 2, epoch 28)
+2026-04-04 23:21:02,754  INFO      --------------------------------------------------
+2026-04-04 23:21:02,754  INFO      Phase 1 — Head-only adaptation (encoder frozen)
+2026-04-04 23:21:04,694  INFO        P1 Epoch  1 | TrainLoss 0.2470 | ValLoss 0.2424 | ValAcc H1=0.612 H5=0.609 H20=0.636
+2026-04-04 23:21:05,715  INFO        P1 Epoch  2 | TrainLoss 0.2471 | ValLoss 0.2425 | ValAcc H1=0.607 H5=0.609 H20=0.647
+2026-04-04 23:21:06,655  INFO        P1 Epoch  3 | TrainLoss 0.2469 | ValLoss 0.2426 | ValAcc H1=0.607 H5=0.609 H20=0.631
+2026-04-04 23:21:07,706  INFO        P1 Epoch  4 | TrainLoss 0.2470 | ValLoss 0.2427 | ValAcc H1=0.607 H5=0.599 H20=0.626
+2026-04-04 23:21:08,832  INFO        P1 Epoch  5 | TrainLoss 0.2468 | ValLoss 0.2428 | ValAcc H1=0.607 H5=0.599 H20=0.626
+2026-04-04 23:21:09,864  INFO        P1 Epoch  6 | TrainLoss 0.2470 | ValLoss 0.2429 | ValAcc H1=0.607 H5=0.599 H20=0.626
+2026-04-04 23:21:10,823  INFO        P1 Epoch  7 | TrainLoss 0.2469 | ValLoss 0.2430 | ValAcc H1=0.607 H5=0.599 H20=0.626
+2026-04-04 23:21:11,807  INFO        P1 Epoch  8 | TrainLoss 0.2471 | ValLoss 0.2430 | ValAcc H1=0.607 H5=0.604 H20=0.626
+2026-04-04 23:21:12,763  INFO        P1 Epoch  9 | TrainLoss 0.2469 | ValLoss 0.2431 | ValAcc H1=0.607 H5=0.599 H20=0.626
+2026-04-04 23:21:13,774  INFO        P1 Epoch 10 | TrainLoss 0.2467 | ValLoss 0.2431 | ValAcc H1=0.607 H5=0.604 H20=0.626
+2026-04-04 23:21:14,737  INFO        P1 Epoch 11 | TrainLoss 0.2467 | ValLoss 0.2432 | ValAcc H1=0.607 H5=0.604 H20=0.621
+2026-04-04 23:21:14,738  INFO        Phase 1 early stopping at epoch 11
+2026-04-04 23:21:14,885  INFO        Phase 1 complete. Best val_loss: 0.2424  H1=0.612 H5=0.609 H20=0.636
+2026-04-04 23:21:14,890  INFO      Phase 1 checkpoint saved: models/fine_tuned/checkpoint_LSE_HSBAL_4H_phase1_20260404.pt
+2026-04-04 23:21:14,890  INFO      Loading base checkpoint: models/base/checkpoint_base_v1.pt
+2026-04-04 23:21:14,900  INFO        Base val_loss: 0.2466  (fold 2, epoch 28)
+2026-04-04 23:21:15,025  INFO      Base model H1 accuracy on instrument val set: 0.612
+2026-04-04 23:21:15,025  INFO      Fine-tuned  H1 accuracy (Phase 1)           : 0.612
+2026-04-04 23:21:15,026  INFO      --------------------------------------------------
+2026-04-04 23:21:15,026  INFO      Phase 2 — Verification gate
+2026-04-04 23:21:15,026  INFO        Fine-tuned accuracy — H1=0.612  H5=0.609  H20=0.636  Mean=0.619
+2026-04-04 23:21:15,026  INFO        Minimum required (mean across horizons) : 0.510
+2026-04-04 23:21:15,026  INFO        ✓ Phase 2 PASSED (H1=0.612  H5=0.609  H20=0.636) — proceeding to Phase 3
+2026-04-04 23:21:15,026  INFO      --------------------------------------------------
+2026-04-04 23:21:15,026  INFO      Phase 3 — Selective encoder unfreeze
+2026-04-04 23:21:15,026  WARNING     ✗ Skipping Phase 3 — only 1.7 years of data (need 2.0)
+2026-04-04 23:21:15,026  WARNING     Using Phase 1 checkpoint as final output.
+2026-04-04 23:21:15,028  INFO      Reverted to Phase 1 checkpoint.
+2026-04-04 23:21:15,149  INFO      Phase 1 H1 accuracy (recheck): 0.612
+2026-04-04 23:21:15,149  INFO      ============================================================
+2026-04-04 23:21:15,149  INFO      Fine-Tuning Summary
+2026-04-04 23:21:15,149  INFO        Instrument     : LSE_HSBAL 4H
+2026-04-04 23:21:15,149  INFO        Final phase    : 1
+2026-04-04 23:21:15,149  INFO        Final checkpoint: models/fine_tuned/checkpoint_LSE_HSBAL_4H_phase1_20260404.pt
+2026-04-04 23:21:15,279  INFO        Base model — H1=0.612  H5=0.609  H20=0.652  Mean=0.625
+2026-04-04 23:21:15,280  INFO        Fine-tuned — H1=0.612  H5=0.609  H20=0.636  Mean=0.619  (Phase 1)
+2026-04-04 23:21:15,280  WARNING     Delta mean accuracy : -0.005  ⚠  Fine-tuning degraded mean accuracy. Consider using the base model for this instrument. H1 delta=+0.000  H5 delta=+0.000  H20 delta=-0.016
+2026-04-04 23:21:15,283  INFO        Metrics saved  : logs/finetune/LSE_HSBAL_4H_20260404_metrics.csv
+2026-04-04 23:21:15,283  INFO      Stage 6 complete.

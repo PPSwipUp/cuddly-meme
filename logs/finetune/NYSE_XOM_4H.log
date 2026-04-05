@@ -1,0 +1,59 @@
+2026-04-05 00:05:20,688  INFO      ============================================================
+2026-04-05 00:05:20,688  INFO      Stage 6 Fine-Tuning — Start
+2026-04-05 00:05:20,688  INFO      Instrument  : NYSE_XOM
+2026-04-05 00:05:20,688  INFO      Resolution  : 4H
+2026-04-05 00:05:20,688  INFO      Device      : cpu
+2026-04-05 00:05:20,688  INFO      Base checkpoint: models/base/checkpoint_base_v1.pt
+2026-04-05 00:05:20,689  INFO      Loading: NYSE_XOM_4H_20240405_20260326.npy
+2026-04-05 00:05:21,324  INFO        Shape: (972, 60, 48)  (972 windows)
+2026-04-05 00:05:21,333  INFO        Date range: 2024-08-14 → 2026-03-25  (1.6 years)
+2026-04-05 00:05:21,333  INFO        Train windows: 802  Val windows: 170
+2026-04-05 00:05:21,333  INFO      Years of data: 1.6
+2026-04-05 00:05:21,339  INFO      Loading base checkpoint: models/base/checkpoint_base_v1.pt
+2026-04-05 00:05:21,353  INFO        Base val_loss: 0.2466  (fold 2, epoch 28)
+2026-04-05 00:05:21,353  INFO      --------------------------------------------------
+2026-04-05 00:05:21,353  INFO      Phase 1 — Head-only adaptation (encoder frozen)
+2026-04-05 00:05:23,170  INFO        P1 Epoch  1 | TrainLoss 0.2470 | ValLoss 0.2442 | ValAcc H1=0.549 H5=0.544 H20=0.573
+2026-04-05 00:05:23,921  INFO        P1 Epoch  2 | TrainLoss 0.2466 | ValLoss 0.2441 | ValAcc H1=0.565 H5=0.544 H20=0.565
+2026-04-05 00:05:24,628  INFO        P1 Epoch  3 | TrainLoss 0.2467 | ValLoss 0.2441 | ValAcc H1=0.565 H5=0.544 H20=0.557
+2026-04-05 00:05:25,374  INFO        P1 Epoch  4 | TrainLoss 0.2464 | ValLoss 0.2441 | ValAcc H1=0.573 H5=0.552 H20=0.555
+2026-04-05 00:05:26,083  INFO        P1 Epoch  5 | TrainLoss 0.2467 | ValLoss 0.2441 | ValAcc H1=0.573 H5=0.560 H20=0.549
+2026-04-05 00:05:26,780  INFO        P1 Epoch  6 | TrainLoss 0.2460 | ValLoss 0.2441 | ValAcc H1=0.573 H5=0.557 H20=0.533
+2026-04-05 00:05:27,581  INFO        P1 Epoch  7 | TrainLoss 0.2464 | ValLoss 0.2441 | ValAcc H1=0.573 H5=0.557 H20=0.523
+2026-04-05 00:05:28,259  INFO        P1 Epoch  8 | TrainLoss 0.2463 | ValLoss 0.2441 | ValAcc H1=0.573 H5=0.557 H20=0.531
+2026-04-05 00:05:29,004  INFO        P1 Epoch  9 | TrainLoss 0.2465 | ValLoss 0.2441 | ValAcc H1=0.581 H5=0.557 H20=0.526
+2026-04-05 00:05:29,852  INFO        P1 Epoch 10 | TrainLoss 0.2463 | ValLoss 0.2440 | ValAcc H1=0.581 H5=0.557 H20=0.528
+2026-04-05 00:05:30,555  INFO        P1 Epoch 11 | TrainLoss 0.2464 | ValLoss 0.2440 | ValAcc H1=0.581 H5=0.557 H20=0.523
+2026-04-05 00:05:31,248  INFO        P1 Epoch 12 | TrainLoss 0.2467 | ValLoss 0.2440 | ValAcc H1=0.581 H5=0.557 H20=0.528
+2026-04-05 00:05:31,967  INFO        P1 Epoch 13 | TrainLoss 0.2464 | ValLoss 0.2440 | ValAcc H1=0.581 H5=0.549 H20=0.536
+2026-04-05 00:05:32,702  INFO        P1 Epoch 14 | TrainLoss 0.2461 | ValLoss 0.2440 | ValAcc H1=0.581 H5=0.549 H20=0.536
+2026-04-05 00:05:33,577  INFO        P1 Epoch 15 | TrainLoss 0.2467 | ValLoss 0.2440 | ValAcc H1=0.581 H5=0.549 H20=0.536
+2026-04-05 00:05:34,300  INFO        P1 Epoch 16 | TrainLoss 0.2460 | ValLoss 0.2440 | ValAcc H1=0.581 H5=0.549 H20=0.536
+2026-04-05 00:05:34,300  INFO        Phase 1 early stopping at epoch 16
+2026-04-05 00:05:34,410  INFO        Phase 1 complete. Best val_loss: 0.2441  H1=0.573 H5=0.557 H20=0.533
+2026-04-05 00:05:34,415  INFO      Phase 1 checkpoint saved: models/fine_tuned/checkpoint_NYSE_XOM_4H_phase1_20260405.pt
+2026-04-05 00:05:34,415  INFO      Loading base checkpoint: models/base/checkpoint_base_v1.pt
+2026-04-05 00:05:34,424  INFO        Base val_loss: 0.2466  (fold 2, epoch 28)
+2026-04-05 00:05:34,536  INFO      Base model H1 accuracy on instrument val set: 0.557
+2026-04-05 00:05:34,536  INFO      Fine-tuned  H1 accuracy (Phase 1)           : 0.573
+2026-04-05 00:05:34,536  INFO      --------------------------------------------------
+2026-04-05 00:05:34,536  INFO      Phase 2 — Verification gate
+2026-04-05 00:05:34,536  INFO        Fine-tuned accuracy — H1=0.573  H5=0.557  H20=0.533  Mean=0.555
+2026-04-05 00:05:34,537  INFO        Minimum required (mean across horizons) : 0.510
+2026-04-05 00:05:34,537  INFO        ✓ Phase 2 PASSED (H1=0.573  H5=0.557  H20=0.533) — proceeding to Phase 3
+2026-04-05 00:05:34,537  INFO      --------------------------------------------------
+2026-04-05 00:05:34,537  INFO      Phase 3 — Selective encoder unfreeze
+2026-04-05 00:05:34,537  WARNING     ✗ Skipping Phase 3 — only 1.6 years of data (need 2.0)
+2026-04-05 00:05:34,537  WARNING     Using Phase 1 checkpoint as final output.
+2026-04-05 00:05:34,539  INFO      Reverted to Phase 1 checkpoint.
+2026-04-05 00:05:34,653  INFO      Phase 1 H1 accuracy (recheck): 0.573
+2026-04-05 00:05:34,653  INFO      ============================================================
+2026-04-05 00:05:34,653  INFO      Fine-Tuning Summary
+2026-04-05 00:05:34,653  INFO        Instrument     : NYSE_XOM 4H
+2026-04-05 00:05:34,653  INFO        Final phase    : 1
+2026-04-05 00:05:34,653  INFO        Final checkpoint: models/fine_tuned/checkpoint_NYSE_XOM_4H_phase1_20260405.pt
+2026-04-05 00:05:34,780  INFO        Base model — H1=0.557  H5=0.539  H20=0.573  Mean=0.556
+2026-04-05 00:05:34,780  INFO        Fine-tuned — H1=0.573  H5=0.557  H20=0.533  Mean=0.555  (Phase 1)
+2026-04-05 00:05:34,780  WARNING     Delta mean accuracy : -0.002  ⚠  Fine-tuning degraded mean accuracy. Consider using the base model for this instrument. H1 delta=+0.016  H5 delta=+0.018  H20 delta=-0.040
+2026-04-05 00:05:34,783  INFO        Metrics saved  : logs/finetune/NYSE_XOM_4H_20260405_metrics.csv
+2026-04-05 00:05:34,783  INFO      Stage 6 complete.

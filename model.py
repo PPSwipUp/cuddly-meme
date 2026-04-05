@@ -5,7 +5,7 @@ Trading Algorithm Blueprint
 TCN encoder + prediction head, exactly as specified in blueprint Sections 4.1–4.4.
 
 Architecture:
-  Input  : [batch, lookback=60, n_features=29]
+  Input  : [batch, lookback=60, n_features=44]
   Encoder: 3-layer TCN with dilated causal convolutions (dilations 1,2,4)
            Hidden dim 128, kernel 3, GELU, LayerNorm, Dropout 0.25
            Global average pooling → [batch, 128]
@@ -102,7 +102,7 @@ class TCNEncoder(nn.Module):
     """
     def __init__(
         self,
-        n_features:  int = 29,
+        n_features:  int = 44,
         hidden_dim:  int = 128,
         n_layers:    int = 3,
         kernel_size: int = 3,
@@ -178,7 +178,7 @@ class TradingModel(nn.Module):
 
     def __init__(
         self,
-        n_features:  int   = 29,
+        n_features:  int   = 44,
         hidden_dim:  int   = 128,
         n_layers:    int   = 3,
         kernel_size: int   = 3,
@@ -222,25 +222,53 @@ class TradingModel(nn.Module):
 
 class TradingLoss(nn.Module):
     """
-    Combined loss for one horizon (blueprint Section 4.3 & 5.3):
-      0.5 × BCE(direction, label_smoothing=0.05)
+    Combined loss for one horizon:
+      0.5 × FocalBCE(direction, label_smoothing=0.05, gamma=2.0)
       0.5 × Huber(magnitude, delta=0.01)
+
+    Focal loss: downweights confident correct predictions so the model
+    focuses gradient on uncertain / difficult bars rather than coasting
+    on easy predictions. gamma=2 is the standard setting from the original
+    RetinaNet paper, well-validated across classification tasks.
     """
-    def __init__(self, label_smoothing: float = 0.05, huber_delta: float = 0.01):
+    def __init__(self, label_smoothing: float = 0.05,
+                 huber_delta: float = 0.01, focal_gamma: float = 0.5):
         super().__init__()
         self.smoothing   = label_smoothing
         self.huber_delta = huber_delta
+        self.focal_gamma = focal_gamma
 
     def forward(self, direction_pred, magnitude_pred, direction_true, magnitude_true):
         # Label smoothing: pull targets away from 0 and 1
         smooth_true = direction_true * (1 - self.smoothing) + 0.5 * self.smoothing
-        bce  = F.binary_cross_entropy(direction_pred, smooth_true)
+
+        # Focal BCE: weight = (1 - p_t)^gamma where p_t is the model's confidence
+        # in the correct class. High confidence → low weight → less gradient.
+        # This focuses training on the hard, uncertain predictions.
+        bce_raw = F.binary_cross_entropy(direction_pred, smooth_true, reduction="none")
+        # p_t: probability assigned to the correct class
+        p_t     = direction_pred * direction_true + (1 - direction_pred) * (1 - direction_true)
+        focal_w = (1 - p_t.detach()) ** self.focal_gamma
+        bce     = (focal_w * bce_raw).mean()
+
         huber = F.huber_loss(magnitude_pred, magnitude_true, delta=self.huber_delta)
         return 0.5 * bce + 0.5 * huber, bce, huber
 
 
 class MultiHorizonLoss(nn.Module):
-    """Averages TradingLoss equally across all three horizons."""
+    """
+    Weighted combination of TradingLoss across all three horizons.
+
+    H1 receives the highest weight (0.50) because it drives the trading
+    signal directly. H5 receives 0.35 — a medium-term view that confirms
+    or contradicts H1. H20 receives 0.15 — useful for regime context
+    but not the primary trading signal.
+
+    Equal weighting (0.33 each) would under-invest gradient in the signal
+    that actually determines position sizing and entry timing.
+    """
+    HORIZON_WEIGHTS = {1: 0.50, 5: 0.35, 20: 0.15}
+
     def __init__(self):
         super().__init__()
         self.horizon_loss = TradingLoss()
@@ -252,21 +280,22 @@ class MultiHorizonLoss(nn.Module):
         Returns: (total_loss, bce_loss, huber_loss)
         """
         total = bce_total = huber_total = 0.0
-        n = len(predictions)
+        weight_sum = sum(self.HORIZON_WEIGHTS.values())
 
         for h, (dir_pred, mag_pred) in predictions.items():
             dir_true, mag_true = targets[h]
             loss, bce, huber   = self.horizon_loss(dir_pred, mag_pred, dir_true, mag_true)
-            total      += loss
-            bce_total  += bce
-            huber_total += huber
+            w = self.HORIZON_WEIGHTS.get(h, 1.0) / weight_sum
+            total       += w * loss
+            bce_total   += w * bce
+            huber_total += w * huber
 
-        return total / n, bce_total / n, huber_total / n
+        return total, bce_total, huber_total
 
 
 # ─── Model factory ────────────────────────────────────────────────────────────
 
-def build_model(n_features: int = 29, device: str = "cpu") -> TradingModel:
+def build_model(n_features: int = 44, device: str = "cpu") -> TradingModel:
     """Instantiate model with blueprint-specified default hyperparameters."""
     model = TradingModel(
         n_features=n_features,
@@ -287,11 +316,11 @@ if __name__ == "__main__":
     device = "cuda" if torch.cuda.is_available() else "cpu"
     print(f"Device: {device}")
 
-    model = build_model(n_features=29, device=device)
+    model = build_model(n_features=44, device=device)
     print(f"Parameters: {model.count_parameters():,}")
 
     # Verify forward pass with blueprint dimensions
-    batch   = torch.randn(256, 60, 29).to(device)   # [batch=256, lookback=60, features=29]
+    batch   = torch.randn(256, 60, 44).to(device)   # [batch=256, lookback=60, features=29]
     outputs = model(batch)
 
     print("\nForward pass output shapes:")

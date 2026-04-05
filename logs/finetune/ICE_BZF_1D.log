@@ -1,0 +1,69 @@
+2026-04-04 23:13:42,774  INFO      ============================================================
+2026-04-04 23:13:42,775  INFO      Stage 6 Fine-Tuning — Start
+2026-04-04 23:13:42,775  INFO      Instrument  : ICE_BZF
+2026-04-04 23:13:42,775  INFO      Resolution  : 1D
+2026-04-04 23:13:42,775  INFO      Device      : cpu
+2026-04-04 23:13:42,775  INFO      Base checkpoint: models/base/checkpoint_base_v1.pt
+2026-04-04 23:13:42,777  INFO      Loading: ICE_BZF_1D_20150101_20260326.npy
+2026-04-04 23:13:44,843  INFO        Shape: (2645, 60, 42)  (2645 windows)
+2026-04-04 23:13:44,863  INFO        Date range: 2015-09-18 → 2026-03-25  (10.5 years)
+2026-04-04 23:13:44,863  INFO        Train windows: 2584  Val windows: 61
+2026-04-04 23:13:44,863  INFO      Years of data: 10.5
+2026-04-04 23:13:44,931  INFO      Loading base checkpoint: models/base/checkpoint_base_v1.pt
+2026-04-04 23:13:44,947  INFO        Base val_loss: 0.2466  (fold 2, epoch 28)
+2026-04-04 23:13:44,947  INFO      --------------------------------------------------
+2026-04-04 23:13:44,947  INFO      Phase 1 — Head-only adaptation (encoder frozen)
+2026-04-04 23:13:47,651  INFO        P1 Epoch  1 | TrainLoss 0.2467 | ValLoss 0.2605 | ValAcc H1=0.492 H5=0.459 H20=0.295
+2026-04-04 23:13:49,427  INFO        P1 Epoch  2 | TrainLoss 0.2465 | ValLoss 0.2599 | ValAcc H1=0.492 H5=0.459 H20=0.295
+2026-04-04 23:13:51,302  INFO        P1 Epoch  3 | TrainLoss 0.2466 | ValLoss 0.2597 | ValAcc H1=0.492 H5=0.459 H20=0.311
+2026-04-04 23:13:53,036  INFO        P1 Epoch  4 | TrainLoss 0.2465 | ValLoss 0.2592 | ValAcc H1=0.492 H5=0.459 H20=0.295
+2026-04-04 23:13:54,994  INFO        P1 Epoch  5 | TrainLoss 0.2463 | ValLoss 0.2591 | ValAcc H1=0.492 H5=0.459 H20=0.295
+2026-04-04 23:13:56,863  INFO        P1 Epoch  6 | TrainLoss 0.2466 | ValLoss 0.2587 | ValAcc H1=0.492 H5=0.443 H20=0.311
+2026-04-04 23:13:58,541  INFO        P1 Epoch  7 | TrainLoss 0.2465 | ValLoss 0.2587 | ValAcc H1=0.492 H5=0.443 H20=0.311
+2026-04-04 23:14:00,295  INFO        P1 Epoch  8 | TrainLoss 0.2464 | ValLoss 0.2585 | ValAcc H1=0.492 H5=0.443 H20=0.311
+2026-04-04 23:14:02,197  INFO        P1 Epoch  9 | TrainLoss 0.2462 | ValLoss 0.2584 | ValAcc H1=0.492 H5=0.443 H20=0.295
+2026-04-04 23:14:03,930  INFO        P1 Epoch 10 | TrainLoss 0.2465 | ValLoss 0.2583 | ValAcc H1=0.492 H5=0.443 H20=0.295
+2026-04-04 23:14:05,890  INFO        P1 Epoch 11 | TrainLoss 0.2465 | ValLoss 0.2582 | ValAcc H1=0.492 H5=0.443 H20=0.311
+2026-04-04 23:14:07,738  INFO        P1 Epoch 12 | TrainLoss 0.2464 | ValLoss 0.2583 | ValAcc H1=0.492 H5=0.459 H20=0.279
+2026-04-04 23:14:09,452  INFO        P1 Epoch 13 | TrainLoss 0.2466 | ValLoss 0.2582 | ValAcc H1=0.492 H5=0.443 H20=0.311
+2026-04-04 23:14:11,209  INFO        P1 Epoch 14 | TrainLoss 0.2466 | ValLoss 0.2580 | ValAcc H1=0.492 H5=0.443 H20=0.311
+2026-04-04 23:14:12,991  INFO        P1 Epoch 15 | TrainLoss 0.2463 | ValLoss 0.2580 | ValAcc H1=0.492 H5=0.443 H20=0.311
+2026-04-04 23:14:14,895  INFO        P1 Epoch 16 | TrainLoss 0.2466 | ValLoss 0.2580 | ValAcc H1=0.492 H5=0.443 H20=0.311
+2026-04-04 23:14:16,653  INFO        P1 Epoch 17 | TrainLoss 0.2465 | ValLoss 0.2579 | ValAcc H1=0.492 H5=0.443 H20=0.311
+2026-04-04 23:14:18,417  INFO        P1 Epoch 18 | TrainLoss 0.2465 | ValLoss 0.2579 | ValAcc H1=0.492 H5=0.443 H20=0.311
+2026-04-04 23:14:20,072  INFO        P1 Epoch 19 | TrainLoss 0.2463 | ValLoss 0.2580 | ValAcc H1=0.492 H5=0.443 H20=0.311
+2026-04-04 23:14:21,815  INFO        P1 Epoch 20 | TrainLoss 0.2465 | ValLoss 0.2580 | ValAcc H1=0.492 H5=0.443 H20=0.311
+2026-04-04 23:14:23,504  INFO        P1 Epoch 21 | TrainLoss 0.2465 | ValLoss 0.2580 | ValAcc H1=0.492 H5=0.443 H20=0.311
+2026-04-04 23:14:25,395  INFO        P1 Epoch 22 | TrainLoss 0.2463 | ValLoss 0.2579 | ValAcc H1=0.492 H5=0.443 H20=0.311
+2026-04-04 23:14:27,135  INFO        P1 Epoch 23 | TrainLoss 0.2465 | ValLoss 0.2579 | ValAcc H1=0.492 H5=0.443 H20=0.311
+2026-04-04 23:14:28,860  INFO        P1 Epoch 24 | TrainLoss 0.2465 | ValLoss 0.2579 | ValAcc H1=0.492 H5=0.443 H20=0.311
+2026-04-04 23:14:30,589  INFO        P1 Epoch 25 | TrainLoss 0.2464 | ValLoss 0.2579 | ValAcc H1=0.492 H5=0.443 H20=0.311
+2026-04-04 23:14:32,340  INFO        P1 Epoch 26 | TrainLoss 0.2465 | ValLoss 0.2579 | ValAcc H1=0.492 H5=0.443 H20=0.311
+2026-04-04 23:14:34,003  INFO        P1 Epoch 27 | TrainLoss 0.2464 | ValLoss 0.2579 | ValAcc H1=0.492 H5=0.443 H20=0.311
+2026-04-04 23:14:35,985  INFO        P1 Epoch 28 | TrainLoss 0.2466 | ValLoss 0.2579 | ValAcc H1=0.492 H5=0.443 H20=0.311
+2026-04-04 23:14:37,702  INFO        P1 Epoch 29 | TrainLoss 0.2465 | ValLoss 0.2579 | ValAcc H1=0.492 H5=0.443 H20=0.311
+2026-04-04 23:14:39,415  INFO        P1 Epoch 30 | TrainLoss 0.2465 | ValLoss 0.2579 | ValAcc H1=0.492 H5=0.443 H20=0.311
+2026-04-04 23:14:39,449  INFO        Phase 1 complete. Best val_loss: 0.2579  H1=0.492 H5=0.443 H20=0.311
+2026-04-04 23:14:39,453  INFO      Phase 1 checkpoint saved: models/fine_tuned/checkpoint_ICE_BZF_1D_phase1_20260404.pt
+2026-04-04 23:14:39,454  INFO      Loading base checkpoint: models/base/checkpoint_base_v1.pt
+2026-04-04 23:14:39,464  INFO        Base val_loss: 0.2466  (fold 2, epoch 28)
+2026-04-04 23:14:39,506  INFO      Base model H1 accuracy on instrument val set: 0.492
+2026-04-04 23:14:39,506  INFO      Fine-tuned  H1 accuracy (Phase 1)           : 0.492
+2026-04-04 23:14:39,506  INFO      --------------------------------------------------
+2026-04-04 23:14:39,506  INFO      Phase 2 — Verification gate
+2026-04-04 23:14:39,507  INFO        Fine-tuned accuracy — H1=0.492  H5=0.443  H20=0.311  Mean=0.415
+2026-04-04 23:14:39,507  INFO        Minimum required (mean across horizons) : 0.510
+2026-04-04 23:14:39,507  WARNING     ✗ Phase 2 FAILED — mean accuracy 0.415 is below 0.510
+2026-04-04 23:14:39,507  WARNING     H1=0.492  H5=0.443  H20=0.311
+2026-04-04 23:14:39,507  WARNING     Instrument may be unpredictable at this resolution.
+2026-04-04 23:14:39,507  WARNING     Using Phase 1 checkpoint as final output.
+2026-04-04 23:14:39,507  INFO      ============================================================
+2026-04-04 23:14:39,507  INFO      Fine-Tuning Summary
+2026-04-04 23:14:39,507  INFO        Instrument     : ICE_BZF 1D
+2026-04-04 23:14:39,507  INFO        Final phase    : 1
+2026-04-04 23:14:39,508  INFO        Final checkpoint: models/fine_tuned/checkpoint_ICE_BZF_1D_phase1_20260404.pt
+2026-04-04 23:14:39,545  INFO        Base model — H1=0.492  H5=0.459  H20=0.311  Mean=0.421
+2026-04-04 23:14:39,545  INFO        Fine-tuned — H1=0.492  H5=0.443  H20=0.311  Mean=0.415  (Phase 1)
+2026-04-04 23:14:39,545  WARNING     Delta mean accuracy : -0.005  ⚠  Fine-tuning degraded mean accuracy. Consider using the base model for this instrument. H1 delta=+0.000  H5 delta=-0.016  H20 delta=+0.000
+2026-04-04 23:14:39,547  INFO        Metrics saved  : logs/finetune/ICE_BZF_1D_20260404_metrics.csv
+2026-04-04 23:14:39,548  INFO      Stage 6 complete.

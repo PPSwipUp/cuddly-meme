@@ -1,0 +1,150 @@
+2026-04-05 00:34:26,745  INFO      Stage 7 — device=cpu
+2026-04-05 00:34:26,746  INFO      ============================================================
+2026-04-05 00:34:26,746  INFO      FINE-TUNED — CRYPTO_BTC-USD 4H
+2026-04-05 00:34:26,746  INFO      ============================================================
+2026-04-05 00:34:26,819  INFO      Test windows: 541 (last 15% of 3602)
+2026-04-05 00:34:27,527  INFO      ──────────────────────────────────────────────────────────
+2026-04-05 00:34:27,528  INFO      REPORT — CRYPTO_BTC-USD Fine-tuned  (n=541)
+2026-04-05 00:34:27,528  INFO      ──────────────────────────────────────────────────────────
+2026-04-05 00:34:27,528  INFO      
+  Directional Accuracy:
+2026-04-05 00:34:27,528  INFO          H1 : 0.542  (need 0.53)  ✓
+2026-04-05 00:34:27,528  INFO          H5 : 0.519  (need 0.52)  ✗
+2026-04-05 00:34:27,528  INFO          H20: 0.545  (need 0.52)  ✓
+2026-04-05 00:34:27,529  INFO      
+  Strategy (long/short, 0.05%% tx cost):
+2026-04-05 00:34:27,529  INFO          H1 : Sharpe=1.266 ✓   MaxDD=1.9% ✓
+2026-04-05 00:34:27,529  INFO          H5 : Sharpe=0.323 ✗   MaxDD=2.1% ✓
+2026-04-05 00:34:27,529  INFO          H20: Sharpe=0.264 ✗   MaxDD=2.2% ✓
+2026-04-05 00:34:27,529  INFO      
+  Regime Accuracy (H1):
+2026-04-05 00:34:27,529  INFO          Class 0 (Range/LowVol)  : 0.333  ✗
+2026-04-05 00:34:27,529  INFO          Class 1 (Range/NormVol) : 0.560  ✓
+2026-04-05 00:34:27,529  INFO          Class 2 (Range/HighVol) : too few samples
+2026-04-05 00:34:27,529  INFO          Class 3 (Trend/LowVol)  : 0.536  ✓
+2026-04-05 00:34:27,529  INFO          Class 4 (Trend/NormVol) : 0.556  ✓
+2026-04-05 00:34:27,529  INFO          Class 5 (Trend/HighVol) : 0.619  ✓
+2026-04-05 00:34:27,529  INFO          -> 4/5 pass 51%  ✓
+2026-04-05 00:34:27,529  INFO      
+  Calibration (H1):
+2026-04-05 00:34:27,529  INFO          p=0.43 -> 0.488  █████████  (n=121)
+2026-04-05 00:34:27,529  INFO          p=0.47 -> 0.488  █████████  (n=215)
+2026-04-05 00:34:27,529  INFO          p=0.53 -> 0.647  ████████████  (n=109)
+2026-04-05 00:34:27,529  INFO          p=0.57 -> 0.521  ██████████  (n=96)
+2026-04-05 00:34:27,529  INFO      
+  Yearly P&L (H1):
+2026-04-05 00:34:27,530  INFO          2025: +13.9062
+2026-04-05 00:34:27,530  INFO          2026: +29.6202
+2026-04-05 00:34:27,530  INFO      
+  ✓ No red flags.
+2026-04-05 00:34:27,530  INFO      
+  VERDICT: ✅  PRODUCTION READY
+2026-04-05 00:34:27,530  INFO        Capital Simulation (prob-scaled sizing, full-Kelly, 8% max risk):
+2026-04-05 00:34:27,530  INFO          Starting capital   : £   10,000.00
+2026-04-05 00:34:27,531  INFO          Ending capital     : £   10,247.27  (+2.47%)
+2026-04-05 00:34:27,531  INFO          Annualised return  :  +9.33%
+2026-04-05 00:34:27,531  INFO          Sharpe (backtest)  :  0.662  ⚠
+2026-04-05 00:34:27,531  INFO          Max drawdown       :  0.78%  ✓
+2026-04-05 00:34:27,531  INFO          Profit factor      :  1.377
+2026-04-05 00:34:27,531  INFO          Win rate           :  51.61%  ⚠
+2026-04-05 00:34:27,531  INFO          Avg P&L / bar held :  £+1.1395  (+0.0114% of capital)
+2026-04-05 00:34:27,531  INFO          Avg P&L / position :  £+82.42  (+0.8242% of capital)  ✓
+2026-04-05 00:34:27,531  INFO          Net P&L            :  £247.27
+2026-04-05 00:34:27,531  INFO          Time elapsed       :  100d  (100 calendar days)
+2026-04-05 00:34:27,531  INFO          Bars with position :  217  (40.1% of bars)
+2026-04-05 00:34:27,531  INFO          Distinct positions :  3  (11.0 direction changes/instrument/yr)
+2026-04-05 00:34:27,531  INFO          No-trade bars      :  324  (prob < 55%)
+2026-04-05 00:34:27,532  INFO          Avg leverage used  :  1.1x  (46.5% of bars leveraged)
+2026-04-05 00:34:27,532  INFO          Leverage gate      :  prob >= 56%  (full at >= 63%)
+2026-04-05 00:34:27,532  INFO      
+  Position Duration (bars between direction changes):
+2026-04-05 00:34:27,532  INFO          Avg hold           :  72.3 days  (72.3 trading days)
+2026-04-05 00:34:27,533  INFO          Median hold        :  67.0 days
+2026-04-05 00:34:27,533  INFO          Min / Max hold     :  54 / 96 days
+2026-04-05 00:34:27,533  INFO          Flipped next bar   :  0.0%  of positions
+2026-04-05 00:34:27,533  INFO          Held 5 bars or les :  0.0%  of positions
+2026-04-05 00:34:27,533  INFO          → Medium-term holder: ~72 days avg per position
+2026-04-05 00:34:27,533  INFO      ──────────────────────────────────────────────────────────
+2026-04-05 00:34:28,120  INFO      ──────────────────────────────────────────────────────────
+2026-04-05 00:34:28,120  INFO      REPORT — CRYPTO_BTC-USD Base  (n=541)
+2026-04-05 00:34:28,120  INFO      ──────────────────────────────────────────────────────────
+2026-04-05 00:34:28,120  INFO      
+  Directional Accuracy:
+2026-04-05 00:34:28,120  INFO          H1 : 0.542  (need 0.53)  ✓
+2026-04-05 00:34:28,120  INFO          H5 : 0.516  (need 0.52)  ✗
+2026-04-05 00:34:28,120  INFO          H20: 0.538  (need 0.52)  ✓
+2026-04-05 00:34:28,120  INFO      
+  Strategy (long/short, 0.05%% tx cost):
+2026-04-05 00:34:28,120  INFO          H1 : Sharpe=1.266 ✓   MaxDD=1.9% ✓
+2026-04-05 00:34:28,120  INFO          H5 : Sharpe=0.205 ✗   MaxDD=2.1% ✓
+2026-04-05 00:34:28,120  INFO          H20: Sharpe=0.029 ✗   MaxDD=2.2% ✓
+2026-04-05 00:34:28,120  INFO      
+  Regime Accuracy (H1):
+2026-04-05 00:34:28,120  INFO          Class 0 (Range/LowVol)  : 0.333  ✗
+2026-04-05 00:34:28,120  INFO          Class 1 (Range/NormVol) : 0.560  ✓
+2026-04-05 00:34:28,120  INFO          Class 2 (Range/HighVol) : too few samples
+2026-04-05 00:34:28,120  INFO          Class 3 (Trend/LowVol)  : 0.536  ✓
+2026-04-05 00:34:28,121  INFO          Class 4 (Trend/NormVol) : 0.556  ✓
+2026-04-05 00:34:28,121  INFO          Class 5 (Trend/HighVol) : 0.619  ✓
+2026-04-05 00:34:28,121  INFO          -> 4/5 pass 51%  ✓
+2026-04-05 00:34:28,121  INFO      
+  Calibration (H1):
+2026-04-05 00:34:28,121  INFO          p=0.43 -> 0.480  █████████  (n=125)
+2026-04-05 00:34:28,121  INFO          p=0.47 -> 0.493  █████████  (n=213)
+2026-04-05 00:34:28,121  INFO          p=0.53 -> 0.658  █████████████  (n=101)
+2026-04-05 00:34:28,121  INFO          p=0.57 -> 0.520  ██████████  (n=102)
+2026-04-05 00:34:28,121  INFO      
+  Yearly P&L (H1):
+2026-04-05 00:34:28,121  INFO          2025: +13.9062
+2026-04-05 00:34:28,121  INFO          2026: +30.6151
+2026-04-05 00:34:28,121  INFO      
+  ✓ No red flags.
+2026-04-05 00:34:28,121  INFO      
+  VERDICT: ✅  PRODUCTION READY
+2026-04-05 00:34:28,121  INFO        Capital Simulation (prob-scaled sizing, full-Kelly, 8% max risk):
+2026-04-05 00:34:28,121  INFO          Starting capital   : £   10,000.00
+2026-04-05 00:34:28,121  INFO          Ending capital     : £   10,265.91  (+2.66%)
+2026-04-05 00:34:28,121  INFO          Annualised return  :  +10.06%
+2026-04-05 00:34:28,121  INFO          Sharpe (backtest)  :  0.623  ⚠
+2026-04-05 00:34:28,121  INFO          Max drawdown       :  0.89%  ✓
+2026-04-05 00:34:28,122  INFO          Profit factor      :  1.374
+2026-04-05 00:34:28,122  INFO          Win rate           :  51.98%  ⚠
+2026-04-05 00:34:28,122  INFO          Avg P&L / bar held :  £+1.1714  (+0.0117% of capital)
+2026-04-05 00:34:28,122  INFO          Avg P&L / position :  £+88.64  (+0.8864% of capital)  ✓
+2026-04-05 00:34:28,122  INFO          Net P&L            :  £265.91
+2026-04-05 00:34:28,122  INFO          Time elapsed       :  100d  (100 calendar days)
+2026-04-05 00:34:28,122  INFO          Bars with position :  227  (42.0% of bars)
+2026-04-05 00:34:28,122  INFO          Distinct positions :  3  (11.0 direction changes/instrument/yr)
+2026-04-05 00:34:28,122  INFO          No-trade bars      :  314  (prob < 55%)
+2026-04-05 00:34:28,122  INFO          Avg leverage used  :  1.1x  (48.0% of bars leveraged)
+2026-04-05 00:34:28,122  INFO          Leverage gate      :  prob >= 56%  (full at >= 63%)
+2026-04-05 00:34:28,122  INFO      
+  Position Duration (bars between direction changes):
+2026-04-05 00:34:28,122  INFO          Avg hold           :  75.7 days  (75.7 trading days)
+2026-04-05 00:34:28,122  INFO          Median hold        :  70.0 days
+2026-04-05 00:34:28,122  INFO          Min / Max hold     :  55 / 102 days
+2026-04-05 00:34:28,122  INFO          Flipped next bar   :  0.0%  of positions
+2026-04-05 00:34:28,123  INFO          Held 5 bars or les :  0.0%  of positions
+2026-04-05 00:34:28,123  INFO          → Medium-term holder: ~76 days avg per position
+2026-04-05 00:34:28,123  INFO      ──────────────────────────────────────────────────────────
+2026-04-05 00:34:28,123  INFO      
+  Delta (fine-tuned - base):
+2026-04-05 00:34:28,123  INFO          H1 : +0.000  ft=0.542  base=0.542  ⚠
+2026-04-05 00:34:28,123  INFO          H5 : +0.004  ft=0.519  base=0.516  ✓
+2026-04-05 00:34:28,123  INFO          H20: +0.007  ft=0.545  base=0.538  ✓
+2026-04-05 00:34:28,123  INFO        ✓  Fine-tuned better (0.535 vs 0.532).
+2026-04-05 00:34:28,123  INFO      
+  Feature Attribution (H1, gradient):
+2026-04-05 00:34:29,684  INFO          vwap_dist               5.1%  ██
+2026-04-05 00:34:29,684  INFO          ichimoku                4.4%  ██
+2026-04-05 00:34:29,684  INFO          rsi28                   4.1%  ██
+2026-04-05 00:34:29,684  INFO          gap                     3.8%  █
+2026-04-05 00:34:29,684  INFO          bb_pos                  3.2%  █
+2026-04-05 00:34:29,684  INFO          vol_z                   3.1%  █
+2026-04-05 00:34:29,684  INFO          atr_mom                 3.0%  █
+2026-04-05 00:34:29,684  INFO          sess_london             2.9%  █
+2026-04-05 00:34:29,684  INFO          hour_sin                2.9%  █
+2026-04-05 00:34:29,684  INFO          sma20                   2.8%  █
+2026-04-05 00:34:29,685  INFO        ✓  Attribution spread ok (max=5.1%)
+2026-04-05 00:34:29,687  INFO      Saved: logs/evaluation/CRYPTO_BTC-USD_4H_eval.csv
+2026-04-05 00:34:29,687  INFO      Stage 7 complete.

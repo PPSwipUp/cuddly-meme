@@ -1,0 +1,11 @@
+2026-04-04 22:18:26,314  INFO      ============================================================
+2026-04-04 22:18:26,314  INFO      Stage 6 Fine-Tuning — Start
+2026-04-04 22:18:26,315  INFO      Instrument  : CBOT_ZWF
+2026-04-04 22:18:26,315  INFO      Resolution  : 1H
+2026-04-04 22:18:26,315  INFO      Device      : cpu
+2026-04-04 22:18:26,315  INFO      Base checkpoint: models/base/checkpoint_base_v1.pt
+2026-04-04 22:18:26,316  INFO      Loading: CBOT_ZWF_1H_20240405_20260326.npy
+2026-04-04 22:18:28,299  INFO        Shape: (2326, 60, 48)  (2326 windows)
+2026-04-04 22:18:28,316  INFO        Date range: 2025-01-07 → 2025-07-07  (0.5 years)
+2026-04-04 22:18:28,316  INFO        Train windows: 1178  Val windows: 1148
+2026-04-04 22:18:28,316  ERROR     Only 0.5 years of data — minimum 6 months required for fine-tuning. Use the base model for this instrument.

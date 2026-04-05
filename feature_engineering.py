@@ -11,7 +11,11 @@ Features computed:
   2.3  Technical:    ATR(7/14/28), ATR ratio, RSI(14/28), MACD histogram,
                      ROC(5/10/20/60), Bollinger Band position,
                      SMA20/50 distance, rolling correlation to index,
-                     high-low range percentile
+                     high-low range percentile,
+                     Williams %R, Stochastic %K, realised vol ratio,
+                     OBV z-score, 52w high/low distance, ATR momentum,
+                     CCI(20), Ichimoku distance, VWAP distance,
+                     consecutive bar direction, RSI momentum, Donchian position
   2.4  Calendar:     day-of-week sin/cos, month sin/cos, hour sin/cos (intraday),
                      forex session flags, quarter-end flag
   1.5  Regime label: trend regime + volatility regime (6 classes)
@@ -159,6 +163,99 @@ def compute_technical_features(df):
     # High-low range percentile
     bar_range = high - low
     feats["range_percentile"] = bar_range.rolling(60).rank(pct=True)
+
+    # ── New features ──────────────────────────────────────────────────────────
+
+    # Williams %R (14-bar): momentum oscillator, mapped to [0, 1]
+    # Measures where close is within the 14-bar high-low range.
+    # 0 = at 14-bar high (overbought zone), 1 = at 14-bar low (oversold zone).
+    h14 = high.rolling(14).max()
+    l14 = low.rolling(14).min()
+    feats["williams_r_14"] = (h14 - close) / (h14 - l14 + eps)
+
+    # Stochastic %K (14-bar): similar to Williams %R but low-anchored [0, 1]
+    # 1 = close at 14-bar high, 0 = close at 14-bar low.
+    feats["stoch_k_14"] = (close - l14) / (h14 - l14 + eps)
+
+    # Realised volatility ratio: short-term vol / long-term vol.
+    # > 1 = vol is expanding (regime shift), < 1 = vol contracting.
+    # ATR-normalised to make it dimensionless across instruments.
+    rv5  = close.diff().rolling(5).std()
+    rv20 = close.diff().rolling(20).std()
+    feats["realized_vol_ratio"] = rv5 / (rv20 + eps)
+
+    # On-Balance Volume z-score: volume trend confirmation.
+    # OBV rises when close rises (accumulation), falls when close falls (distribution).
+    obv_raw = (np.sign(close.diff()) * df["Volume"]).cumsum()
+    feats["obv_zscore"] = rolling_zscore(obv_raw, 20).clip(-Z_CLIP, Z_CLIP)
+
+    # Distance to 52-week high and low, ATR-normalised.
+    # Large negative dist_52w_high = far below 52w high (potential support break).
+    # Close to 0 dist_52w_low = near 52w low (potential support level).
+    h252 = high.rolling(252, min_periods=60).max()
+    l252 = low.rolling(252, min_periods=60).min()
+    feats["dist_52w_high"] = (close - h252) / (atr14 + eps)  # always <= 0
+    feats["dist_52w_low"]  = (close - l252) / (atr14 + eps)  # always >= 0
+
+    # ATR momentum: rate of change of ATR14 over 5 bars.
+    # Positive = volatility expanding (potential breakout / trend acceleration).
+    # Negative = volatility contracting (potential mean reversion).
+    feats["atr_momentum"] = (atr14 - atr14.shift(5)) / (atr14.shift(5) + eps)
+
+    # Commodity Channel Index (CCI, 20-bar): trend strength and extremes.
+    # Normalised to roughly [-1, +1] range by dividing by 200.
+    # +1 = strongly overbought trend, -1 = strongly oversold trend.
+    typical_price = (high + low + close) / 3
+    tp_sma20      = typical_price.rolling(20).mean()
+    tp_mad20      = typical_price.rolling(20).apply(
+        lambda x: np.abs(x - x.mean()).mean(), raw=True
+    )
+    feats["cci_20"] = (typical_price - tp_sma20) / (0.015 * tp_mad20 + eps) / 200
+
+
+    # ── New features — batch 2 ────────────────────────────────────────────────
+
+    # Ichimoku distance: gap between Tenkan-sen (9-bar) and Kijun-sen (26-bar),
+    # ATR14-normalised. Positive = bullish momentum (fast line above slow line).
+    # Widely used by institutional FX and equity participants.
+    tenkan  = (high.rolling(9).max()  + low.rolling(9).min())  / 2
+    kijun   = (high.rolling(26).max() + low.rolling(26).min()) / 2
+    feats["ichimoku_distance"] = (tenkan - kijun) / (atr14 + eps)
+
+    # VWAP distance: how far price is from its 20-bar volume-weighted average.
+    # Institutional traders use VWAP as a reference price for order execution.
+    # Positive = price above VWAP (bullish), negative = below (bearish).
+    vwap20 = (close * df["Volume"]).rolling(20).sum() / (df["Volume"].rolling(20).sum() + eps)
+    feats["vwap_distance"] = (close - vwap20) / (atr14 + eps)
+
+    # Consecutive bar direction: number of consecutive bars moving in the same
+    # direction, clipped to ±5 and normalised. Long up/down streaks often precede
+    # reversals; short streaks indicate indecision.
+    direction_sign = np.sign(close.diff()).fillna(0)
+    consec = pd.Series(0.0, index=close.index)
+    for i in range(1, len(close)):
+        prev = consec.iloc[i - 1]
+        cur  = direction_sign.iloc[i]
+        if cur == 0:
+            consec.iloc[i] = 0
+        elif (prev >= 0 and cur > 0) or (prev <= 0 and cur < 0):
+            consec.iloc[i] = prev + cur
+        else:
+            consec.iloc[i] = cur
+    feats["consec_bars"] = (consec.clip(-5, 5) / 5)
+
+    # RSI momentum: 3-bar rate of change of RSI14.
+    # Captures whether momentum is accelerating (positive) or decelerating
+    # (negative), independently of the RSI level itself.
+    rsi14_series = rsi(close, 14)
+    feats["rsi_momentum"] = (rsi14_series - rsi14_series.shift(3)) / 100
+
+    # Donchian channel position: where close sits within the 20-bar high-low
+    # range. 1.0 = at 20-bar high (potential resistance), 0.0 = at 20-bar low.
+    # Range-based breakout signal, distinct from Bollinger (std-based).
+    high20 = high.rolling(20).max()
+    low20  = low.rolling(20).min()
+    feats["donchian_position"] = (close - low20) / (high20 - low20 + eps)
 
     return feats
 
@@ -334,8 +431,14 @@ def process_file(filepath, index_dfs):
 
     # Calendar cols are already normalised — skip z-scoring them
     cal_cols       = list(cal_feats.columns)
-    non_zscore     = cal_cols + ["bb_position", "rsi14", "rsi28",
-                                  "range_percentile", "regime"]
+    non_zscore     = cal_cols + [
+        "bb_position", "rsi14", "rsi28", "range_percentile", "regime",
+        # Already bounded — z-scoring would distort their meaning
+        "donchian_position",   # [0, 1] by construction
+        "stoch_k_14",          # [0, 1] by construction
+        "williams_r_14",       # [0, 1] by construction
+        "consec_bars",         # [-1, +1] by construction
+    ]
 
     # Apply rolling z-score pipeline
     feat_normalised = apply_rolling_zscore_pipeline(all_feats, non_zscore_cols=set(cal_cols))
@@ -464,8 +567,7 @@ def main():
     log.info("  Total training windows: %d", total_windows)
 
     # Regime class balance across all data
-    all_regimes = np.concatenate([r["regimes"] for r in results])
-    valid_reg   = all_regimes[~np.isnan(all_regimes)]
+    all_regimes = np.concatenate.                                         B.isnan(all_regimes)]
     log.info("\nGlobal regime class distribution:")
     for cls in range(6):
         cnt = (valid_reg == cls).sum()

@@ -1,0 +1,147 @@
+2026-04-05 00:40:42,639  INFO      Stage 7 — device=cpu
+2026-04-05 00:40:42,640  INFO      ============================================================
+2026-04-05 00:40:42,640  INFO      FINE-TUNED — NYSE_NVDA 4H
+2026-04-05 00:40:42,640  INFO      ============================================================
+2026-04-05 00:40:42,685  INFO      Test windows: 146 (last 15% of 972)
+2026-04-05 00:40:42,827  INFO      ──────────────────────────────────────────────────────────
+2026-04-05 00:40:42,830  INFO      REPORT — NYSE_NVDA Fine-tuned  (n=146)
+2026-04-05 00:40:42,831  INFO      ──────────────────────────────────────────────────────────
+2026-04-05 00:40:42,831  INFO      
+  Directional Accuracy:
+2026-04-05 00:40:42,832  INFO          H1 : 0.575  (need 0.53)  ✓
+2026-04-05 00:40:42,833  INFO          H5 : 0.541  (need 0.52)  ✓
+2026-04-05 00:40:42,833  INFO          H20: 0.623  (need 0.52)  ✓
+2026-04-05 00:40:42,834  INFO      
+  Strategy (long/short, 0.05%% tx cost):
+2026-04-05 00:40:42,835  INFO          H1 : Sharpe=2.195 ✓   MaxDD=1.1% ✓
+2026-04-05 00:40:42,835  INFO          H5 : Sharpe=0.217 ✗   MaxDD=1.4% ✓
+2026-04-05 00:40:42,835  INFO          H20: Sharpe=-0.435 ✗   MaxDD=2.5% ✓
+2026-04-05 00:40:42,835  INFO      
+  Regime Accuracy (H1):
+2026-04-05 00:40:42,835  INFO          Class 0 (Range/LowVol)  : too few samples
+2026-04-05 00:40:42,836  INFO          Class 1 (Range/NormVol) : 0.672  ✓
+2026-04-05 00:40:42,836  INFO          Class 2 (Range/HighVol) : too few samples
+2026-04-05 00:40:42,836  INFO          Class 3 (Trend/LowVol)  : too few samples
+2026-04-05 00:40:42,836  INFO          Class 4 (Trend/NormVol) : 0.468  ✗
+2026-04-05 00:40:42,836  INFO          Class 5 (Trend/HighVol) : too few samples
+2026-04-05 00:40:42,836  INFO          -> 1/2 pass 51%  ✗
+2026-04-05 00:40:42,836  INFO      
+  Calibration (H1):
+2026-04-05 00:40:42,836  INFO          p=0.47 -> 0.459  █████████  (n=85)
+2026-04-05 00:40:42,836  INFO          p=0.53 -> 0.577  ███████████  (n=39)
+2026-04-05 00:40:42,836  INFO      
+  Yearly P&L (H1):
+2026-04-05 00:40:42,837  INFO          2026: +31.5921
+2026-04-05 00:40:42,837  INFO      
+  RED FLAGS:
+2026-04-05 00:40:42,837  WARNING       🚩 LEAKAGE? H20 acc=0.623 > 60%
+2026-04-05 00:40:42,837  WARNING       🚩 100% of profits in 2026 — year-specific
+2026-04-05 00:40:42,837  INFO      
+  VERDICT: ❌  NOT PRODUCTION READY
+2026-04-05 00:40:42,837  INFO        Capital Simulation (prob-scaled sizing, full-Kelly, 8% max risk):
+2026-04-05 00:40:42,837  INFO          Starting capital   : £   10,000.00
+2026-04-05 00:40:42,837  INFO          Ending capital     : £   10,018.72  (+0.19%)
+2026-04-05 00:40:42,837  INFO          Annualised return  :  +0.90%
+2026-04-05 00:40:42,837  INFO          Sharpe (backtest)  :  0.000  ✗
+2026-04-05 00:40:42,837  INFO          Max drawdown       :  0.03%  ✓
+2026-04-05 00:40:42,837  INFO          Profit factor      :  2.764
+2026-04-05 00:40:42,837  INFO          Win rate           :  68.18%  ✓
+2026-04-05 00:40:42,837  INFO          Avg P&L / bar held :  £+0.8509  (+0.0085% of capital)
+2026-04-05 00:40:42,837  INFO          Avg P&L / position :  £+18.72  (+0.1872% of capital)  ✓
+2026-04-05 00:40:42,838  INFO          Net P&L            :  £18.72
+2026-04-05 00:40:42,838  INFO          Time elapsed       :  76d  (76 calendar days)
+2026-04-05 00:40:42,838  INFO          Bars with position :  22  (15.1% of bars)
+2026-04-05 00:40:42,838  INFO          Distinct positions :  1  (4.8 direction changes/instrument/yr)
+2026-04-05 00:40:42,838  INFO          No-trade bars      :  124  (prob < 55%)
+2026-04-05 00:40:42,838  INFO          Avg leverage used  :  1.1x  (22.7% of bars leveraged)
+2026-04-05 00:40:42,838  INFO          Leverage gate      :  prob >= 56%  (full at >= 63%)
+2026-04-05 00:40:42,838  INFO      
+  Position Duration (bars between direction changes):
+2026-04-05 00:40:42,838  INFO          Avg hold           :  22.0 days  (22.0 trading days)
+2026-04-05 00:40:42,838  INFO          Median hold        :  22.0 days
+2026-04-05 00:40:42,838  INFO          Min / Max hold     :  22 / 22 days
+2026-04-05 00:40:42,838  INFO          Flipped next bar   :  0.0%  of positions
+2026-04-05 00:40:42,838  INFO          Held 5 bars or les :  0.0%  of positions
+2026-04-05 00:40:42,838  INFO          → Medium-term holder: ~22 days avg per position
+2026-04-05 00:40:42,839  INFO      ──────────────────────────────────────────────────────────
+2026-04-05 00:40:42,953  INFO      ──────────────────────────────────────────────────────────
+2026-04-05 00:40:42,953  INFO      REPORT — NYSE_NVDA Base  (n=146)
+2026-04-05 00:40:42,953  INFO      ──────────────────────────────────────────────────────────
+2026-04-05 00:40:42,953  INFO      
+  Directional Accuracy:
+2026-04-05 00:40:42,953  INFO          H1 : 0.555  (need 0.53)  ✓
+2026-04-05 00:40:42,953  INFO          H5 : 0.589  (need 0.52)  ✓
+2026-04-05 00:40:42,953  INFO          H20: 0.610  (need 0.52)  ✓
+2026-04-05 00:40:42,953  INFO      
+  Strategy (long/short, 0.05%% tx cost):
+2026-04-05 00:40:42,953  INFO          H1 : Sharpe=1.529 ✓   MaxDD=0.8% ✓
+2026-04-05 00:40:42,953  INFO          H5 : Sharpe=1.750 ✓   MaxDD=1.0% ✓
+2026-04-05 00:40:42,953  INFO          H20: Sharpe=-0.871 ✗   MaxDD=2.9% ✓
+2026-04-05 00:40:42,953  INFO      
+  Regime Accuracy (H1):
+2026-04-05 00:40:42,953  INFO          Class 0 (Range/LowVol)  : too few samples
+2026-04-05 00:40:42,953  INFO          Class 1 (Range/NormVol) : 0.625  ✓
+2026-04-05 00:40:42,953  INFO          Class 2 (Range/HighVol) : too few samples
+2026-04-05 00:40:42,953  INFO          Class 3 (Trend/LowVol)  : too few samples
+2026-04-05 00:40:42,954  INFO          Class 4 (Trend/NormVol) : 0.506  ✗
+2026-04-05 00:40:42,954  INFO          Class 5 (Trend/HighVol) : too few samples
+2026-04-05 00:40:42,954  INFO          -> 1/2 pass 51%  ✗
+2026-04-05 00:40:42,954  INFO      
+  Calibration (H1):
+2026-04-05 00:40:42,954  INFO          p=0.47 -> 0.426  ████████  (n=54)
+2026-04-05 00:40:42,954  INFO          p=0.53 -> 0.517  ██████████  (n=88)
+2026-04-05 00:40:42,954  INFO      
+  Yearly P&L (H1):
+2026-04-05 00:40:42,954  INFO          2026: +11.5942
+2026-04-05 00:40:42,954  INFO      
+  RED FLAGS:
+2026-04-05 00:40:42,954  WARNING       🚩 LEAKAGE? H20 acc=0.610 > 60%
+2026-04-05 00:40:42,954  WARNING       🚩 100% of profits in 2026 — year-specific
+2026-04-05 00:40:42,954  INFO      
+  VERDICT: ❌  NOT PRODUCTION READY
+2026-04-05 00:40:42,954  INFO        Capital Simulation (prob-scaled sizing, full-Kelly, 8% max risk):
+2026-04-05 00:40:42,954  INFO          Starting capital   : £   10,000.00
+2026-04-05 00:40:42,954  INFO          Ending capital     : £   10,005.97  (+0.06%)
+2026-04-05 00:40:42,954  INFO          Annualised return  :  +0.29%
+2026-04-05 00:40:42,954  INFO          Sharpe (backtest)  :  0.000  ✗
+2026-04-05 00:40:42,954  INFO          Max drawdown       :  0.00%  ✓
+2026-04-05 00:40:42,955  INFO          Profit factor      :  59660038144.000
+2026-04-05 00:40:42,955  INFO          Win rate           :  100.00%  ✓
+2026-04-05 00:40:42,955  INFO          Avg P&L / bar held :  £+1.4915  (+0.0149% of capital)
+2026-04-05 00:40:42,955  INFO          Avg P&L / position :  £+5.97  (+0.0597% of capital)  ✓
+2026-04-05 00:40:42,955  INFO          Net P&L            :  £5.97
+2026-04-05 00:40:42,955  INFO          Time elapsed       :  76d  (76 calendar days)
+2026-04-05 00:40:42,955  INFO          Bars with position :  4  (2.7% of bars)
+2026-04-05 00:40:42,955  INFO          Distinct positions :  1  (4.8 direction changes/instrument/yr)
+2026-04-05 00:40:42,955  INFO          No-trade bars      :  142  (prob < 55%)
+2026-04-05 00:40:42,955  INFO          Avg leverage used  :  1.0x  (0.0% of bars leveraged)
+2026-04-05 00:40:42,955  INFO          Leverage gate      :  prob >= 56%  (full at >= 63%)
+2026-04-05 00:40:42,955  INFO      
+  Position Duration (bars between direction changes):
+2026-04-05 00:40:42,955  INFO          Avg hold           :  4.0 days  (4.0 trading days)
+2026-04-05 00:40:42,955  INFO          Median hold        :  4.0 days
+2026-04-05 00:40:42,955  INFO          Min / Max hold     :  4 / 4 days
+2026-04-05 00:40:42,955  INFO          Flipped next bar   :  0.0%  of positions
+2026-04-05 00:40:42,956  INFO          Held 5 bars or les :  100.0%  of positions
+2026-04-05 00:40:42,956  INFO      ──────────────────────────────────────────────────────────
+2026-04-05 00:40:42,956  INFO      
+  Delta (fine-tuned - base):
+2026-04-05 00:40:42,956  INFO          H1 : +0.021  ft=0.575  base=0.555  ✓
+2026-04-05 00:40:42,956  INFO          H5 : -0.048  ft=0.541  base=0.589  ⚠
+2026-04-05 00:40:42,956  INFO          H20: +0.014  ft=0.623  base=0.610  ✓
+2026-04-05 00:40:42,956  WARNING     ⚠  Fine-tuning degraded acc (0.580 vs 0.584). Use base.
+2026-04-05 00:40:42,956  INFO      
+  Feature Attribution (H1, gradient):
+2026-04-05 00:40:45,000  INFO          ichimoku                5.1%  ██
+2026-04-05 00:40:45,000  INFO          vwap_dist               4.9%  ██
+2026-04-05 00:40:45,001  INFO          rsi28                   4.2%  ██
+2026-04-05 00:40:45,001  INFO          gap                     4.1%  ██
+2026-04-05 00:40:45,001  INFO          bb_pos                  3.6%  █
+2026-04-05 00:40:45,001  INFO          hour_sin                3.0%  █
+2026-04-05 00:40:45,001  INFO          atr_mom                 3.0%  █
+2026-04-05 00:40:45,001  INFO          vol_z                   2.8%  █
+2026-04-05 00:40:45,001  INFO          log_return              2.8%  █
+2026-04-05 00:40:45,001  INFO          corr_idx                2.7%  █
+2026-04-05 00:40:45,001  INFO        ✓  Attribution spread ok (max=5.1%)
+2026-04-05 00:40:45,005  INFO      Saved: logs/evaluation/NYSE_NVDA_4H_eval.csv
+2026-04-05 00:40:45,006  INFO      Stage 7 complete.

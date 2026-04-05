@@ -1,0 +1,69 @@
+2026-04-04 23:27:18,553  INFO      ============================================================
+2026-04-04 23:27:18,554  INFO      Stage 6 Fine-Tuning — Start
+2026-04-04 23:27:18,554  INFO      Instrument  : NYMEX_NGF
+2026-04-04 23:27:18,554  INFO      Resolution  : 1W
+2026-04-04 23:27:18,554  INFO      Device      : cpu
+2026-04-04 23:27:18,554  INFO      Base checkpoint: models/base/checkpoint_base_v1.pt
+2026-04-04 23:27:18,555  INFO      Loading: NYMEX_NGF_1W_20150101_20260326.npy
+2026-04-04 23:27:18,805  INFO        Shape: (407, 60, 42)  (407 windows)
+2026-04-04 23:27:18,809  INFO        Date range: 2018-06-07 → 2026-03-19  (7.8 years)
+2026-04-04 23:27:18,809  INFO        Train windows: 394  Val windows: 13
+2026-04-04 23:27:18,809  INFO      Years of data: 7.8
+2026-04-04 23:27:18,815  INFO      Loading base checkpoint: models/base/checkpoint_base_v1.pt
+2026-04-04 23:27:18,840  INFO        Base val_loss: 0.2466  (fold 2, epoch 28)
+2026-04-04 23:27:18,840  INFO      --------------------------------------------------
+2026-04-04 23:27:18,840  INFO      Phase 1 — Head-only adaptation (encoder frozen)
+2026-04-04 23:27:20,010  INFO        P1 Epoch  1 | TrainLoss 0.2486 | ValLoss 0.2448 | ValAcc H1=0.769 H5=0.769 H20=0.462
+2026-04-04 23:27:20,286  INFO        P1 Epoch  2 | TrainLoss 0.2492 | ValLoss 0.2449 | ValAcc H1=0.769 H5=0.846 H20=0.462
+2026-04-04 23:27:20,589  INFO        P1 Epoch  3 | TrainLoss 0.2476 | ValLoss 0.2449 | ValAcc H1=0.769 H5=0.769 H20=0.462
+2026-04-04 23:27:20,862  INFO        P1 Epoch  4 | TrainLoss 0.2484 | ValLoss 0.2449 | ValAcc H1=0.769 H5=0.846 H20=0.462
+2026-04-04 23:27:21,162  INFO        P1 Epoch  5 | TrainLoss 0.2482 | ValLoss 0.2450 | ValAcc H1=0.769 H5=0.846 H20=0.462
+2026-04-04 23:27:21,448  INFO        P1 Epoch  6 | TrainLoss 0.2481 | ValLoss 0.2450 | ValAcc H1=0.769 H5=0.846 H20=0.462
+2026-04-04 23:27:21,730  INFO        P1 Epoch  7 | TrainLoss 0.2492 | ValLoss 0.2451 | ValAcc H1=0.769 H5=0.846 H20=0.462
+2026-04-04 23:27:22,013  INFO        P1 Epoch  8 | TrainLoss 0.2479 | ValLoss 0.2451 | ValAcc H1=0.769 H5=0.846 H20=0.462
+2026-04-04 23:27:22,436  INFO        P1 Epoch  9 | TrainLoss 0.2476 | ValLoss 0.2451 | ValAcc H1=0.769 H5=0.846 H20=0.462
+2026-04-04 23:27:22,809  INFO        P1 Epoch 10 | TrainLoss 0.2481 | ValLoss 0.2451 | ValAcc H1=0.769 H5=0.769 H20=0.462
+2026-04-04 23:27:23,113  INFO        P1 Epoch 11 | TrainLoss 0.2473 | ValLoss 0.2451 | ValAcc H1=0.769 H5=0.769 H20=0.462
+2026-04-04 23:27:23,113  INFO        Phase 1 early stopping at epoch 11
+2026-04-04 23:27:23,123  INFO        Phase 1 complete. Best val_loss: 0.2448  H1=0.769 H5=0.769 H20=0.462
+2026-04-04 23:27:23,128  INFO      Phase 1 checkpoint saved: models/fine_tuned/checkpoint_NYMEX_NGF_1W_phase1_20260404.pt
+2026-04-04 23:27:23,128  INFO      Loading base checkpoint: models/base/checkpoint_base_v1.pt
+2026-04-04 23:27:23,138  INFO        Base val_loss: 0.2466  (fold 2, epoch 28)
+2026-04-04 23:27:23,147  INFO      Base model H1 accuracy on instrument val set: 0.769
+2026-04-04 23:27:23,147  INFO      Fine-tuned  H1 accuracy (Phase 1)           : 0.769
+2026-04-04 23:27:23,147  INFO      --------------------------------------------------
+2026-04-04 23:27:23,147  INFO      Phase 2 — Verification gate
+2026-04-04 23:27:23,147  INFO        Fine-tuned accuracy — H1=0.769  H5=0.769  H20=0.462  Mean=0.667
+2026-04-04 23:27:23,148  INFO        Minimum required (mean across horizons) : 0.510
+2026-04-04 23:27:23,148  INFO        ✓ Phase 2 PASSED (H1=0.769  H5=0.769  H20=0.462) — proceeding to Phase 3
+2026-04-04 23:27:23,148  INFO      --------------------------------------------------
+2026-04-04 23:27:23,148  INFO      Phase 3 — Selective encoder unfreeze
+2026-04-04 23:27:23,148  INFO        Encoder layers 1 & 2 unfrozen (layer 0 frozen)
+2026-04-04 23:27:23,148  INFO        Encoder LR: 1e-05  Head LR: 3e-05
+2026-04-04 23:27:23,148  INFO        Dropout: encoder=0.40  head=0.45
+2026-04-04 23:27:24,335  INFO        P3 Epoch  1 | TrainLoss 0.2488 | ValLoss 0.2449 | Gap 0.0039 | ValAcc H1=0.769 H5=0.769 H20=0.462
+2026-04-04 23:27:25,399  INFO        P3 Epoch  2 | TrainLoss 0.2478 | ValLoss 0.2450 | Gap 0.0028 | ValAcc H1=0.769 H5=0.846 H20=0.462
+2026-04-04 23:27:26,448  INFO        P3 Epoch  3 | TrainLoss 0.2487 | ValLoss 0.2449 | Gap 0.0038 | ValAcc H1=0.769 H5=0.846 H20=0.385
+2026-04-04 23:27:27,536  INFO        P3 Epoch  4 | TrainLoss 0.2493 | ValLoss 0.2447 | Gap 0.0046 | ValAcc H1=0.769 H5=0.846 H20=0.385
+2026-04-04 23:27:28,613  INFO        P3 Epoch  5 | TrainLoss 0.2491 | ValLoss 0.2448 | Gap 0.0043 | ValAcc H1=0.769 H5=0.846 H20=0.385
+2026-04-04 23:27:29,738  INFO        P3 Epoch  6 | TrainLoss 0.2477 | ValLoss 0.2449 | Gap 0.0028 | ValAcc H1=0.769 H5=0.846 H20=0.385
+2026-04-04 23:27:30,801  INFO        P3 Epoch  7 | TrainLoss 0.2476 | ValLoss 0.2451 | Gap 0.0025 | ValAcc H1=0.769 H5=0.846 H20=0.385
+2026-04-04 23:27:31,878  INFO        P3 Epoch  8 | TrainLoss 0.2493 | ValLoss 0.2451 | Gap 0.0042 | ValAcc H1=0.769 H5=0.846 H20=0.385
+2026-04-04 23:27:33,121  INFO        P3 Epoch  9 | TrainLoss 0.2480 | ValLoss 0.2452 | Gap 0.0027 | ValAcc H1=0.769 H5=0.846 H20=0.385
+2026-04-04 23:27:34,211  INFO        P3 Epoch 10 | TrainLoss 0.2492 | ValLoss 0.2454 | Gap 0.0038 | ValAcc H1=0.769 H5=0.692 H20=0.385
+2026-04-04 23:27:35,328  INFO        P3 Epoch 11 | TrainLoss 0.2498 | ValLoss 0.2455 | Gap 0.0042 | ValAcc H1=0.769 H5=0.692 H20=0.385
+2026-04-04 23:27:36,434  INFO        P3 Epoch 12 | TrainLoss 0.2475 | ValLoss 0.2457 | Gap 0.0018 | ValAcc H1=0.692 H5=0.692 H20=0.385
+2026-04-04 23:27:36,434  INFO        Phase 3 early stopping at epoch 12
+2026-04-04 23:27:36,435  INFO        Phase 3 complete. Best val_loss: 0.2447
+2026-04-04 23:27:36,449  INFO      Phase 3 checkpoint saved: models/fine_tuned/checkpoint_NYMEX_NGF_1W_phase3_20260404.pt
+2026-04-04 23:27:36,449  INFO      ============================================================
+2026-04-04 23:27:36,449  INFO      Fine-Tuning Summary
+2026-04-04 23:27:36,449  INFO        Instrument     : NYMEX_NGF 1W
+2026-04-04 23:27:36,449  INFO        Final phase    : 3
+2026-04-04 23:27:36,449  INFO        Final checkpoint: models/fine_tuned/checkpoint_NYMEX_NGF_1W_phase3_20260404.pt
+2026-04-04 23:27:36,459  INFO        Base model — H1=0.769  H5=0.769  H20=0.462  Mean=0.667
+2026-04-04 23:27:36,459  INFO        Fine-tuned — H1=0.769  H5=0.846  H20=0.385  Mean=0.667  (Phase 3)
+2026-04-04 23:27:36,459  INFO        Delta mean accuracy : +0.000  = Fine-tuning matched base model.
+2026-04-04 23:27:36,459  INFO        Per-horizon delta   :  H1=+0.000  H5=+0.077  H20=-0.077
+2026-04-04 23:27:36,461  INFO        Metrics saved  : logs/finetune/NYMEX_NGF_1W_20260404_metrics.csv
+2026-04-04 23:27:36,461  INFO      Stage 6 complete.

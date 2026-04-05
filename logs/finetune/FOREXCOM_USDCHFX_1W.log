@@ -1,0 +1,66 @@
+2026-04-04 23:05:27,361  INFO      ============================================================
+2026-04-04 23:05:27,361  INFO      Stage 6 Fine-Tuning — Start
+2026-04-04 23:05:27,361  INFO      Instrument  : FOREXCOM_USDCHFX
+2026-04-04 23:05:27,361  INFO      Resolution  : 1W
+2026-04-04 23:05:27,361  INFO      Device      : cpu
+2026-04-04 23:05:27,361  INFO      Base checkpoint: models/base/checkpoint_base_v1.pt
+2026-04-04 23:05:27,363  INFO      Loading: FOREXCOM_USDCHFX_1W_20150101_20260326.npy
+2026-04-04 23:05:27,655  INFO        Shape: (407, 60, 42)  (407 windows)
+2026-04-04 23:05:27,664  INFO        Date range: 2018-06-07 → 2026-03-19  (7.8 years)
+2026-04-04 23:05:27,664  INFO        Train windows: 394  Val windows: 13
+2026-04-04 23:05:27,665  INFO      Years of data: 7.8
+2026-04-04 23:05:27,671  INFO      Loading base checkpoint: models/base/checkpoint_base_v1.pt
+2026-04-04 23:05:27,692  INFO        Base val_loss: 0.2466  (fold 2, epoch 28)
+2026-04-04 23:05:27,692  INFO      --------------------------------------------------
+2026-04-04 23:05:27,693  INFO      Phase 1 — Head-only adaptation (encoder frozen)
+2026-04-04 23:05:28,812  INFO        P1 Epoch  1 | TrainLoss 0.2474 | ValLoss 0.2394 | ValAcc H1=0.692 H5=0.769 H20=1.000
+2026-04-04 23:05:29,097  INFO        P1 Epoch  2 | TrainLoss 0.2494 | ValLoss 0.2394 | ValAcc H1=0.692 H5=0.769 H20=1.000
+2026-04-04 23:05:29,417  INFO        P1 Epoch  3 | TrainLoss 0.2496 | ValLoss 0.2395 | ValAcc H1=0.692 H5=0.769 H20=1.000
+2026-04-04 23:05:29,746  INFO        P1 Epoch  4 | TrainLoss 0.2471 | ValLoss 0.2395 | ValAcc H1=0.692 H5=0.769 H20=1.000
+2026-04-04 23:05:30,032  INFO        P1 Epoch  5 | TrainLoss 0.2477 | ValLoss 0.2396 | ValAcc H1=0.692 H5=0.769 H20=1.000
+2026-04-04 23:05:30,328  INFO        P1 Epoch  6 | TrainLoss 0.2490 | ValLoss 0.2396 | ValAcc H1=0.692 H5=0.769 H20=1.000
+2026-04-04 23:05:30,609  INFO        P1 Epoch  7 | TrainLoss 0.2486 | ValLoss 0.2397 | ValAcc H1=0.692 H5=0.769 H20=1.000
+2026-04-04 23:05:30,898  INFO        P1 Epoch  8 | TrainLoss 0.2486 | ValLoss 0.2397 | ValAcc H1=0.692 H5=0.769 H20=1.000
+2026-04-04 23:05:31,243  INFO        P1 Epoch  9 | TrainLoss 0.2481 | ValLoss 0.2398 | ValAcc H1=0.692 H5=0.769 H20=1.000
+2026-04-04 23:05:31,622  INFO        P1 Epoch 10 | TrainLoss 0.2480 | ValLoss 0.2398 | ValAcc H1=0.692 H5=0.769 H20=1.000
+2026-04-04 23:05:31,944  INFO        P1 Epoch 11 | TrainLoss 0.2469 | ValLoss 0.2398 | ValAcc H1=0.692 H5=0.769 H20=1.000
+2026-04-04 23:05:31,944  INFO        Phase 1 early stopping at epoch 11
+2026-04-04 23:05:31,954  INFO        Phase 1 complete. Best val_loss: 0.2394  H1=0.692 H5=0.769 H20=1.000
+2026-04-04 23:05:31,958  INFO      Phase 1 checkpoint saved: models/fine_tuned/checkpoint_FOREXCOM_USDCHFX_1W_phase1_20260404.pt
+2026-04-04 23:05:31,959  INFO      Loading base checkpoint: models/base/checkpoint_base_v1.pt
+2026-04-04 23:05:31,973  INFO        Base val_loss: 0.2466  (fold 2, epoch 28)
+2026-04-04 23:05:31,985  INFO      Base model H1 accuracy on instrument val set: 0.692
+2026-04-04 23:05:31,985  INFO      Fine-tuned  H1 accuracy (Phase 1)           : 0.692
+2026-04-04 23:05:31,985  INFO      --------------------------------------------------
+2026-04-04 23:05:31,986  INFO      Phase 2 — Verification gate
+2026-04-04 23:05:31,986  INFO        Fine-tuned accuracy — H1=0.692  H5=0.769  H20=1.000  Mean=0.821
+2026-04-04 23:05:31,986  INFO        Minimum required (mean across horizons) : 0.510
+2026-04-04 23:05:31,986  INFO        ✓ Phase 2 PASSED (H1=0.692  H5=0.769  H20=1.000) — proceeding to Phase 3
+2026-04-04 23:05:31,986  INFO      --------------------------------------------------
+2026-04-04 23:05:31,986  INFO      Phase 3 — Selective encoder unfreeze
+2026-04-04 23:05:31,987  INFO        Encoder layers 1 & 2 unfrozen (layer 0 frozen)
+2026-04-04 23:05:31,987  INFO        Encoder LR: 1e-05  Head LR: 3e-05
+2026-04-04 23:05:31,987  INFO        Dropout: encoder=0.40  head=0.45
+2026-04-04 23:05:33,222  INFO        P3 Epoch  1 | TrainLoss 0.2472 | ValLoss 0.2395 | Gap 0.0076 | ValAcc H1=0.692 H5=0.769 H20=1.000
+2026-04-04 23:05:34,302  INFO        P3 Epoch  2 | TrainLoss 0.2486 | ValLoss 0.2396 | Gap 0.0090 | ValAcc H1=0.692 H5=0.769 H20=1.000
+2026-04-04 23:05:35,373  INFO        P3 Epoch  3 | TrainLoss 0.2480 | ValLoss 0.2397 | Gap 0.0083 | ValAcc H1=0.692 H5=0.769 H20=1.000
+2026-04-04 23:05:36,498  INFO        P3 Epoch  4 | TrainLoss 0.2495 | ValLoss 0.2397 | Gap 0.0098 | ValAcc H1=0.692 H5=0.769 H20=1.000
+2026-04-04 23:05:37,545  INFO        P3 Epoch  5 | TrainLoss 0.2480 | ValLoss 0.2398 | Gap 0.0082 | ValAcc H1=0.692 H5=0.769 H20=1.000
+2026-04-04 23:05:38,680  INFO        P3 Epoch  6 | TrainLoss 0.2485 | ValLoss 0.2399 | Gap 0.0086 | ValAcc H1=0.692 H5=0.769 H20=1.000
+2026-04-04 23:05:39,729  INFO        P3 Epoch  7 | TrainLoss 0.2481 | ValLoss 0.2399 | Gap 0.0082 | ValAcc H1=0.692 H5=0.769 H20=1.000
+2026-04-04 23:05:40,799  INFO        P3 Epoch  8 | TrainLoss 0.2490 | ValLoss 0.2399 | Gap 0.0091 | ValAcc H1=0.692 H5=0.769 H20=1.000
+2026-04-04 23:05:41,966  INFO        P3 Epoch  9 | TrainLoss 0.2474 | ValLoss 0.2400 | Gap 0.0075 | ValAcc H1=0.692 H5=0.769 H20=1.000
+2026-04-04 23:05:41,966  INFO        Phase 3 early stopping at epoch 9
+2026-04-04 23:05:41,967  INFO        Phase 3 complete. Best val_loss: 0.2395
+2026-04-04 23:05:41,985  INFO      Phase 3 checkpoint saved: models/fine_tuned/checkpoint_FOREXCOM_USDCHFX_1W_phase3_20260404.pt
+2026-04-04 23:05:41,986  INFO      ============================================================
+2026-04-04 23:05:41,986  INFO      Fine-Tuning Summary
+2026-04-04 23:05:41,986  INFO        Instrument     : FOREXCOM_USDCHFX 1W
+2026-04-04 23:05:41,986  INFO        Final phase    : 3
+2026-04-04 23:05:41,986  INFO        Final checkpoint: models/fine_tuned/checkpoint_FOREXCOM_USDCHFX_1W_phase3_20260404.pt
+2026-04-04 23:05:41,995  INFO        Base model — H1=0.692  H5=0.769  H20=1.000  Mean=0.821
+2026-04-04 23:05:41,995  INFO        Fine-tuned — H1=0.692  H5=0.769  H20=1.000  Mean=0.821  (Phase 3)
+2026-04-04 23:05:41,996  INFO        Delta mean accuracy : +0.000  = Fine-tuning matched base model.
+2026-04-04 23:05:41,996  INFO        Per-horizon delta   :  H1=+0.000  H5=+0.000  H20=+0.000
+2026-04-04 23:05:41,998  INFO        Metrics saved  : logs/finetune/FOREXCOM_USDCHFX_1W_20260404_metrics.csv
+2026-04-04 23:05:41,998  INFO      Stage 6 complete.

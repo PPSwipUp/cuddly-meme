@@ -287,6 +287,27 @@ def download_instrument(exchange: str, ticker: str) -> None:
 # ─── Main ─────────────────────────────────────────────────────────────────────
 
 def main() -> None:
+    import argparse
+    parser = argparse.ArgumentParser(description="Stage 1 Data Collection")
+    parser.add_argument(
+        "--refresh", action="store_true",
+        help="Delete all existing CSVs in data/raw/ before downloading. "
+             "Use this to pull fresh data up to today's date."
+    )
+    args = parser.parse_args()
+
+    if args.refresh:
+        import glob as _glob
+        existing = _glob.glob(os.path.join(OUTPUT_DIR, "*.csv"))
+        if existing:
+            log.info("--refresh: deleting %d existing CSVs from %s",
+                     len(existing), OUTPUT_DIR)
+            for f in existing:
+                os.remove(f)
+            log.info("--refresh: all old CSVs removed — downloading fresh data")
+        else:
+            log.info("--refresh: no existing CSVs found — clean download")
+
     log.info("Stage 1 Data Collection — Start")
     log.info("Output directory : %s", os.path.abspath(OUTPUT_DIR))
     log.info("Long history from: %s", START_DATE_LONG)

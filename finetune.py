@@ -47,7 +47,7 @@ MODELS_FT      = "models/fine_tuned"
 LOG_DIR        = "logs/finetune"
 
 LOOKBACK       = 60
-N_FEATURES = 29
+N_FEATURES = 44
 HORIZONS       = [1, 5, 20]
 
 # Phase 1
@@ -650,21 +650,42 @@ def main():
     log.info("  Instrument     : %s %s", args.instrument, args.resolution)
     log.info("  Final phase    : %d", final_phase)
     log.info("  Final checkpoint: %s", final_path)
-    base_mean = float(np.mean([base_val_acc[h] for h in [1,5,20]]))
-    ft_mean   = float(np.mean([p1_val_acc[h]   for h in [1,5,20]]))
+    # final_val_acc must reflect whatever phase actually produced the final checkpoint.
+    # p3_val_acc is computed inside the Phase 3 block but not accessible here —
+    # we re-run eval on the current model weights (which are the final phase weights).
+    _, final_val_acc = run_eval(model, val_loader, criterion, device)
+
+    base_mean  = float(np.mean([base_val_acc[h]  for h in [1, 5, 20]]))
+    ft_mean    = float(np.mean([final_val_acc[h] for h in [1, 5, 20]]))
 
     log.info("  Base model — H1=%.3f  H5=%.3f  H20=%.3f  Mean=%.3f",
              base_val_acc[1], base_val_acc[5], base_val_acc[20], base_mean)
-    log.info("  Fine-tuned — H1=%.3f  H5=%.3f  H20=%.3f  Mean=%.3f",
-             p1_val_acc[1], p1_val_acc[5], p1_val_acc[20], ft_mean)
+    log.info("  Fine-tuned — H1=%.3f  H5=%.3f  H20=%.3f  Mean=%.3f  (Phase %d)",
+             final_val_acc[1], final_val_acc[5], final_val_acc[20], ft_mean, final_phase)
 
     delta = ft_mean - base_mean
-    if delta > 0:
-        log.info("  Delta mean accuracy : +%.3f  ✓ Fine-tuning improved accuracy", delta)
+    if delta > 0.001:  # require at least 0.1pp improvement to call it a win
+        log.info("  Delta mean accuracy : +%.3f  ✓ Fine-tuning improved accuracy.", delta)
+        log.info("  Per-horizon delta   :  H1=%+.3f  H5=%+.3f  H20=%+.3f",
+                 final_val_acc[1]-base_val_acc[1],
+                 final_val_acc[5]-base_val_acc[5],
+                 final_val_acc[20]-base_val_acc[20])
+    elif delta >= -0.001:  # within 0.1pp — call it a draw, keep fine-tuned
+        log.info("  Delta mean accuracy : %+.3f  = Fine-tuning matched base model.",
+                 delta)
+        log.info("  Per-horizon delta   :  H1=%+.3f  H5=%+.3f  H20=%+.3f",
+                 final_val_acc[1]-base_val_acc[1],
+                 final_val_acc[5]-base_val_acc[5],
+                 final_val_acc[20]-base_val_acc[20])
     else:
         log.warning(
-            "  Delta mean accuracy : %.3f  ⚠  Fine-tuning did NOT improve accuracy. "
-            "Use the base model checkpoint for this instrument.", delta
+            "  Delta mean accuracy : %.3f  ⚠  Fine-tuning degraded mean accuracy. "
+            "Consider using the base model for this instrument. "
+            "H1 delta=%+.3f  H5 delta=%+.3f  H20 delta=%+.3f",
+            delta,
+            final_val_acc[1]-base_val_acc[1],
+            final_val_acc[5]-base_val_acc[5],
+            final_val_acc[20]-base_val_acc[20],
         )
 
     # Save metrics CSV

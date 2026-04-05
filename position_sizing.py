@@ -38,9 +38,9 @@ import numpy as np
 # ─── Constants ────────────────────────────────────────────────────────────────
 
 DEFAULT_STARTING_CAPITAL = 10_000.0   # £10,000 default
-DEFAULT_MAX_RISK         = 0.02       # 2% of capital per trade
-DEFAULT_KELLY_FRACTION   = 0.5        # half-Kelly
-DEFAULT_MIN_PROB         = 0.53       # minimum confidence to trade
+DEFAULT_MAX_RISK         = 0.1       # 2% of capital per trade
+DEFAULT_KELLY_FRACTION   = 0.9        # half-Kelly
+DEFAULT_MIN_PROB         = 0.57       # minimum confidence to trade
 DEFAULT_MAX_POSITION     = 0.20       # never more than 20% of capital in one trade
 TRANSACTION_COST         = 0.0005     # 0.05% round-trip
 
@@ -253,6 +253,7 @@ def run_backtest(
     n_instruments:         int = 1,
     instrument_boundaries: set | None = None,
     leverage_per_bar:      np.ndarray | None = None,
+    leverage_signal:       np.ndarray | None = None,
     capital_size_cap:      float = 3.0,
     lev_min_prob:          float | None = None,
     lev_max_prob:          float | None = None,
@@ -287,13 +288,24 @@ def run_backtest(
         "default":      {"1D": 0.010, "4H": 0.004, "1H": 0.002, "1W": 0.020},
     }
 
-    def _asset_class_from_leverage(lev: float) -> str:
-        """Back-infer asset class from its leverage limit for UNIT_RETURN lookup."""
-        if lev >= 28:  return "forex_major"
-        if lev >= 18:  return "forex_minor"   # also covers gold, indices at 20x
-        if lev >= 8:   return "commodity"
-        if lev >= 4:   return "equity"
-        if lev >= 1.5: return "crypto"
+    def _asset_class_from_leverage(lev: float, src_lev: float | None = None) -> str:
+        """
+        Infer asset class for UNIT_RETURN lookup from the max leverage value.
+        We store the raw max_lev from leverage_per_bar and use finer-grained
+        thresholds. Gold/indices/forex_minor all sit at 20:1 so we differentiate
+        by the exact value stored in LEVERAGE_BY_CLASS:
+          gold         = 20.0 exactly
+          index_major  = 20.0 exactly  (but same as gold — both use index_major table)
+          forex_minor  = 20.0 exactly  (use forex_minor table)
+        Since all three are 20:1, we default index_major returns for 20x instruments;
+        this is conservative (indices ~1.0%/day ≈ gold ~1.0%/day > forex ~0.8%/day).
+        Commodities at 10x are unambiguous. Equities at 5x are unambiguous.
+        """
+        if lev >= 28:  return "forex_major"   # 30:1 = forex majors
+        if lev >= 19:  return "index_major"   # 20:1 = gold / indices (conservative choice)
+        if lev >= 8:   return "commodity"     # 10:1 = oil, gas, wheat, copper
+        if lev >= 4:   return "equity"        # 5:1  = NYSE, LSE, ASX
+        if lev >= 1.5: return "crypto"        # 2:1  = BTC, ETH
         return "default"
 
     n            = len(probs)
@@ -344,7 +356,12 @@ def run_backtest(
         _lev_min = lev_min_prob if lev_min_prob is not None else LEVERAGE_MIN_PROB
         _lev_max = lev_max_prob if lev_max_prob is not None else LEVERAGE_MAX_PROB
 
-        p_for_lev = float(probs[i]) if dir_val > 0 else 1 - float(probs[i])
+        # Use leverage_signal (blended H1+H5) for the leverage gate
+        # so leverage only fires when BOTH horizons agree.
+        # Use raw H1 prob (probs[i]) for trade entry and position sizing.
+        lev_sig = float(leverage_signal[i]) if leverage_signal is not None \
+                  else float(probs[i])
+        p_for_lev = lev_sig if dir_val > 0 else 1 - lev_sig
         if p_for_lev <= _lev_min:
             lev = 1.0
         elif p_for_lev >= _lev_max:
@@ -359,8 +376,20 @@ def run_backtest(
         # S3 FIX: Charge transaction cost on every position entry or direction change.
         # Previously: free entry when coming from no-position (prev_dir == 0).
         # Correct:    always pay spread when a new position starts.
-        tx_cost  = TRANSACTION_COST * lev_notional if dir_val != prev_dir else 0.0
-        raw_pnl  = lev_notional * bar_return - tx_cost
+        # Entry/exit spread cost — charged only when position changes direction
+        tx_cost = TRANSACTION_COST * lev_notional if dir_val != prev_dir else 0.0
+
+        # Overnight financing cost — charged every daily bar on the leveraged notional.
+        # Leveraged positions incur a swap/rollover charge of ~0.025%/day (annualised ~9%).
+        # This is only material for leveraged positions held multiple days.
+        # Intraday (1H, 4H): no overnight charge within a session; only applies
+        # at the session close (approx 1 in 6 for 4H, 1 in 24 for 1H).
+        OVERNIGHT_RATE = 0.00025   # 0.025% per overnight (conservative industry average)
+        OVERNIGHT_FREQ = {"1D": 1.0, "4H": 1/6, "1H": 1/24, "1W": 5.0}
+        overnight_freq   = OVERNIGHT_FREQ.get(resolution, 1.0)
+        financing_cost   = (lev - 1.0) * notional * OVERNIGHT_RATE * overnight_freq                            if lev > 1.0 else 0.0
+
+        raw_pnl = lev_notional * bar_return - tx_cost - financing_cost
         pnl      = max(raw_pnl, -notional)  # margin call cap: can't lose more than margin
 
         capital += pnl
@@ -642,9 +671,9 @@ if __name__ == "__main__":
 
     sizer = PositionSizer(
         starting_capital=10_000,
-        max_risk_per_trade=0.02,
-        kelly_fraction=0.5,
-        min_prob=0.53,
+        max_risk_per_trade=0.1,
+        kelly_fraction=0.9,
+        min_prob=0.57,
     )
 
     # Show how size scales with probability

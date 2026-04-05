@@ -1,0 +1,62 @@
+2026-04-04 22:17:55,181  INFO      ============================================================
+2026-04-04 22:17:55,181  INFO      Stage 6 Fine-Tuning — Start
+2026-04-04 22:17:55,181  INFO      Instrument  : ASX_WBCAX
+2026-04-04 22:17:55,181  INFO      Resolution  : 4H
+2026-04-04 22:17:55,181  INFO      Device      : cpu
+2026-04-04 22:17:55,181  INFO      Base checkpoint: models/base/checkpoint_base_v1.pt
+2026-04-04 22:17:55,183  INFO      Loading: ASX_WBCAX_4H_20240405_20260326.npy
+2026-04-04 22:17:55,492  INFO        Shape: (341, 60, 48)  (341 windows)
+2026-04-04 22:17:55,498  INFO        Date range: 2025-01-13 → 2026-03-15  (1.2 years)
+2026-04-04 22:17:55,498  INFO        Train windows: 163  Val windows: 178
+2026-04-04 22:17:55,498  INFO      Years of data: 1.2
+2026-04-04 22:17:55,501  INFO      Loading base checkpoint: models/base/checkpoint_base_v1.pt
+2026-04-04 22:17:55,525  INFO        Base val_loss: 0.2466  (fold 2, epoch 28)
+2026-04-04 22:17:55,525  INFO      --------------------------------------------------
+2026-04-04 22:17:55,525  INFO      Phase 1 — Head-only adaptation (encoder frozen)
+2026-04-04 22:17:56,597  INFO        P1 Epoch  1 | TrainLoss 0.2446 | ValLoss 0.2511 | ValAcc H1=0.536 H5=0.483 H20=0.424
+2026-04-04 22:17:56,820  INFO        P1 Epoch  2 | TrainLoss 0.2452 | ValLoss 0.2510 | ValAcc H1=0.536 H5=0.483 H20=0.424
+2026-04-04 22:17:57,041  INFO        P1 Epoch  3 | TrainLoss 0.2447 | ValLoss 0.2510 | ValAcc H1=0.536 H5=0.478 H20=0.435
+2026-04-04 22:17:57,265  INFO        P1 Epoch  4 | TrainLoss 0.2448 | ValLoss 0.2510 | ValAcc H1=0.531 H5=0.472 H20=0.441
+2026-04-04 22:17:57,487  INFO        P1 Epoch  5 | TrainLoss 0.2459 | ValLoss 0.2510 | ValAcc H1=0.536 H5=0.472 H20=0.447
+2026-04-04 22:17:57,832  INFO        P1 Epoch  6 | TrainLoss 0.2453 | ValLoss 0.2509 | ValAcc H1=0.536 H5=0.478 H20=0.451
+2026-04-04 22:17:58,052  INFO        P1 Epoch  7 | TrainLoss 0.2456 | ValLoss 0.2509 | ValAcc H1=0.536 H5=0.483 H20=0.464
+2026-04-04 22:17:58,273  INFO        P1 Epoch  8 | TrainLoss 0.2452 | ValLoss 0.2509 | ValAcc H1=0.531 H5=0.483 H20=0.471
+2026-04-04 22:17:58,495  INFO        P1 Epoch  9 | TrainLoss 0.2451 | ValLoss 0.2509 | ValAcc H1=0.519 H5=0.483 H20=0.479
+2026-04-04 22:17:58,714  INFO        P1 Epoch 10 | TrainLoss 0.2449 | ValLoss 0.2509 | ValAcc H1=0.508 H5=0.478 H20=0.479
+2026-04-04 22:17:58,942  INFO        P1 Epoch 11 | TrainLoss 0.2453 | ValLoss 0.2509 | ValAcc H1=0.502 H5=0.478 H20=0.479
+2026-04-04 22:17:59,164  INFO        P1 Epoch 12 | TrainLoss 0.2456 | ValLoss 0.2508 | ValAcc H1=0.497 H5=0.483 H20=0.484
+2026-04-04 22:17:59,384  INFO        P1 Epoch 13 | TrainLoss 0.2447 | ValLoss 0.2508 | ValAcc H1=0.504 H5=0.483 H20=0.484
+2026-04-04 22:17:59,698  INFO        P1 Epoch 14 | TrainLoss 0.2446 | ValLoss 0.2508 | ValAcc H1=0.499 H5=0.483 H20=0.507
+2026-04-04 22:17:59,931  INFO        P1 Epoch 15 | TrainLoss 0.2454 | ValLoss 0.2508 | ValAcc H1=0.504 H5=0.488 H20=0.507
+2026-04-04 22:18:00,179  INFO        P1 Epoch 16 | TrainLoss 0.2442 | ValLoss 0.2508 | ValAcc H1=0.499 H5=0.488 H20=0.507
+2026-04-04 22:18:00,422  INFO        P1 Epoch 17 | TrainLoss 0.2443 | ValLoss 0.2508 | ValAcc H1=0.505 H5=0.488 H20=0.507
+2026-04-04 22:18:00,726  INFO        P1 Epoch 18 | TrainLoss 0.2447 | ValLoss 0.2508 | ValAcc H1=0.505 H5=0.493 H20=0.507
+2026-04-04 22:18:00,955  INFO        P1 Epoch 19 | TrainLoss 0.2433 | ValLoss 0.2508 | ValAcc H1=0.505 H5=0.493 H20=0.507
+2026-04-04 22:18:01,181  INFO        P1 Epoch 20 | TrainLoss 0.2449 | ValLoss 0.2508 | ValAcc H1=0.505 H5=0.493 H20=0.507
+2026-04-04 22:18:01,458  INFO        P1 Epoch 21 | TrainLoss 0.2430 | ValLoss 0.2508 | ValAcc H1=0.512 H5=0.499 H20=0.507
+2026-04-04 22:18:01,458  INFO        Phase 1 early stopping at epoch 21
+2026-04-04 22:18:01,580  INFO        Phase 1 complete. Best val_loss: 0.2509  H1=0.502 H5=0.478 H20=0.479
+2026-04-04 22:18:01,585  INFO      Phase 1 checkpoint saved: models/fine_tuned/checkpoint_ASX_WBCAX_4H_phase1_20260404.pt
+2026-04-04 22:18:01,586  INFO      Loading base checkpoint: models/base/checkpoint_base_v1.pt
+2026-04-04 22:18:01,598  INFO        Base val_loss: 0.2466  (fold 2, epoch 28)
+2026-04-04 22:18:01,743  INFO      Base model H1 accuracy on instrument val set: 0.531
+2026-04-04 22:18:01,743  INFO      Fine-tuned  H1 accuracy (Phase 1)           : 0.502
+2026-04-04 22:18:01,743  INFO      --------------------------------------------------
+2026-04-04 22:18:01,743  INFO      Phase 2 — Verification gate
+2026-04-04 22:18:01,743  INFO        Fine-tuned accuracy — H1=0.502  H5=0.478  H20=0.479  Mean=0.486
+2026-04-04 22:18:01,743  INFO        Minimum required (mean across horizons) : 0.510
+2026-04-04 22:18:01,743  WARNING     ✗ Phase 2 FAILED — mean accuracy 0.486 is below 0.510
+2026-04-04 22:18:01,743  WARNING     H1=0.502  H5=0.478  H20=0.479
+2026-04-04 22:18:01,743  WARNING     Instrument may be unpredictable at this resolution.
+2026-04-04 22:18:01,743  WARNING     Using Phase 1 checkpoint as final output.
+2026-04-04 22:18:01,743  INFO      ============================================================
+2026-04-04 22:18:01,744  INFO      Fine-Tuning Summary
+2026-04-04 22:18:01,744  INFO        Instrument     : ASX_WBCAX 4H
+2026-04-04 22:18:01,744  INFO        Final phase    : 1
+2026-04-04 22:18:01,744  INFO        Final checkpoint: models/fine_tuned/checkpoint_ASX_WBCAX_4H_phase1_20260404.pt
+2026-04-04 22:18:01,878  INFO        Base model — H1=0.531  H5=0.472  H20=0.424  Mean=0.476
+2026-04-04 22:18:01,879  INFO        Fine-tuned — H1=0.502  H5=0.478  H20=0.479  Mean=0.486  (Phase 1)
+2026-04-04 22:18:01,879  INFO        Delta mean accuracy : +0.010  ✓ Fine-tuning improved accuracy.
+2026-04-04 22:18:01,879  INFO        Per-horizon delta   :  H1=-0.029  H5=+0.005  H20=+0.055
+2026-04-04 22:18:01,882  INFO        Metrics saved  : logs/finetune/ASX_WBCAX_4H_20260404_metrics.csv
+2026-04-04 22:18:01,882  INFO      Stage 6 complete.

@@ -1,0 +1,55 @@
+2026-04-04 22:39:00,226  INFO      ============================================================
+2026-04-04 22:39:00,226  INFO      Stage 6 Fine-Tuning — Start
+2026-04-04 22:39:00,226  INFO      Instrument  : EURONEXT_MCPA
+2026-04-04 22:39:00,226  INFO      Resolution  : 4H
+2026-04-04 22:39:00,226  INFO      Device      : cpu
+2026-04-04 22:39:00,226  INFO      Base checkpoint: models/base/checkpoint_base_v1.pt
+2026-04-04 22:39:00,227  INFO      Loading: EURONEXT_MCPA_4H_20240405_20260326.npy
+2026-04-04 22:39:01,407  INFO        Shape: (1329, 60, 48)  (1329 windows)
+2026-04-04 22:39:01,415  INFO        Date range: 2024-06-28 → 2026-03-25  (1.7 years)
+2026-04-04 22:39:01,416  INFO        Train windows: 1144  Val windows: 185
+2026-04-04 22:39:01,416  INFO      Years of data: 1.7
+2026-04-04 22:39:01,423  INFO      Loading base checkpoint: models/base/checkpoint_base_v1.pt
+2026-04-04 22:39:01,436  INFO        Base val_loss: 0.2466  (fold 2, epoch 28)
+2026-04-04 22:39:01,436  INFO      --------------------------------------------------
+2026-04-04 22:39:01,436  INFO      Phase 1 — Head-only adaptation (encoder frozen)
+2026-04-04 22:39:03,231  INFO        P1 Epoch  1 | TrainLoss 0.2455 | ValLoss 0.2448 | ValAcc H1=0.588 H5=0.588 H20=0.615
+2026-04-04 22:39:04,222  INFO        P1 Epoch  2 | TrainLoss 0.2455 | ValLoss 0.2449 | ValAcc H1=0.588 H5=0.588 H20=0.604
+2026-04-04 22:39:05,418  INFO        P1 Epoch  3 | TrainLoss 0.2453 | ValLoss 0.2449 | ValAcc H1=0.577 H5=0.582 H20=0.593
+2026-04-04 22:39:06,389  INFO        P1 Epoch  4 | TrainLoss 0.2455 | ValLoss 0.2449 | ValAcc H1=0.577 H5=0.565 H20=0.600
+2026-04-04 22:39:07,270  INFO        P1 Epoch  5 | TrainLoss 0.2454 | ValLoss 0.2449 | ValAcc H1=0.577 H5=0.560 H20=0.611
+2026-04-04 22:39:08,303  INFO        P1 Epoch  6 | TrainLoss 0.2452 | ValLoss 0.2449 | ValAcc H1=0.571 H5=0.560 H20=0.605
+2026-04-04 22:39:09,165  INFO        P1 Epoch  7 | TrainLoss 0.2453 | ValLoss 0.2450 | ValAcc H1=0.571 H5=0.560 H20=0.610
+2026-04-04 22:39:10,058  INFO        P1 Epoch  8 | TrainLoss 0.2452 | ValLoss 0.2450 | ValAcc H1=0.571 H5=0.554 H20=0.610
+2026-04-04 22:39:11,193  INFO        P1 Epoch  9 | TrainLoss 0.2453 | ValLoss 0.2450 | ValAcc H1=0.572 H5=0.554 H20=0.604
+2026-04-04 22:39:12,154  INFO        P1 Epoch 10 | TrainLoss 0.2452 | ValLoss 0.2450 | ValAcc H1=0.572 H5=0.560 H20=0.593
+2026-04-04 22:39:13,017  INFO        P1 Epoch 11 | TrainLoss 0.2453 | ValLoss 0.2450 | ValAcc H1=0.572 H5=0.560 H20=0.599
+2026-04-04 22:39:13,017  INFO        Phase 1 early stopping at epoch 11
+2026-04-04 22:39:13,129  INFO        Phase 1 complete. Best val_loss: 0.2448  H1=0.588 H5=0.588 H20=0.615
+2026-04-04 22:39:13,134  INFO      Phase 1 checkpoint saved: models/fine_tuned/checkpoint_EURONEXT_MCPA_4H_phase1_20260404.pt
+2026-04-04 22:39:13,134  INFO      Loading base checkpoint: models/base/checkpoint_base_v1.pt
+2026-04-04 22:39:13,144  INFO        Base val_loss: 0.2466  (fold 2, epoch 28)
+2026-04-04 22:39:13,280  INFO      Base model H1 accuracy on instrument val set: 0.583
+2026-04-04 22:39:13,280  INFO      Fine-tuned  H1 accuracy (Phase 1)           : 0.588
+2026-04-04 22:39:13,280  INFO      --------------------------------------------------
+2026-04-04 22:39:13,280  INFO      Phase 2 — Verification gate
+2026-04-04 22:39:13,280  INFO        Fine-tuned accuracy — H1=0.588  H5=0.588  H20=0.615  Mean=0.597
+2026-04-04 22:39:13,280  INFO        Minimum required (mean across horizons) : 0.510
+2026-04-04 22:39:13,280  INFO        ✓ Phase 2 PASSED (H1=0.588  H5=0.588  H20=0.615) — proceeding to Phase 3
+2026-04-04 22:39:13,280  INFO      --------------------------------------------------
+2026-04-04 22:39:13,280  INFO      Phase 3 — Selective encoder unfreeze
+2026-04-04 22:39:13,280  WARNING     ✗ Skipping Phase 3 — only 1.7 years of data (need 2.0)
+2026-04-04 22:39:13,280  WARNING     Using Phase 1 checkpoint as final output.
+2026-04-04 22:39:13,282  INFO      Reverted to Phase 1 checkpoint.
+2026-04-04 22:39:13,394  INFO      Phase 1 H1 accuracy (recheck): 0.588
+2026-04-04 22:39:13,394  INFO      ============================================================
+2026-04-04 22:39:13,394  INFO      Fine-Tuning Summary
+2026-04-04 22:39:13,394  INFO        Instrument     : EURONEXT_MCPA 4H
+2026-04-04 22:39:13,394  INFO        Final phase    : 1
+2026-04-04 22:39:13,394  INFO        Final checkpoint: models/fine_tuned/checkpoint_EURONEXT_MCPA_4H_phase1_20260404.pt
+2026-04-04 22:39:13,519  INFO        Base model — H1=0.583  H5=0.600  H20=0.609  Mean=0.597
+2026-04-04 22:39:13,519  INFO        Fine-tuned — H1=0.588  H5=0.588  H20=0.615  Mean=0.597  (Phase 1)
+2026-04-04 22:39:13,519  INFO        Delta mean accuracy : -0.000  = Fine-tuning matched base model.
+2026-04-04 22:39:13,519  INFO        Per-horizon delta   :  H1=+0.005  H5=-0.012  H20=+0.006
+2026-04-04 22:39:13,521  INFO        Metrics saved  : logs/finetune/EURONEXT_MCPA_4H_20260404_metrics.csv
+2026-04-04 22:39:13,521  INFO      Stage 6 complete.

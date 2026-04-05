@@ -33,7 +33,8 @@ import torch
 import torch.nn as nn
 from torch.utils.data import Dataset, DataLoader, WeightedRandomSampler
 from torch.optim import AdamW
-from torch.optim.lr_scheduler import LambdaLR
+from torch.optim.lr_scheduler import LambdaLR, CosineAnnealingWarmRestarts
+from torch.optim.swa_utils import AveragedModel, SWALR, update_bn
 
 from model import build_model, MultiHorizonLoss, TradingModel
 
@@ -45,18 +46,39 @@ MODELS_DIR    = "models/base"
 LOG_DIR       = "logs/training"
 
 LOOKBACK      = 60
-N_FEATURES = 29
+N_FEATURES = 44
 HORIZONS      = [1, 5, 20]
 BATCH_SIZE    = 256
 MAX_EPOCHS    = 200
 LR_INITIAL    = 3e-4
 LR_MIN        = 1e-5
 WARMUP_FRAC   = 0.05
-PATIENCE      = 10
+PATIENCE      = 20
 MIN_DELTA     = 0.0001
 GRAD_CLIP     = 1.0
-GAP_THRESHOLD = 0.15   # train/val loss gap halt condition
+GAP_THRESHOLD = 0.10   # train/val loss gap halt condition (lowered: catches overfitting earlier)
 GAP_CONSEC    = 3      # consecutive epochs before halting on gap
+
+# ── Augmentation ──────────────────────────────────────────────────────────────
+NOISE_STD        = 0.01   # Gaussian noise std on input features during training
+FEATURE_MASK_P   = 0.12   # probability of zeroing each feature per sample (raised for 42 features)
+TIME_MASK_MAX    = 12     # max bars to zero in contiguous time-step masking
+
+# ── Stochastic Weight Averaging (SWA) ─────────────────────────────────────────
+# SWA starts after SWA_START_FRAC of MAX_EPOCHS and averages weights over the
+# remaining epochs using a high constant LR. This finds flatter loss basins
+# which generalise better than the single best-loss checkpoint.
+SWA_START_FRAC  = 0.50    # start SWA after 50% of epochs
+                           # Lowered from 0.75: early stopping typically fires
+                           # at epoch 20-30 so 75% = epoch 150 never triggered.
+                           # At 50%, a 24-epoch run starts SWA at epoch 12.
+SWA_LR          = 5e-5    # constant LR during SWA phase
+
+# ── Cosine annealing with warm restarts ───────────────────────────────────────
+# T_0 = length of first restart cycle (epochs). Restarting periodically helps
+# escape sharp local minima that don't generalise well.
+COSINE_T0        = 30     # first restart after 30 epochs
+COSINE_T_MULT    = 2      # subsequent cycles double in length (30, 60, 120...)
 
 # ─── Logging ──────────────────────────────────────────────────────────────────
 
@@ -212,6 +234,49 @@ class TradingDataset(Dataset):
         regime = torch.tensor(reg, dtype=torch.float32)
         return x, targets, regime
 
+    def __getitem_augmented__(self, idx):
+        """
+        Augmented version of __getitem__ for training only.
+        Applies input noise and feature masking to improve generalisation.
+        Called by the training loader wrapper rather than replacing __getitem__
+        so that validation always receives clean features.
+        """
+        x, targets, regime = self.__getitem__(idx)
+
+        # Gaussian noise: prevents the model from over-relying on exact feature values
+        noise = torch.randn_like(x) * NOISE_STD
+        x     = x + noise
+
+        # Feature masking: randomly zero a fraction of features each time.
+        # Zeroed across all time steps for that feature — forces feature redundancy.
+        mask  = torch.bernoulli(torch.full((x.shape[1],), 1.0 - FEATURE_MASK_P))
+        x     = x * mask.unsqueeze(0)   # broadcast across time dimension
+
+        # Time-step masking (SpecAugment-style): zero a contiguous segment of bars.
+        # Forces the model not to rely on any specific position in the 60-bar window.
+        # Complements feature masking (which zeros features across all bars).
+        t_len  = x.shape[0]   # = LOOKBACK = 60
+        mask_w = torch.randint(1, TIME_MASK_MAX + 1, (1,)).item()
+        mask_s = torch.randint(0, max(1, t_len - mask_w), (1,)).item()
+        x[mask_s: mask_s + mask_w, :] = 0.0
+
+        return x, targets, regime
+
+
+class AugmentedDataset(torch.utils.data.Dataset):
+    """
+    Wraps TradingDataset to apply augmentation during training only.
+    Validation always sees clean unaugmented features.
+    """
+    def __init__(self, base_ds: TradingDataset):
+        self.base = base_ds
+
+    def __len__(self):
+        return len(self.base)
+
+    def __getitem__(self, idx):
+        return self.base.__getitem_augmented__(idx)
+
 
 def make_weighted_sampler(dataset: TradingDataset) -> WeightedRandomSampler:
     """
@@ -233,21 +298,15 @@ def make_weighted_sampler(dataset: TradingDataset) -> WeightedRandomSampler:
 
 # ─── LR Schedule ─────────────────────────────────────────────────────────────
 
-def make_lr_schedule(optimiser, total_steps: int) -> LambdaLR:
+def make_warmup_schedule(optimiser, warmup_steps: int) -> LambdaLR:
     """
-    Linear warmup over first 5% of steps, then cosine decay to LR_MIN.
-    Blueprint Section 5.2.
+    Linear warmup over first WARMUP_FRAC of total steps.
+    Applied as a multiplicative factor on top of the cosine restart scheduler.
     """
-    warmup_steps = int(WARMUP_FRAC * total_steps)
-
     def lr_lambda(step):
         if step < warmup_steps:
             return step / max(warmup_steps, 1)
-        progress = (step - warmup_steps) / max(total_steps - warmup_steps, 1)
-        cosine   = 0.5 * (1 + math.cos(math.pi * progress))
-        # Scale so LR ranges from LR_INITIAL down to LR_MIN
-        return LR_MIN / LR_INITIAL + (1 - LR_MIN / LR_INITIAL) * cosine
-
+        return 1.0
     return LambdaLR(optimiser, lr_lambda)
 
 
@@ -261,7 +320,7 @@ def directional_accuracy(direction_pred: torch.Tensor,
     return (pred_binary == true_binary).float().mean().item()
 
 
-def run_epoch(model, loader, criterion, optimiser, scheduler,
+def run_epoch(model, loader, criterion, optimiser, scheduler_info,
               device, train: bool) -> dict:
     """
     Run one epoch (train or eval).
@@ -298,7 +357,15 @@ def run_epoch(model, loader, criterion, optimiser, scheduler,
                 grad_norms.append(grad_norm)
 
                 optimiser.step()
-                scheduler.step()
+                # scheduler_info is a tuple (warmup, cosine, warmup_steps, global_step)
+                # or None for validation
+                if scheduler_info is not None:
+                    warmup_s, cos_s, ws, gs = scheduler_info
+                    step_now = gs + n_batches
+                    if step_now < ws:
+                        warmup_s.step()
+                    else:
+                        cos_s.step(step_now / len(loader))
 
             total_loss += loss.item()
             bce_total  += bce.item()
@@ -328,26 +395,57 @@ def run_epoch(model, loader, criterion, optimiser, scheduler,
 # ─── Early stopping ───────────────────────────────────────────────────────────
 
 class EarlyStopping:
-    """Blueprint Section 5.3 early stopping with best-weight restore."""
+    """
+    Early stopping with dual-criterion best-checkpoint selection.
+
+    A checkpoint is saved (and patience counter reset) when EITHER:
+      1. val_loss improves by more than min_delta  — the primary criterion
+      2. val_loss is within min_delta of the current best AND H1 directional
+         accuracy improves by more than acc_delta  — the tiebreaker
+
+    This fixes the case where val_loss plateaus at 4 decimal places but the
+    model continues finding better solutions with higher directional accuracy,
+    which is what actually drives trading performance.
+
+    Example from fold 3 training:
+      Epoch  4: val_loss=0.0896, H1=0.545  → saved (loss improved)
+      Epoch 11: val_loss=0.0895, H1=0.550  → NOT saved under old logic
+                (improvement=0.0001, not strictly > MIN_DELTA=0.0001)
+                → NOW saved: same loss tier, H1 improved by 0.005 > acc_delta
+    """
+    ACC_DELTA = 0.002   # minimum H1 accuracy improvement to trigger tiebreaker save
 
     def __init__(self, patience=PATIENCE, min_delta=MIN_DELTA):
         self.patience    = patience
         self.min_delta   = min_delta
         self.best_loss   = float("inf")
-        self.best_acc    = {}   # val accuracies at best checkpoint epoch
+        self.best_h1_acc = 0.0          # H1 accuracy at current best checkpoint
+        self.best_acc    = {}           # full accuracy dict at best checkpoint
         self.counter     = 0
         self.best_state  = None
         self.stopped     = False
 
     def step(self, val_loss: float, val_acc: dict, model: nn.Module) -> bool:
         """Returns True if training should stop."""
-        improvement = self.best_loss - val_loss
-        if improvement > self.min_delta:
-            self.best_loss  = val_loss
-            self.best_acc   = val_acc.copy()
-            self.counter    = 0
-            # Deep copy state dict
-            self.best_state = {k: v.cpu().clone() for k, v in model.state_dict().items()}
+        h1_acc       = val_acc.get("acc_h1", 0.0)
+        loss_improv  = self.best_loss - val_loss
+        acc_improv   = h1_acc - self.best_h1_acc
+
+        # Criterion 1: loss improved meaningfully
+        loss_better = loss_improv > self.min_delta
+        # Criterion 2: loss in same tier (within min_delta) but accuracy improved
+        same_tier    = abs(loss_improv) <= self.min_delta
+        acc_better   = same_tier and (acc_improv > self.ACC_DELTA)
+
+        if loss_better or acc_better:
+            reason = "loss" if loss_better else "accuracy"
+            if loss_better:
+                self.best_loss = val_loss
+            self.best_h1_acc = max(self.best_h1_acc, h1_acc)
+            self.best_acc    = val_acc.copy()
+            self.counter     = 0
+            self.best_state  = {k: v.cpu().clone()
+                                for k, v in model.state_dict().items()}
         else:
             self.counter += 1
 
@@ -398,8 +496,10 @@ def train_fold(fold_n: int, device: str) -> dict:
     # Weighted sampler for regime balance
     sampler = make_weighted_sampler(train_ds)
 
+    # Wrap training dataset in augmented version (noise + feature masking)
+    aug_train_ds = AugmentedDataset(train_ds)
     train_loader = DataLoader(
-        train_ds, batch_size=BATCH_SIZE,
+        aug_train_ds, batch_size=BATCH_SIZE,
         sampler=sampler, num_workers=0, pin_memory=False,
     )
     val_loader = DataLoader(
@@ -425,9 +525,26 @@ def train_fold(fold_n: int, device: str) -> dict:
         {"params": no_decay_params, "weight_decay": 0.0},
     ], lr=LR_INITIAL, betas=(0.9, 0.999))
 
-    total_steps = len(train_loader) * MAX_EPOCHS
-    scheduler   = make_lr_schedule(optimiser, total_steps)
-    stopper     = EarlyStopping()
+    # Cosine annealing with warm restarts — escapes sharp local minima
+    # by periodically raising LR before cooling again
+    cos_scheduler = CosineAnnealingWarmRestarts(
+        optimiser, T_0=COSINE_T0, T_mult=COSINE_T_MULT, eta_min=LR_MIN
+    )
+
+    # Linear warmup applied multiplicatively for first WARMUP_FRAC of epoch 1
+    steps_per_epoch = len(train_loader)
+    warmup_steps    = int(WARMUP_FRAC * MAX_EPOCHS * steps_per_epoch)
+    warmup_sched    = make_warmup_schedule(optimiser, warmup_steps)
+    global_step     = 0
+
+    # SWA: starts at SWA_START_FRAC × MAX_EPOCHS, averages weights at each epoch
+    swa_model       = AveragedModel(model)
+    swa_epoch_start = int(SWA_START_FRAC * MAX_EPOCHS)
+    swa_scheduler   = SWALR(optimiser, swa_lr=SWA_LR,
+                            anneal_epochs=5, anneal_strategy="cos")
+    swa_started     = False
+
+    stopper = EarlyStopping()
 
     # Per-epoch metrics log
     epoch_records = []
@@ -437,14 +554,25 @@ def train_fold(fold_n: int, device: str) -> dict:
 
     for epoch in range(1, MAX_EPOCHS + 1):
 
+        # During training, warmup + cosine restarts run step-by-step
         train_metrics = run_epoch(
-            model, train_loader, criterion, optimiser, scheduler,
+            model, train_loader, criterion, optimiser,
+            (warmup_sched, cos_scheduler, warmup_steps, global_step),
             device, train=True
         )
+        global_step += steps_per_epoch
         val_metrics = run_epoch(
             model, val_loader, criterion, None, None,
             device, train=False
         )
+
+        # SWA: after start epoch, switch to SWA LR and average weights
+        if epoch >= swa_epoch_start:
+            if not swa_started:
+                log.info("  SWA started at epoch %d", epoch)
+                swa_started = True
+            swa_model.update_parameters(model)
+            swa_scheduler.step()
 
         gap      = train_metrics["loss"] - val_metrics["loss"]
         curr_lr  = optimiser.param_groups[0]["lr"]
@@ -508,16 +636,52 @@ def train_fold(fold_n: int, device: str) -> dict:
             stopper.restore_best(model)
             break
 
+    # ── SWA finalisation ─────────────────────────────────────────────────────
+    # Update BatchNorm running stats on SWA model using training data
+    if swa_started:
+        log.info("  Updating BatchNorm stats for SWA model...")
+        # Temporarily use clean (non-augmented) training data for BN update
+        clean_loader = DataLoader(
+            train_ds, batch_size=BATCH_SIZE,
+            shuffle=True, num_workers=0,
+        )
+        update_bn(clean_loader, swa_model, device=device)
+        log.info("  SWA model ready.")
+    else:
+        log.info("  SWA did not start (training ended before epoch %d)", swa_epoch_start)
+
+    # Evaluate SWA model on val set to compare with best single-epoch checkpoint
+    if swa_started:
+        swa_val = run_epoch(swa_model.module, val_loader, criterion, None, None,
+                            device, train=False)
+        log.info("  SWA val_loss=%.4f  vs  best single-epoch val_loss=%.4f",
+                 swa_val["loss"], stopper.best_loss)
+        # Use whichever is better
+        if swa_val["loss"] < stopper.best_loss:
+            log.info("  Using SWA model (lower val_loss)")
+            final_model = swa_model.module
+            final_val_loss = swa_val["loss"]
+        else:
+            log.info("  Using best-epoch checkpoint (lower val_loss than SWA)")
+            stopper.restore_best(model)
+            final_model = model
+            final_val_loss = stopper.best_loss
+    else:
+        stopper.restore_best(model)
+        final_model    = model
+        final_val_loss = stopper.best_loss
+
     # Save fold checkpoint
     ckpt_path = os.path.join(MODELS_DIR, f"checkpoint_fold_{fold_n}.pt")
     torch.save({
         "fold":          fold_n,
-        "model_state":   model.state_dict(),
-        "val_loss":      stopper.best_loss,
+        "model_state":   final_model.state_dict(),
+        "val_loss":      final_val_loss,
         "n_features":    N_FEATURES,
         "hidden_dim":    128,
         "n_layers":      3,
         "epoch_stopped": len(epoch_records),
+        "swa_used":      swa_started,
     }, ckpt_path)
     log.info("  Saved checkpoint: %s", ckpt_path)
 

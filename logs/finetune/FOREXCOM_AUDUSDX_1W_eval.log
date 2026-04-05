@@ -1,0 +1,146 @@
+2026-04-05 00:35:31,324  INFO      Stage 7 — device=cpu
+2026-04-05 00:35:31,325  INFO      ============================================================
+2026-04-05 00:35:31,325  INFO      FINE-TUNED — FOREXCOM_AUDUSDX 1W
+2026-04-05 00:35:31,325  INFO      ============================================================
+2026-04-05 00:35:31,369  INFO      Test windows: 62 (last 15% of 407)
+2026-04-05 00:35:31,440  INFO      ──────────────────────────────────────────────────────────
+2026-04-05 00:35:31,440  INFO      REPORT — FOREXCOM_AUDUSDX Fine-tuned  (n=62)
+2026-04-05 00:35:31,440  INFO      ──────────────────────────────────────────────────────────
+2026-04-05 00:35:31,440  INFO      
+  Directional Accuracy:
+2026-04-05 00:35:31,440  INFO          H1 : 0.597  (need 0.53)  ✓
+2026-04-05 00:35:31,440  INFO          H5 : 0.532  (need 0.52)  ✓
+2026-04-05 00:35:31,440  INFO          H20: 0.516  (need 0.52)  ✗
+2026-04-05 00:35:31,440  INFO      
+  Strategy (long/short, 0.05%% tx cost):
+2026-04-05 00:35:31,441  INFO          H1 : Sharpe=3.680 ✓   MaxDD=0.3% ✓
+2026-04-05 00:35:31,441  INFO          H5 : Sharpe=3.680 ✓   MaxDD=0.3% ✓
+2026-04-05 00:35:31,441  INFO          H20: Sharpe=1.543 ✓   MaxDD=1.2% ✓
+2026-04-05 00:35:31,441  INFO      
+  Regime Accuracy (H1):
+2026-04-05 00:35:31,441  INFO          Class 0 (Range/LowVol)  : too few samples
+2026-04-05 00:35:31,441  INFO          Class 1 (Range/NormVol) : 0.536  ✓
+2026-04-05 00:35:31,441  INFO          Class 2 (Range/HighVol) : too few samples
+2026-04-05 00:35:31,441  INFO          Class 3 (Trend/LowVol)  : too few samples
+2026-04-05 00:35:31,441  INFO          Class 4 (Trend/NormVol) : 0.643  ✓
+2026-04-05 00:35:31,441  INFO          Class 5 (Trend/HighVol) : too few samples
+2026-04-05 00:35:31,441  INFO          -> 2/2 pass 51%  ✗
+2026-04-05 00:35:31,441  INFO      
+  Calibration (H1):
+2026-04-05 00:35:31,441  INFO          p=0.53 -> 0.596  ███████████  (n=47)
+2026-04-05 00:35:31,442  INFO      
+  Yearly P&L (H1):
+2026-04-05 00:35:31,442  INFO          2025: +6.5904
+2026-04-05 00:35:31,442  INFO          2026: +3.6153
+2026-04-05 00:35:31,442  INFO      
+  ✓ No red flags.
+2026-04-05 00:35:31,442  INFO      
+  VERDICT: ❌  NOT PRODUCTION READY
+2026-04-05 00:35:31,442  INFO          - H20 acc below 52%
+2026-04-05 00:35:31,442  INFO        Capital Simulation (prob-scaled sizing, full-Kelly, 8% max risk):
+2026-04-05 00:35:31,442  INFO          Starting capital   : £   10,000.00
+2026-04-05 00:35:31,442  INFO          Ending capital     : £   10,001.00  (+0.01%)
+2026-04-05 00:35:31,442  INFO          Annualised return  :  +0.01%
+2026-04-05 00:35:31,442  INFO          Sharpe (backtest)  :  3.240  ✓
+2026-04-05 00:35:31,442  INFO          Max drawdown       :  0.02%  ✓
+2026-04-05 00:35:31,442  INFO          Profit factor      :  1.307
+2026-04-05 00:35:31,443  INFO          Win rate           :  60.00%  ✓
+2026-04-05 00:35:31,443  INFO          Avg P&L / bar held :  £+0.0997  (+0.0010% of capital)
+2026-04-05 00:35:31,443  INFO          Avg P&L / position :  £+1.00  (+0.0100% of capital)  ✓
+2026-04-05 00:35:31,443  INFO          Net P&L            :  £1.00
+2026-04-05 00:35:31,443  INFO          Time elapsed       :  1yr 61d  (427 calendar days)
+2026-04-05 00:35:31,443  INFO          Bars with position :  10  (16.1% of bars)
+2026-04-05 00:35:31,443  INFO          Distinct positions :  1  (0.9 direction changes/instrument/yr)
+2026-04-05 00:35:31,443  INFO          No-trade bars      :  52  (prob < 55%)
+2026-04-05 00:35:31,443  INFO          Avg leverage used  :  1.0x  (0.0% of bars leveraged)
+2026-04-05 00:35:31,443  INFO          Leverage gate      :  prob >= 56%  (full at >= 63%)
+2026-04-05 00:35:31,443  INFO      
+  Position Duration (bars between direction changes):
+2026-04-05 00:35:31,443  INFO          Avg hold           :  10.0 days  (10.0 trading days)
+2026-04-05 00:35:31,443  INFO          Median hold        :  10.0 days
+2026-04-05 00:35:31,444  INFO          Min / Max hold     :  10 / 10 days
+2026-04-05 00:35:31,444  INFO          Flipped next bar   :  0.0%  of positions
+2026-04-05 00:35:31,444  INFO          Held 5 bars or les :  0.0%  of positions
+2026-04-05 00:35:31,444  INFO          → Medium-term holder: ~10 days avg per position
+2026-04-05 00:35:31,444  INFO      ──────────────────────────────────────────────────────────
+2026-04-05 00:35:31,527  INFO      ──────────────────────────────────────────────────────────
+2026-04-05 00:35:31,527  INFO      REPORT — FOREXCOM_AUDUSDX Base  (n=62)
+2026-04-05 00:35:31,527  INFO      ──────────────────────────────────────────────────────────
+2026-04-05 00:35:31,527  INFO      
+  Directional Accuracy:
+2026-04-05 00:35:31,527  INFO          H1 : 0.597  (need 0.53)  ✓
+2026-04-05 00:35:31,527  INFO          H5 : 0.532  (need 0.52)  ✓
+2026-04-05 00:35:31,527  INFO          H20: 0.516  (need 0.52)  ✗
+2026-04-05 00:35:31,527  INFO      
+  Strategy (long/short, 0.05%% tx cost):
+2026-04-05 00:35:31,528  INFO          H1 : Sharpe=3.680 ✓   MaxDD=0.3% ✓
+2026-04-05 00:35:31,528  INFO          H5 : Sharpe=3.680 ✓   MaxDD=0.3% ✓
+2026-04-05 00:35:31,528  INFO          H20: Sharpe=1.543 ✓   MaxDD=1.2% ✓
+2026-04-05 00:35:31,528  INFO      
+  Regime Accuracy (H1):
+2026-04-05 00:35:31,528  INFO          Class 0 (Range/LowVol)  : too few samples
+2026-04-05 00:35:31,528  INFO          Class 1 (Range/NormVol) : 0.536  ✓
+2026-04-05 00:35:31,528  INFO          Class 2 (Range/HighVol) : too few samples
+2026-04-05 00:35:31,530  INFO          Class 3 (Trend/LowVol)  : too few samples
+2026-04-05 00:35:31,530  INFO          Class 4 (Trend/NormVol) : 0.643  ✓
+2026-04-05 00:35:31,530  INFO          Class 5 (Trend/HighVol) : too few samples
+2026-04-05 00:35:31,530  INFO          -> 2/2 pass 51%  ✗
+2026-04-05 00:35:31,530  INFO      
+  Calibration (H1):
+2026-04-05 00:35:31,530  INFO          p=0.53 -> 0.622  ████████████  (n=45)
+2026-04-05 00:35:31,530  INFO      
+  Yearly P&L (H1):
+2026-04-05 00:35:31,530  INFO          2025: +6.5904
+2026-04-05 00:35:31,530  INFO          2026: +3.6153
+2026-04-05 00:35:31,531  INFO      
+  ✓ No red flags.
+2026-04-05 00:35:31,531  INFO      
+  VERDICT: ❌  NOT PRODUCTION READY
+2026-04-05 00:35:31,531  INFO          - H20 acc below 52%
+2026-04-05 00:35:31,531  INFO        Capital Simulation (prob-scaled sizing, full-Kelly, 8% max risk):
+2026-04-05 00:35:31,531  INFO          Starting capital   : £   10,000.00
+2026-04-05 00:35:31,531  INFO          Ending capital     : £    9,999.82  (-0.00%)
+2026-04-05 00:35:31,531  INFO          Annualised return  :  -0.00%
+2026-04-05 00:35:31,531  INFO          Sharpe (backtest)  :  0.000  ✗
+2026-04-05 00:35:31,531  INFO          Max drawdown       :  0.02%  ✓
+2026-04-05 00:35:31,531  INFO          Profit factor      :  0.960
+2026-04-05 00:35:31,531  INFO          Win rate           :  50.00%  ⚠
+2026-04-05 00:35:31,531  INFO          Avg P&L / bar held :  £-0.0151  (-0.0002% of capital)
+2026-04-05 00:35:31,531  INFO          Avg P&L / position :  £-0.18  (-0.0018% of capital)  ✗
+2026-04-05 00:35:31,532  INFO          Net P&L            :  £-0.18
+2026-04-05 00:35:31,532  INFO          Time elapsed       :  1yr 61d  (427 calendar days)
+2026-04-05 00:35:31,532  INFO          Bars with position :  12  (19.4% of bars)
+2026-04-05 00:35:31,532  INFO          Distinct positions :  1  (0.9 direction changes/instrument/yr)
+2026-04-05 00:35:31,532  INFO          No-trade bars      :  50  (prob < 55%)
+2026-04-05 00:35:31,532  INFO          Avg leverage used  :  1.0x  (0.0% of bars leveraged)
+2026-04-05 00:35:31,532  INFO          Leverage gate      :  prob >= 56%  (full at >= 63%)
+2026-04-05 00:35:31,532  INFO      
+  Position Duration (bars between direction changes):
+2026-04-05 00:35:31,532  INFO          Avg hold           :  12.0 days  (12.0 trading days)
+2026-04-05 00:35:31,532  INFO          Median hold        :  12.0 days
+2026-04-05 00:35:31,532  INFO          Min / Max hold     :  12 / 12 days
+2026-04-05 00:35:31,532  INFO          Flipped next bar   :  0.0%  of positions
+2026-04-05 00:35:31,532  INFO          Held 5 bars or les :  0.0%  of positions
+2026-04-05 00:35:31,532  INFO          → Medium-term holder: ~12 days avg per position
+2026-04-05 00:35:31,532  INFO      ──────────────────────────────────────────────────────────
+2026-04-05 00:35:31,532  INFO      
+  Delta (fine-tuned - base):
+2026-04-05 00:35:31,532  INFO          H1 : +0.000  ft=0.597  base=0.597  ⚠
+2026-04-05 00:35:31,533  INFO          H5 : +0.000  ft=0.532  base=0.532  ⚠
+2026-04-05 00:35:31,533  INFO          H20: +0.000  ft=0.516  base=0.516  ⚠
+2026-04-05 00:35:31,533  INFO        ✓  Fine-tuned better (0.548 vs 0.548).
+2026-04-05 00:35:31,533  INFO      
+  Feature Attribution (H1, gradient):
+2026-04-05 00:35:33,356  INFO          vwap_dist               5.5%  ██
+2026-04-05 00:35:33,356  INFO          ichimoku                4.6%  ██
+2026-04-05 00:35:33,356  INFO          rsi28                   3.9%  █
+2026-04-05 00:35:33,356  INFO          gap                     3.8%  █
+2026-04-05 00:35:33,356  INFO          vol_z                   3.5%  █
+2026-04-05 00:35:33,356  INFO          hour_sin                3.4%  █
+2026-04-05 00:35:33,356  INFO          bb_pos                  3.1%  █
+2026-04-05 00:35:33,356  INFO          atr_mom                 3.1%  █
+2026-04-05 00:35:33,356  INFO          macd                    2.8%  █
+2026-04-05 00:35:33,356  INFO          sess_overlap            2.7%  █
+2026-04-05 00:35:33,356  INFO        ✓  Attribution spread ok (max=5.5%)
+2026-04-05 00:35:33,359  INFO      Saved: logs/evaluation/FOREXCOM_AUDUSDX_1W_eval.csv
+2026-04-05 00:35:33,359  INFO      Stage 7 complete.

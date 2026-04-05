@@ -1,0 +1,55 @@
+2026-04-04 22:37:07,672  INFO      ============================================================
+2026-04-04 22:37:07,672  INFO      Stage 6 Fine-Tuning — Start
+2026-04-04 22:37:07,673  INFO      Instrument  : EURONEXT_ASMLAS
+2026-04-04 22:37:07,673  INFO      Resolution  : 4H
+2026-04-04 22:37:07,673  INFO      Device      : cpu
+2026-04-04 22:37:07,673  INFO      Base checkpoint: models/base/checkpoint_base_v1.pt
+2026-04-04 22:37:07,674  INFO      Loading: EURONEXT_ASMLAS_4H_20240405_20260326.npy
+2026-04-04 22:37:08,579  INFO        Shape: (1329, 60, 48)  (1329 windows)
+2026-04-04 22:37:08,587  INFO        Date range: 2024-06-28 → 2026-03-25  (1.7 years)
+2026-04-04 22:37:08,588  INFO        Train windows: 1144  Val windows: 185
+2026-04-04 22:37:08,588  INFO      Years of data: 1.7
+2026-04-04 22:37:08,595  INFO      Loading base checkpoint: models/base/checkpoint_base_v1.pt
+2026-04-04 22:37:08,610  INFO        Base val_loss: 0.2466  (fold 2, epoch 28)
+2026-04-04 22:37:08,610  INFO      --------------------------------------------------
+2026-04-04 22:37:08,610  INFO      Phase 1 — Head-only adaptation (encoder frozen)
+2026-04-04 22:37:10,653  INFO        P1 Epoch  1 | TrainLoss 0.2465 | ValLoss 0.2473 | ValAcc H1=0.547 H5=0.533 H20=0.572
+2026-04-04 22:37:11,607  INFO        P1 Epoch  2 | TrainLoss 0.2465 | ValLoss 0.2473 | ValAcc H1=0.547 H5=0.528 H20=0.572
+2026-04-04 22:37:12,652  INFO        P1 Epoch  3 | TrainLoss 0.2464 | ValLoss 0.2473 | ValAcc H1=0.547 H5=0.528 H20=0.572
+2026-04-04 22:37:13,619  INFO        P1 Epoch  4 | TrainLoss 0.2462 | ValLoss 0.2473 | ValAcc H1=0.547 H5=0.533 H20=0.577
+2026-04-04 22:37:14,726  INFO        P1 Epoch  5 | TrainLoss 0.2464 | ValLoss 0.2473 | ValAcc H1=0.547 H5=0.549 H20=0.577
+2026-04-04 22:37:15,805  INFO        P1 Epoch  6 | TrainLoss 0.2464 | ValLoss 0.2473 | ValAcc H1=0.547 H5=0.549 H20=0.577
+2026-04-04 22:37:16,694  INFO        P1 Epoch  7 | TrainLoss 0.2463 | ValLoss 0.2473 | ValAcc H1=0.542 H5=0.549 H20=0.582
+2026-04-04 22:37:17,633  INFO        P1 Epoch  8 | TrainLoss 0.2463 | ValLoss 0.2473 | ValAcc H1=0.542 H5=0.549 H20=0.582
+2026-04-04 22:37:18,568  INFO        P1 Epoch  9 | TrainLoss 0.2464 | ValLoss 0.2473 | ValAcc H1=0.542 H5=0.549 H20=0.582
+2026-04-04 22:37:19,485  INFO        P1 Epoch 10 | TrainLoss 0.2465 | ValLoss 0.2473 | ValAcc H1=0.542 H5=0.549 H20=0.582
+2026-04-04 22:37:20,670  INFO        P1 Epoch 11 | TrainLoss 0.2465 | ValLoss 0.2473 | ValAcc H1=0.542 H5=0.543 H20=0.582
+2026-04-04 22:37:20,670  INFO        Phase 1 early stopping at epoch 11
+2026-04-04 22:37:20,787  INFO        Phase 1 complete. Best val_loss: 0.2473  H1=0.547 H5=0.533 H20=0.572
+2026-04-04 22:37:20,792  INFO      Phase 1 checkpoint saved: models/fine_tuned/checkpoint_EURONEXT_ASMLAS_4H_phase1_20260404.pt
+2026-04-04 22:37:20,792  INFO      Loading base checkpoint: models/base/checkpoint_base_v1.pt
+2026-04-04 22:37:20,802  INFO        Base val_loss: 0.2466  (fold 2, epoch 28)
+2026-04-04 22:37:20,917  INFO      Base model H1 accuracy on instrument val set: 0.547
+2026-04-04 22:37:20,917  INFO      Fine-tuned  H1 accuracy (Phase 1)           : 0.547
+2026-04-04 22:37:20,917  INFO      --------------------------------------------------
+2026-04-04 22:37:20,917  INFO      Phase 2 — Verification gate
+2026-04-04 22:37:20,917  INFO        Fine-tuned accuracy — H1=0.547  H5=0.533  H20=0.572  Mean=0.551
+2026-04-04 22:37:20,917  INFO        Minimum required (mean across horizons) : 0.510
+2026-04-04 22:37:20,917  INFO        ✓ Phase 2 PASSED (H1=0.547  H5=0.533  H20=0.572) — proceeding to Phase 3
+2026-04-04 22:37:20,917  INFO      --------------------------------------------------
+2026-04-04 22:37:20,917  INFO      Phase 3 — Selective encoder unfreeze
+2026-04-04 22:37:20,917  WARNING     ✗ Skipping Phase 3 — only 1.7 years of data (need 2.0)
+2026-04-04 22:37:20,917  WARNING     Using Phase 1 checkpoint as final output.
+2026-04-04 22:37:20,919  INFO      Reverted to Phase 1 checkpoint.
+2026-04-04 22:37:21,032  INFO      Phase 1 H1 accuracy (recheck): 0.547
+2026-04-04 22:37:21,032  INFO      ============================================================
+2026-04-04 22:37:21,032  INFO      Fine-Tuning Summary
+2026-04-04 22:37:21,032  INFO        Instrument     : EURONEXT_ASMLAS 4H
+2026-04-04 22:37:21,033  INFO        Final phase    : 1
+2026-04-04 22:37:21,033  INFO        Final checkpoint: models/fine_tuned/checkpoint_EURONEXT_ASMLAS_4H_phase1_20260404.pt
+2026-04-04 22:37:21,153  INFO        Base model — H1=0.547  H5=0.533  H20=0.567  Mean=0.549
+2026-04-04 22:37:21,153  INFO        Fine-tuned — H1=0.547  H5=0.533  H20=0.572  Mean=0.551  (Phase 1)
+2026-04-04 22:37:21,154  INFO        Delta mean accuracy : +0.002  ✓ Fine-tuning improved accuracy.
+2026-04-04 22:37:21,154  INFO        Per-horizon delta   :  H1=+0.000  H5=-0.001  H20=+0.005
+2026-04-04 22:37:21,156  INFO        Metrics saved  : logs/finetune/EURONEXT_ASMLAS_4H_20260404_metrics.csv
+2026-04-04 22:37:21,156  INFO      Stage 6 complete.

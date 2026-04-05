@@ -1,0 +1,65 @@
+2026-04-04 22:14:34,516  INFO      ============================================================
+2026-04-04 22:14:34,517  INFO      Stage 6 Fine-Tuning — Start
+2026-04-04 22:14:34,517  INFO      Instrument  : ASX_ANZAX
+2026-04-04 22:14:34,517  INFO      Resolution  : 4H
+2026-04-04 22:14:34,517  INFO      Device      : cpu
+2026-04-04 22:14:34,518  INFO      Base checkpoint: models/base/checkpoint_base_v1.pt
+2026-04-04 22:14:34,519  INFO      Loading: ASX_ANZAX_4H_20240405_20260326.npy
+2026-04-04 22:14:34,817  INFO        Shape: (341, 60, 48)  (341 windows)
+2026-04-04 22:14:34,824  INFO        Date range: 2025-01-13 → 2026-03-15  (1.2 years)
+2026-04-04 22:14:34,824  INFO        Train windows: 163  Val windows: 178
+2026-04-04 22:14:34,824  INFO      Years of data: 1.2
+2026-04-04 22:14:34,828  INFO      Loading base checkpoint: models/base/checkpoint_base_v1.pt
+2026-04-04 22:14:34,844  INFO        Base val_loss: 0.2466  (fold 2, epoch 28)
+2026-04-04 22:14:34,844  INFO      --------------------------------------------------
+2026-04-04 22:14:34,845  INFO      Phase 1 — Head-only adaptation (encoder frozen)
+2026-04-04 22:14:36,835  INFO        P1 Epoch  1 | TrainLoss 0.2467 | ValLoss 0.2483 | ValAcc H1=0.534 H5=0.510 H20=0.466
+2026-04-04 22:14:37,074  INFO        P1 Epoch  2 | TrainLoss 0.2456 | ValLoss 0.2483 | ValAcc H1=0.527 H5=0.500 H20=0.466
+2026-04-04 22:14:37,326  INFO        P1 Epoch  3 | TrainLoss 0.2467 | ValLoss 0.2482 | ValAcc H1=0.527 H5=0.517 H20=0.467
+2026-04-04 22:14:37,588  INFO        P1 Epoch  4 | TrainLoss 0.2456 | ValLoss 0.2482 | ValAcc H1=0.527 H5=0.517 H20=0.474
+2026-04-04 22:14:37,843  INFO        P1 Epoch  5 | TrainLoss 0.2455 | ValLoss 0.2482 | ValAcc H1=0.533 H5=0.517 H20=0.469
+2026-04-04 22:14:38,112  INFO        P1 Epoch  6 | TrainLoss 0.2470 | ValLoss 0.2482 | ValAcc H1=0.533 H5=0.539 H20=0.469
+2026-04-04 22:14:38,395  INFO        P1 Epoch  7 | TrainLoss 0.2462 | ValLoss 0.2481 | ValAcc H1=0.538 H5=0.551 H20=0.475
+2026-04-04 22:14:38,650  INFO        P1 Epoch  8 | TrainLoss 0.2463 | ValLoss 0.2481 | ValAcc H1=0.538 H5=0.556 H20=0.481
+2026-04-04 22:14:38,895  INFO        P1 Epoch  9 | TrainLoss 0.2436 | ValLoss 0.2481 | ValAcc H1=0.538 H5=0.574 H20=0.487
+2026-04-04 22:14:39,150  INFO        P1 Epoch 10 | TrainLoss 0.2452 | ValLoss 0.2481 | ValAcc H1=0.543 H5=0.584 H20=0.487
+2026-04-04 22:14:39,395  INFO        P1 Epoch 11 | TrainLoss 0.2456 | ValLoss 0.2481 | ValAcc H1=0.538 H5=0.589 H20=0.498
+2026-04-04 22:14:39,646  INFO        P1 Epoch 12 | TrainLoss 0.2467 | ValLoss 0.2481 | ValAcc H1=0.543 H5=0.579 H20=0.504
+2026-04-04 22:14:39,889  INFO        P1 Epoch 13 | TrainLoss 0.2462 | ValLoss 0.2481 | ValAcc H1=0.554 H5=0.601 H20=0.504
+2026-04-04 22:14:40,131  INFO        P1 Epoch 14 | TrainLoss 0.2448 | ValLoss 0.2480 | ValAcc H1=0.554 H5=0.596 H20=0.510
+2026-04-04 22:14:40,394  INFO        P1 Epoch 15 | TrainLoss 0.2441 | ValLoss 0.2480 | ValAcc H1=0.554 H5=0.596 H20=0.515
+2026-04-04 22:14:40,673  INFO        P1 Epoch 16 | TrainLoss 0.2448 | ValLoss 0.2480 | ValAcc H1=0.560 H5=0.601 H20=0.521
+2026-04-04 22:14:40,984  INFO        P1 Epoch 17 | TrainLoss 0.2458 | ValLoss 0.2480 | ValAcc H1=0.560 H5=0.596 H20=0.521
+2026-04-04 22:14:41,475  INFO        P1 Epoch 18 | TrainLoss 0.2442 | ValLoss 0.2480 | ValAcc H1=0.560 H5=0.596 H20=0.521
+2026-04-04 22:14:41,745  INFO        P1 Epoch 19 | TrainLoss 0.2467 | ValLoss 0.2480 | ValAcc H1=0.565 H5=0.601 H20=0.527
+2026-04-04 22:14:41,999  INFO        P1 Epoch 20 | TrainLoss 0.2450 | ValLoss 0.2480 | ValAcc H1=0.572 H5=0.591 H20=0.527
+2026-04-04 22:14:42,245  INFO        P1 Epoch 21 | TrainLoss 0.2446 | ValLoss 0.2480 | ValAcc H1=0.577 H5=0.591 H20=0.527
+2026-04-04 22:14:42,245  INFO        Phase 1 early stopping at epoch 21
+2026-04-04 22:14:42,368  INFO        Phase 1 complete. Best val_loss: 0.2481  H1=0.538 H5=0.589 H20=0.498
+2026-04-04 22:14:42,372  INFO      Phase 1 checkpoint saved: models/fine_tuned/checkpoint_ASX_ANZAX_4H_phase1_20260404.pt
+2026-04-04 22:14:42,373  INFO      Loading base checkpoint: models/base/checkpoint_base_v1.pt
+2026-04-04 22:14:42,384  INFO        Base val_loss: 0.2466  (fold 2, epoch 28)
+2026-04-04 22:14:42,540  INFO      Base model H1 accuracy on instrument val set: 0.529
+2026-04-04 22:14:42,540  INFO      Fine-tuned  H1 accuracy (Phase 1)           : 0.538
+2026-04-04 22:14:42,540  INFO      --------------------------------------------------
+2026-04-04 22:14:42,540  INFO      Phase 2 — Verification gate
+2026-04-04 22:14:42,541  INFO        Fine-tuned accuracy — H1=0.538  H5=0.589  H20=0.498  Mean=0.542
+2026-04-04 22:14:42,541  INFO        Minimum required (mean across horizons) : 0.510
+2026-04-04 22:14:42,541  INFO        ✓ Phase 2 PASSED (H1=0.538  H5=0.589  H20=0.498) — proceeding to Phase 3
+2026-04-04 22:14:42,541  INFO      --------------------------------------------------
+2026-04-04 22:14:42,541  INFO      Phase 3 — Selective encoder unfreeze
+2026-04-04 22:14:42,541  WARNING     ✗ Skipping Phase 3 — only 1.2 years of data (need 2.0)
+2026-04-04 22:14:42,541  WARNING     Using Phase 1 checkpoint as final output.
+2026-04-04 22:14:42,542  INFO      Reverted to Phase 1 checkpoint.
+2026-04-04 22:14:42,678  INFO      Phase 1 H1 accuracy (recheck): 0.538
+2026-04-04 22:14:42,678  INFO      ============================================================
+2026-04-04 22:14:42,678  INFO      Fine-Tuning Summary
+2026-04-04 22:14:42,678  INFO        Instrument     : ASX_ANZAX 4H
+2026-04-04 22:14:42,678  INFO        Final phase    : 1
+2026-04-04 22:14:42,678  INFO        Final checkpoint: models/fine_tuned/checkpoint_ASX_ANZAX_4H_phase1_20260404.pt
+2026-04-04 22:14:42,814  INFO        Base model — H1=0.529  H5=0.500  H20=0.461  Mean=0.497
+2026-04-04 22:14:42,814  INFO        Fine-tuned — H1=0.538  H5=0.589  H20=0.498  Mean=0.542  (Phase 1)
+2026-04-04 22:14:42,814  INFO        Delta mean accuracy : +0.045  ✓ Fine-tuning improved accuracy.
+2026-04-04 22:14:42,814  INFO        Per-horizon delta   :  H1=+0.009  H5=+0.089  H20=+0.037
+2026-04-04 22:14:42,817  INFO        Metrics saved  : logs/finetune/ASX_ANZAX_4H_20260404_metrics.csv
+2026-04-04 22:14:42,817  INFO      Stage 6 complete.
