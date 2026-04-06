@@ -276,7 +276,7 @@ def compute_calendar_features(df, resolution):
     feats["month_cos"] = np.cos(2 * np.pi * month / 12)
 
     # Hour of day (intraday only)
-    if resolution in ("1H", "4H"):
+    if resolution in ("1H", "4H", "1m", "5m", "15m"):
         hour = idx.hour
         feats["hour_sin"] = np.sin(2 * np.pi * hour / 24)
         feats["hour_cos"] = np.cos(2 * np.pi * hour / 24)
@@ -521,10 +521,28 @@ def main():
     parser.add_argument(
         "--refresh", action="store_true",
         help="Delete all existing .npy, .parquet, and _inspect.csv files from "
-             "data/processed/ before processing. Use this after collect_data.py "
-             "--refresh to rebuild everything from scratch."
+             "the output directory before processing."
+    )
+    parser.add_argument(
+        "--raw_dir", default=None,
+        help="Override raw CSV input directory "
+             "(default: data/raw). Use data/raw_intraday for intraday pipeline."
+    )
+    parser.add_argument(
+        "--output_dir", default=None,
+        help="Override processed output directory "
+             "(default: data/processed). Use data/processed_intraday for intraday."
     )
     args = parser.parse_args()
+
+    # Apply directory overrides before anything else runs
+    if args.raw_dir:
+        global RAW_DIR
+        RAW_DIR = args.raw_dir
+    if args.output_dir:
+        global PROCESSED_DIR
+        PROCESSED_DIR = args.output_dir
+        os.makedirs(PROCESSED_DIR, exist_ok=True)
 
     log.info("Stage 2 Feature Engineering — Start")
     log.info("Raw data dir  : %s", os.path.abspath(RAW_DIR))
