@@ -332,15 +332,31 @@ def compute_regime_label(df):
 
 
 def add_index_correlation(df_instrument, df_index, resolution):
-    """Rolling 20-bar correlation of instrument log-return to index log-return."""
+    """Rolling 20-bar correlation of instrument log-return to index log-return.
+
+    When the index reference has different trading hours than the instrument
+    (e.g. ASX 1H vs S&P 500 1H, which trade on opposite sides of the clock),
+    reindex() finds no matching timestamps and produces all-NaN. This caused
+    ASX/European 1H instruments to produce zero windows because the subsequent
+    dropna() eliminated every row.
+
+    Fix: after reindex+ffill, fill any remaining NaN with 0.0. A correlation
+    of zero (no relationship to index) is an honest representation of the
+    situation when the index has no overlapping bars. It does NOT drop the row.
+    """
     if df_index is None:
         return pd.Series(0.0, index=df_instrument.index, name="corr_index")
     eps    = 1e-10
     r_inst = np.log(df_instrument["Close"] / (df_instrument["Close"].shift(1) + eps))
     r_idx  = np.log(df_index["Close"] / (df_index["Close"].shift(1) + eps))
-    r_idx  = r_idx.reindex(df_instrument.index).ffill()
+    # Align index to instrument timestamps. For instruments that trade on
+    # different hours/days, unmatched positions become NaN after reindex.
+    r_idx  = r_idx.reindex(df_instrument.index).ffill().fillna(0.0)
     corr   = r_inst.rolling(20).corr(r_idx).rename("corr_index")
-    return corr
+    # Fill any residual NaN from the rolling window warm-up with 0.0
+    # so that dropna() downstream never eliminates rows on account of
+    # this single feature being unavailable.
+    return corr.fillna(0.0)
 
 # ─── Normalisation pipeline (section 2.5) ────────────────────────────────────
 
@@ -407,8 +423,10 @@ def process_file(filepath, index_dfs):
         return None
 
     # Need at least LOOKBACK + Z_WIN bars to produce any samples
-    if len(df) < LOOKBACK + Z_WIN + 10:
-        log.warning("  ✗  Too few rows (%d) in %s — skipping.", len(df), fname)
+    raw_row_count = len(df)
+    if raw_row_count < LOOKBACK + Z_WIN + 10:
+        log.warning("  ✗  Too few rows (%d < %d) in %s — skipping.",
+                    raw_row_count, LOOKBACK + Z_WIN + 10, fname)
         return None
 
     # Drop rows with zero/NaN close
@@ -444,6 +462,12 @@ def process_file(filepath, index_dfs):
     feat_normalised = apply_rolling_zscore_pipeline(all_feats, non_zscore_cols=set(cal_cols))
     feat_normalised = feat_normalised.dropna()
     regime_aligned  = regime.reindex(feat_normalised.index)
+
+    if len(feat_normalised) < LOOKBACK + 5:
+        log.warning("  ✗  Only %d rows remain after dropna() in %s "
+                   "(needed >%d) — likely NaN propagation in features.",
+                    len(feat_normalised), fname, LOOKBACK + 5)
+        return None
 
     # Build sample windows
     X, regimes, dates = build_windows(feat_normalised, regime_aligned)
@@ -492,9 +516,31 @@ def load_index_refs():
 
 
 def main():
+    import argparse
+    parser = argparse.ArgumentParser(description="Stage 2 Feature Engineering")
+    parser.add_argument(
+        "--refresh", action="store_true",
+        help="Delete all existing .npy, .parquet, and _inspect.csv files from "
+             "data/processed/ before processing. Use this after collect_data.py "
+             "--refresh to rebuild everything from scratch."
+    )
+    args = parser.parse_args()
+
     log.info("Stage 2 Feature Engineering — Start")
     log.info("Raw data dir  : %s", os.path.abspath(RAW_DIR))
     log.info("Output dir    : %s", os.path.abspath(PROCESSED_DIR))
+
+    # ── Refresh: delete all processed outputs ─────────────────────────────
+    if args.refresh:
+        deleted = 0
+        for ext in ("*.npy", "*.parquet", "*_inspect.csv"):
+            for f in glob.glob(os.path.join(PROCESSED_DIR, ext)):
+                os.remove(f)
+                deleted += 1
+        if deleted:
+            log.info("--refresh: deleted %d files from %s", deleted, PROCESSED_DIR)
+        else:
+            log.info("--refresh: no existing processed files found — clean run")
 
     csv_files = sorted(glob.glob(os.path.join(RAW_DIR, "*.csv")))
     if not csv_files:
@@ -507,12 +553,28 @@ def main():
 
     results    = []
     skipped    = []
+    already    = []
     nan_checks = []
 
     for filepath in csv_files:
+        fname    = os.path.basename(filepath)
+        out_stem = fname.replace(".csv", "")
+        out_base = os.path.join(PROCESSED_DIR, out_stem)
+
+        # ── Incremental skip: if .npy already exists, don't reprocess ────
+        # This means only newly downloaded instruments (from collect_data.py
+        # without --refresh) get processed. Instruments whose .npy files are
+        # up to date are left alone, saving significant time.
+        # Use --refresh to force a full rebuild.
+        if not args.refresh and os.path.exists(out_base + ".npy"):
+            log.debug("[SKIP] %s — .npy already exists", fname)
+            already.append(fname)
+            continue
+
         result = process_file(filepath, index_dfs)
+
         if result is None:
-            skipped.append(os.path.basename(filepath))
+            skipped.append(fname)
             continue
 
         # NaN / Inf check
@@ -523,9 +585,7 @@ def main():
             log.warning("  ⚠  NaN/Inf in %s: %d NaN, %d Inf",
                         result["source_file"], nan_count, inf_count)
 
-        out_stem = result["source_file"].replace(".csv", "")
-        out_base = os.path.join(PROCESSED_DIR, out_stem)
-
+        # out_stem and out_base already computed above (before the skip check)
         meta_df = pd.DataFrame({
             "date":    result["dates"],
             "regime":  result["regimes"],
@@ -550,11 +610,14 @@ def main():
     # ── Summary ──────────────────────────────────────────────────
     log.info("=" * 60)
     log.info("Feature engineering complete.")
-    log.info("  Processed : %d files", len(results))
-    log.info("  Skipped   : %d files", len(skipped))
+    log.info("  Processed  : %d files", len(results))
+    log.info("  Up to date : %d files (skipped — .npy already exists)", len(already))
+    log.info("  Failed     : %d files", len(skipped))
 
+    if already:
+        log.info("  Run with --refresh to reprocess all files from scratch.")
     if skipped:
-        log.info("  Skipped list: %s", skipped)
+        log.info("  Failed list: %s", skipped)
 
     if nan_checks:
         log.warning("  Files with NaN/Inf values:")
@@ -567,7 +630,8 @@ def main():
     log.info("  Total training windows: %d", total_windows)
 
     # Regime class balance across all data
-    all_regimes = np.concatenate.                                         B.isnan(all_regimes)]
+    all_regimes = np.concatenate([r["regimes"] for r in results])
+    valid_reg   = all_regimes[~np.isnan(all_regimes)]
     log.info("\nGlobal regime class distribution:")
     for cls in range(6):
         cnt = (valid_reg == cls).sum()
