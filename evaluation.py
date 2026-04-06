@@ -716,6 +716,200 @@ def eval_ft(ckpt_path, instrument, resolution, device, compare_base):
 
 
 
+
+# ─── Holdout evaluation ───────────────────────────────────────────────────────
+
+def eval_holdout(device: str):
+    """
+    Evaluate every instrument's base and fine-tuned model on the holdout split
+    created by walk_forward.py --holdout_from DATE.
+
+    The holdout is strictly unseen: it was never part of any training fold,
+    validation set, or fine-tuning split. This is the most rigorous
+    out-of-sample test available.
+
+    For each instrument:
+      - Loads the rows from holdout_test.parquet that belong to it
+      - Runs the base model
+      - Runs the fine-tuned checkpoint if one exists (phase3 preferred)
+      - Reports H1/H5/H20 accuracy and whether retraining is recommended
+
+    Retrain trigger: if the cross-instrument average H1 accuracy drops more
+    than 2pp below the training-time fold average (0.550), or if more than
+    30% of individual instruments are below 0.530, retraining is recommended.
+    """
+    HOLDOUT_PATH   = os.path.join(SPLITS_DIR, "holdout_test.parquet")
+    FOLD_AVG_H1    = 0.550    # fold-average H1 from training
+    RETRAIN_DROP   = 0.020    # per-instrument trigger: drop > 2pp below fold avg
+    RETRAIN_PCT    = 0.30     # cross-instrument trigger: >30% instruments failing
+
+    log.info("=" * 60)
+    log.info("HOLDOUT EVALUATION — Genuinely Unseen Data")
+    log.info("=" * 60)
+
+    if not os.path.exists(HOLDOUT_PATH):
+        log.error("Holdout split not found: %s", HOLDOUT_PATH)
+        log.error("Run: python walk_forward.py --holdout_from YYYY-MM-DD")
+        return
+
+    holdout_df = pd.read_parquet(HOLDOUT_PATH)
+    holdout_df["date"] = pd.to_datetime(holdout_df["date"])
+    if holdout_df["date"].dt.tz is not None:
+        holdout_df["date"] = holdout_df["date"].dt.tz_localize(None)
+
+    date_min = holdout_df["date"].min().date()
+    date_max = holdout_df["date"].max().date()
+    n_inst   = holdout_df["source_file"].nunique()
+    log.info("Holdout period: %s → %s  (%d bars across %d instruments)",
+             date_min, date_max, len(holdout_df), n_inst)
+
+    # ── Load base model ────────────────────────────────────────
+    bp = os.path.join(MODELS_BASE, "checkpoint_base_v1.pt")
+    if not os.path.exists(bp):
+        log.error("No base checkpoint: %s", bp); return
+    ckpt       = torch.load(bp, map_location=device, weights_only=True)
+    base_model = build_model(n_features=ckpt.get("n_features", N_FEATURES), device=device)
+    base_model.load_state_dict(ckpt["model_state"])
+    log.info("Base: %s  val_loss=%.4f", os.path.basename(bp),
+             ckpt.get("val_loss", float("nan")))
+
+    results       = []
+    retrain_flags = []
+
+    instruments = sorted(holdout_df["source_file"].unique())
+
+    for src in instruments:
+        inst_df = holdout_df[holdout_df["source_file"] == src].copy()
+
+        # Parse instrument and resolution from source_file name
+        parts      = src.split("_")
+        if len(parts) < 3: continue
+        instrument = f"{parts[0]}_{parts[1]}"
+        resolution = parts[2]
+
+        # Skip if too few bars for meaningful evaluation
+        n_bars = len(inst_df)
+        if n_bars < 5:
+            log.debug("[SKIP] %s — only %d holdout bars", src, n_bars)
+            continue
+
+        # Evaluate base model
+        base_m = eval_split(base_model, inst_df, device)
+        if not base_m:
+            continue
+
+        base_h1  = base_m.get("acc_h1", 0)
+        base_sh  = base_m.get("sh_h1", 0)
+        base_n   = base_m.get("n", 0)
+
+        # Find best fine-tuned checkpoint
+        ft_h1 = None; ft_label = "—"
+        for phase in ("phase3", "phase1"):
+            ft_ckpts = sorted(glob.glob(
+                os.path.join("models/fine_tuned",
+                             f"checkpoint_{instrument}_{resolution}_{phase}_*.pt")
+            ))
+            if ft_ckpts:
+                try:
+                    ftc   = torch.load(ft_ckpts[-1], map_location=device, weights_only=True)
+                    ft_m2 = build_model(n_features=ftc.get("n_features", N_FEATURES), device=device)
+                    ft_m2.load_state_dict(ftc["model_state"])
+                    ft_res = eval_split(ft_m2, inst_df, device)
+                    if ft_res:
+                        ft_h1   = ft_res.get("acc_h1", 0)
+                        ft_label = phase
+                except Exception as e:
+                    log.debug("Could not load ft checkpoint for %s: %s", src, e)
+                break
+
+        # Retrain flag: base H1 drops more than RETRAIN_DROP below fold average
+        drop          = FOLD_AVG_H1 - base_h1
+        needs_retrain = drop > RETRAIN_DROP
+
+        # Build log line
+        ft_str = f"  ft={ft_h1:.3f}({ft_label})" if ft_h1 is not None else ""
+        flag   = "🔴 RETRAIN" if needs_retrain else "✓"
+        log.info("  %-30s n=%3d  base_h1=%.3f  sharpe=%.2f%s  %s",
+                 f"{instrument}_{resolution}", n_bars, base_h1, base_sh, ft_str, flag)
+
+        results.append({
+            "instrument":  instrument,
+            "resolution":  resolution,
+            "n_bars":      n_bars,
+            "base_h1":     round(base_h1, 4),
+            "base_sharpe": round(base_sh, 3),
+            "ft_h1":       round(ft_h1, 4) if ft_h1 is not None else None,
+            "ft_phase":    ft_label if ft_h1 is not None else None,
+            "drop":        round(drop, 4),
+            "retrain":     needs_retrain,
+        })
+        if needs_retrain:
+            retrain_flags.append(f"{instrument}_{resolution}  base_h1={base_h1:.3f}  "
+                                  f"(drop={drop:+.3f})")
+
+    # ── Cross-instrument summary ──────────────────────────────
+    if not results:
+        log.error("No results produced — check holdout split has enough bars.")
+        return
+
+    import numpy as np
+    avg_h1    = np.mean([r["base_h1"]  for r in results])
+    avg_drop  = avg_h1 - FOLD_AVG_H1
+    pct_fail  = sum(1 for r in results if r["retrain"]) / len(results)
+    n_ft      = sum(1 for r in results if r["ft_h1"] is not None)
+    avg_ft_h1 = np.mean([r["ft_h1"] for r in results if r["ft_h1"] is not None])                 if n_ft > 0 else None
+
+    log.info("")
+    log.info("=" * 60)
+    log.info("HOLDOUT SUMMARY")
+    log.info("  Instruments evaluated  : %d", len(results))
+    log.info("  Holdout period         : %s → %s", date_min, date_max)
+    log.info("  Base model avg H1      : %.3f  (fold avg=%.3f  delta=%+.3f)",
+             avg_h1, FOLD_AVG_H1, avg_drop)
+    if avg_ft_h1 is not None:
+        log.info("  Fine-tuned avg H1      : %.3f  (on %d instruments with ft checkpoint)",
+                 avg_ft_h1, n_ft)
+    log.info("  Instruments flagged    : %d / %d  (%.0f%%)",
+             len(retrain_flags), len(results), pct_fail * 100)
+
+    # ── Retrain decision ─────────────────────────────────────
+    retrain_overall = (avg_drop < -RETRAIN_DROP) or (pct_fail > RETRAIN_PCT)
+    log.info("")
+    if retrain_overall:
+        log.warning("🔴 RETRAIN RECOMMENDED")
+        if avg_drop < -RETRAIN_DROP:
+            log.warning("   Cross-instrument H1 dropped %+.3f below fold average", avg_drop)
+        if pct_fail > RETRAIN_PCT:
+            log.warning("   %.0f%% of instruments below threshold (limit=%.0f%%)",
+                        pct_fail * 100, RETRAIN_PCT * 100)
+        log.warning("")
+        log.warning("   Flagged instruments:")
+        for f in retrain_flags:
+            log.warning("     %s", f)
+        log.warning("")
+        log.warning("   Retrain pipeline:")
+        log.warning("     python collect_data.py --refresh")
+        log.warning("     python feature_engineering.py")
+        log.warning("     python walk_forward.py --holdout_from %s", str(date_min))
+        log.warning("     python train.py")
+        log.warning("     bash run_finetune.sh")
+        log.warning("     python evaluation.py --holdout")
+    else:
+        log.info("✓ NO RETRAIN NEEDED")
+        log.info("  Models are generalising well to unseen holdout data.")
+        if retrain_flags:
+            log.info("  %d individual instruments are slightly below threshold "
+                     "but the overall picture is healthy:", len(retrain_flags))
+            for f in retrain_flags:
+                log.info("    %s", f)
+
+    # Save CSV
+    out = os.path.join(LOG_DIR, "holdout_results.csv")
+    pd.DataFrame(results).to_csv(out, index=False)
+    log.info("")
+    log.info("Saved: %s", out)
+
+
 # ─── Live / out-of-sample test ────────────────────────────────────────────────
 
 def eval_live(device: str, days: int = 14):
@@ -876,17 +1070,22 @@ def main():
     p.add_argument("--resolution",   default="1D")
     p.add_argument("--compare_base", action="store_true")
     p.add_argument("--live_test",    action="store_true",
-                   help="Evaluate all instruments on the most recent N bars "
-                        "(bars after the training split cutoff). "
-                        "Use after re-downloading fresh data to test on truly unseen bars.")
+                   help="Evaluate all instruments on the most recent N bars.")
     p.add_argument("--days",         type=int, default=14,
                    help="Number of recent trading days to use for --live_test (default: 14).")
+    p.add_argument("--holdout",      action="store_true",
+                   help="Evaluate base model and all fine-tuned checkpoints on the "
+                        "holdout split (data/splits/holdout_test.parquet) created by "
+                        "walk_forward.py --holdout_from. This is the cleanest possible "
+                        "out-of-sample test: data the model has never seen in any form.")
     args = p.parse_args()
 
     device = "cuda" if torch.cuda.is_available() else "cpu"
     log.info("Stage 7 — device=%s", device)
 
-    if args.live_test:
+    if args.holdout:
+        eval_holdout(device)
+    elif args.live_test:
         eval_live(device, args.days)
     elif args.checkpoint:
         if not args.instrument: log.error("--instrument required"); return

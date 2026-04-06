@@ -511,6 +511,13 @@ def main():
                         help="Path to base checkpoint (default: auto-detect newest in models/base/)")
     parser.add_argument("--skip_phase3", action="store_true",
                         help="Force skip Phase 3 even if data is sufficient")
+    parser.add_argument(
+        "--holdout_from", default=None, metavar="YYYY-MM-DD",
+        help="Cap training/val data to bars strictly before this date. "
+             "Must match the date used in walk_forward.py --holdout_from. "
+             "Prevents fine-tuning from accidentally seeing holdout data "
+             "when finetune.py reads the full .npy files directly."
+    )
     args = parser.parse_args()
 
     device = "cuda" if torch.cuda.is_available() else "cpu"
@@ -545,6 +552,27 @@ def main():
     X, meta = load_instrument_data(args.instrument, args.resolution)
     if X is None:
         return
+
+    # ── Holdout protection ────────────────────────────────────
+    # If --holdout_from was given, cap X and meta to bars strictly before
+    # that date. finetune.py reads .npy files directly (not fold splits),
+    # so without this cap it would train on holdout data inadvertently.
+    if args.holdout_from and meta is not None and "date" in meta.columns:
+        holdout_ts = pd.Timestamp(args.holdout_from)
+        dates_col  = pd.to_datetime(meta["date"])
+        if dates_col.dt.tz is not None:
+            dates_col = dates_col.dt.tz_localize(None)
+        pre_mask   = (dates_col < holdout_ts).values
+        n_before   = pre_mask.sum()
+        n_after    = (~pre_mask).sum()
+        if n_before == 0:
+            log.error("All data for %s %s falls on/after holdout date %s — skipping.",
+                      args.instrument, args.resolution, args.holdout_from)
+            return
+        log.info("  Holdout cap applied: using %d bars before %s (%d bars withheld)",
+                 n_before, args.holdout_from, n_after)
+        X    = X[pre_mask]
+        meta = meta[pre_mask].reset_index(drop=True)
 
     X_train, X_val, years_of_data = split_train_val(X, meta)
     if X_train is None:

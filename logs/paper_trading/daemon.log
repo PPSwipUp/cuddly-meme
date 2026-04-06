@@ -1,0 +1,4 @@
+nohup: ignoring input
+2026-04-06 02:59:16,414  INFO      Paper Trading Engine — device=cpu
+2026-04-06 02:59:16,415  INFO      Daemon mode started — will run trading cycle at 09:00 UTC on weekdays (Mon-Fri). Keep this terminal open.
+2026-04-06 02:59:16,415  INFO      Press Ctrl+C to stop.

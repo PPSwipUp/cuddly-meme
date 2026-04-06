@@ -30564,3 +30564,349 @@ Fold 3:
 2026-04-05 04:07:08,943  INFO      ============================================================
 2026-04-05 04:07:08,943  INFO      FINE-TUNED — TSX_TDTO 1D
 2026-04-05 04:07:08,943  INFO      ============================================================
+2026-04-06 00:55:21,921  INFO      Stage 7 — device=cpu
+2026-04-06 00:55:21,973  INFO      ============================================================
+2026-04-06 00:55:21,973  INFO      HOLDOUT EVALUATION — Genuinely Unseen Data
+2026-04-06 00:55:21,973  INFO      ============================================================
+2026-04-06 00:55:23,045  INFO      Holdout period: 2026-01-01 → 2026-04-04  (58911 bars across 229 instruments)
+2026-04-06 00:55:23,469  INFO      Base: checkpoint_base_v1.pt  val_loss=0.2463
+2026-04-06 00:55:26,239  INFO        ASX_ANZAX_1D                   n= 64  base_h1=0.594  sharpe=3.56  ft=0.625(phase3)  ✓
+2026-04-06 00:55:27,487  INFO        ASX_ANZAX_1H                   n=448  base_h1=0.551  sharpe=1.71  ft=0.565(phase1)  ✓
+2026-04-06 00:55:27,885  INFO        ASX_ANZAX_1W                   n= 13  base_h1=0.692  sharpe=10.14  ft=0.692(phase1)  ✓
+2026-04-06 00:55:28,244  INFO        ASX_ANZAX_4H                   n=151  base_h1=0.550  sharpe=1.37  ft=0.556(phase1)  ✓
+2026-04-06 00:55:28,434  INFO        ASX_BHPAX_1D                   n= 64  base_h1=0.422  sharpe=-2.00  ft=0.422(phase1)  🔴 RETRAIN
+2026-04-06 00:55:29,793  INFO        ASX_BHPAX_1H                   n=448  base_h1=0.576  sharpe=2.51  ft=0.583(phase1)  ✓
+2026-04-06 00:55:29,933  INFO        ASX_BHPAX_1W                   n= 13  base_h1=0.385  sharpe=-1.22  ft=0.385(phase1)  🔴 RETRAIN
+2026-04-06 00:55:30,340  INFO        ASX_BHPAX_4H                   n=151  base_h1=0.510  sharpe=0.53  ft=0.510(phase1)  🔴 RETRAIN
+2026-04-06 00:55:30,596  INFO        ASX_CBAAX_1D                   n= 64  base_h1=0.562  sharpe=2.51  ft=0.562(phase1)  ✓
+2026-04-06 00:55:31,710  INFO        ASX_CBAAX_1H                   n=447  base_h1=0.568  sharpe=2.11  ft=0.559(phase1)  ✓
+2026-04-06 00:55:32,021  INFO        ASX_CBAAX_1W                   n= 13  base_h1=0.615  sharpe=1.22  ft=0.615(phase3)  ✓
+2026-04-06 00:55:32,477  INFO        ASX_CBAAX_4H                   n=151  base_h1=0.616  sharpe=3.56  ft=0.603(phase1)  ✓
+2026-04-06 00:55:32,679  INFO        ASX_CSLAX_1D                   n= 64  base_h1=0.656  sharpe=4.65  ft=0.641(phase3)  ✓
+2026-04-06 00:55:33,841  INFO        ASX_CSLAX_1H                   n=446  base_h1=0.556  sharpe=1.86  ft=0.556(phase1)  ✓
+2026-04-06 00:55:34,120  INFO        ASX_CSLAX_1W                   n= 13  base_h1=0.692  sharpe=3.76  ft=0.692(phase3)  ✓
+2026-04-06 00:55:34,480  INFO        ASX_CSLAX_4H                   n=151  base_h1=0.576  sharpe=2.23  ft=0.583(phase1)  ✓
+2026-04-06 00:55:34,683  INFO        ASX_WBCAX_1D                   n= 64  base_h1=0.516  sharpe=0.99  ft=0.516(phase3)  🔴 RETRAIN
+2026-04-06 00:55:35,608  INFO        ASX_WBCAX_1H                   n=445  base_h1=0.521  sharpe=0.61  ft=0.524(phase1)  🔴 RETRAIN
+2026-04-06 00:55:35,837  INFO        ASX_WBCAX_1W                   n= 13  base_h1=0.538  sharpe=3.76  ft=0.462(phase3)  ✓
+2026-04-06 00:55:36,216  INFO        ASX_WBCAX_4H                   n=151  base_h1=0.517  sharpe=0.74  ft=0.523(phase1)  🔴 RETRAIN
+2026-04-06 00:55:36,774  INFO        CBOT_ZWF_1D                    n= 63  base_h1=0.540  sharpe=1.77  ft=0.540(phase1)  ✓
+2026-04-06 00:55:36,978  INFO        CBOT_ZWF_1W                    n= 14  base_h1=0.714  sharpe=11.05  ft=0.714(phase1)  ✓
+2026-04-06 00:55:37,871  INFO        CBOT_ZWF_4H                    n=310  base_h1=0.465  sharpe=-1.03  ft=0.465(phase1)  🔴 RETRAIN
+2026-04-06 00:55:38,362  INFO        COMEX_GCF_1D                   n= 63  base_h1=0.603  sharpe=2.81  ft=0.524(phase3)  ✓
+2026-04-06 00:55:38,540  INFO        COMEX_GCF_1W                   n= 14  base_h1=0.429  sharpe=0.00  ft=0.429(phase3)  🔴 RETRAIN
+2026-04-06 00:55:39,437  INFO        COMEX_GCF_4H                   n=390  base_h1=0.513  sharpe=0.49  ft=0.523(phase1)  🔴 RETRAIN
+2026-04-06 00:55:39,708  INFO        COMEX_HGF_1D                   n= 63  base_h1=0.587  sharpe=2.29  ft=0.571(phase3)  ✓
+2026-04-06 00:55:39,899  INFO        COMEX_HGF_1W                   n= 14  base_h1=0.500  sharpe=2.29  ft=0.500(phase3)  🔴 RETRAIN
+2026-04-06 00:55:40,805  INFO        COMEX_HGF_4H                   n=390  base_h1=0.546  sharpe=1.55  ft=0.546(phase1)  ✓
+2026-04-06 00:55:41,079  INFO        COMEX_SIF_1D                   n= 63  base_h1=0.508  sharpe=-0.25  ft=0.476(phase3)  🔴 RETRAIN
+2026-04-06 00:55:41,347  INFO        COMEX_SIF_1W                   n= 14  base_h1=0.500  sharpe=2.29  ft=0.500(phase1)  🔴 RETRAIN
+2026-04-06 00:55:42,287  INFO        COMEX_SIF_4H                   n=390  base_h1=0.510  sharpe=0.41  ft=0.523(phase1)  🔴 RETRAIN
+2026-04-06 00:55:42,732  INFO        CRYPTO_BTC-USD_1D              n= 93  base_h1=0.527  sharpe=0.51  ft=0.484(phase3)  🔴 RETRAIN
+2026-04-06 00:55:47,826  INFO        CRYPTO_BTC-USD_1H              n=2256  base_h1=0.547  sharpe=1.51  ft=0.547(phase1)  ✓
+2026-04-06 00:55:48,371  INFO        CRYPTO_BTC-USD_1W              n= 14  base_h1=0.500  sharpe=-2.29  ft=0.500(phase3)  🔴 RETRAIN
+2026-04-06 00:55:49,454  INFO        CRYPTO_BTC-USD_4H              n=502  base_h1=0.526  sharpe=0.76  ft=0.544(phase1)  🔴 RETRAIN
+2026-04-06 00:55:49,953  INFO        CRYPTO_ETH-USD_1D              n= 93  base_h1=0.634  sharpe=4.05  ft=0.613(phase3)  ✓
+2026-04-06 00:55:54,856  INFO        CRYPTO_ETH-USD_1H              n=2256  base_h1=0.555  sharpe=1.73  ft=0.545(phase1)  ✓
+2026-04-06 00:55:55,280  INFO        CRYPTO_ETH-USD_1W              n= 13  base_h1=0.692  sharpe=3.76  ft=0.692(phase3)  ✓
+2026-04-06 00:55:56,656  INFO        CRYPTO_ETH-USD_4H              n=502  base_h1=0.538  sharpe=1.14  ft=0.534(phase1)  ✓
+2026-04-06 00:55:56,881  INFO        DAX_GDAXI_1D                   n= 65  base_h1=0.631  sharpe=3.76  ft=0.646(phase3)  ✓
+2026-04-06 00:55:58,141  INFO        DAX_GDAXI_1H                   n=585  base_h1=0.569  sharpe=2.16  ft=0.571(phase1)  ✓
+2026-04-06 00:55:58,491  INFO        DAX_GDAXI_1W                   n= 13  base_h1=0.538  sharpe=-1.22  ft=0.538(phase3)  ✓
+2026-04-06 00:55:58,993  INFO        DAX_GDAXI_4H                   n=195  base_h1=0.579  sharpe=2.39  ft=0.574(phase1)  ✓
+2026-04-06 00:55:59,420  INFO        EURONEXT_ASMLAS_1D             n= 65  base_h1=0.554  sharpe=1.22  ft=0.569(phase3)  ✓
+2026-04-06 00:56:01,254  INFO        EURONEXT_ASMLAS_1H             n=585  base_h1=0.564  sharpe=2.00  ft=0.564(phase1)  ✓
+2026-04-06 00:56:01,497  INFO        EURONEXT_ASMLAS_1W             n= 13  base_h1=0.462  sharpe=1.22  ft=0.462(phase1)  🔴 RETRAIN
+2026-04-06 00:56:02,094  INFO        EURONEXT_ASMLAS_4H             n=195  base_h1=0.528  sharpe=0.73  ft=0.528(phase1)  🔴 RETRAIN
+2026-04-06 00:56:02,399  INFO        EURONEXT_MCPA_1D               n= 65  base_h1=0.569  sharpe=1.72  ft=0.585(phase3)  ✓
+2026-04-06 00:56:03,813  INFO        EURONEXT_MCPA_1H               n=585  base_h1=0.544  sharpe=1.44  ft=0.538(phase1)  ✓
+2026-04-06 00:56:04,046  INFO        EURONEXT_MCPA_1W               n= 13  base_h1=0.538  sharpe=-1.22  ft=0.462(phase3)  ✓
+2026-04-06 00:56:04,516  INFO        EURONEXT_MCPA_4H               n=195  base_h1=0.585  sharpe=2.56  ft=0.579(phase1)  ✓
+2026-04-06 00:56:04,752  INFO        EURONEXT_SAPDE_1D              n= 65  base_h1=0.523  sharpe=0.24  ft=0.523(phase3)  🔴 RETRAIN
+2026-04-06 00:56:06,786  INFO        EURONEXT_SAPDE_1H              n=585  base_h1=0.532  sharpe=1.06  ft=0.530(phase1)  ✓
+2026-04-06 00:56:07,065  INFO        EURONEXT_SAPDE_1W              n= 13  base_h1=0.462  sharpe=-3.76  ft=0.462(phase3)  🔴 RETRAIN
+2026-04-06 00:56:07,780  INFO        EURONEXT_SAPDE_4H              n=195  base_h1=0.559  sharpe=1.72  ft=0.533(phase1)  ✓
+2026-04-06 00:56:08,070  INFO        EURONEXT_SIEDE_1D              n= 65  base_h1=0.554  sharpe=1.22  ft=0.462(phase3)  ✓
+2026-04-06 00:56:09,396  INFO        EURONEXT_SIEDE_1H              n=585  base_h1=0.533  sharpe=1.12  ft=0.537(phase1)  ✓
+2026-04-06 00:56:09,821  INFO        EURONEXT_SIEDE_1W              n= 13  base_h1=0.538  sharpe=3.76  ft=0.615(phase3)  ✓
+2026-04-06 00:56:10,367  INFO        EURONEXT_SIEDE_4H              n=195  base_h1=0.564  sharpe=1.89  ft=0.564(phase1)  ✓
+2026-04-06 00:56:10,573  INFO        EURONEXT_TTEPA_1D              n= 65  base_h1=0.446  sharpe=-1.22  ft=0.446(phase1)  🔴 RETRAIN
+2026-04-06 00:56:12,057  INFO        EURONEXT_TTEPA_1H              n=585  base_h1=0.566  sharpe=2.05  ft=0.556(phase1)  ✓
+2026-04-06 00:56:12,304  INFO        EURONEXT_TTEPA_1W              n= 13  base_h1=0.308  sharpe=-3.76  ft=0.308(phase1)  🔴 RETRAIN
+2026-04-06 00:56:12,861  INFO        EURONEXT_TTEPA_4H              n=195  base_h1=0.503  sharpe=0.24  ft=0.508(phase1)  🔴 RETRAIN
+2026-04-06 00:56:13,062  INFO        FOREXCOM_AUDNZDX_1D            n= 66  base_h1=0.515  sharpe=0.96  ft=0.515(phase1)  🔴 RETRAIN
+2026-04-06 00:56:16,739  INFO        FOREXCOM_AUDNZDX_1H            n=1591  base_h1=0.554  sharpe=1.74  ft=0.554(phase1)  ✓
+2026-04-06 00:56:16,942  INFO        FOREXCOM_AUDNZDX_1W            n= 13  base_h1=0.308  sharpe=-3.76  ft=0.308(phase1)  🔴 RETRAIN
+2026-04-06 00:56:18,217  INFO        FOREXCOM_AUDNZDX_4H            n=403  base_h1=0.543  sharpe=1.46  ft=0.543(phase1)  ✓
+2026-04-06 00:56:18,444  INFO        FOREXCOM_AUDUSDX_1D            n= 66  base_h1=0.545  sharpe=1.94  ft=0.545(phase1)  ✓
+2026-04-06 00:56:22,380  INFO        FOREXCOM_AUDUSDX_1H            n=1592  base_h1=0.547  sharpe=1.48  ft=0.547(phase1)  ✓
+2026-04-06 00:56:22,575  INFO        FOREXCOM_AUDUSDX_1W            n= 13  base_h1=0.462  sharpe=1.22  ft=0.462(phase1)  🔴 RETRAIN
+2026-04-06 00:56:23,745  INFO        FOREXCOM_AUDUSDX_4H            n=403  base_h1=0.541  sharpe=1.22  ft=0.548(phase1)  ✓
+2026-04-06 00:56:24,227  INFO        FOREXCOM_EURCHFX_1D            n= 66  base_h1=0.621  sharpe=3.45  ft=0.621(phase3)  ✓
+2026-04-06 00:56:28,358  INFO        FOREXCOM_EURCHFX_1H            n=1577  base_h1=0.550  sharpe=1.61  ft=0.548(phase1)  ✓
+2026-04-06 00:56:28,780  INFO        FOREXCOM_EURCHFX_1W            n= 14  base_h1=0.571  sharpe=0.00  ft=0.714(phase3)  ✓
+2026-04-06 00:56:29,949  INFO        FOREXCOM_EURCHFX_4H            n=402  base_h1=0.550  sharpe=1.67  ft=0.565(phase1)  ✓
+2026-04-06 00:56:30,143  INFO        FOREXCOM_EURGBPX_1D            n= 66  base_h1=0.545  sharpe=1.94  ft=0.530(phase1)  ✓
+2026-04-06 00:56:33,349  INFO        FOREXCOM_EURGBPX_1H            n=1578  base_h1=0.549  sharpe=1.58  ft=0.548(phase1)  ✓
+2026-04-06 00:56:33,604  INFO        FOREXCOM_EURGBPX_1W            n= 14  base_h1=0.500  sharpe=2.29  ft=0.500(phase1)  🔴 RETRAIN
+2026-04-06 00:56:34,511  INFO        FOREXCOM_EURGBPX_4H            n=402  base_h1=0.527  sharpe=0.95  ft=0.535(phase1)  🔴 RETRAIN
+2026-04-06 00:56:34,915  INFO        FOREXCOM_EURUSDX_1D            n= 66  base_h1=0.591  sharpe=2.43  ft=0.591(phase3)  ✓
+2026-04-06 00:56:37,252  INFO        FOREXCOM_EURUSDX_1H            n=1574  base_h1=0.532  sharpe=0.99  ft=0.534(phase1)  ✓
+2026-04-06 00:56:37,552  INFO        FOREXCOM_EURUSDX_1W            n= 14  base_h1=0.643  sharpe=7.53  ft=0.643(phase1)  ✓
+2026-04-06 00:56:38,562  INFO        FOREXCOM_EURUSDX_4H            n=401  base_h1=0.544  sharpe=1.47  ft=0.534(phase1)  ✓
+2026-04-06 00:56:38,938  INFO        FOREXCOM_GBPJPYX_1D            n= 66  base_h1=0.530  sharpe=0.48  ft=0.545(phase3)  ✓
+2026-04-06 00:56:42,260  INFO        FOREXCOM_GBPJPYX_1H            n=1574  base_h1=0.559  sharpe=1.87  ft=0.556(phase1)  ✓
+2026-04-06 00:56:42,584  INFO        FOREXCOM_GBPJPYX_1W            n= 14  base_h1=0.429  sharpe=0.00  ft=0.429(phase1)  🔴 RETRAIN
+2026-04-06 00:56:43,865  INFO        FOREXCOM_GBPJPYX_4H            n=401  base_h1=0.541  sharpe=1.23  ft=0.546(phase1)  ✓
+2026-04-06 00:56:44,246  INFO        FOREXCOM_GBPUSDX_1D            n= 66  base_h1=0.591  sharpe=2.43  ft=0.576(phase3)  ✓
+2026-04-06 00:56:47,356  INFO        FOREXCOM_GBPUSDX_1H            n=1575  base_h1=0.545  sharpe=1.41  ft=0.544(phase1)  ✓
+2026-04-06 00:56:47,669  INFO        FOREXCOM_GBPUSDX_1W            n= 14  base_h1=0.643  sharpe=7.53  ft=0.643(phase1)  ✓
+2026-04-06 00:56:49,151  INFO        FOREXCOM_GBPUSDX_4H            n=402  base_h1=0.517  sharpe=0.47  ft=0.520(phase1)  🔴 RETRAIN
+2026-04-06 00:56:49,548  INFO        FOREXCOM_USDCADX_1D            n= 66  base_h1=0.636  sharpe=3.97  ft=0.636(phase3)  ✓
+2026-04-06 00:56:53,743  INFO        FOREXCOM_USDCADX_1H            n=1589  base_h1=0.529  sharpe=0.95  ft=0.524(phase1)  🔴 RETRAIN
+2026-04-06 00:56:53,961  INFO        FOREXCOM_USDCADX_1W            n= 13  base_h1=0.615  sharpe=1.22  ft=0.615(phase3)  ✓
+2026-04-06 00:56:55,259  INFO        FOREXCOM_USDCADX_4H            n=403  base_h1=0.533  sharpe=1.15  ft=0.536(phase1)  ✓
+2026-04-06 00:56:55,685  INFO        FOREXCOM_USDCHFX_1D            n= 66  base_h1=0.561  sharpe=1.45  ft=0.545(phase3)  ✓
+2026-04-06 00:56:59,117  INFO        FOREXCOM_USDCHFX_1H            n=1571  base_h1=0.553  sharpe=1.72  ft=0.547(phase1)  ✓
+2026-04-06 00:56:59,328  INFO        FOREXCOM_USDCHFX_1W            n= 14  base_h1=0.714  sharpe=4.73  ft=0.714(phase3)  ✓
+2026-04-06 00:57:00,389  INFO        FOREXCOM_USDCHFX_4H            n=402  base_h1=0.540  sharpe=1.35  ft=0.540(phase1)  ✓
+2026-04-06 00:57:00,547  INFO        FOREXCOM_USDJPYX_1D            n= 66  base_h1=0.606  sharpe=2.94  ft=0.561(phase3)  ✓
+2026-04-06 00:57:03,912  INFO        FOREXCOM_USDJPYX_1H            n=1546  base_h1=0.539  sharpe=1.28  ft=0.536(phase1)  ✓
+2026-04-06 00:57:04,717  INFO        FOREXCOM_USDJPYX_1W            n= 14  base_h1=0.500  sharpe=2.29  ft=0.500(phase1)  🔴 RETRAIN
+2026-04-06 00:57:06,053  INFO        FOREXCOM_USDJPYX_4H            n=394  base_h1=0.574  sharpe=2.28  ft=0.574(phase1)  ✓
+2026-04-06 00:57:06,486  INFO        FTSE_FTSE_1D                   n= 65  base_h1=0.492  sharpe=-0.73  ft=0.492(phase3)  🔴 RETRAIN
+2026-04-06 00:57:08,017  INFO        FTSE_FTSE_1H                   n=585  base_h1=0.526  sharpe=0.90  ft=0.523(phase1)  🔴 RETRAIN
+2026-04-06 00:57:08,245  INFO        FTSE_FTSE_1W                   n= 14  base_h1=0.429  sharpe=0.00  ft=0.429(phase1)  🔴 RETRAIN
+2026-04-06 00:57:08,790  INFO        FTSE_FTSE_4H                   n=195  base_h1=0.554  sharpe=1.55  ft=0.559(phase1)  ✓
+2026-04-06 00:57:09,116  INFO        HSI_HSI_1D                     n= 62  base_h1=0.548  sharpe=1.03  ft=0.581(phase3)  ✓
+2026-04-06 00:57:10,682  INFO        HSI_HSI_1H                     n=423  base_h1=0.574  sharpe=2.47  ft=0.582(phase1)  ✓
+2026-04-06 00:57:10,949  INFO        HSI_HSI_1W                     n= 13  base_h1=0.692  sharpe=10.14  ft=0.692(phase1)  ✓
+2026-04-06 00:57:11,436  INFO        HSI_HSI_4H                     n=122  base_h1=0.525  sharpe=0.52  ft=0.525(phase1)  🔴 RETRAIN
+2026-04-06 00:57:11,700  INFO        ICE_BZF_1D                     n= 63  base_h1=0.397  sharpe=-2.81  ft=0.413(phase1)  🔴 RETRAIN
+2026-04-06 00:57:11,933  INFO        ICE_BZF_1W                     n= 14  base_h1=0.714  sharpe=4.73  ft=0.714(phase3)  ✓
+2026-04-06 00:57:13,036  INFO        ICE_BZF_4H                     n=388  base_h1=0.515  sharpe=0.41  ft=0.508(phase1)  🔴 RETRAIN
+2026-04-06 00:57:13,414  INFO        LSE_AZNL_1D                    n= 65  base_h1=0.600  sharpe=2.73  ft=0.569(phase3)  ✓
+2026-04-06 00:57:15,098  INFO        LSE_AZNL_1H                    n=585  base_h1=0.557  sharpe=1.89  ft=0.545(phase1)  ✓
+2026-04-06 00:57:15,728  INFO        LSE_AZNL_1W                    n= 14  base_h1=0.429  sharpe=0.00  ft=0.429(phase1)  🔴 RETRAIN
+2026-04-06 00:57:16,353  INFO        LSE_AZNL_4H                    n=195  base_h1=0.585  sharpe=2.56  ft=0.590(phase1)  ✓
+2026-04-06 00:57:16,715  INFO        LSE_BPL_1D                     n= 65  base_h1=0.462  sharpe=-0.73  ft=0.492(phase1)  🔴 RETRAIN
+2026-04-06 00:57:18,335  INFO        LSE_BPL_1H                     n=585  base_h1=0.568  sharpe=2.22  ft=0.564(phase1)  ✓
+2026-04-06 00:57:18,541  INFO        LSE_BPL_1W                     n= 14  base_h1=0.286  sharpe=-4.73  ft=0.286(phase1)  🔴 RETRAIN
+2026-04-06 00:57:19,299  INFO        LSE_BPL_4H                     n=195  base_h1=0.482  sharpe=-0.41  ft=0.482(phase1)  🔴 RETRAIN
+2026-04-06 00:57:19,652  INFO        LSE_GSKL_1D                    n= 65  base_h1=0.738  sharpe=7.91  ft=0.615(phase3)  ✓
+2026-04-06 00:57:21,613  INFO        LSE_GSKL_1H                    n=585  base_h1=0.550  sharpe=1.66  ft=0.542(phase1)  ✓
+2026-04-06 00:57:21,794  INFO        LSE_GSKL_1W                    n= 14  base_h1=0.429  sharpe=0.00  ft=0.429(phase1)  🔴 RETRAIN
+2026-04-06 00:57:22,334  INFO        LSE_GSKL_4H                    n=195  base_h1=0.600  sharpe=3.07  ft=0.590(phase1)  ✓
+2026-04-06 00:57:22,709  INFO        LSE_HSBAL_1D                   n= 65  base_h1=0.523  sharpe=0.24  ft=0.508(phase3)  🔴 RETRAIN
+2026-04-06 00:57:24,197  INFO        LSE_HSBAL_1H                   n=585  base_h1=0.545  sharpe=1.50  ft=0.530(phase1)  ✓
+2026-04-06 00:57:24,420  INFO        LSE_HSBAL_1W                   n= 14  base_h1=0.429  sharpe=0.00  ft=0.429(phase1)  🔴 RETRAIN
+2026-04-06 00:57:24,852  INFO        LSE_HSBAL_4H                   n=195  base_h1=0.605  sharpe=3.24  ft=0.605(phase1)  ✓
+2026-04-06 00:57:25,196  INFO        LSE_SHELL_1D                   n= 65  base_h1=0.477  sharpe=-0.24  ft=0.462(phase1)  🔴 RETRAIN
+2026-04-06 00:57:27,659  INFO        LSE_SHELL_1H                   n=585  base_h1=0.545  sharpe=1.50  ft=0.550(phase1)  ✓
+2026-04-06 00:57:27,882  INFO        LSE_SHELL_1W                   n= 14  base_h1=0.357  sharpe=-2.29  ft=0.357(phase1)  🔴 RETRAIN
+2026-04-06 00:57:28,347  INFO        LSE_SHELL_4H                   n=195  base_h1=0.513  sharpe=0.57  ft=0.518(phase1)  🔴 RETRAIN
+2026-04-06 00:57:28,713  INFO        NIKKEI_N225_1D                 n= 61  base_h1=0.508  sharpe=-0.26  ft=0.525(phase3)  🔴 RETRAIN
+2026-04-06 00:57:29,732  INFO        NIKKEI_N225_1H                 n=427  base_h1=0.571  sharpe=2.37  ft=0.571(phase1)  ✓
+2026-04-06 00:57:29,838  INFO        NIKKEI_N225_1W                 n= 13  base_h1=0.538  sharpe=3.76  ft=0.538(phase1)  ✓
+2026-04-06 00:57:30,408  INFO        NIKKEI_N225_4H                 n=122  base_h1=0.582  sharpe=2.37  ft=0.590(phase1)  ✓
+2026-04-06 00:57:30,626  INFO        NYMEX_CLF_1D                   n= 63  base_h1=0.429  sharpe=-1.77  ft=0.444(phase1)  🔴 RETRAIN
+2026-04-06 00:57:30,800  INFO        NYMEX_CLF_1W                   n= 14  base_h1=0.714  sharpe=4.73  ft=0.714(phase3)  ✓
+2026-04-06 00:57:32,108  INFO        NYMEX_CLF_4H                   n=388  base_h1=0.528  sharpe=0.82  ft=0.528(phase1)  🔴 RETRAIN
+2026-04-06 00:57:32,461  INFO        NYMEX_NGF_1D                   n= 63  base_h1=0.508  sharpe=-0.25  ft=0.540(phase3)  🔴 RETRAIN
+2026-04-06 00:57:32,723  INFO        NYMEX_NGF_1W                   n= 14  base_h1=0.714  sharpe=11.05  ft=0.714(phase3)  ✓
+2026-04-06 00:57:33,846  INFO        NYMEX_NGF_4H                   n=388  base_h1=0.546  sharpe=1.40  ft=0.546(phase1)  ✓
+2026-04-06 00:57:34,244  INFO        NYSE_AAPL_1D                   n= 63  base_h1=0.571  sharpe=1.77  ft=0.571(phase3)  ✓
+2026-04-06 00:57:35,315  INFO        NYSE_AAPL_1H                   n=441  base_h1=0.549  sharpe=1.63  ft=0.551(phase1)  ✓
+2026-04-06 00:57:35,557  INFO        NYSE_AAPL_1W                   n= 14  base_h1=0.429  sharpe=-4.73  ft=0.429(phase3)  🔴 RETRAIN
+2026-04-06 00:57:36,033  INFO        NYSE_AAPL_4H                   n=170  base_h1=0.565  sharpe=1.88  ft=0.571(phase1)  ✓
+2026-04-06 00:57:36,350  INFO        NYSE_AMZN_1D                   n= 63  base_h1=0.540  sharpe=0.76  ft=0.556(phase3)  ✓
+2026-04-06 00:57:38,392  INFO        NYSE_AMZN_1H                   n=441  base_h1=0.544  sharpe=1.48  ft=0.544(phase1)  ✓
+2026-04-06 00:57:38,651  INFO        NYSE_AMZN_1W                   n= 14  base_h1=0.500  sharpe=-2.29  ft=0.500(phase3)  🔴 RETRAIN
+2026-04-06 00:57:39,056  INFO        NYSE_AMZN_4H                   n=170  base_h1=0.647  sharpe=5.10  ft=0.647(phase1)  ✓
+2026-04-06 00:57:39,247  INFO        NYSE_BAC_1D                    n= 63  base_h1=0.603  sharpe=2.81  ft=0.635(phase3)  ✓
+2026-04-06 00:57:40,231  INFO        NYSE_BAC_1H                    n=441  base_h1=0.590  sharpe=2.97  ft=0.587(phase1)  ✓
+2026-04-06 00:57:40,372  INFO        NYSE_BAC_1W                    n= 14  base_h1=0.786  sharpe=7.53  ft=0.786(phase3)  ✓
+2026-04-06 00:57:40,856  INFO        NYSE_BAC_4H                    n=170  base_h1=0.571  sharpe=2.07  ft=0.571(phase1)  ✓
+2026-04-06 00:57:41,214  INFO        NYSE_CVX_1D                    n= 63  base_h1=0.460  sharpe=-0.76  ft=0.508(phase1)  🔴 RETRAIN
+2026-04-06 00:57:42,604  INFO        NYSE_CVX_1H                    n=441  base_h1=0.565  sharpe=2.00  ft=0.567(phase1)  ✓
+2026-04-06 00:57:42,878  INFO        NYSE_CVX_1W                    n= 14  base_h1=0.357  sharpe=-2.29  ft=0.429(phase1)  🔴 RETRAIN
+2026-04-06 00:57:43,357  INFO        NYSE_CVX_4H                    n=170  base_h1=0.529  sharpe=1.12  ft=0.529(phase1)  🔴 RETRAIN
+2026-04-06 00:57:43,603  INFO        NYSE_GOOGL_1D                  n= 63  base_h1=0.397  sharpe=-3.89  ft=0.397(phase1)  🔴 RETRAIN
+2026-04-06 00:57:44,701  INFO        NYSE_GOOGL_1H                  n=441  base_h1=0.535  sharpe=1.05  ft=0.533(phase1)  ✓
+2026-04-06 00:57:44,955  INFO        NYSE_GOOGL_1W                  n= 14  base_h1=0.500  sharpe=2.29  ft=0.571(phase1)  🔴 RETRAIN
+2026-04-06 00:57:45,356  INFO        NYSE_GOOGL_4H                  n=170  base_h1=0.600  sharpe=3.04  ft=0.612(phase1)  ✓
+2026-04-06 00:57:45,596  INFO        NYSE_JNJ_1D                    n= 63  base_h1=0.508  sharpe=0.76  ft=0.492(phase1)  🔴 RETRAIN
+2026-04-06 00:57:46,716  INFO        NYSE_JNJ_1H                    n=441  base_h1=0.533  sharpe=1.12  ft=0.531(phase1)  ✓
+2026-04-06 00:57:47,076  INFO        NYSE_JNJ_1W                    n= 14  base_h1=0.429  sharpe=0.00  ft=0.429(phase1)  🔴 RETRAIN
+2026-04-06 00:57:47,840  INFO        NYSE_JNJ_4H                    n=170  base_h1=0.582  sharpe=2.46  ft=0.582(phase1)  ✓
+2026-04-06 00:57:48,458  INFO        NYSE_JPM_1D                    n= 63  base_h1=0.540  sharpe=0.76  ft=0.540(phase3)  ✓
+2026-04-06 00:57:49,675  INFO        NYSE_JPM_1H                    n=441  base_h1=0.596  sharpe=3.19  ft=0.596(phase1)  ✓
+2026-04-06 00:57:49,990  INFO        NYSE_JPM_1W                    n= 14  base_h1=0.357  sharpe=-7.53  ft=0.286(phase3)  🔴 RETRAIN
+2026-04-06 00:57:50,415  INFO        NYSE_JPM_4H                    n=170  base_h1=0.600  sharpe=3.04  ft=0.600(phase1)  ✓
+2026-04-06 00:57:50,709  INFO        NYSE_META_1D                   n= 63  base_h1=0.476  sharpe=-1.26  ft=0.476(phase1)  🔴 RETRAIN
+2026-04-06 00:57:51,543  INFO        NYSE_META_1H                   n=441  base_h1=0.594  sharpe=3.12  ft=0.601(phase1)  ✓
+2026-04-06 00:57:51,850  INFO        NYSE_META_1W                   n= 14  base_h1=0.286  sharpe=-11.05  ft=0.286(phase3)  🔴 RETRAIN
+2026-04-06 00:57:52,500  INFO        NYSE_META_4H                   n=170  base_h1=0.594  sharpe=2.85  ft=0.594(phase1)  ✓
+2026-04-06 00:57:53,352  INFO        NYSE_MSFT_1D                   n= 63  base_h1=0.524  sharpe=0.25  ft=0.524(phase3)  🔴 RETRAIN
+2026-04-06 00:57:54,531  INFO        NYSE_MSFT_1H                   n=441  base_h1=0.569  sharpe=2.14  ft=0.565(phase1)  ✓
+2026-04-06 00:57:54,699  INFO        NYSE_MSFT_1W                   n= 14  base_h1=0.357  sharpe=-7.53  ft=0.357(phase3)  🔴 RETRAIN
+2026-04-06 00:57:55,197  INFO        NYSE_MSFT_4H                   n=170  base_h1=0.576  sharpe=2.26  ft=0.588(phase1)  ✓
+2026-04-06 00:57:55,494  INFO        NYSE_NVDA_1D                   n= 63  base_h1=0.429  sharpe=-2.81  ft=0.429(phase1)  🔴 RETRAIN
+2026-04-06 00:57:56,397  INFO        NYSE_NVDA_1H                   n=441  base_h1=0.546  sharpe=1.41  ft=0.549(phase1)  ✓
+2026-04-06 00:57:56,594  INFO        NYSE_NVDA_1W                   n= 14  base_h1=0.571  sharpe=4.73  ft=0.643(phase3)  ✓
+2026-04-06 00:57:57,323  INFO        NYSE_NVDA_4H                   n=170  base_h1=0.488  sharpe=-0.56  ft=0.494(phase1)  🔴 RETRAIN
+2026-04-06 00:57:57,667  INFO        NYSE_PG_1D                     n= 63  base_h1=0.556  sharpe=2.29  ft=0.508(phase1)  ✓
+2026-04-06 00:57:59,372  INFO        NYSE_PG_1H                     n=441  base_h1=0.562  sharpe=2.07  ft=0.558(phase1)  ✓
+2026-04-06 00:57:59,607  INFO        NYSE_PG_1W                     n= 14  base_h1=0.571  sharpe=0.00  ft=0.571(phase3)  ✓
+2026-04-06 00:58:00,086  INFO        NYSE_PG_4H                     n=170  base_h1=0.529  sharpe=0.75  ft=0.529(phase1)  🔴 RETRAIN
+2026-04-06 00:58:00,384  INFO        NYSE_TSLA_1D                   n= 63  base_h1=0.508  sharpe=-0.25  ft=0.524(phase3)  🔴 RETRAIN
+2026-04-06 00:58:01,269  INFO        NYSE_TSLA_1H                   n=441  base_h1=0.528  sharpe=0.83  ft=0.531(phase1)  🔴 RETRAIN
+2026-04-06 00:58:01,403  INFO        NYSE_TSLA_1W                   n= 14  base_h1=0.571  sharpe=0.00  ft=0.500(phase3)  ✓
+2026-04-06 00:58:01,811  INFO        NYSE_TSLA_4H                   n=170  base_h1=0.512  sharpe=0.19  ft=0.506(phase1)  🔴 RETRAIN
+2026-04-06 00:58:02,047  INFO        NYSE_UNH_1D                    n= 63  base_h1=0.524  sharpe=0.25  ft=0.492(phase3)  🔴 RETRAIN
+2026-04-06 00:58:03,531  INFO        NYSE_UNH_1H                    n=441  base_h1=0.553  sharpe=1.63  ft=0.583(phase1)  ✓
+2026-04-06 00:58:03,716  INFO        NYSE_UNH_1W                    n= 14  base_h1=0.571  sharpe=0.00  ft=0.571(phase3)  ✓
+2026-04-06 00:58:04,139  INFO        NYSE_UNH_4H                    n=170  base_h1=0.529  sharpe=0.75  ft=0.547(phase1)  🔴 RETRAIN
+2026-04-06 00:58:04,330  INFO        NYSE_V_1D                      n= 63  base_h1=0.603  sharpe=2.81  ✓
+2026-04-06 00:58:04,974  INFO        NYSE_V_1H                      n=441  base_h1=0.544  sharpe=1.48  ✓
+2026-04-06 00:58:05,067  INFO        NYSE_V_1W                      n= 14  base_h1=0.429  sharpe=-4.73  🔴 RETRAIN
+2026-04-06 00:58:05,331  INFO        NYSE_V_4H                      n=170  base_h1=0.606  sharpe=3.24  ✓
+2026-04-06 00:58:05,482  INFO        NYSE_XOM_1D                    n= 63  base_h1=0.444  sharpe=-1.26  🔴 RETRAIN
+2026-04-06 00:58:06,103  INFO        NYSE_XOM_1H                    n=441  base_h1=0.569  sharpe=2.29  ✓
+2026-04-06 00:58:06,159  INFO        NYSE_XOM_1W                    n= 14  base_h1=0.429  sharpe=0.00  🔴 RETRAIN
+2026-04-06 00:58:06,413  INFO        NYSE_XOM_4H                    n=170  base_h1=0.576  sharpe=2.65  ✓
+2026-04-06 00:58:06,601  INFO        SP500_GSPC_1D                  n= 63  base_h1=0.444  sharpe=-2.29  🔴 RETRAIN
+2026-04-06 00:58:07,180  INFO        SP500_GSPC_1H                  n=441  base_h1=0.540  sharpe=1.34  ✓
+2026-04-06 00:58:07,259  INFO        SP500_GSPC_1W                  n= 14  base_h1=0.357  sharpe=-7.53  🔴 RETRAIN
+2026-04-06 00:58:07,683  INFO        SP500_GSPC_4H                  n=170  base_h1=0.541  sharpe=1.12  ✓
+2026-04-06 00:58:07,957  INFO        TSX_CNRTO_1D                   n= 64  base_h1=0.422  sharpe=-2.00  🔴 RETRAIN
+2026-04-06 00:58:08,779  INFO        TSX_CNRTO_1H                   n=448  base_h1=0.538  sharpe=1.28  ✓
+2026-04-06 00:58:08,848  INFO        TSX_CNRTO_1W                   n= 14  base_h1=0.643  sharpe=7.53  ✓
+2026-04-06 00:58:09,489  INFO        TSX_CNRTO_4H                   n=173  base_h1=0.538  sharpe=1.01  ✓
+2026-04-06 00:58:09,827  INFO        TSX_MFCTO_1D                   n= 64  base_h1=0.516  sharpe=0.00  🔴 RETRAIN
+2026-04-06 00:58:10,641  INFO        TSX_MFCTO_1H                   n=448  base_h1=0.571  sharpe=2.36  ✓
+2026-04-06 00:58:10,698  INFO        TSX_MFCTO_1W                   n= 14  base_h1=0.500  sharpe=-2.29  🔴 RETRAIN
+2026-04-06 00:58:11,019  INFO        TSX_MFCTO_4H                   n=173  base_h1=0.549  sharpe=1.38  ✓
+2026-04-06 00:58:11,163  INFO        TSX_RYTO_1D                    n= 64  base_h1=0.562  sharpe=1.49  ✓
+2026-04-06 00:58:11,762  INFO        TSX_RYTO_1H                    n=448  base_h1=0.525  sharpe=0.85  🔴 RETRAIN
+2026-04-06 00:58:11,859  INFO        TSX_RYTO_1W                    n= 14  base_h1=0.571  sharpe=4.73  ✓
+2026-04-06 00:58:12,196  INFO        TSX_RYTO_4H                    n=173  base_h1=0.555  sharpe=1.57  ✓
+2026-04-06 00:58:12,453  INFO        TSX_SUTO_1D                    n= 64  base_h1=0.391  sharpe=-3.03  🔴 RETRAIN
+2026-04-06 00:58:13,066  INFO        TSX_SUTO_1H                    n=448  base_h1=0.551  sharpe=1.57  ✓
+2026-04-06 00:58:13,195  INFO        TSX_SUTO_1W                    n= 14  base_h1=0.214  sharpe=-7.53  🔴 RETRAIN
+2026-04-06 00:58:13,620  INFO        TSX_SUTO_4H                    n=173  base_h1=0.514  sharpe=0.64  🔴 RETRAIN
+2026-04-06 00:58:13,775  INFO        TSX_TDTO_1D                    n= 64  base_h1=0.547  sharpe=0.99  ✓
+2026-04-06 00:58:14,592  INFO        TSX_TDTO_1H                    n=448  base_h1=0.518  sharpe=0.64  🔴 RETRAIN
+2026-04-06 00:58:14,645  INFO        TSX_TDTO_1W                    n= 14  base_h1=0.643  sharpe=7.53  ✓
+2026-04-06 00:58:15,001  INFO        TSX_TDTO_4H                    n=173  base_h1=0.538  sharpe=1.01  ✓
+2026-04-06 00:58:15,001  INFO      
+2026-04-06 00:58:15,001  INFO      ============================================================
+2026-04-06 00:58:15,001  INFO      HOLDOUT SUMMARY
+2026-04-06 00:58:15,002  INFO        Instruments evaluated  : 229
+2026-04-06 00:58:15,002  INFO        Holdout period         : 2026-01-01 → 2026-04-04
+2026-04-06 00:58:15,002  INFO        Base model avg H1      : 0.536  (fold avg=0.550  delta=-0.014)
+2026-04-06 00:58:15,002  INFO        Fine-tuned avg H1      : 0.539  (on 197 instruments with ft checkpoint)
+2026-04-06 00:58:15,002  INFO        Instruments flagged    : 87 / 229  (38%)
+2026-04-06 00:58:15,002  INFO      
+2026-04-06 00:58:15,002  WARNING   🔴 RETRAIN RECOMMENDED
+2026-04-06 00:58:15,002  WARNING      38% of instruments below threshold (limit=30%)
+2026-04-06 00:58:15,002  WARNING   
+2026-04-06 00:58:15,002  WARNING      Flagged instruments:
+2026-04-06 00:58:15,002  WARNING        ASX_BHPAX_1D  base_h1=0.422  (drop=+0.128)
+2026-04-06 00:58:15,002  WARNING        ASX_BHPAX_1W  base_h1=0.385  (drop=+0.165)
+2026-04-06 00:58:15,002  WARNING        ASX_BHPAX_4H  base_h1=0.510  (drop=+0.040)
+2026-04-06 00:58:15,003  WARNING        ASX_WBCAX_1D  base_h1=0.516  (drop=+0.034)
+2026-04-06 00:58:15,003  WARNING        ASX_WBCAX_1H  base_h1=0.521  (drop=+0.029)
+2026-04-06 00:58:15,003  WARNING        ASX_WBCAX_4H  base_h1=0.517  (drop=+0.033)
+2026-04-06 00:58:15,003  WARNING        CBOT_ZWF_4H  base_h1=0.465  (drop=+0.085)
+2026-04-06 00:58:15,003  WARNING        COMEX_GCF_1W  base_h1=0.429  (drop=+0.121)
+2026-04-06 00:58:15,003  WARNING        COMEX_GCF_4H  base_h1=0.513  (drop=+0.037)
+2026-04-06 00:58:15,003  WARNING        COMEX_HGF_1W  base_h1=0.500  (drop=+0.050)
+2026-04-06 00:58:15,003  WARNING        COMEX_SIF_1D  base_h1=0.508  (drop=+0.042)
+2026-04-06 00:58:15,003  WARNING        COMEX_SIF_1W  base_h1=0.500  (drop=+0.050)
+2026-04-06 00:58:15,003  WARNING        COMEX_SIF_4H  base_h1=0.510  (drop=+0.040)
+2026-04-06 00:58:15,003  WARNING        CRYPTO_BTC-USD_1D  base_h1=0.527  (drop=+0.023)
+2026-04-06 00:58:15,003  WARNING        CRYPTO_BTC-USD_1W  base_h1=0.500  (drop=+0.050)
+2026-04-06 00:58:15,003  WARNING        CRYPTO_BTC-USD_4H  base_h1=0.526  (drop=+0.024)
+2026-04-06 00:58:15,003  WARNING        EURONEXT_ASMLAS_1W  base_h1=0.462  (drop=+0.088)
+2026-04-06 00:58:15,003  WARNING        EURONEXT_ASMLAS_4H  base_h1=0.528  (drop=+0.022)
+2026-04-06 00:58:15,004  WARNING        EURONEXT_SAPDE_1D  base_h1=0.523  (drop=+0.027)
+2026-04-06 00:58:15,004  WARNING        EURONEXT_SAPDE_1W  base_h1=0.462  (drop=+0.088)
+2026-04-06 00:58:15,004  WARNING        EURONEXT_TTEPA_1D  base_h1=0.446  (drop=+0.104)
+2026-04-06 00:58:15,004  WARNING        EURONEXT_TTEPA_1W  base_h1=0.308  (drop=+0.242)
+2026-04-06 00:58:15,004  WARNING        EURONEXT_TTEPA_4H  base_h1=0.503  (drop=+0.047)
+2026-04-06 00:58:15,004  WARNING        FOREXCOM_AUDNZDX_1D  base_h1=0.515  (drop=+0.035)
+2026-04-06 00:58:15,004  WARNING        FOREXCOM_AUDNZDX_1W  base_h1=0.308  (drop=+0.242)
+2026-04-06 00:58:15,004  WARNING        FOREXCOM_AUDUSDX_1W  base_h1=0.462  (drop=+0.088)
+2026-04-06 00:58:15,004  WARNING        FOREXCOM_EURGBPX_1W  base_h1=0.500  (drop=+0.050)
+2026-04-06 00:58:15,004  WARNING        FOREXCOM_EURGBPX_4H  base_h1=0.527  (drop=+0.023)
+2026-04-06 00:58:15,004  WARNING        FOREXCOM_GBPJPYX_1W  base_h1=0.429  (drop=+0.121)
+2026-04-06 00:58:15,004  WARNING        FOREXCOM_GBPUSDX_4H  base_h1=0.517  (drop=+0.033)
+2026-04-06 00:58:15,004  WARNING        FOREXCOM_USDCADX_1H  base_h1=0.529  (drop=+0.021)
+2026-04-06 00:58:15,004  WARNING        FOREXCOM_USDJPYX_1W  base_h1=0.500  (drop=+0.050)
+2026-04-06 00:58:15,005  WARNING        FTSE_FTSE_1D  base_h1=0.492  (drop=+0.058)
+2026-04-06 00:58:15,005  WARNING        FTSE_FTSE_1H  base_h1=0.526  (drop=+0.024)
+2026-04-06 00:58:15,005  WARNING        FTSE_FTSE_1W  base_h1=0.429  (drop=+0.121)
+2026-04-06 00:58:15,005  WARNING        HSI_HSI_4H  base_h1=0.525  (drop=+0.025)
+2026-04-06 00:58:15,005  WARNING        ICE_BZF_1D  base_h1=0.397  (drop=+0.153)
+2026-04-06 00:58:15,005  WARNING        ICE_BZF_4H  base_h1=0.515  (drop=+0.035)
+2026-04-06 00:58:15,005  WARNING        LSE_AZNL_1W  base_h1=0.429  (drop=+0.121)
+2026-04-06 00:58:15,005  WARNING        LSE_BPL_1D  base_h1=0.462  (drop=+0.088)
+2026-04-06 00:58:15,005  WARNING        LSE_BPL_1W  base_h1=0.286  (drop=+0.264)
+2026-04-06 00:58:15,005  WARNING        LSE_BPL_4H  base_h1=0.482  (drop=+0.068)
+2026-04-06 00:58:15,005  WARNING        LSE_GSKL_1W  base_h1=0.429  (drop=+0.121)
+2026-04-06 00:58:15,005  WARNING        LSE_HSBAL_1D  base_h1=0.523  (drop=+0.027)
+2026-04-06 00:58:15,005  WARNING        LSE_HSBAL_1W  base_h1=0.429  (drop=+0.121)
+2026-04-06 00:58:15,005  WARNING        LSE_SHELL_1D  base_h1=0.477  (drop=+0.073)
+2026-04-06 00:58:15,006  WARNING        LSE_SHELL_1W  base_h1=0.357  (drop=+0.193)
+2026-04-06 00:58:15,006  WARNING        LSE_SHELL_4H  base_h1=0.513  (drop=+0.037)
+2026-04-06 00:58:15,006  WARNING        NIKKEI_N225_1D  base_h1=0.508  (drop=+0.042)
+2026-04-06 00:58:15,006  WARNING        NYMEX_CLF_1D  base_h1=0.429  (drop=+0.121)
+2026-04-06 00:58:15,006  WARNING        NYMEX_CLF_4H  base_h1=0.528  (drop=+0.022)
+2026-04-06 00:58:15,006  WARNING        NYMEX_NGF_1D  base_h1=0.508  (drop=+0.042)
+2026-04-06 00:58:15,006  WARNING        NYSE_AAPL_1W  base_h1=0.429  (drop=+0.121)
+2026-04-06 00:58:15,006  WARNING        NYSE_AMZN_1W  base_h1=0.500  (drop=+0.050)
+2026-04-06 00:58:15,006  WARNING        NYSE_CVX_1D  base_h1=0.460  (drop=+0.090)
+2026-04-06 00:58:15,006  WARNING        NYSE_CVX_1W  base_h1=0.357  (drop=+0.193)
+2026-04-06 00:58:15,006  WARNING        NYSE_CVX_4H  base_h1=0.529  (drop=+0.021)
+2026-04-06 00:58:15,006  WARNING        NYSE_GOOGL_1D  base_h1=0.397  (drop=+0.153)
+2026-04-06 00:58:15,006  WARNING        NYSE_GOOGL_1W  base_h1=0.500  (drop=+0.050)
+2026-04-06 00:58:15,006  WARNING        NYSE_JNJ_1D  base_h1=0.508  (drop=+0.042)
+2026-04-06 00:58:15,007  WARNING        NYSE_JNJ_1W  base_h1=0.429  (drop=+0.121)
+2026-04-06 00:58:15,007  WARNING        NYSE_JPM_1W  base_h1=0.357  (drop=+0.193)
+2026-04-06 00:58:15,007  WARNING        NYSE_META_1D  base_h1=0.476  (drop=+0.074)
+2026-04-06 00:58:15,007  WARNING        NYSE_META_1W  base_h1=0.286  (drop=+0.264)
+2026-04-06 00:58:15,007  WARNING        NYSE_MSFT_1D  base_h1=0.524  (drop=+0.026)
+2026-04-06 00:58:15,007  WARNING        NYSE_MSFT_1W  base_h1=0.357  (drop=+0.193)
+2026-04-06 00:58:15,007  WARNING        NYSE_NVDA_1D  base_h1=0.429  (drop=+0.121)
+2026-04-06 00:58:15,007  WARNING        NYSE_NVDA_4H  base_h1=0.488  (drop=+0.062)
+2026-04-06 00:58:15,007  WARNING        NYSE_PG_4H  base_h1=0.529  (drop=+0.021)
+2026-04-06 00:58:15,007  WARNING        NYSE_TSLA_1D  base_h1=0.508  (drop=+0.042)
+2026-04-06 00:58:15,007  WARNING        NYSE_TSLA_1H  base_h1=0.528  (drop=+0.022)
+2026-04-06 00:58:15,007  WARNING        NYSE_TSLA_4H  base_h1=0.512  (drop=+0.038)
+2026-04-06 00:58:15,007  WARNING        NYSE_UNH_1D  base_h1=0.524  (drop=+0.026)
+2026-04-06 00:58:15,007  WARNING        NYSE_UNH_4H  base_h1=0.529  (drop=+0.021)
+2026-04-06 00:58:15,007  WARNING        NYSE_V_1W  base_h1=0.429  (drop=+0.121)
+2026-04-06 00:58:15,007  WARNING        NYSE_XOM_1D  base_h1=0.444  (drop=+0.106)
+2026-04-06 00:58:15,008  WARNING        NYSE_XOM_1W  base_h1=0.429  (drop=+0.121)
+2026-04-06 00:58:15,008  WARNING        SP500_GSPC_1D  base_h1=0.444  (drop=+0.106)
+2026-04-06 00:58:15,008  WARNING        SP500_GSPC_1W  base_h1=0.357  (drop=+0.193)
+2026-04-06 00:58:15,008  WARNING        TSX_CNRTO_1D  base_h1=0.422  (drop=+0.128)
+2026-04-06 00:58:15,008  WARNING        TSX_MFCTO_1D  base_h1=0.516  (drop=+0.034)
+2026-04-06 00:58:15,008  WARNING        TSX_MFCTO_1W  base_h1=0.500  (drop=+0.050)
+2026-04-06 00:58:15,008  WARNING        TSX_RYTO_1H  base_h1=0.525  (drop=+0.025)
+2026-04-06 00:58:15,008  WARNING        TSX_SUTO_1D  base_h1=0.391  (drop=+0.159)
+2026-04-06 00:58:15,008  WARNING        TSX_SUTO_1W  base_h1=0.214  (drop=+0.336)
+2026-04-06 00:58:15,008  WARNING        TSX_SUTO_4H  base_h1=0.514  (drop=+0.036)
+2026-04-06 00:58:15,008  WARNING        TSX_TDTO_1H  base_h1=0.518  (drop=+0.032)
+2026-04-06 00:58:15,008  WARNING   
+2026-04-06 00:58:15,008  WARNING      Retrain pipeline:
+2026-04-06 00:58:15,008  WARNING        python collect_data.py --refresh
+2026-04-06 00:58:15,008  WARNING        python feature_engineering.py
+2026-04-06 00:58:15,009  WARNING        python walk_forward.py --holdout_from 2026-01-01
+2026-04-06 00:58:15,009  WARNING        python train.py
+2026-04-06 00:58:15,009  WARNING        bash run_finetune.sh
+2026-04-06 00:58:15,009  WARNING        python evaluation.py --holdout
+2026-04-06 00:58:15,031  INFO      
+2026-04-06 00:58:15,031  INFO      Saved: logs/evaluation/holdout_results.csv
+2026-04-06 00:58:15,032  INFO      Stage 7 complete.

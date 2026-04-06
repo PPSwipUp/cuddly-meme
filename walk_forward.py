@@ -176,6 +176,28 @@ def check_regime_balance(df, fold_n, split_name):
 # ─── Main ─────────────────────────────────────────────────────────────────────
 
 def main():
+    import argparse
+    parser = argparse.ArgumentParser(description="Stage 3 Walk-Forward Split Generator")
+    parser.add_argument(
+        "--holdout_from", default=None, metavar="YYYY-MM-DD",
+        help="If set, all data on or after this date is reserved as a holdout "
+             "(genuinely unseen) test set. Walk-forward folds are built using "
+             "only data BEFORE this date. The holdout split is saved to "
+             "data/splits/holdout_test.parquet and is never touched during "
+             "training or fine-tuning."
+    )
+    args = parser.parse_args()
+
+    holdout_date = None
+    if args.holdout_from:
+        try:
+            holdout_date = pd.Timestamp(args.holdout_from)
+            log.info("Holdout date: %s — all data on/after this date is reserved",
+                     holdout_date.date())
+        except Exception:
+            log.error("Invalid --holdout_from date: %s  (use YYYY-MM-DD)", args.holdout_from)
+            return
+
     log.info("Stage 3 Walk-Forward Split Generation — Start")
 
     meta = load_all_metadata()
@@ -185,6 +207,34 @@ def main():
     global_start = meta["date"].min().to_pydatetime()
     global_end   = meta["date"].max().to_pydatetime()
     log.info("Data range: %s → %s", global_start.date(), global_end.date())
+
+    # ── Save holdout split BEFORE capping the metadata ───────────────────
+    # The holdout parquet records window indices for bars >= holdout_date.
+    # It uses the same format as fold test splits so eval_split() consumes
+    # it with zero changes. Saved now before meta is filtered so we capture
+    # all instruments including those with short history.
+    if holdout_date is not None:
+        holdout_df = meta[meta["date"] >= holdout_date].copy()
+        if len(holdout_df) == 0:
+            log.error("No data found on or after holdout date %s. "
+                      "Check the date and re-run collect_data.py --refresh first.",
+                      holdout_date.date())
+            return
+        holdout_path = os.path.join(SPLITS_DIR, "holdout_test.parquet")
+        holdout_df.to_parquet(holdout_path, index=False)
+        n_inst = holdout_df["source_file"].nunique()
+        log.info("Holdout split saved: %s  (%d bars across %d instruments)",
+                 holdout_path, len(holdout_df), n_inst)
+
+        # Cap training metadata to pre-holdout data only
+        meta_pre = meta[meta["date"] < holdout_date].copy()
+        log.info("Training data capped at %s: %d → %d bars",
+                 holdout_date.date(), len(meta), len(meta_pre))
+        meta = meta_pre
+
+        global_end = meta["date"].max().to_pydatetime()
+        log.info("Revised data range for folds: %s → %s",
+                 global_start.date(), global_end.date())
 
     folds = build_fold_boundaries(global_start, global_end)
     log.info("Folds generated: %d", len(folds))
