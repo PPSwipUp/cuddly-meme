@@ -1,0 +1,50 @@
+{
+  "positions": {
+    "FOREXCOM_USDCADX_1D": {
+      "direction": 1,
+      "entry_price": 1.3945499658584595,
+      "current_price": 1.393399953842163,
+      "entry_date": "2026-04-06",
+      "size_gbp": 800.0,
+      "leverage": 1.0
+    },
+    "FOREXCOM_EURCHFX_1D": {
+      "direction": 1,
+      "entry_price": 0.9222000241279602,
+      "current_price": 0.9223799705505371,
+      "entry_date": "2026-04-06",
+      "size_gbp": 800.0,
+      "leverage": 1.0
+    },
+    "DAX_GDAXI_1D": {
+      "direction": 1,
+      "entry_price": 23168.080078125,
+      "current_price": 23168.080078125,
+      "entry_date": "2026-04-06",
+      "size_gbp": 800.0,
+      "leverage": 1.0
+    },
+    "NYSE_MSFT_1D": {
+      "direction": 1,
+      "entry_price": 373.4599914550781,
+      "current_price": 373.4599914550781,
+      "entry_date": "2026-04-06",
+      "size_gbp": 1648.45,
+      "leverage": 2.06
+    },
+    "LSE_BPL_1D": {
+      "direction": -1,
+      "entry_price": 591.2000122070312,
+      "current_price": 591.2000122070312,
+      "entry_date": "2026-04-06",
+      "size_gbp": 1279.36,
+      "leverage": 1.6
+    }
+  },
+  "capital": 10000.0,
+  "realised_pnl": 0.0,
+  "trade_count": 19,
+  "last_run": "2026-04-06T01:47:41.297213",
+  "last_summary": null,
+  "start_date": "2026-04-06"
+}
