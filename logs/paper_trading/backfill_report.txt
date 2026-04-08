@@ -1,0 +1,140 @@
+PAPER TRADING BACKFILL SIMULATION
+Generated: 2026-04-08 23:44:16
+Starting capital: £10,000.00
+Days simulated: 3 (2026-04-03 → 2026-04-07)
+Instruments: 57
+
+============================================================
+DATE: Friday 03 April 2026
+============================================================
+  OPEN   DAX_GDAXI                    1D  LONG   price=2.317e+04  size=£276.50  lev=1.0x  prob=0.555 (Low)
+  OPEN   SP500_GSPC                   1D  LONG   price=6583  size=£389.37  lev=5.8x  prob=0.578 (Moderate)
+  OPEN   ICE_BZF                      1D  SHORT  price=109  size=£267.15  lev=1.0x  prob=0.553 (Low)
+  OPEN   CBOT_ZWF                     1D  SHORT  price=598.2  size=£348.15  lev=2.2x  prob=0.570 (Moderate)
+  OPEN   CRYPTO_BTC-USD               1D  LONG   price=6.693e+04  size=£292.49  lev=1.0x  prob=0.558 (Low)
+  OPEN   LSE_BPL                      1D  SHORT  price=591.2  size=£407.47  lev=2.2x  prob=0.581 (Moderate)
+  OPEN   LSE_SHELL                    1D  SHORT  price=3544  size=£432.75  lev=2.5x  prob=0.587 (Moderate)
+  OPEN   NYSE_MSFT                    1D  LONG   price=373.5  size=£458.91  lev=2.8x  prob=0.592 (Moderate)
+  OPEN   NYSE_JPM                     1D  LONG   price=294.6  size=£337.72  lev=1.4x  prob=0.568 (Moderate)
+  OPEN   NYSE_BAC                     1D  LONG   price=49.38  size=£356.97  lev=1.6x  prob=0.571 (Moderate)
+  OPEN   NYSE_AMZN                    1D  LONG   price=209.8  size=£305.13  lev=1.1x  prob=0.561 (Moderate)
+  OPEN   NYSE_GOOGL                   1D  LONG   price=295.8  size=£338.76  lev=1.4x  prob=0.568 (Moderate)
+  OPEN   NYSE_TSLA                    1D  LONG   price=360.6  size=£353.97  lev=1.6x  prob=0.571 (Moderate)
+  OPEN   NYSE_V                       1D  LONG   price=300.8  size=£275.55  lev=1.0x  prob=0.555 (Low)
+  OPEN   NYSE_XOM                     1D  SHORT  price=160.7  size=£368.64  lev=1.8x  prob=0.574 (Moderate)
+  OPEN   NYSE_CVX                     1D  SHORT  price=199  size=£334.05  lev=1.4x  prob=0.567 (Moderate)
+  OPEN   NYSE_UNH                     1D  LONG   price=277.3  size=£306.54  lev=1.1x  prob=0.561 (Moderate)
+  OPEN   TSX_RYTO                     1D  LONG   price=227.3  size=£356.18  lev=1.6x  prob=0.571 (Moderate)
+  OPEN   TSX_MFCTO                    1D  LONG   price=48.57  size=£358.78  lev=1.7x  prob=0.572 (Moderate)
+  OPEN   ASX_CBAAX                    1D  SHORT  price=172.8  size=£275.04  lev=1.0x  prob=0.555 (Low)
+  OPEN   EURONEXT_SAPDE               1D  LONG   price=148.9  size=£302.65  lev=1.0x  prob=0.561 (Moderate)
+  OPEN   EURONEXT_MCPA                1D  LONG   price=471  size=£383.94  lev=2.0x  prob=0.577 (Moderate)
+  OPEN   EURONEXT_TTEPA               1D  SHORT  price=79.42  size=£444.88  lev=2.7x  prob=0.589 (Moderate)
+
+  End of day:
+    Capital (realised):  £10,000.00
+    Unrealised P&L:      £+0.00
+    Open positions:      23
+    Trades today:        23
+
+============================================================
+DATE: Monday 06 April 2026
+============================================================
+  HOLD   DAX_GDAXI                    1D  LONG   current=2.317e+04
+  HOLD   SP500_GSPC                   1D  LONG   current=6612
+  HOLD   ICE_BZF                      1D  SHORT  current=109.8
+  HOLD   CBOT_ZWF                     1D  SHORT  current=595.2
+  CLOSE  CRYPTO_BTC-USD               1D  LONG   entry=6.693e+04  exit=6.886e+04  P&L=+8.43
+  HOLD   LSE_BPL                      1D  SHORT  current=591.2
+  HOLD   LSE_SHELL                    1D  SHORT  current=3544
+  HOLD   NYSE_MSFT                    1D  LONG   current=372.9
+  HOLD   NYSE_JPM                     1D  LONG   current=295.5
+  HOLD   NYSE_BAC                     1D  LONG   current=50.06
+  HOLD   NYSE_AMZN                    1D  LONG   current=212.8
+  HOLD   NYSE_GOOGL                   1D  LONG   current=300
+  HOLD   NYSE_TSLA                    1D  LONG   current=352.8
+  CLOSE  NYSE_V                       1D  LONG   entry=300.8  exit=303.3  P&L=+2.32
+  HOLD   NYSE_XOM                     1D  SHORT  current=163.4
+  HOLD   NYSE_CVX                     1D  SHORT  current=198.9
+  HOLD   NYSE_UNH                     1D  LONG   current=281.4
+  HOLD   TSX_RYTO                     1D  LONG   current=228.8
+  HOLD   TSX_MFCTO                    1D  LONG   current=48.95
+  HOLD   ASX_CBAAX                    1D  SHORT  current=172.8
+  HOLD   EURONEXT_SAPDE               1D  LONG   current=148.9
+  HOLD   EURONEXT_MCPA                1D  LONG   current=471
+  HOLD   EURONEXT_TTEPA               1D  SHORT  current=79.42
+
+  End of day:
+    Capital (realised):  £10,010.75
+    Unrealised P&L:      £+21.62
+    Open positions:      21
+    Trades today:        2
+
+============================================================
+DATE: Tuesday 07 April 2026
+============================================================
+  HOLD   DAX_GDAXI                    1D  LONG   current=2.292e+04
+  HOLD   SP500_GSPC                   1D  LONG   current=6617
+  CLOSE  ICE_BZF                      1D  SHORT  entry=109  exit=109.3  P&L=-0.59
+  HOLD   CBOT_ZWF                     1D  SHORT  current=598
+  HOLD   LSE_BPL                      1D  SHORT  current=597.5
+  HOLD   LSE_SHELL                    1D  SHORT  current=3568
+  HOLD   NYSE_MSFT                    1D  LONG   current=372.3
+  HOLD   NYSE_JPM                     1D  LONG   current=297.4
+  HOLD   NYSE_BAC                     1D  LONG   current=50.28
+  HOLD   NYSE_AMZN                    1D  LONG   current=213.8
+  HOLD   NYSE_GOOGL                   1D  LONG   current=305.5
+  HOLD   NYSE_TSLA                    1D  LONG   current=346.6
+  HOLD   NYSE_XOM                     1D  SHORT  current=163.9
+  HOLD   NYSE_CVX                     1D  SHORT  current=201.5
+  HOLD   NYSE_UNH                     1D  LONG   current=307.7
+  HOLD   TSX_RYTO                     1D  LONG   current=230
+  HOLD   TSX_MFCTO                    1D  LONG   current=48.97
+  HOLD   ASX_CBAAX                    1D  SHORT  current=176.9
+  OPEN   ASX_CSLAX                    1D  LONG   price=140.3  size=£252.62  lev=1.0x  prob=0.550 (Low)
+  HOLD   EURONEXT_SAPDE               1D  LONG   current=145.2
+  HOLD   EURONEXT_MCPA                1D  LONG   current=466.9
+  HOLD   EURONEXT_TTEPA               1D  SHORT  current=79.26
+
+  End of day:
+    Capital (realised):  £10,010.16
+    Unrealised P&L:      £+13.26
+    Open positions:      21
+    Trades today:        2
+
+============================================================
+FINAL SUMMARY
+============================================================
+Starting capital:  £10,000.00
+Current capital:   £10,010.16
+Realised P&L:      £+10.16
+Unrealised P&L:    £+240.52
+Total P&L:         £+250.68 (+2.51%)
+Total trades:      27
+Open positions:    21
+
+Open positions:
+  DAX_GDAXI_1D                         LONG   entry=2.317e+04  current=2.292e+04  P&L=£-2.94  held=2 bars
+  SP500_GSPC_1D                        LONG   entry=6583  current=6783  P&L=£+69.25  held=2 bars
+  CBOT_ZWF_1D                          SHORT  entry=598.2  current=580  P&L=£+23.79  held=2 bars
+  LSE_BPL_1D                           SHORT  entry=591.2  current=597.5  P&L=£-9.68  held=2 bars
+  LSE_SHELL_1D                         SHORT  entry=3544  current=3568  P&L=£-7.54  held=2 bars
+  NYSE_MSFT_1D                         LONG   entry=373.5  current=374.3  P&L=£+3.01  held=2 bars
+  NYSE_JPM_1D                          LONG   entry=294.6  current=308  P&L=£+21.92  held=2 bars
+  NYSE_BAC_1D                          LONG   entry=49.38  current=51.88  P&L=£+29.82  held=2 bars
+  NYSE_AMZN_1D                         LONG   entry=209.8  current=221.2  P&L=£+17.70  held=2 bars
+  NYSE_GOOGL_1D                        LONG   entry=295.8  current=317.3  P&L=£+35.54  held=2 bars
+  NYSE_TSLA_1D                         LONG   entry=360.6  current=343.2  P&L=£-27.58  held=2 bars
+  NYSE_XOM_1D                          SHORT  entry=160.7  current=156.2  P&L=£+18.25  held=2 bars
+  NYSE_CVX_1D                          SHORT  entry=199  current=192.9  P&L=£+14.19  held=2 bars
+  NYSE_UNH_1D                          LONG   entry=277.3  current=306  P&L=£+33.98  held=2 bars
+  TSX_RYTO_1D                          LONG   entry=227.3  current=234.3  P&L=£+17.83  held=2 bars
+  TSX_MFCTO_1D                         LONG   entry=48.57  current=50.47  P&L=£+23.44  held=2 bars
+  ASX_CBAAX_1D                         SHORT  entry=172.8  current=180.2  P&L=£-11.79  held=2 bars
+  EURONEXT_SAPDE_1D                    LONG   entry=148.9  current=145.2  P&L=£-7.70  held=2 bars
+  EURONEXT_MCPA_1D                     LONG   entry=471  current=466.9  P&L=£-6.71  held=2 bars
+  EURONEXT_TTEPA_1D                    SHORT  entry=79.42  current=79.26  P&L=£+2.38  held=2 bars
+  ASX_CSLAX_1D                         LONG   entry=140.3  current=142.2  P&L=£+3.37  held=0 bars
+
+Closed trades:     3
+Win rate:          66.7%  (2W / 1L)

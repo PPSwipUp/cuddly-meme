@@ -84,8 +84,8 @@ CONFIG = {
 
     # ── Capital & risk ────────────────────────────────────────────────────────
     "starting_capital":    10_000.0,   # £ starting paper capital
-    "kelly_fraction":      1.0,        # full Kelly
-    "max_risk_per_trade":  0.08,       # 8% max risk per trade
+    "kelly_fraction":      0.25,       # quarter-Kelly — model confidence is primary driver
+    "max_risk_per_trade":  0.20,       # 20% ceiling — only triggers on exceptional signals
     "min_prob":            0.55,       # minimum confidence to open a trade
     "leverage_min_prob":   0.56,
     "leverage_max_prob":   0.63,
