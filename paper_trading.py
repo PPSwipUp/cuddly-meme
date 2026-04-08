@@ -536,11 +536,14 @@ def compute_position_size(prob: float, capital: float, instrument: str,
 
     leverage = min(leverage, max_lev)
 
-    # Kelly fraction of capital at risk
+    # Kelly fraction of capital to deploy as margin.
+    # MAX_RISK caps the MARGIN (capital at risk), NOT margin × leverage.
+    # Leverage amplifies P&L but does not change how much capital you deploy.
+    # e.g. 8% MAX_RISK = max £800 margin regardless of whether leverage is 1x or 5x.
     edge     = prob - 0.5
     fraction = CONFIG["kelly_fraction"] * (2 * edge)
-    size_gbp = min(capital * fraction * leverage,
-                   capital * CONFIG["max_risk_per_trade"] * leverage)
+    size_gbp = min(capital * fraction,
+                   capital * CONFIG["max_risk_per_trade"])
     size_gbp = max(size_gbp, 0.0)
 
     return round(size_gbp, 2), round(leverage, 2)

@@ -124,8 +124,9 @@ def compute_size(prob: float, capital: float,
 
     edge     = abs(prob - 0.5)
     fraction = KELLY * (2 * edge)
-    size_gbp = min(capital * fraction * leverage,
-                   capital * MAX_RISK * leverage)
+    # MAX_RISK caps MARGIN, not margin × leverage
+    size_gbp = min(capital * fraction,
+                   capital * MAX_RISK)
     return round(max(size_gbp, 0.0), 2), round(leverage, 2)
 
 
