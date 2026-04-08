@@ -106,29 +106,72 @@ CONFIG = {
     # Format: ("INSTRUMENT_PREFIX", "RESOLUTION", "YFINANCE_TICKER")
     # Add or remove instruments here.
     "instruments": [
-        # Forex
-        ("FOREXCOM_EURUSDX", "1D", "EURUSD=X"),
-        ("FOREXCOM_GBPUSDX", "1D", "GBPUSD=X"),
-        ("FOREXCOM_USDJPYX", "1D", "USDJPY=X"),
-        ("FOREXCOM_USDCADX", "1D", "USDCAD=X"),
-        ("FOREXCOM_USDCHFX", "1D", "USDCHF=X"),
-        ("FOREXCOM_EURGBPX", "1D", "EURGBP=X"),
-        ("FOREXCOM_EURCHFX", "1D", "EURCHF=X"),
-        ("FOREXCOM_AUDUSDX", "1D", "AUDUSD=X"),
-        # Indices
-        ("DAX_GDAXI",  "1D", "^GDAXI"),
-        ("FTSE_FTSE",  "1D", "^FTSE"),
-        # Commodities
-        ("COMEX_GCF",  "1D", "GC=F"),    # Gold
-        ("NYMEX_CLF",  "1D", "CL=F"),    # Crude Oil
-        # UK Equities
-        ("LSE_BPL",    "1D", "BP.L"),
-        ("LSE_GSKL",   "1D", "GSK.L"),
-        ("LSE_AZNL",   "1D", "AZN.L"),
-        # US Equities
-        ("NYSE_AAPL",  "1D", "AAPL"),
-        ("NYSE_MSFT",  "1D", "MSFT"),
-        ("NYSE_JPM",   "1D", "JPM"),
+        # ── Forex ────────────────────────────────────────────────────────────
+        ("FOREXCOM_EURUSDX",  "1D", "EURUSD=X"),
+        ("FOREXCOM_GBPUSDX",  "1D", "GBPUSD=X"),
+        ("FOREXCOM_USDJPYX",  "1D", "USDJPY=X"),
+        ("FOREXCOM_USDCADX",  "1D", "USDCAD=X"),
+        ("FOREXCOM_USDCHFX",  "1D", "USDCHF=X"),
+        ("FOREXCOM_EURGBPX",  "1D", "EURGBP=X"),
+        ("FOREXCOM_EURCHFX",  "1D", "EURCHF=X"),
+        ("FOREXCOM_AUDUSDX",  "1D", "AUDUSD=X"),
+        ("FOREXCOM_GBPJPYX",  "1D", "GBPJPY=X"),
+        ("FOREXCOM_AUDNZDX",  "1D", "AUDNZD=X"),
+        # ── Indices ──────────────────────────────────────────────────────────
+        ("DAX_GDAXI",         "1D", "^GDAXI"),
+        ("FTSE_FTSE",         "1D", "^FTSE"),
+        ("HSI_HSI",           "1D", "^HSI"),
+        ("NIKKEI_N225",       "1D", "^N225"),
+        ("SP500_GSPC",        "1D", "^GSPC"),
+        # ── Commodities ──────────────────────────────────────────────────────
+        ("COMEX_GCF",         "1D", "GC=F"),    # Gold
+        ("COMEX_HGF",         "1D", "HG=F"),    # Copper
+        ("COMEX_SIF",         "1D", "SI=F"),    # Silver
+        ("NYMEX_CLF",         "1D", "CL=F"),    # Crude Oil
+        ("NYMEX_NGF",         "1D", "NG=F"),    # Natural Gas
+        ("ICE_BZF",           "1D", "BZ=F"),    # Brent Oil
+        ("CBOT_ZWF",          "1D", "ZW=F"),    # Wheat
+        # ── Crypto ───────────────────────────────────────────────────────────
+        ("CRYPTO_BTC-USD",    "1D", "BTC-USD"),
+        ("CRYPTO_ETH-USD",    "1D", "ETH-USD"),
+        # ── UK Equities ──────────────────────────────────────────────────────
+        ("LSE_BPL",           "1D", "BP.L"),
+        ("LSE_GSKL",          "1D", "GSK.L"),
+        ("LSE_AZNL",          "1D", "AZN.L"),
+        ("LSE_HSBAL",         "1D", "HSBA.L"),
+        ("LSE_SHELL",         "1D", "SHEL.L"),
+        # ── US Equities ──────────────────────────────────────────────────────
+        ("NYSE_AAPL",         "1D", "AAPL"),
+        ("NYSE_MSFT",         "1D", "MSFT"),
+        ("NYSE_JPM",          "1D", "JPM"),
+        ("NYSE_BAC",          "1D", "BAC"),
+        ("NYSE_AMZN",         "1D", "AMZN"),
+        ("NYSE_GOOGL",        "1D", "GOOGL"),
+        ("NYSE_NVDA",         "1D", "NVDA"),
+        ("NYSE_TSLA",         "1D", "TSLA"),
+        ("NYSE_V",            "1D", "V"),
+        ("NYSE_META",         "1D", "META"),
+        ("NYSE_XOM",          "1D", "XOM"),
+        ("NYSE_CVX",          "1D", "CVX"),
+        ("NYSE_JNJ",          "1D", "JNJ"),
+        ("NYSE_UNH",          "1D", "UNH"),
+        ("NYSE_PG",           "1D", "PG"),
+        # ── Canadian Equities ─────────────────────────────────────────────────
+        ("TSX_TDTO",          "1D", "TD.TO"),
+        ("TSX_RYTO",          "1D", "RY.TO"),
+        ("TSX_CNRTO",         "1D", "CNR.TO"),
+        ("TSX_MFCTO",         "1D", "MFC.TO"),
+        # ── Australian Equities ───────────────────────────────────────────────
+        ("ASX_ANZAX",         "1D", "ANZ.AX"),
+        ("ASX_BHPAX",         "1D", "BHP.AX"),
+        ("ASX_CBAAX",         "1D", "CBA.AX"),
+        ("ASX_CSLAX",         "1D", "CSL.AX"),
+        # ── European Equities ─────────────────────────────────────────────────
+        ("EURONEXT_SAPDE",    "1D", "SAP.DE"),
+        ("EURONEXT_SIEDE",    "1D", "SIE.DE"),
+        ("EURONEXT_ASMLAS",   "1D", "ASML.AS"),
+        ("EURONEXT_MCPA",     "1D", "MC.PA"),
+        ("EURONEXT_TTEPA",    "1D", "TTE.PA"),
     ],
 
     # ── Index reference for correlation feature ───────────────────────────────
@@ -300,28 +343,94 @@ def build_feature_window(df: pd.DataFrame, resolution: str,
 _model_cache: dict = {}
 
 
+# Cache for finetune_summary recommendations — loaded once on first call
+_ft_summary_cache: dict | None = None
+
+
+def _load_ft_summary() -> dict:
+    """
+    Load finetune_summary.csv and return a dict mapping
+    "INSTRUMENT_RESOLUTION" → "fine_tuned" | "base"
+
+    The summary CSV lives at logs/evaluation/finetune_summary.csv and is
+    produced by run_eval_finetuned.sh. Columns include:
+      instrument, resolution, base_h1, ft_h1 (and h5/h20 variants)
+
+    Decision: use fine-tuned if ft_h1 > base_h1, else use base.
+    If the CSV is missing, default to fine-tuned when checkpoint exists.
+    """
+    global _ft_summary_cache
+    if _ft_summary_cache is not None:
+        return _ft_summary_cache
+
+    summary_path = os.path.join("logs", "evaluation", "finetune_summary.csv")
+    rec = {}
+
+    if os.path.exists(summary_path):
+        try:
+            df = pd.read_csv(summary_path)
+            for _, row in df.iterrows():
+                key = f"{row['instrument']}_{row['resolution']}"
+                # Use fine-tuned only if it outperforms base on H1
+                ft_h1   = float(row.get("ft_h1",   0) or 0)
+                base_h1 = float(row.get("base_h1", 0) or 0)
+                rec[key] = "fine_tuned" if ft_h1 > base_h1 else "base"
+            log.info("Loaded finetune_summary.csv — %d recommendations", len(rec))
+        except Exception as e:
+            log.warning("Could not load finetune_summary.csv: %s — "
+                        "defaulting to fine-tuned where available", e)
+    else:
+        log.debug("finetune_summary.csv not found — "
+                  "defaulting to fine-tuned where available")
+
+    _ft_summary_cache = rec
+    return rec
+
+
 def load_model(instrument: str, resolution: str, device: str):
+    """
+    Load the best available model for this instrument+resolution.
+
+    Priority:
+      1. Check finetune_summary.csv recommendation for this instrument.
+      2. If recommendation is 'fine_tuned' AND a checkpoint exists → use it.
+      3. If recommendation is 'base' OR no fine-tuned checkpoint exists → use base.
+      4. If base checkpoint also missing → return None, None.
+    """
     key = f"{instrument}_{resolution}"
     if key in _model_cache:
         return _model_cache[key]
 
-    # Try fine-tuned phase3, then phase1, then base
-    for phase in ("phase3", "phase1"):
-        pattern = os.path.join(
-            CONFIG["ft_dir"],
-            f"checkpoint_{instrument}_{resolution}_{phase}_*.pt"
-        )
-        matches = sorted(glob.glob(pattern))
-        if matches:
-            ckpt_path = matches[-1]
-            source    = f"fine-tuned ({phase})"
-            break
-    else:
+    recommendations = _load_ft_summary()
+    recommendation  = recommendations.get(key, "fine_tuned")  # default: try ft
+
+    ckpt_path = None
+    source    = "base"
+
+    if recommendation == "fine_tuned":
+        # Try fine-tuned phase3 first, then phase1
+        for phase in ("phase3", "phase1"):
+            pattern = os.path.join(
+                CONFIG["ft_dir"],
+                f"checkpoint_{instrument}_{resolution}_{phase}_*.pt"
+            )
+            matches = sorted(glob.glob(pattern))
+            if matches:
+                ckpt_path = matches[-1]
+                source    = f"fine-tuned ({phase})"
+                break
+
+    if ckpt_path is None or not os.path.exists(ckpt_path):
+        # Fall back to base
         ckpt_path = CONFIG["base_checkpoint"]
         source    = "base"
+        if recommendation == "fine_tuned" and key in recommendations:
+            log.debug("%s: ft checkpoint not found — falling back to base", key)
+        elif recommendation == "base":
+            log.debug("%s: finetune_summary recommends base model", key)
 
     if not os.path.exists(ckpt_path):
-        log.error("No checkpoint for %s %s", instrument, resolution)
+        log.error("No checkpoint found for %s (tried ft and base)", key)
         return None, None
 
     ckpt  = torch.load(ckpt_path, map_location=device, weights_only=True)
@@ -437,8 +546,19 @@ def compute_position_size(prob: float, capital: float, instrument: str,
     return round(size_gbp, 2), round(leverage, 2)
 
 
-def current_price_from_df(df: pd.DataFrame) -> float:
-    return float(df["Close"].iloc[-1])
+def current_price_from_df(df: pd.DataFrame) -> float | None:
+    """
+    Return the most recent valid (non-NaN, positive) close price.
+    yfinance sometimes returns NaN for the latest bar of indices like ^GDAXI
+    when the market hasn't closed yet or data is delayed.
+    Walk back through recent bars to find the last valid price.
+    """
+    import math
+    closes = df["Close"].dropna()
+    closes = closes[closes > 0]
+    if closes.empty:
+        return None
+    return float(closes.iloc[-1])
 
 
 # ─── Email ────────────────────────────────────────────────────────────────────
@@ -693,6 +813,48 @@ def daily_summary_html(state: dict, all_predictions: list[dict],
 
 
 # ─── Core trading cycle ───────────────────────────────────────────────────────
+
+def predict_only(instrument: str, resolution: str, yf_ticker: str,
+                 device: str, index_dfs: dict) -> dict | None:
+    """
+    Run inference for one instrument WITHOUT making any trading decisions.
+    Used by --summary so it never accidentally opens/closes positions.
+    Returns the same prediction dict shape as run_instrument() but with
+    action=None and no state modifications.
+    """
+    log.info("  [predict] %s %s", instrument, resolution)
+
+    df = fetch_bars(yf_ticker, resolution, CONFIG["bars_to_download"])
+    if df is None or len(df) < 130:
+        return None
+
+    current_price = current_price_from_df(df)
+    if current_price is None or __import__("math").isnan(current_price):
+        return None
+
+    idx_df = index_dfs.get(resolution)
+    window = build_feature_window(df, resolution, idx_df)
+    if window is None:
+        return None
+
+    model, source = load_model(instrument, resolution, device)
+    if model is None:
+        return None
+
+    pred    = predict(model, window, device)
+    signals = interpret_prediction(pred, current_price, instrument)
+
+    return {
+        "instrument":    instrument,
+        "resolution":    resolution,
+        "current_price": round(current_price, 5),
+        "signals":       signals,
+        "model_source":  source,
+        "action":        None,
+        "h1_prob":       pred["h1_prob"],
+    }
+
+
 def run_instrument(instrument: str, resolution: str, yf_ticker: str,
                    state: dict, device: str,
                    index_dfs: dict) -> dict | None:
@@ -710,6 +872,10 @@ def run_instrument(instrument: str, resolution: str, yf_ticker: str,
         return None
 
     current_price = current_price_from_df(df)
+    if current_price is None or (hasattr(current_price, '__float__') and
+                                  __import__('math').isnan(current_price)):
+        log.warning("  No valid price for %s — skipping this run", key)
+        return None
 
     # ── Feature engineering ───────────────────────────────────────────────────
     idx_df = index_dfs.get(resolution)
@@ -737,7 +903,9 @@ def run_instrument(instrument: str, resolution: str, yf_ticker: str,
     entry_price_for_alert = None
 
     if existing:
-        existing["current_price"] = current_price
+        # Only update current_price if the new value is valid
+        if current_price and not __import__('math').isnan(current_price):
+            existing["current_price"] = current_price
 
         # Close if model flips direction or confidence drops below threshold
         if h1_prob < CONFIG["min_prob"]:
@@ -1024,15 +1192,23 @@ def main():
 
     # ── Force summary mode ────────────────────────────────────────────────────
     if args.summary:
-        log.info("Sending forced daily summary...")
+        log.info("Sending forced daily summary (prediction-only, no trading decisions)...")
         preds = []
         instruments = CONFIG["instruments"]
         if args.instrument:
             instruments = [(i, r, t) for i, r, t in instruments
                            if i == args.instrument and r == args.resolution]
         for inst, res, ticker in instruments:
-            p = run_instrument(inst, res, ticker, state, device, index_dfs)
+            p = predict_only(inst, res, ticker, device, index_dfs)
             if p: preds.append(p)
+
+        # Also update current prices in state without making trading decisions
+        for p in preds:
+            key = f"{p['instrument']}_{p['resolution']}"
+            if key in state["positions"] and p.get("current_price"):
+                import math
+                if not math.isnan(p["current_price"]):
+                    state["positions"][key]["current_price"] = p["current_price"]
 
         start_date = state.get("start_date", date.today().isoformat())
         days = (date.today() - date.fromisoformat(start_date)).days + 1
