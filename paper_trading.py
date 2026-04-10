@@ -233,6 +233,18 @@ def load_state() -> dict:
 
 def save_state(state: dict) -> None:
     os.makedirs(os.path.dirname(CONFIG["state_file"]), exist_ok=True)
+
+    # Keep a rolling backup of the last state before overwriting.
+    # Saved as paper_state_prev.json — always one step behind.
+    # This means if something corrupts the state, you can restore from prev.
+    if os.path.exists(CONFIG["state_file"]):
+        prev_path = CONFIG["state_file"].replace(".json", "_prev.json")
+        try:
+            import shutil
+            shutil.copy2(CONFIG["state_file"], prev_path)
+        except Exception as e:
+            log.warning("Could not create state backup: %s", e)
+
     with open(CONFIG["state_file"], "w") as f:
         json.dump(state, f, indent=2, default=str)
 

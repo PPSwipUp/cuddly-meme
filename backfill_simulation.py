@@ -376,6 +376,11 @@ def main():
         "--dry-run", action="store_true",
         help="Print simulation without saving state or trade log"
     )
+    parser.add_argument(
+        "--force-overwrite", action="store_true",
+        help="Overwrite existing state even if it has more trades than "
+             "this simulation. USE WITH CAUTION — this will lose real trading history."
+    )
     args = parser.parse_args()
 
     device = "cuda" if torch.cuda.is_available() else "cpu"
@@ -477,6 +482,36 @@ def main():
     # ── Save ──────────────────────────────────────────────────────────────────
     if not args.dry_run:
         os.makedirs(CONFIG["log_dir"], exist_ok=True)
+
+        # ── Safety check: never overwrite a more advanced state ───────────
+        # If an existing state has MORE trades than this simulation produced,
+        # the existing state is the real one and the backfill is outdated.
+        existing_trades = 0
+        if os.path.exists(CONFIG["state_file"]):
+            try:
+                existing = json.load(open(CONFIG["state_file"]))
+                existing_trades = existing.get("trade_count", 0)
+            except Exception:
+                pass
+
+        if existing_trades > state["trade_count"] and not args.force_overwrite:
+            log.error("REFUSING to save: existing state has %d trades, "
+                      "backfill only produced %d trades.",
+                      existing_trades, state["trade_count"])
+            log.error("The existing state is more advanced than this backfill.")
+            log.error("To override this protection, pass --force-overwrite.")
+            log.error("Existing state preserved. No files were changed.")
+            return
+
+        # ── Backup existing state before overwriting ──────────────────────
+        if os.path.exists(CONFIG["state_file"]):
+            backup = CONFIG["state_file"].replace(
+                ".json",
+                f"_backup_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
+            )
+            import shutil
+            shutil.copy2(CONFIG["state_file"], backup)
+            log.info("Backed up existing state to: %s", backup)
 
         # Save state
         with open(CONFIG["state_file"], "w") as f:
