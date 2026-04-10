@@ -184,7 +184,7 @@ CONFIG = {
 
     # ── Daily summary time ────────────────────────────────────────────────────
     # The script checks if it's past this hour and sends a summary if not sent today.
-    "summary_hour": 22,    # 5pm
+    "summary_hour": 17,    # 5pm
 }
 
 # ─── Logging ──────────────────────────────────────────────────────────────────
@@ -1071,7 +1071,7 @@ def _run_cycle(device: str) -> None:
 
     state["last_run"] = datetime.now().isoformat()
 
-    last_summary       = state.get("last_summary", "")
+    last_summary       = state.get("last_summary") or ""
     today_str          = date.today().isoformat()
     now_hour           = datetime.utcnow().hour
     already_sent_today = last_summary.startswith(today_str)
@@ -1079,7 +1079,7 @@ def _run_cycle(device: str) -> None:
 
     if is_summary_time and not already_sent_today:
         log.info("Sending daily summary email (UTC hour=%d)...", now_hour)
-        start_date = state.get("start_date", today_str)
+        start_date = state.get("start_date") or today_str
         days = (date.today() - date.fromisoformat(start_date)).days + 1
         html = daily_summary_html(state, all_predictions, days)
         send_email(
@@ -1251,7 +1251,7 @@ def main():
     state["last_run"] = datetime.now().isoformat()
 
     # ── Send daily summary if at or past summary_hour and not sent today ─────
-    last_summary = state.get("last_summary", "")
+    last_summary = state.get("last_summary") or ""
     today_str    = date.today().isoformat()
     now_hour     = datetime.utcnow().hour   # always compare in UTC
 
@@ -1262,7 +1262,7 @@ def main():
     if is_summary_time and not already_sent_today:
         log.info("Sending daily summary email (UTC hour=%d, threshold=%d)...",
                  now_hour, CONFIG["summary_hour"])
-        start_date = state.get("start_date", today_str)
+        start_date = state.get("start_date") or today_str
         days = (date.today() - date.fromisoformat(start_date)).days + 1
         html = daily_summary_html(state, all_predictions, days)
         send_email(
