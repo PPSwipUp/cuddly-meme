@@ -6070,3 +6070,65 @@ Feature columns (42 total):
 2026-04-08 23:44:56,953  INFO        [predict] EURONEXT_MCPA 1D
 2026-04-08 23:44:57,266  INFO        [predict] EURONEXT_TTEPA 1D
 2026-04-08 23:44:58,667  INFO      Email sent: 📊 Paper Trading Daily Summary — 08 Apr 2026
+2026-04-10 14:20:02,916  INFO      Paper Trading Engine — device=cpu
+2026-04-10 14:20:02,919  INFO      Loading index reference (S&P 500)...
+2026-04-10 14:20:04,372  INFO      Sending forced daily summary (prediction-only, no trading decisions)...
+2026-04-10 14:20:04,373  INFO        [predict] FOREXCOM_EURUSDX 1D
+2026-04-10 14:20:04,679  INFO      Loaded finetune_summary.csv — 184 recommendations
+2026-04-10 14:20:06,161  INFO        [predict] FOREXCOM_GBPUSDX 1D
+2026-04-10 14:20:06,619  INFO        [predict] FOREXCOM_USDJPYX 1D
+2026-04-10 14:20:06,857  INFO        [predict] FOREXCOM_USDCADX 1D
+2026-04-10 14:20:07,192  INFO        [predict] FOREXCOM_USDCHFX 1D
+2026-04-10 14:20:07,542  INFO        [predict] FOREXCOM_EURGBPX 1D
+2026-04-10 14:20:07,915  INFO        [predict] FOREXCOM_EURCHFX 1D
+2026-04-10 14:20:08,242  INFO        [predict] FOREXCOM_AUDUSDX 1D
+2026-04-10 14:20:08,508  INFO        [predict] FOREXCOM_GBPJPYX 1D
+2026-04-10 14:20:08,915  INFO        [predict] FOREXCOM_AUDNZDX 1D
+2026-04-10 14:20:09,371  INFO        [predict] DAX_GDAXI 1D
+2026-04-10 14:20:09,706  INFO        [predict] FTSE_FTSE 1D
+2026-04-10 14:20:09,943  INFO        [predict] HSI_HSI 1D
+2026-04-10 14:20:10,418  INFO        [predict] NIKKEI_N225 1D
+2026-04-10 14:20:10,727  INFO        [predict] SP500_GSPC 1D
+2026-04-10 14:20:10,989  INFO        [predict] COMEX_GCF 1D
+2026-04-10 14:20:11,289  INFO        [predict] COMEX_HGF 1D
+2026-04-10 14:20:11,666  INFO        [predict] COMEX_SIF 1D
+2026-04-10 14:20:11,969  INFO        [predict] NYMEX_CLF 1D
+2026-04-10 14:20:12,327  INFO        [predict] NYMEX_NGF 1D
+2026-04-10 14:20:12,759  INFO        [predict] ICE_BZF 1D
+2026-04-10 14:20:14,176  INFO        [predict] CBOT_ZWF 1D
+2026-04-10 14:20:14,499  INFO        [predict] CRYPTO_BTC-USD 1D
+2026-04-10 14:20:14,837  INFO        [predict] CRYPTO_ETH-USD 1D
+2026-04-10 14:20:15,187  INFO        [predict] LSE_BPL 1D
+2026-04-10 14:20:15,506  INFO        [predict] LSE_GSKL 1D
+2026-04-10 14:20:15,865  INFO        [predict] LSE_AZNL 1D
+2026-04-10 14:20:16,197  INFO        [predict] LSE_HSBAL 1D
+2026-04-10 14:20:16,687  INFO        [predict] LSE_SHELL 1D
+2026-04-10 14:20:16,983  INFO        [predict] NYSE_AAPL 1D
+2026-04-10 14:20:17,377  INFO        [predict] NYSE_MSFT 1D
+2026-04-10 14:20:17,673  INFO        [predict] NYSE_JPM 1D
+2026-04-10 14:20:18,032  INFO        [predict] NYSE_BAC 1D
+2026-04-10 14:20:18,504  INFO        [predict] NYSE_AMZN 1D
+2026-04-10 14:20:18,762  INFO        [predict] NYSE_GOOGL 1D
+2026-04-10 14:20:19,169  INFO        [predict] NYSE_NVDA 1D
+2026-04-10 14:20:19,523  INFO        [predict] NYSE_TSLA 1D
+2026-04-10 14:20:19,780  INFO        [predict] NYSE_V 1D
+2026-04-10 14:20:21,064  INFO        [predict] NYSE_META 1D
+2026-04-10 14:20:21,442  INFO        [predict] NYSE_XOM 1D
+2026-04-10 14:20:21,848  INFO        [predict] NYSE_CVX 1D
+2026-04-10 14:20:22,201  INFO        [predict] NYSE_JNJ 1D
+2026-04-10 14:20:22,615  INFO        [predict] NYSE_UNH 1D
+2026-04-10 14:20:22,912  INFO        [predict] NYSE_PG 1D
+2026-04-10 14:20:23,428  INFO        [predict] TSX_TDTO 1D
+2026-04-10 14:20:23,775  INFO        [predict] TSX_RYTO 1D
+2026-04-10 14:20:24,113  INFO        [predict] TSX_CNRTO 1D
+2026-04-10 14:20:24,408  INFO        [predict] TSX_MFCTO 1D
+2026-04-10 14:20:24,768  INFO        [predict] ASX_ANZAX 1D
+2026-04-10 14:20:25,114  INFO        [predict] ASX_BHPAX 1D
+2026-04-10 14:20:25,526  INFO        [predict] ASX_CBAAX 1D
+2026-04-10 14:20:25,918  INFO        [predict] ASX_CSLAX 1D
+2026-04-10 14:20:26,219  INFO        [predict] EURONEXT_SAPDE 1D
+2026-04-10 14:20:26,643  INFO        [predict] EURONEXT_SIEDE 1D
+2026-04-10 14:20:28,162  INFO        [predict] EURONEXT_ASMLAS 1D
+2026-04-10 14:20:28,511  INFO        [predict] EURONEXT_MCPA 1D
+2026-04-10 14:20:28,854  INFO        [predict] EURONEXT_TTEPA 1D
+2026-04-10 14:20:30,441  INFO      Email sent: 📊 Paper Trading Daily Summary — 10 Apr 2026

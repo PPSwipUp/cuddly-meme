@@ -1071,13 +1071,14 @@ def _run_cycle(device: str) -> None:
 
     state["last_run"] = datetime.now().isoformat()
 
-    last_summary = state.get("last_summary")
-    today_str    = date.today().isoformat()
-    now_hour     = datetime.now().hour
+    last_summary       = state.get("last_summary", "")
+    today_str          = date.today().isoformat()
+    now_hour           = datetime.utcnow().hour
+    already_sent_today = last_summary.startswith(today_str)
+    is_summary_time    = now_hour >= CONFIG["summary_hour"]
 
-    if (now_hour >= CONFIG["summary_hour"] and
-            (last_summary is None or not last_summary.startswith(today_str))):
-        log.info("Sending daily summary email...")
+    if is_summary_time and not already_sent_today:
+        log.info("Sending daily summary email (UTC hour=%d)...", now_hour)
         start_date = state.get("start_date", today_str)
         days = (date.today() - date.fromisoformat(start_date)).days + 1
         html = daily_summary_html(state, all_predictions, days)
@@ -1085,7 +1086,12 @@ def _run_cycle(device: str) -> None:
             f"📊 Paper Trading Daily Summary — {date.today().strftime('%d %b %Y')}",
             html
         )
-        state["last_summary"] = datetime.now().isoformat()
+        state["last_summary"] = datetime.utcnow().isoformat()
+    elif already_sent_today:
+        log.info("Daily summary already sent today — skipping.")
+    else:
+        log.info("Not yet summary time (UTC hour=%d, threshold=%d).",
+                 now_hour, CONFIG["summary_hour"])
 
     save_state(state)
 
@@ -1244,14 +1250,18 @@ def main():
 
     state["last_run"] = datetime.now().isoformat()
 
-    # ── Send daily summary if past summary_hour and not already sent today ────
-    last_summary = state.get("last_summary")
+    # ── Send daily summary if at or past summary_hour and not sent today ─────
+    last_summary = state.get("last_summary", "")
     today_str    = date.today().isoformat()
-    now_hour     = datetime.now().hour
+    now_hour     = datetime.utcnow().hour   # always compare in UTC
 
-    if (now_hour >= CONFIG["summary_hour"] and
-            (last_summary is None or not last_summary.startswith(today_str))):
-        log.info("Sending daily summary email...")
+    # Send if: past the summary hour AND not already sent today
+    already_sent_today = last_summary.startswith(today_str)
+    is_summary_time    = now_hour >= CONFIG["summary_hour"]
+
+    if is_summary_time and not already_sent_today:
+        log.info("Sending daily summary email (UTC hour=%d, threshold=%d)...",
+                 now_hour, CONFIG["summary_hour"])
         start_date = state.get("start_date", today_str)
         days = (date.today() - date.fromisoformat(start_date)).days + 1
         html = daily_summary_html(state, all_predictions, days)
@@ -1259,7 +1269,13 @@ def main():
             f"📊 Paper Trading Daily Summary — {date.today().strftime('%d %b %Y')}",
             html
         )
-        state["last_summary"] = datetime.now().isoformat()
+        state["last_summary"] = datetime.utcnow().isoformat()
+        log.info("Daily summary sent.")
+    elif already_sent_today:
+        log.info("Daily summary already sent today — skipping.")
+    else:
+        log.info("Not yet summary time (UTC hour=%d, threshold=%d).",
+                 now_hour, CONFIG["summary_hour"])
 
     save_state(state)
 
