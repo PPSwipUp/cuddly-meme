@@ -184,7 +184,7 @@ CONFIG = {
 
     # ── Daily summary time ────────────────────────────────────────────────────
     # The script checks if it's past this hour and sends a summary if not sent today.
-    "summary_hour": 17,    # 5pm
+    "summary_hour": 22,    # 5pm
 }
 
 # ─── Logging ──────────────────────────────────────────────────────────────────
