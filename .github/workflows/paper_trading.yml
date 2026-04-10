@@ -2,7 +2,8 @@ name: Paper Trading
 
 on:
   schedule:
-    - cron: '0 9 * * 1-5'
+    - cron: '0 14 * * 1-5'   # 9am CDT (UTC-5) / 8am CST (UTC-6)
+    - cron: '0 22 * * 1-5'   # 5pm CDT (UTC-5) / 4pm CST (UTC-6)
   workflow_dispatch:
 
 jobs:
