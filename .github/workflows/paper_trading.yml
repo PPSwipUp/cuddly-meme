@@ -1,58 +1,71 @@
 name: Paper Trading
-
+ 
 on:
   schedule:
-    - cron: '0 14 * * 1-5'   # 9am CDT (UTC-5) / 8am CST (UTC-6)
-    - cron: '0 22 * * 1-5'   # 5pm CDT (UTC-5) / 4pm CST (UTC-6)
-  workflow_dispatch:
-
+    - cron: '0 14 * * 1-5'   # 9am CDT (UTC-5) — morning trading cycle
+    - cron: '0 22 * * 1-5'   # 5pm CDT (UTC-5) — evening summary email
+  workflow_dispatch:           # manual trigger from GitHub Actions tab
+ 
 jobs:
   trade:
     runs-on: ubuntu-latest
-
+ 
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           fetch-depth: 0
-
+ 
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-
+ 
       - name: Cache pip packages
         uses: actions/cache@v4
         with:
           path: ~/.cache/pip
-          key: ${{ runner.os }}-pip-trading
+          key: ${{ runner.os }}-pip-paper-trading-v1
           restore-keys: |
             ${{ runner.os }}-pip-
-
+ 
       - name: Install dependencies
         run: |
           pip install torch numpy pandas yfinance scikit-learn pyarrow
-
+ 
       - name: Create required directories
         run: |
           mkdir -p logs/paper_trading
           mkdir -p models/base
           mkdir -p models/fine_tuned
-
-      - name: Run trading cycle
+ 
+      # Detect which cron triggered this run based on UTC hour.
+      # 14:00 UTC = morning trading cycle (makes decisions).
+      # 22:00 UTC = evening summary only (no trading decisions).
+      # workflow_dispatch = treat as morning run.
+      - name: Run trading cycle or summary
         env:
           PAPER_EMAIL_ADDRESS:  ${{ secrets.PAPER_EMAIL_ADDRESS }}
           PAPER_EMAIL_PASSWORD: ${{ secrets.PAPER_EMAIL_PASSWORD }}
           PAPER_EMAIL_TO:       ${{ secrets.PAPER_EMAIL_TO }}
         run: |
-          python paper_trading.py
-
-      - name: Commit updated state
+          HOUR=$(date -u +%H)
+          echo "Current UTC hour: $HOUR"
+          if [ "$HOUR" -ge 20 ]; then
+            echo "Evening run — sending summary only (no trading decisions)"
+            python paper_trading.py --summary
+          else
+            echo "Morning run — full trading cycle"
+            python paper_trading.py
+          fi
+ 
+      - name: Commit updated state and trade log
         run: |
           git config user.name "paper-trading-bot"
           git config user.email "bot@noreply.github.com"
           git add logs/paper_trading/paper_state.json || true
           git add logs/paper_trading/trade_log.csv    || true
-          git diff --staged --quiet || git commit -m "chore: paper trading state $(date -u +%Y-%m-%d)"
+          git add logs/paper_trading/paper_state_prev.json || true
+          git diff --staged --quiet || git commit -m "chore: paper trading state $(date -u +%Y-%m-%d\ %H:%M)"
           git push || true

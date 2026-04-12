@@ -1,0 +1,190 @@
+{
+  "positions": {
+    "DAX_GDAXI_1D": {
+      "direction": 1,
+      "entry_price": 23168.0,
+      "size_gbp": 276.5,
+      "leverage": 1.0,
+      "entry_date": "2026-04-03",
+      "bars_held": 6,
+      "current_price": 23920.0
+    },
+    "SP500_GSPC_1D": {
+      "direction": 1,
+      "entry_price": 6582.7,
+      "size_gbp": 389.37,
+      "leverage": 5.8,
+      "entry_date": "2026-04-03",
+      "bars_held": 6,
+      "current_price": 6837.2
+    },
+    "NYSE_MSFT_1D": {
+      "direction": 1,
+      "entry_price": 373.46,
+      "size_gbp": 458.91,
+      "leverage": 2.8,
+      "entry_date": "2026-04-03",
+      "bars_held": 6,
+      "current_price": 373.64
+    },
+    "NYSE_JPM_1D": {
+      "direction": 1,
+      "entry_price": 294.6,
+      "size_gbp": 337.72,
+      "leverage": 1.4,
+      "entry_date": "2026-04-03",
+      "bars_held": 6,
+      "current_price": 308.94
+    },
+    "NYSE_GOOGL_1D": {
+      "direction": 1,
+      "entry_price": 295.77,
+      "size_gbp": 338.76,
+      "leverage": 1.4,
+      "entry_date": "2026-04-03",
+      "bars_held": 6,
+      "current_price": 319.34
+    },
+    "NYSE_TSLA_1D": {
+      "direction": 1,
+      "entry_price": 360.59,
+      "size_gbp": 353.97,
+      "leverage": 1.6,
+      "entry_date": "2026-04-03",
+      "bars_held": 6,
+      "current_price": 346.5
+    },
+    "TSX_RYTO_1D": {
+      "direction": 1,
+      "entry_price": 227.34,
+      "size_gbp": 356.18,
+      "leverage": 1.6,
+      "entry_date": "2026-04-03",
+      "bars_held": 6,
+      "current_price": 236.87
+    },
+    "TSX_MFCTO_1D": {
+      "direction": 1,
+      "entry_price": 48.57,
+      "size_gbp": 358.78,
+      "leverage": 1.7,
+      "entry_date": "2026-04-03",
+      "bars_held": 6,
+      "current_price": 50.51
+    },
+    "EURONEXT_SAPDE_1D": {
+      "direction": 1,
+      "entry_price": 148.9,
+      "size_gbp": 302.65,
+      "leverage": 1.0,
+      "entry_date": "2026-04-03",
+      "bars_held": 6,
+      "current_price": 139.62
+    },
+    "EURONEXT_MCPA_1D": {
+      "direction": 1,
+      "entry_price": 471.05,
+      "size_gbp": 383.94,
+      "leverage": 2.0,
+      "entry_date": "2026-04-03",
+      "bars_held": 6,
+      "current_price": 486.4
+    },
+    "ASX_CSLAX_1D": {
+      "direction": 1,
+      "entry_price": 140.31,
+      "size_gbp": 252.62,
+      "leverage": 1.0,
+      "entry_date": "2026-04-07",
+      "bars_held": 2,
+      "current_price": 139.19
+    },
+    "FOREXCOM_AUDNZDX_1D": {
+      "direction": -1,
+      "entry_price": 1.2076,
+      "size_gbp": 308.81,
+      "leverage": 1.5,
+      "entry_date": "2026-04-09",
+      "bars_held": 1,
+      "current_price": 1.2085
+    },
+    "CBOT_ZWF_1D": {
+      "direction": -1,
+      "entry_price": 573.0,
+      "size_gbp": 354.96,
+      "leverage": 2.4,
+      "entry_date": "2026-04-09",
+      "bars_held": 1,
+      "current_price": 570.5
+    },
+    "LSE_BPL_1D": {
+      "direction": -1,
+      "entry_price": 580.5,
+      "size_gbp": 398.23,
+      "leverage": 2.1,
+      "entry_date": "2026-04-09",
+      "bars_held": 1,
+      "current_price": 571.3
+    },
+    "LSE_SHELL_1D": {
+      "direction": -1,
+      "entry_price": 3448.5,
+      "size_gbp": 414.65,
+      "leverage": 2.3,
+      "entry_date": "2026-04-09",
+      "bars_held": 1,
+      "current_price": 3410.5
+    },
+    "NYSE_XOM_1D": {
+      "direction": -1,
+      "entry_price": 154.75,
+      "size_gbp": 327.31,
+      "leverage": 1.2,
+      "entry_date": "2026-04-09",
+      "bars_held": 1,
+      "current_price": 152.91
+    },
+    "NYSE_CVX_1D": {
+      "direction": -1,
+      "entry_price": 189.92,
+      "size_gbp": 265.32,
+      "leverage": 1.0,
+      "entry_date": "2026-04-09",
+      "bars_held": 1,
+      "current_price": 187.59
+    },
+    "ASX_CBAAX_1D": {
+      "direction": -1,
+      "entry_price": 182.53,
+      "size_gbp": 327.76,
+      "leverage": 1.2,
+      "entry_date": "2026-04-09",
+      "bars_held": 1,
+      "current_price": 183.38
+    },
+    "EURONEXT_SIEDE_1D": {
+      "direction": 1,
+      "entry_price": 226.75,
+      "size_gbp": 270.64,
+      "leverage": 1.0,
+      "entry_date": "2026-04-09",
+      "bars_held": 1,
+      "current_price": 231.65
+    },
+    "EURONEXT_TTEPA_1D": {
+      "direction": -1,
+      "entry_price": 78.87,
+      "size_gbp": 412.55,
+      "leverage": 2.2,
+      "entry_date": "2026-04-09",
+      "bars_held": 1,
+      "current_price": 77.66
+    }
+  },
+  "capital": 10234.19,
+  "realised_pnl": 234.19,
+  "trade_count": 46,
+  "start_date": "2026-04-03",
+  "last_run": "2026-04-10T22:00:00",
+  "last_summary": "2026-04-10T22:00:00"
+}

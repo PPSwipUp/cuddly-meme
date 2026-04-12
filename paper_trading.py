@@ -184,7 +184,7 @@ CONFIG = {
 
     # ── Daily summary time ────────────────────────────────────────────────────
     # The script checks if it's past this hour and sends a summary if not sent today.
-    "summary_hour": 17,    # 5pm
+    "summary_hour": 20,    # 5pm CDT (UTC-5) = 22:00 UTC, using 20 as trigger threshold
 }
 
 # ─── Logging ──────────────────────────────────────────────────────────────────
@@ -646,10 +646,29 @@ def _pnl_html(pnl: float) -> str:
     return f'<span class="{cls}">{pnl:+.2f}</span>'
 
 
-def prediction_table_html(predictions: list[dict]) -> str:
-    """Build HTML table of all predictions."""
+def prediction_table_html(predictions: list[dict],
+                          open_positions: set | None = None) -> str:
+    """
+    Build HTML table of predictions.
+    Only shows instruments where the model has conviction (prob >= min_prob)
+    OR where there is currently an open position.
+    All others are omitted to keep the email focused and readable.
+    """
+    open_positions = open_positions or set()
+    min_prob = CONFIG["min_prob"]
+
+    # Filter to only instruments worth showing
+    filtered = [
+        p for p in predictions
+        if (abs(p["h1_prob"] - 0.5) >= (min_prob - 0.5))  # model has conviction
+        or (f"{p['instrument']}_{p['resolution']}" in open_positions)  # open position
+    ]
+
+    if not filtered:
+        return "<h3>📊 Market Predictions</h3><p>No actionable signals today.</p>"
+
     rows = ""
-    for p in predictions:
+    for p in filtered:
         sig   = p["signals"]["h1"]
         sig5  = p["signals"]["h5"]
         sig20 = p["signals"]["h20"]
@@ -819,11 +838,11 @@ def daily_summary_html(state: dict, all_predictions: list[dict],
       {pos_rows}
     </table>
 
-    {prediction_table_html(all_predictions)}
+    {prediction_table_html(all_predictions, set(state.get('positions', {}).keys()))}
 
     <p class="footer">
       Paper trading — simulated positions only. No real money involved.<br>
-      Generated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
+      Generated: {datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S')} UTC
     </p>"""
 
 
@@ -921,6 +940,8 @@ def run_instrument(instrument: str, resolution: str, yf_ticker: str,
         # Only update current_price if the new value is valid
         if current_price and not __import__('math').isnan(current_price):
             existing["current_price"] = current_price
+        # Increment bars held each time this position is processed
+        existing["bars_held"] = existing.get("bars_held", 0) + 1
 
         # Close if model flips direction or confidence drops below threshold
         if h1_prob < CONFIG["min_prob"]:
@@ -945,7 +966,7 @@ def run_instrument(instrument: str, resolution: str, yf_ticker: str,
             entry_price_for_alert  = ep
 
             log_trade({
-                "date":        datetime.now().isoformat(),
+                "date":        datetime.utcnow().isoformat(),
                 "instrument":  instrument,
                 "resolution":  resolution,
                 "action":      "CLOSE",
@@ -961,6 +982,29 @@ def run_instrument(instrument: str, resolution: str, yf_ticker: str,
                 "reason":      reason,
             })
             del state["positions"][key]
+
+            # Send the CLOSE email immediately before potentially reopening
+            # so they appear as two separate clear events in the inbox.
+            close_html = trade_alert_html(
+                action       = "CLOSE",
+                instrument   = instrument,
+                resolution   = resolution,
+                direction    = "UP" if existing["direction"] == 1 else "DOWN",
+                price        = current_price,
+                size_gbp     = size,
+                leverage     = lev,
+                prob         = h1_prob,
+                signals      = signals,
+                pnl_gbp      = pnl_gbp,
+                entry_price  = ep,
+            )
+            send_email(
+                f"🔴 Paper Trade CLOSED: {instrument} {resolution} "
+                f"({'↑ Long' if existing['direction']==1 else '↓ Short'}) "
+                f"P&L={pnl_gbp:+.2f}",
+                close_html
+            )
+            entry_price_for_alert = None   # clear — close email already sent
 
             # Immediately open in new direction if confident enough
             if h1_prob >= CONFIG["min_prob"] or (1 - h1_prob) >= CONFIG["min_prob"]:
@@ -984,6 +1028,7 @@ def run_instrument(instrument: str, resolution: str, yf_ticker: str,
                     "entry_date":   date.today().isoformat(),
                     "size_gbp":     size_gbp,
                     "leverage":     leverage,
+                    "bars_held":    0,
                 }
                 state["trade_count"] = state.get("trade_count", 0) + 1
                 log_trade({
@@ -1003,15 +1048,42 @@ def run_instrument(instrument: str, resolution: str, yf_ticker: str,
                     "reason":      reason,
                 })
 
-    # ── Send trade alert email ────────────────────────────────────────────────
-    if action in ("OPEN", "CLOSE"):
+    # ── Send trade alert email (OPEN only — CLOSE is sent immediately above) ──
+    # CLOSE alerts are sent in the flip block above so they arrive before
+    # the corresponding OPEN, making the inbox timeline easy to follow.
+    if action == "OPEN":
         pos      = state["positions"].get(key, {})
-        size_gbp = pos.get("size_gbp", existing.get("size_gbp", 0) if existing else 0)
-        leverage = pos.get("leverage", existing.get("leverage", 1.0) if existing else 1.0)
+        size_gbp = pos.get("size_gbp", 0)
+        leverage = pos.get("leverage", 1.0)
         dirn_str = "UP" if h1_dir == 1 else "DOWN"
 
         html = trade_alert_html(
-            action       = action,
+            action       = "OPEN",
+            instrument   = instrument,
+            resolution   = resolution,
+            direction    = dirn_str,
+            price        = current_price,
+            size_gbp     = size_gbp,
+            leverage     = leverage,
+            prob         = h1_prob,
+            signals      = signals,
+            pnl_gbp      = None,
+            entry_price  = None,
+        )
+        dirn_s = "↑ Long" if h1_dir == 1 else "↓ Short"
+        send_email(
+            f"🟢 Paper Trade OPEN: {instrument} {resolution} {dirn_s}",
+            html
+        )
+    elif action == "CLOSE" and entry_price_for_alert is not None:
+        # A non-flip close — send the close email here (flip closes are sent above)
+        pos      = state["positions"]   # already deleted, use existing
+        size_gbp = existing.get("size_gbp", 0) if existing else 0
+        leverage = existing.get("leverage", 1.0) if existing else 1.0
+        dirn_str = "UP" if (existing["direction"] == 1 if existing else True) else "DOWN"
+
+        html = trade_alert_html(
+            action       = "CLOSE",
             instrument   = instrument,
             resolution   = resolution,
             direction    = dirn_str,
@@ -1023,10 +1095,10 @@ def run_instrument(instrument: str, resolution: str, yf_ticker: str,
             pnl_gbp      = pnl_gbp,
             entry_price  = entry_price_for_alert,
         )
-        emoji  = "🟢" if action == "OPEN" else "🔴"
-        dirn_s = "↑ Long" if h1_dir == 1 else "↓ Short"
         send_email(
-            f"{emoji} Paper Trade {action}: {instrument} {resolution} {dirn_s}",
+            f"🔴 Paper Trade CLOSED: {instrument} {resolution} "
+            f"({'↑ Long' if (existing['direction']==1 if existing else True) else '↓ Short'}) "
+            f"P&L={pnl_gbp:+.2f}",
             html
         )
 
@@ -1081,7 +1153,7 @@ def _run_cycle(device: str) -> None:
         except Exception as e:
             log.error("Error on %s %s: %s", inst, res, e)
 
-    state["last_run"] = datetime.now().isoformat()
+    state["last_run"] = datetime.utcnow().isoformat()
 
     last_summary       = state.get("last_summary") or ""
     today_str          = date.today().isoformat()
@@ -1260,7 +1332,7 @@ def main():
         except Exception as e:
             log.error("Error on %s %s: %s", inst, res, traceback.format_exc())
 
-    state["last_run"] = datetime.now().isoformat()
+    state["last_run"] = datetime.utcnow().isoformat()
 
     # ── Send daily summary if at or past summary_hour and not sent today ─────
     last_summary = state.get("last_summary") or ""
