@@ -1,0 +1,54 @@
+2026-04-13 18:49:54,105  INFO      ============================================================
+2026-04-13 18:49:54,105  INFO      Stage 6 Fine-Tuning — Start
+2026-04-13 18:49:54,105  INFO      Instrument  : TSX_SUTO
+2026-04-13 18:49:54,106  INFO      Resolution  : 4H
+2026-04-13 18:49:54,106  INFO      Device      : cpu
+2026-04-13 18:49:54,106  INFO      Base checkpoint: models/base/checkpoint_base_v1.pt
+2026-04-13 18:49:54,108  INFO      Loading: TSX_SUTO_4H_20240422_20260412.npy
+2026-04-13 18:49:54,681  INFO        Shape: (980, 60, 53)  (980 windows)
+2026-04-13 18:49:54,694  INFO        Date range: 2024-08-28 → 2026-04-10  (1.6 years)
+2026-04-13 18:49:54,694  INFO        Train windows: 815  Val windows: 165
+2026-04-13 18:49:54,694  INFO      Years of data: 1.6
+2026-04-13 18:49:54,707  INFO      Loading base checkpoint: models/base/checkpoint_base_v1.pt
+2026-04-13 18:49:54,724  INFO        Base val_loss: 0.2463  (fold 3, epoch 22)
+2026-04-13 18:49:54,725  INFO      --------------------------------------------------
+2026-04-13 18:49:54,725  INFO      Phase 1 — Head-only adaptation (encoder frozen)
+2026-04-13 18:49:56,730  INFO        P1 Epoch  1 | TrainLoss 0.2424 | ValLoss 0.2460 | ValAcc H1=0.539 H5=0.571 H20=0.460
+2026-04-13 18:49:58,323  INFO        P1 Epoch  2 | TrainLoss 0.2422 | ValLoss 0.2460 | ValAcc H1=0.544 H5=0.544 H20=0.460
+2026-04-13 18:49:59,381  INFO        P1 Epoch  3 | TrainLoss 0.2419 | ValLoss 0.2460 | ValAcc H1=0.539 H5=0.530 H20=0.465
+2026-04-13 18:50:00,527  INFO        P1 Epoch  4 | TrainLoss 0.2420 | ValLoss 0.2460 | ValAcc H1=0.539 H5=0.549 H20=0.465
+2026-04-13 18:50:01,485  INFO        P1 Epoch  5 | TrainLoss 0.2416 | ValLoss 0.2460 | ValAcc H1=0.539 H5=0.539 H20=0.451
+2026-04-13 18:50:02,571  INFO        P1 Epoch  6 | TrainLoss 0.2418 | ValLoss 0.2461 | ValAcc H1=0.539 H5=0.548 H20=0.446
+2026-04-13 18:50:03,851  INFO        P1 Epoch  7 | TrainLoss 0.2415 | ValLoss 0.2461 | ValAcc H1=0.539 H5=0.545 H20=0.444
+2026-04-13 18:50:05,065  INFO        P1 Epoch  8 | TrainLoss 0.2414 | ValLoss 0.2461 | ValAcc H1=0.539 H5=0.535 H20=0.439
+2026-04-13 18:50:06,000  INFO        P1 Epoch  9 | TrainLoss 0.2413 | ValLoss 0.2461 | ValAcc H1=0.539 H5=0.535 H20=0.444
+2026-04-13 18:50:06,929  INFO        P1 Epoch 10 | TrainLoss 0.2419 | ValLoss 0.2461 | ValAcc H1=0.539 H5=0.535 H20=0.434
+2026-04-13 18:50:08,192  INFO        P1 Epoch 11 | TrainLoss 0.2412 | ValLoss 0.2461 | ValAcc H1=0.539 H5=0.530 H20=0.429
+2026-04-13 18:50:08,193  INFO        Phase 1 early stopping at epoch 11
+2026-04-13 18:50:08,378  INFO        Phase 1 complete. Best val_loss: 0.2460  H1=0.539 H5=0.571 H20=0.460
+2026-04-13 18:50:08,383  INFO      Phase 1 checkpoint saved: models/fine_tuned/checkpoint_TSX_SUTO_4H_phase1_20260413.pt
+2026-04-13 18:50:08,383  INFO      Loading base checkpoint: models/base/checkpoint_base_v1.pt
+2026-04-13 18:50:08,396  INFO        Base val_loss: 0.2463  (fold 3, epoch 22)
+2026-04-13 18:50:08,551  INFO      Base model H1 accuracy on instrument val set: 0.544
+2026-04-13 18:50:08,551  INFO      Fine-tuned  H1 accuracy (Phase 1)           : 0.539
+2026-04-13 18:50:08,551  INFO      --------------------------------------------------
+2026-04-13 18:50:08,551  INFO      Phase 2 — Verification gate
+2026-04-13 18:50:08,551  INFO        Fine-tuned accuracy — H1=0.539  H5=0.571  H20=0.460  Mean=0.523
+2026-04-13 18:50:08,551  INFO        Minimum required (mean across horizons) : 0.510
+2026-04-13 18:50:08,552  INFO        ✓ Phase 2 PASSED (H1=0.539  H5=0.571  H20=0.460) — proceeding to Phase 3
+2026-04-13 18:50:08,552  INFO      --------------------------------------------------
+2026-04-13 18:50:08,552  INFO      Phase 3 — Selective encoder unfreeze
+2026-04-13 18:50:08,552  WARNING     ✗ Skipping Phase 3 — only 1.6 years of data (need 2.0)
+2026-04-13 18:50:08,552  WARNING     Using Phase 1 checkpoint as final output.
+2026-04-13 18:50:08,553  INFO      Reverted to Phase 1 checkpoint.
+2026-04-13 18:50:08,795  INFO      Phase 1 H1 accuracy (recheck): 0.539
+2026-04-13 18:50:08,796  INFO      ============================================================
+2026-04-13 18:50:08,796  INFO      Fine-Tuning Summary
+2026-04-13 18:50:08,796  INFO        Instrument     : TSX_SUTO 4H
+2026-04-13 18:50:08,796  INFO        Final phase    : 1
+2026-04-13 18:50:08,796  INFO        Final checkpoint: models/fine_tuned/checkpoint_TSX_SUTO_4H_phase1_20260413.pt
+2026-04-13 18:50:08,974  INFO        Base model — H1=0.544  H5=0.571  H20=0.466  Mean=0.527
+2026-04-13 18:50:08,974  INFO        Fine-tuned — H1=0.539  H5=0.571  H20=0.460  Mean=0.523  (Phase 1)
+2026-04-13 18:50:08,974  WARNING     Delta mean accuracy : -0.004  ⚠  Fine-tuning degraded mean accuracy. Consider using the base model for this instrument. H1 delta=-0.005  H5 delta=+0.000  H20 delta=-0.007
+2026-04-13 18:50:08,976  INFO        Metrics saved  : logs/finetune/TSX_SUTO_4H_20260413_metrics.csv
+2026-04-13 18:50:08,976  INFO      Stage 6 complete.

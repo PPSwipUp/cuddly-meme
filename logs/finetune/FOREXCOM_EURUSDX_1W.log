@@ -1,0 +1,56 @@
+2026-04-13 16:35:42,783  INFO      ============================================================
+2026-04-13 16:35:42,783  INFO      Stage 6 Fine-Tuning — Start
+2026-04-13 16:35:42,783  INFO      Instrument  : FOREXCOM_EURUSDX
+2026-04-13 16:35:42,784  INFO      Resolution  : 1W
+2026-04-13 16:35:42,784  INFO      Device      : cpu
+2026-04-13 16:35:42,784  INFO      Base checkpoint: models/base/checkpoint_base_v1.pt
+2026-04-13 16:35:42,786  INFO      Loading: FOREXCOM_EURUSDX_1W_20150101_20260412.npy
+2026-04-13 16:35:43,040  INFO        Shape: (410, 60, 47)  (410 windows)
+2026-04-13 16:35:43,044  INFO        Date range: 2018-06-07 → 2026-04-09  (7.8 years)
+2026-04-13 16:35:43,044  INFO        Train windows: 397  Val windows: 13
+2026-04-13 16:35:43,044  INFO      Years of data: 7.8
+2026-04-13 16:35:43,048  INFO      Loading base checkpoint: models/base/checkpoint_base_v1.pt
+2026-04-13 16:35:43,062  INFO        Base val_loss: 0.2463  (fold 3, epoch 22)
+2026-04-13 16:35:43,062  INFO      --------------------------------------------------
+2026-04-13 16:35:43,063  INFO      Phase 1 — Head-only adaptation (encoder frozen)
+2026-04-13 16:35:44,528  INFO        P1 Epoch  1 | TrainLoss 0.2501 | ValLoss 0.2417 | ValAcc H1=0.538 H5=0.462 H20=0.000
+2026-04-13 16:35:44,867  INFO        P1 Epoch  2 | TrainLoss 0.2483 | ValLoss 0.2417 | ValAcc H1=0.538 H5=0.462 H20=0.000
+2026-04-13 16:35:45,222  INFO        P1 Epoch  3 | TrainLoss 0.2468 | ValLoss 0.2417 | ValAcc H1=0.538 H5=0.462 H20=0.000
+2026-04-13 16:35:45,576  INFO        P1 Epoch  4 | TrainLoss 0.2459 | ValLoss 0.2417 | ValAcc H1=0.538 H5=0.462 H20=0.000
+2026-04-13 16:35:45,948  INFO        P1 Epoch  5 | TrainLoss 0.2487 | ValLoss 0.2416 | ValAcc H1=0.538 H5=0.462 H20=0.000
+2026-04-13 16:35:46,368  INFO        P1 Epoch  6 | TrainLoss 0.2488 | ValLoss 0.2416 | ValAcc H1=0.538 H5=0.462 H20=0.000
+2026-04-13 16:35:46,727  INFO        P1 Epoch  7 | TrainLoss 0.2480 | ValLoss 0.2416 | ValAcc H1=0.538 H5=0.462 H20=0.000
+2026-04-13 16:35:47,135  INFO        P1 Epoch  8 | TrainLoss 0.2472 | ValLoss 0.2416 | ValAcc H1=0.538 H5=0.462 H20=0.000
+2026-04-13 16:35:47,489  INFO        P1 Epoch  9 | TrainLoss 0.2483 | ValLoss 0.2416 | ValAcc H1=0.538 H5=0.462 H20=0.000
+2026-04-13 16:35:47,860  INFO        P1 Epoch 10 | TrainLoss 0.2475 | ValLoss 0.2416 | ValAcc H1=0.538 H5=0.462 H20=0.000
+2026-04-13 16:35:48,222  INFO        P1 Epoch 11 | TrainLoss 0.2492 | ValLoss 0.2416 | ValAcc H1=0.538 H5=0.462 H20=0.000
+2026-04-13 16:35:48,612  INFO        P1 Epoch 12 | TrainLoss 0.2476 | ValLoss 0.2416 | ValAcc H1=0.538 H5=0.462 H20=0.000
+2026-04-13 16:35:48,966  INFO        P1 Epoch 13 | TrainLoss 0.2467 | ValLoss 0.2416 | ValAcc H1=0.538 H5=0.462 H20=0.000
+2026-04-13 16:35:49,330  INFO        P1 Epoch 14 | TrainLoss 0.2489 | ValLoss 0.2416 | ValAcc H1=0.538 H5=0.462 H20=0.000
+2026-04-13 16:35:49,661  INFO        P1 Epoch 15 | TrainLoss 0.2470 | ValLoss 0.2415 | ValAcc H1=0.538 H5=0.462 H20=0.000
+2026-04-13 16:35:49,661  INFO        Phase 1 early stopping at epoch 15
+2026-04-13 16:35:49,672  INFO        Phase 1 complete. Best val_loss: 0.2416  H1=0.538 H5=0.462 H20=0.000
+2026-04-13 16:35:49,677  INFO      Phase 1 checkpoint saved: models/fine_tuned/checkpoint_FOREXCOM_EURUSDX_1W_phase1_20260413.pt
+2026-04-13 16:35:49,677  INFO      Loading base checkpoint: models/base/checkpoint_base_v1.pt
+2026-04-13 16:35:49,688  INFO        Base val_loss: 0.2463  (fold 3, epoch 22)
+2026-04-13 16:35:49,701  INFO      Base model H1 accuracy on instrument val set: 0.538
+2026-04-13 16:35:49,701  INFO      Fine-tuned  H1 accuracy (Phase 1)           : 0.538
+2026-04-13 16:35:49,701  INFO      --------------------------------------------------
+2026-04-13 16:35:49,701  INFO      Phase 2 — Verification gate
+2026-04-13 16:35:49,702  INFO        Fine-tuned accuracy — H1=0.538  H5=0.462  H20=0.000  Mean=0.333
+2026-04-13 16:35:49,702  INFO        Minimum required (mean across horizons) : 0.510
+2026-04-13 16:35:49,702  WARNING     ✗ Phase 2 FAILED — mean accuracy 0.333 is below 0.510
+2026-04-13 16:35:49,702  WARNING     H1=0.538  H5=0.462  H20=0.000
+2026-04-13 16:35:49,702  WARNING     Instrument may be unpredictable at this resolution.
+2026-04-13 16:35:49,702  WARNING     Using Phase 1 checkpoint as final output.
+2026-04-13 16:35:49,702  INFO      ============================================================
+2026-04-13 16:35:49,702  INFO      Fine-Tuning Summary
+2026-04-13 16:35:49,702  INFO        Instrument     : FOREXCOM_EURUSDX 1W
+2026-04-13 16:35:49,703  INFO        Final phase    : 1
+2026-04-13 16:35:49,703  INFO        Final checkpoint: models/fine_tuned/checkpoint_FOREXCOM_EURUSDX_1W_phase1_20260413.pt
+2026-04-13 16:35:49,716  INFO        Base model — H1=0.538  H5=0.462  H20=0.000  Mean=0.333
+2026-04-13 16:35:49,716  INFO        Fine-tuned — H1=0.538  H5=0.462  H20=0.000  Mean=0.333  (Phase 1)
+2026-04-13 16:35:49,716  INFO        Delta mean accuracy : +0.000  = Fine-tuning matched base model.
+2026-04-13 16:35:49,717  INFO        Per-horizon delta   :  H1=+0.000  H5=+0.000  H20=+0.000
+2026-04-13 16:35:49,719  INFO        Metrics saved  : logs/finetune/FOREXCOM_EURUSDX_1W_20260413_metrics.csv
+2026-04-13 16:35:49,719  INFO      Stage 6 complete.

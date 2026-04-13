@@ -64,6 +64,9 @@ from feature_engineering import (
     compute_calendar_features,
     add_index_correlation,
     apply_rolling_zscore_pipeline,
+    compute_exogenous_features,    # Stage 8
+    EXO_FEATURE_NAMES,             # Stage 8
+    N_EXO_FEATURES,                # Stage 8
 )
 from position_sizing import get_leverage_for_source
 
@@ -93,7 +96,7 @@ CONFIG = {
     # ── Model paths ───────────────────────────────────────────────────────────
     "base_checkpoint":  "models/base/checkpoint_base_v1.pt",
     "ft_dir":           "models/fine_tuned",
-    "n_features":       44,
+    "n_features":       49,
     "lookback":         60,
 
     # ── Data ─────────────────────────────────────────────────────────────────
@@ -304,13 +307,21 @@ Z_CLIP = 3.0
 
 
 def build_feature_window(df: pd.DataFrame, resolution: str,
-                         index_df: pd.DataFrame | None) -> np.ndarray | None:
+                         index_df: pd.DataFrame | None,
+                         exo_dfs: dict | None = None,
+                         n_features_expected: int | None = None) -> np.ndarray | None:
     """
     Build a single feature window from a raw OHLCV DataFrame.
     Returns shape [1, LOOKBACK, N_FEATURES] or None on failure.
+
+    exo_dfs: dict with keys 'vix', 'dxy' for Stage 8 exogenous features.
+             If None, Stage 8 features are not added (backward compatible).
+    n_features_expected: number of features the model expects.
+             If None, uses CONFIG["n_features"]. Used to decide whether
+             to include Stage 8 features (n_features_expected >= 49).
     """
     LOOKBACK   = CONFIG["lookback"]
-    N_FEATURES = CONFIG["n_features"]
+    N_FEATURES = n_features_expected if n_features_expected else CONFIG["n_features"]
     MIN_ROWS   = LOOKBACK + Z_WIN + 10
 
     if len(df) < MIN_ROWS:
@@ -325,12 +336,27 @@ def build_feature_window(df: pd.DataFrame, resolution: str,
         cal   = compute_calendar_features(df, resolution)
         corr  = add_index_correlation(df, index_df, resolution).to_frame()
 
-        all_feats = pd.concat([ohlc, tech, corr, cal], axis=1)
+        feat_parts = [ohlc, tech, corr, cal]
+
+        # ── Stage 8: Add exogenous features if model expects them ─────────────
+        use_exo = (exo_dfs is not None and N_FEATURES >= 44 + N_EXO_FEATURES)
+        if use_exo:
+            spx_df = index_df
+            vix_df = exo_dfs.get("vix")
+            dxy_df = exo_dfs.get("dxy")
+            exo    = compute_exogenous_features(df, spx_df, vix_df, dxy_df)
+            feat_parts.append(exo)
+
+        all_feats = pd.concat(feat_parts, axis=1)
         all_feats = all_feats.loc[df.index]
 
         cal_cols   = list(cal.columns)
-        normalised = apply_rolling_zscore_pipeline(all_feats,
-                                                   non_zscore_cols=set(cal_cols))
+        # Stage 8 exogenous features are already z-scored — exclude from pipeline
+        extra_no_zscore = set(EXO_FEATURE_NAMES) if use_exo else set()
+        normalised = apply_rolling_zscore_pipeline(
+            all_feats,
+            non_zscore_cols=set(cal_cols) | extra_no_zscore
+        )
         normalised = normalised.dropna()
 
         if len(normalised) < LOOKBACK + 5:
@@ -411,7 +437,7 @@ def load_model(instrument: str, resolution: str, device: str):
     """
     key = f"{instrument}_{resolution}"
     if key in _model_cache:
-        return _model_cache[key]
+        return _model_cache[key]   # (model, source, n_features)
 
     recommendations = _load_ft_summary()
     recommendation  = recommendations.get(key, "fine_tuned")  # default: try ft
@@ -445,13 +471,19 @@ def load_model(instrument: str, resolution: str, device: str):
         log.error("No checkpoint found for %s (tried ft and base)", key)
         return None, None
 
-    ckpt  = torch.load(ckpt_path, map_location=device, weights_only=True)
-    model = build_model(n_features=CONFIG["n_features"], device=device)
+    ckpt = torch.load(ckpt_path, map_location=device, weights_only=True)
+
+    # Read n_features from the checkpoint (self-describing models).
+    # Old checkpoints (n_features=44) don't store this key → fall back to CONFIG.
+    # New checkpoints trained with Stage 8 (n_features=49) store it explicitly.
+    n_features = ckpt.get("n_features", CONFIG["n_features"])
+
+    model = build_model(n_features=n_features, device=device)
     model.load_state_dict(ckpt["model_state"])
     model.eval()
 
-    _model_cache[key] = (model, source)
-    return model, source
+    _model_cache[key] = (model, source, n_features)
+    return model, source, n_features
 
 
 # ─── Inference ────────────────────────────────────────────────────────────────
@@ -866,13 +898,17 @@ def predict_only(instrument: str, resolution: str, yf_ticker: str,
     if current_price is None or __import__("math").isnan(current_price):
         return None
 
-    idx_df = index_dfs.get(resolution)
-    window = build_feature_window(df, resolution, idx_df)
-    if window is None:
+    # Load model first — need its n_features to build the correct window
+    model, source, n_features = load_model(instrument, resolution, device)
+    if model is None:
         return None
 
-    model, source = load_model(instrument, resolution, device)
-    if model is None:
+    idx_df  = index_dfs.get(resolution)
+    exo_dfs = index_dfs.get("_exo")   # Stage 8: VIX/DXY if downloaded
+    window  = build_feature_window(df, resolution, idx_df,
+                                   exo_dfs=exo_dfs,
+                                   n_features_expected=n_features)
+    if window is None:
         return None
 
     pred    = predict(model, window, device)
@@ -911,18 +947,22 @@ def run_instrument(instrument: str, resolution: str, yf_ticker: str,
         log.warning("  No valid price for %s — skipping this run", key)
         return None
 
-    # ── Feature engineering ───────────────────────────────────────────────────
-    idx_df = index_dfs.get(resolution)
-    window = build_feature_window(df, resolution, idx_df)
+    # ── Model loading (first — need n_features for feature window) ──────────
+    model, source, n_features = load_model(instrument, resolution, device)
+    if model is None:
+        return None
+
+    # ── Feature engineering (uses n_features from checkpoint) ────────────────
+    idx_df  = index_dfs.get(resolution)
+    exo_dfs = index_dfs.get("_exo")   # Stage 8: VIX/DXY if downloaded
+    window  = build_feature_window(df, resolution, idx_df,
+                                   exo_dfs=exo_dfs,
+                                   n_features_expected=n_features)
     if window is None:
         log.warning("  Feature build failed for %s", key)
         return None
 
     # ── Model inference ───────────────────────────────────────────────────────
-    model, source = load_model(instrument, resolution, device)
-    if model is None:
-        return None
-
     pred    = predict(model, window, device)
     signals = interpret_prediction(pred, current_price, instrument)
 
@@ -1141,6 +1181,29 @@ def _run_cycle(device: str) -> None:
                     "Close": "last", "Volume": "sum"}).dropna()
             index_dfs[res] = idx
 
+    # ── Stage 8: Download exogenous macro references (VIX, DXY) ──────────────
+    # Stored under index_dfs["_exo"] so they pass through to build_feature_window
+    # without changing any other function signatures.
+    exo_dfs = {}
+    for exo_key, exo_ticker in [("vix", "^VIX"), ("dxy", "DX-Y.NYB")]:
+        try:
+            exo_df = yf.download(exo_ticker, period="2y", interval="1d",
+                                 auto_adjust=False, progress=False)
+            if exo_df is not None and not exo_df.empty:
+                if isinstance(exo_df.columns, pd.MultiIndex):
+                    exo_df.columns = exo_df.columns.get_level_values(0)
+                exo_df.index.name = "Datetime"
+                if exo_df.index.tz is not None:
+                    exo_df.index = exo_df.index.tz_localize(None)
+                exo_dfs[exo_key] = exo_df
+                log.info("Stage 8: downloaded %s (%s) — %d bars",
+                         exo_key.upper(), exo_ticker, len(exo_df))
+        except Exception as e:
+            log.warning("Stage 8: could not download %s (%s): %s",
+                        exo_key, exo_ticker, e)
+    if exo_dfs:
+        index_dfs["_exo"] = exo_dfs
+
     if "start_date" not in state:
         state["start_date"] = date.today().isoformat()
 
@@ -1282,6 +1345,29 @@ def main():
                     "Open":"first","High":"max","Low":"min",
                     "Close":"last","Volume":"sum"}).dropna()
             index_dfs[res] = idx
+
+    # ── Stage 8: Download exogenous macro references (VIX, DXY) ──────────────
+    # Stored under index_dfs["_exo"] so they pass through to build_feature_window
+    # without changing any other function signatures.
+    exo_dfs = {}
+    for exo_key, exo_ticker in [("vix", "^VIX"), ("dxy", "DX-Y.NYB")]:
+        try:
+            exo_df = yf.download(exo_ticker, period="2y", interval="1d",
+                                 auto_adjust=False, progress=False)
+            if exo_df is not None and not exo_df.empty:
+                if isinstance(exo_df.columns, pd.MultiIndex):
+                    exo_df.columns = exo_df.columns.get_level_values(0)
+                exo_df.index.name = "Datetime"
+                if exo_df.index.tz is not None:
+                    exo_df.index = exo_df.index.tz_localize(None)
+                exo_dfs[exo_key] = exo_df
+                log.info("Stage 8: downloaded %s (%s) — %d bars",
+                         exo_key.upper(), exo_ticker, len(exo_df))
+        except Exception as e:
+            log.warning("Stage 8: could not download %s (%s): %s",
+                        exo_key, exo_ticker, e)
+    if exo_dfs:
+        index_dfs["_exo"] = exo_dfs
 
     # ── Force summary mode ────────────────────────────────────────────────────
     if args.summary:

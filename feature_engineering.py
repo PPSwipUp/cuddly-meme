@@ -51,6 +51,24 @@ INDEX_REFS = {
     "4H":  "SP500_GSPC_4H",
 }
 
+# ── Stage 8: Exogenous macro reference files ──────────────────────────────────
+# These are downloaded by collect_data.py alongside instrument data.
+# VIX = CBOE Volatility Index (fear/uncertainty regime)
+# DXY = US Dollar Index futures (macro dollar trend)
+# SPX = S&P 500 daily return (already in INDEX_REFS but raw return is separate)
+EXO_REFS = {
+    "vix": "VIX_VIX_1D",    # filename prefix for VIX data
+    "dxy": "DXY_DXY_1D",    # filename prefix for DXY data
+}
+N_EXO_FEATURES  = 5     # number of features added by Stage 8
+EXO_FEATURE_NAMES = [
+    "exo_vix_level",    # z-scored VIX absolute level
+    "exo_vix_momentum", # z-scored 5-day VIX change
+    "exo_dxy_return",   # z-scored DXY 1-day log return
+    "exo_dxy_trend",    # z-scored DXY deviation from 20-day MA
+    "exo_spx_return",   # z-scored SPX 1-day log return
+]
+
 # ─── Logging ──────────────────────────────────────────────────────────────────
 
 os.makedirs(LOG_DIR, exist_ok=True)
@@ -402,7 +420,142 @@ def build_windows(feature_df, regime_series):
 
 # ─── Per-file processor ───────────────────────────────────────────────────────
 
-def process_file(filepath, index_dfs):
+
+def compute_exogenous_features(df_instrument: pd.DataFrame,
+                                spx_df: pd.DataFrame | None,
+                                vix_df: pd.DataFrame | None,
+                                dxy_df: pd.DataFrame | None) -> pd.DataFrame:
+    """
+    Stage 8 — Exogenous macro features.
+
+    Computes 5 features aligned to the instrument's date index:
+      exo_vix_level    : Rolling z-score of VIX absolute level.
+                         High VIX = high uncertainty regime. The model can
+                         learn to discount its own signals when VIX is elevated.
+      exo_vix_momentum : Rolling z-score of 5-day VIX change.
+                         Rising VIX = fear increasing — a regime shift signal.
+      exo_dxy_return   : Rolling z-score of DXY 1-day log return.
+                         Strong dollar = headwind for commodities, EM equities,
+                         and many forex pairs.
+      exo_dxy_trend    : Rolling z-score of DXY price relative to 20-day MA.
+                         Captures longer-term dollar trend, less noisy than daily.
+      exo_spx_return   : Rolling z-score of SPX 1-day log return.
+                         Separate from the rolling correlation feature — tells the
+                         model WHICH WAY the market moved today, not just whether
+                         the instrument correlates with it.
+
+    All series are forward-filled onto the instrument's index, then each
+    feature is independently z-scored using the standard rolling z-score
+    pipeline (Z_WIN=60 bars, Z_CLIP=3.0). Missing values are filled with 0.0
+    (neutral signal) so NaN never propagates into the training data.
+
+    Returns a DataFrame with the 5 feature columns, aligned to df_instrument.index.
+    If a reference series is missing entirely, its features are filled with 0.0.
+    """
+    idx = df_instrument.index
+    result = pd.DataFrame(0.0, index=idx, columns=EXO_FEATURE_NAMES)
+
+    # ── VIX features ─────────────────────────────────────────────────────────
+    if vix_df is not None and not vix_df.empty:
+        try:
+            vix_close = vix_df["Close"].copy()
+            vix_close.index = pd.to_datetime(vix_close.index)
+            if vix_close.index.tz is not None:
+                vix_close.index = vix_close.index.tz_localize(None)
+
+            # Forward-fill VIX onto instrument dates (handles weekends, holidays)
+            vix_aligned = vix_close.reindex(idx, method="ffill")
+
+            # VIX level: rolling z-score of absolute VIX value
+            result["exo_vix_level"] = rolling_zscore(
+                vix_aligned, Z_WIN
+            ).clip(-Z_CLIP, Z_CLIP).fillna(0.0)
+
+            # VIX momentum: rolling z-score of 5-day change
+            vix_5d_change = vix_aligned.diff(5)
+            result["exo_vix_momentum"] = rolling_zscore(
+                vix_5d_change, Z_WIN
+            ).clip(-Z_CLIP, Z_CLIP).fillna(0.0)
+
+        except Exception as e:
+            log.warning("  exo: VIX feature failed: %s — using zeros", e)
+
+    # ── DXY features ─────────────────────────────────────────────────────────
+    if dxy_df is not None and not dxy_df.empty:
+        try:
+            dxy_close = dxy_df["Close"].copy()
+            dxy_close.index = pd.to_datetime(dxy_close.index)
+            if dxy_close.index.tz is not None:
+                dxy_close.index = dxy_close.index.tz_localize(None)
+
+            dxy_aligned = dxy_close.reindex(idx, method="ffill")
+
+            # DXY return: rolling z-score of 1-day log return
+            dxy_log_ret = np.log(dxy_aligned / dxy_aligned.shift(1))
+            result["exo_dxy_return"] = rolling_zscore(
+                dxy_log_ret, Z_WIN
+            ).clip(-Z_CLIP, Z_CLIP).fillna(0.0)
+
+            # DXY trend: rolling z-score of price deviation from 20-day MA
+            dxy_ma20      = dxy_aligned.rolling(20, min_periods=10).mean()
+            dxy_trend_raw = (dxy_aligned - dxy_ma20) / (dxy_ma20 + 1e-10)
+            result["exo_dxy_trend"] = rolling_zscore(
+                dxy_trend_raw, Z_WIN
+            ).clip(-Z_CLIP, Z_CLIP).fillna(0.0)
+
+        except Exception as e:
+            log.warning("  exo: DXY feature failed: %s — using zeros", e)
+
+    # ── SPX return feature ───────────────────────────────────────────────────
+    if spx_df is not None and not spx_df.empty:
+        try:
+            spx_close = spx_df["Close"].copy()
+            spx_close.index = pd.to_datetime(spx_close.index)
+            if spx_close.index.tz is not None:
+                spx_close.index = spx_close.index.tz_localize(None)
+
+            spx_aligned = spx_close.reindex(idx, method="ffill")
+            spx_log_ret = np.log(spx_aligned / spx_aligned.shift(1))
+            result["exo_spx_return"] = rolling_zscore(
+                spx_log_ret, Z_WIN
+            ).clip(-Z_CLIP, Z_CLIP).fillna(0.0)
+
+        except Exception as e:
+            log.warning("  exo: SPX return feature failed: %s — using zeros", e)
+
+    return result
+
+
+def load_exogenous_refs() -> dict:
+    """
+    Load VIX and DXY reference DataFrames from data/raw/.
+    Returns dict with keys 'vix' and 'dxy'. Missing files return None.
+    """
+    exo_dfs = {}
+    for key, prefix in EXO_REFS.items():
+        pattern = os.path.join(RAW_DIR, f"{prefix}*.csv")
+        matches = glob.glob(pattern)
+        if matches:
+            try:
+                df = pd.read_csv(matches[0], parse_dates=["Datetime"])
+                df = df.set_index("Datetime").sort_index()
+                if df.index.tz is not None:
+                    df.index = df.index.tz_localize(None)
+                exo_dfs[key] = df
+                log.info("[EXO]  Loaded %s: %s (%d rows)",
+                         key.upper(), os.path.basename(matches[0]), len(df))
+            except Exception as e:
+                log.warning("[EXO]  Could not load %s: %s — exo features disabled for %s",
+                            key.upper(), e, key)
+                exo_dfs[key] = None
+        else:
+            log.debug("[EXO]  No file found for %s (pattern: %s) — "
+                      "run collect_data.py to download", key.upper(), pattern)
+            exo_dfs[key] = None
+    return exo_dfs
+
+
+def process_file(filepath, index_dfs, exo_dfs=None):
     fname      = os.path.basename(filepath)
     parts      = fname.replace(".csv", "").split("_")
     resolution = parts[2] if len(parts) >= 3 else "1D"
@@ -444,7 +597,19 @@ def process_file(filepath, index_dfs):
     corr_col = add_index_correlation(df, idx_df, resolution).to_frame()
 
     # Combine all features
-    all_feats = pd.concat([ohlc_feats, tech_feats, corr_col, cal_feats], axis=1)
+    feat_parts = [ohlc_feats, tech_feats, corr_col, cal_feats]
+
+    # ── Stage 8: Add exogenous macro features if available ────────────────────
+    if exo_dfs is not None:
+        spx_df = index_dfs.get(resolution)   # reuse already-loaded SPX
+        vix_df = exo_dfs.get("vix")
+        dxy_df = exo_dfs.get("dxy")
+        if any(x is not None for x in [spx_df, vix_df, dxy_df]):
+            exo_feats = compute_exogenous_features(df, spx_df, vix_df, dxy_df)
+            feat_parts.append(exo_feats)
+            log.debug("  exo features added: %s", list(exo_feats.columns))
+
+    all_feats = pd.concat(feat_parts, axis=1)
     all_feats = all_feats.loc[df.index]   # align
 
     # Calendar cols are already normalised — skip z-scoring them
@@ -533,6 +698,14 @@ def main():
         help="Override processed output directory "
              "(default: data/processed). Use data/processed_intraday for intraday."
     )
+    parser.add_argument(
+        "--exogenous", action="store_true",
+        help="Stage 8: include VIX, DXY, and SPX return as exogenous macro "
+             "features. Requires VIX and DXY data in data/raw/ — run "
+             "collect_data.py to download them. Increases N_FEATURES from 44 "
+             "to 49. Models trained with --exogenous are INCOMPATIBLE with "
+             "models trained without it. Retraining required after enabling."
+    )
     args = parser.parse_args()
 
     # Apply directory overrides before anything else runs
@@ -569,6 +742,19 @@ def main():
 
     index_dfs = load_index_refs()
 
+    # ── Stage 8: Load exogenous macro reference data ──────────────────────────
+    exo_dfs = None
+    if args.exogenous:
+        exo_dfs = load_exogenous_refs()
+        n_loaded = sum(1 for v in exo_dfs.values() if v is not None)
+        log.info("Stage 8 exogenous features: %d/%d reference series loaded",
+                 n_loaded, len(exo_dfs))
+        if n_loaded == 0:
+            log.warning("No exogenous reference files found — "
+                        "run collect_data.py to download VIX and DXY data. "
+                        "Continuing WITHOUT Stage 8 features.")
+            exo_dfs = None
+
     results    = []
     skipped    = []
     already    = []
@@ -589,7 +775,7 @@ def main():
             already.append(fname)
             continue
 
-        result = process_file(filepath, index_dfs)
+        result = process_file(filepath, index_dfs, exo_dfs=exo_dfs)
 
         if result is None:
             skipped.append(fname)

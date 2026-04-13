@@ -1,815 +1,243 @@
-78887i8p2026-04-02 04:26:17,234  INFO      Stage 5 Training Loop — Start
-2026-04-02 04:26:17,234  INFO      Device : cpu
-2026-04-02 04:26:17,234  INFO      Config : LR=3e-04  Batch=256  MaxEpochs=200  Patience=20
-2026-04-02 04:26:17,235  INFO      Folds to train: [1, 2, 3]
-2026-04-02 04:26:17,235  INFO      Fold 1 checkpoint already exists — skipping.
-2026-04-02 04:26:17,458  WARNING     No metrics CSV found for fold 1 — val_acc unknown
-2026-04-02 04:26:17,458  INFO      Fold 2 checkpoint already exists — skipping.
-2026-04-02 04:26:17,471  WARNING     No metrics CSV found for fold 2 — val_acc unknown
-2026-04-02 04:26:17,471  INFO      Fold 3 checkpoint already exists — skipping.
-2026-04-02 04:26:17,540  WARNING     No metrics CSV found for fold 3 — val_acc unknown
-2026-04-02 04:26:17,540  INFO      ============================================================
-2026-04-02 04:26:17,540  INFO      Training complete. Cross-fold summary:
-2026-04-02 04:26:17,540  INFO        Fold 1: best_val_loss=0.3500  best_val_acc H1=0.000 H5=0.000 H20=0.000  epochs=14
-2026-04-02 04:26:17,540  INFO        Fold 2: best_val_loss=0.3481  best_val_acc H1=0.000 H5=0.000 H20=0.000  epochs=14
-2026-04-02 04:26:17,540  INFO        Fold 3: best_val_loss=0.3483  best_val_acc H1=0.000 H5=0.000 H20=0.000  epochs=15
-2026-04-02 04:26:17,540  INFO        Mean val loss : 0.3488 ± 0.0009
-2026-04-02 04:26:17,541  INFO        Mean val acc  : 0.000 ± 0.000
-2026-04-02 04:26:17,541  INFO        Base checkpoint already exists — not overwritten: models/base/checkpoint_base_v1.pt
-2026-04-02 04:26:17,541  INFO      Stage 5 complete.
-2026-04-02 04:26:17,541  INFO      Next step: run evaluation.py (Stage 7) on the test splits.
-2026-04-02 04:27:22,364  INFO      Stage 5 Training Loop — Start
-2026-04-02 04:27:22,365  INFO      Device : cpu
-2026-04-02 04:27:22,365  INFO      Config : LR=3e-04  Batch=256  MaxEpochs=200  Patience=20
-2026-04-02 04:27:22,365  INFO      Folds to train: [1, 2, 3]
-2026-04-02 04:27:22,365  INFO      ============================================================
-2026-04-02 04:27:22,365  INFO      FOLD 1 — Training
-2026-04-02 04:27:22,393  INFO      Loading datasets...
-2026-04-02 04:27:28,913  INFO          Index built: 94067 samples from 104 files
-2026-04-02 04:27:30,073  INFO          Index built: 15466 samples from 104 files
-2026-04-02 04:27:30,074  INFO        Train samples: 94067  Val samples: 15466
-2026-04-02 04:27:42,879  INFO      Starting training — max 200 epochs, patience 20
-2026-04-02 04:33:13,348  INFO      Epoch   1 | TrainLoss 0.0905 (BCE 0.1737 Huber 0.0074) | ValLoss 0.0905 (BCE 0.1730 Huber 0.0080) | Gap 0.0000 | ValAcc H1=0.530 H5=0.522 H20=0.510 | LR 3.00e-05 | GradNorm 0.008
-2026-04-02 04:38:39,490  INFO      Epoch   2 | TrainLoss 0.0901 (BCE 0.1727 Huber 0.0074) | ValLoss 0.0905 (BCE 0.1729 Huber 0.0080) | Gap -0.0004 | ValAcc H1=0.533 H5=0.523 H20=0.513 | LR 6.00e-05 | GradNorm 0.006
-2026-04-02 04:44:01,918  INFO      Epoch   3 | TrainLoss 0.0899 (BCE 0.1725 Huber 0.0073) | ValLoss 0.0907 (BCE 0.1734 Huber 0.0080) | Gap -0.0008 | ValAcc H1=0.532 H5=0.527 H20=0.513 | LR 9.00e-05 | GradNorm 0.006
-2026-04-02 04:49:28,806  INFO      Epoch   4 | TrainLoss 0.0899 (BCE 0.1725 Huber 0.0073) | ValLoss 0.0905 (BCE 0.1731 Huber 0.0080) | Gap -0.0006 | ValAcc H1=0.537 H5=0.529 H20=0.515 | LR 1.20e-04 | GradNorm 0.006
-2026-04-02 04:55:00,333  INFO      Epoch   5 | TrainLoss 0.0898 (BCE 0.1724 Huber 0.0073) | ValLoss 0.0905 (BCE 0.1729 Huber 0.0080) | Gap -0.0006 | ValAcc H1=0.538 H5=0.526 H20=0.517 | LR 1.50e-04 | GradNorm 0.005
-2026-04-02 05:00:32,455  INFO      Epoch   6 | TrainLoss 0.0898 (BCE 0.1723 Huber 0.0073) | ValLoss 0.0907 (BCE 0.1733 Huber 0.0080) | Gap -0.0009 | ValAcc H1=0.536 H5=0.527 H20=0.521 | LR 1.80e-04 | GradNorm 0.005
-2026-04-02 05:06:01,748  INFO      Epoch   7 | TrainLoss 0.0898 (BCE 0.1722 Huber 0.0073) | ValLoss 0.0905 (BCE 0.1730 Huber 0.0080) | Gap -0.0008 | ValAcc H1=0.535 H5=0.529 H20=0.522 | LR 2.10e-04 | GradNorm 0.005
-2026-04-02 05:11:41,171  INFO      Epoch   8 | TrainLoss 0.0897 (BCE 0.1721 Huber 0.0073) | ValLoss 0.0906 (BCE 0.1731 Huber 0.0080) | Gap -0.0009 | ValAcc H1=0.529 H5=0.521 H20=0.516 | LR 2.40e-04 | GradNorm 0.005
-2026-04-02 05:17:46,631  INFO      Epoch   9 | TrainLoss 0.0897 (BCE 0.1721 Huber 0.0073) | ValLoss 0.0907 (BCE 0.1733 Huber 0.0080) | Gap -0.0010 | ValAcc H1=0.534 H5=0.530 H20=0.523 | LR 2.70e-04 | GradNorm 0.005
-2026-04-02 05:23:38,264  INFO      Epoch  10 | TrainLoss 0.0896 (BCE 0.1720 Huber 0.0073) | ValLoss 0.0906 (BCE 0.1732 Huber 0.0080) | Gap -0.0010 | ValAcc H1=0.536 H5=0.528 H20=0.522 | LR 3.00e-04 | GradNorm 0.005
-2026-04-02 05:29:25,001  INFO      Epoch  11 | TrainLoss 0.0895 (BCE 0.1718 Huber 0.0073) | ValLoss 0.0905 (BCE 0.1729 Huber 0.0080) | Gap -0.0010 | ValAcc H1=0.531 H5=0.531 H20=0.522 | LR 2.14e-04 | GradNorm 0.005
-2026-04-02 05:35:13,177  INFO      Epoch  12 | TrainLoss 0.0895 (BCE 0.1716 Huber 0.0073) | ValLoss 0.0908 (BCE 0.1735 Huber 0.0080) | Gap -0.0013 | ValAcc H1=0.533 H5=0.530 H20=0.517 | LR 2.00e-04 | GradNorm 0.005
-2026-04-02 05:41:03,562  INFO      Epoch  13 | TrainLoss 0.0893 (BCE 0.1714 Huber 0.0073) | ValLoss 0.0909 (BCE 0.1738 Huber 0.0081) | Gap -0.0016 | ValAcc H1=0.529 H5=0.523 H20=0.518 | LR 1.85e-04 | GradNorm 0.006
-2026-04-02 05:46:49,972  INFO      Epoch  14 | TrainLoss 0.0894 (BCE 0.1715 Huber 0.0072) | ValLoss 0.0908 (BCE 0.1736 Huber 0.0080) | Gap -0.0015 | ValAcc H1=0.529 H5=0.525 H20=0.519 | LR 1.70e-04 | GradNorm 0.006
-2026-04-02 05:52:36,002  INFO      Epoch  15 | TrainLoss 0.0892 (BCE 0.1712 Huber 0.0072) | ValLoss 0.0909 (BCE 0.1737 Huber 0.0081) | Gap -0.0017 | ValAcc H1=0.529 H5=0.526 H20=0.521 | LR 1.55e-04 | GradNorm 0.006
-2026-04-02 05:58:26,340  INFO      Epoch  16 | TrainLoss 0.0892 (BCE 0.1711 Huber 0.0072) | ValLoss 0.0909 (BCE 0.1738 Huber 0.0081) | Gap -0.0018 | ValAcc H1=0.530 H5=0.525 H20=0.521 | LR 1.40e-04 | GradNorm 0.007
-2026-04-02 13:21:32,759  INFO      Stage 5 Training Loop — Start
-2026-04-02 13:21:32,760  INFO      Device : cpu
-2026-04-02 13:21:32,760  INFO      Config : LR=3e-04  Batch=256  MaxEpochs=200  Patience=20
-2026-04-02 13:21:32,760  INFO      Folds to train: [1, 2, 3]
-2026-04-02 13:21:32,760  INFO      ============================================================
-2026-04-02 13:21:32,761  INFO      FOLD 1 — Training
-2026-04-02 13:21:33,658  INFO      Loading datasets...
-2026-04-02 13:22:10,710  INFO          Index built: 94067 samples from 104 files
-2026-04-02 13:22:20,801  INFO          Index built: 15466 samples from 104 files
-2026-04-02 13:22:20,801  INFO        Train samples: 94067  Val samples: 15466
-2026-04-02 13:22:31,589  INFO      Starting training — max 200 epochs, patience 20
-2026-04-02 13:28:12,861  INFO      Epoch   1 | TrainLoss 0.0903 (BCE 0.1733 Huber 0.0074) | ValLoss 0.0906 (BCE 0.1732 Huber 0.0080) | Gap -0.0003 | ValAcc H1=0.529 H5=0.521 H20=0.508 | LR 3.00e-05 | GradNorm 0.007
-2026-04-02 13:33:48,585  INFO      Epoch   2 | TrainLoss 0.0900 (BCE 0.1727 Huber 0.0073) | ValLoss 0.0905 (BCE 0.1731 Huber 0.0080) | Gap -0.0005 | ValAcc H1=0.534 H5=0.525 H20=0.513 | LR 6.00e-05 | GradNorm 0.006
-2026-04-02 13:39:22,882  INFO      Epoch   3 | TrainLoss 0.0899 (BCE 0.1725 Huber 0.0073) | ValLoss 0.0907 (BCE 0.1733 Huber 0.0080) | Gap -0.0007 | ValAcc H1=0.533 H5=0.523 H20=0.512 | LR 9.00e-05 | GradNorm 0.006
-2026-04-02 13:45:01,661  INFO      Epoch   4 | TrainLoss 0.0899 (BCE 0.1725 Huber 0.0073) | ValLoss 0.0904 (BCE 0.1728 Huber 0.0080) | Gap -0.0005 | ValAcc H1=0.534 H5=0.530 H20=0.516 | LR 1.20e-04 | GradNorm 0.005
-2026-04-02 13:50:37,761  INFO      Epoch   5 | TrainLoss 0.0898 (BCE 0.1723 Huber 0.0073) | ValLoss 0.0904 (BCE 0.1728 Huber 0.0080) | Gap -0.0006 | ValAcc H1=0.537 H5=0.530 H20=0.517 | LR 1.50e-04 | GradNorm 0.005
-2026-04-02 13:56:12,385  INFO      Epoch   6 | TrainLoss 0.0898 (BCE 0.1723 Huber 0.0073) | ValLoss 0.0905 (BCE 0.1729 Huber 0.0080) | Gap -0.0007 | ValAcc H1=0.533 H5=0.532 H20=0.520 | LR 1.80e-04 | GradNorm 0.005
-2026-04-02 14:01:51,486  INFO      Epoch   7 | TrainLoss 0.0897 (BCE 0.1721 Huber 0.0073) | ValLoss 0.0906 (BCE 0.1732 Huber 0.0080) | Gap -0.0009 | ValAcc H1=0.531 H5=0.527 H20=0.517 | LR 2.10e-04 | GradNorm 0.005
-2026-04-02 14:07:24,080  INFO      Epoch   8 | TrainLoss 0.0897 (BCE 0.1721 Huber 0.0073) | ValLoss 0.0906 (BCE 0.1731 Huber 0.0080) | Gap -0.0009 | ValAcc H1=0.527 H5=0.526 H20=0.520 | LR 2.40e-04 | GradNorm 0.005
-2026-04-02 14:12:57,603  INFO      Epoch   9 | TrainLoss 0.0897 (BCE 0.1721 Huber 0.0073) | ValLoss 0.0906 (BCE 0.1731 Huber 0.0080) | Gap -0.0009 | ValAcc H1=0.528 H5=0.523 H20=0.520 | LR 2.70e-04 | GradNorm 0.005
-2026-04-02 14:18:47,511  INFO      Epoch  10 | TrainLoss 0.0896 (BCE 0.1719 Huber 0.0073) | ValLoss 0.0907 (BCE 0.1734 Huber 0.0080) | Gap -0.0011 | ValAcc H1=0.536 H5=0.530 H20=0.520 | LR 3.00e-04 | GradNorm 0.005
-2026-04-02 14:24:49,642  INFO      Epoch  11 | TrainLoss 0.0895 (BCE 0.1718 Huber 0.0073) | ValLoss 0.0906 (BCE 0.1732 Huber 0.0080) | Gap -0.0011 | ValAcc H1=0.532 H5=0.527 H20=0.521 | LR 2.14e-04 | GradNorm 0.005
-2026-04-02 14:29:51,903  INFO      Stage 5 Training Loop — Start
-2026-04-02 14:29:51,903  INFO      Device : cpu
-2026-04-02 14:29:51,904  INFO      Config : LR=3e-04  Batch=256  MaxEpochs=200  Patience=20
-2026-04-02 14:29:51,904  INFO      Folds to train: [1, 2, 3]
-2026-04-02 14:29:51,904  INFO      ============================================================
-2026-04-02 14:29:51,904  INFO      FOLD 1 — Training
-2026-04-02 14:29:52,051  INFO      Loading datasets...
-2026-04-02 14:29:57,983  INFO          Index built: 94067 samples from 104 files
-2026-04-02 14:29:59,380  INFO          Index built: 15466 samples from 104 files
-2026-04-02 14:29:59,381  INFO        Train samples: 94067  Val samples: 15466
-2026-04-02 14:30:01,905  INFO      Starting training — max 200 epochs, patience 20
-2026-04-02 14:36:16,256  INFO      Epoch   1 | TrainLoss 0.0910 (BCE 0.1745 Huber 0.0074) | ValLoss 0.0905 (BCE 0.1731 Huber 0.0080) | Gap 0.0004 | ValAcc H1=0.528 H5=0.521 H20=0.493 | LR 3.00e-05 | GradNorm 0.010
-2026-04-02 14:42:26,598  INFO      Epoch   2 | TrainLoss 0.0901 (BCE 0.1728 Huber 0.0073) | ValLoss 0.0906 (BCE 0.1732 Huber 0.0080) | Gap -0.0005 | ValAcc H1=0.531 H5=0.525 H20=0.511 | LR 6.00e-05 | GradNorm 0.006
-2026-04-02 14:48:33,348  INFO      Epoch   3 | TrainLoss 0.0899 (BCE 0.1726 Huber 0.0073) | ValLoss 0.0906 (BCE 0.1731 Huber 0.0080) | Gap -0.0007 | ValAcc H1=0.534 H5=0.525 H20=0.516 | LR 9.00e-05 | GradNorm 0.005
-2026-04-02 14:54:40,005  INFO      Epoch   4 | TrainLoss 0.0899 (BCE 0.1725 Huber 0.0073) | ValLoss 0.0907 (BCE 0.1733 Huber 0.0080) | Gap -0.0008 | ValAcc H1=0.533 H5=0.525 H20=0.514 | LR 1.20e-04 | GradNorm 0.005
-2026-04-02 15:00:50,705  INFO      Epoch   5 | TrainLoss 0.0899 (BCE 0.1725 Huber 0.0073) | ValLoss 0.0905 (BCE 0.1730 Huber 0.0080) | Gap -0.0006 | ValAcc H1=0.537 H5=0.530 H20=0.519 | LR 1.50e-04 | GradNorm 0.005
-2026-04-02 15:06:59,047  INFO      Epoch   6 | TrainLoss 0.0898 (BCE 0.1723 Huber 0.0073) | ValLoss 0.0905 (BCE 0.1729 Huber 0.0080) | Gap -0.0007 | ValAcc H1=0.531 H5=0.528 H20=0.513 | LR 1.80e-04 | GradNorm 0.005
-2026-04-02 15:13:08,565  INFO      Epoch   7 | TrainLoss 0.0897 (BCE 0.1722 Huber 0.0073) | ValLoss 0.0905 (BCE 0.1730 Huber 0.0080) | Gap -0.0008 | ValAcc H1=0.533 H5=0.528 H20=0.523 | LR 2.10e-04 | GradNorm 0.005
-2026-04-02 23:00:13,556  INFO      Stage 5 Training Loop — Start
-2026-04-02 23:00:13,556  INFO      Device : cpu
-2026-04-02 23:00:13,557  INFO      Config : LR=3e-04  Batch=256  MaxEpochs=200  Patience=20
-2026-04-02 23:00:13,557  INFO      Folds to train: [1, 2, 3]
-2026-04-02 23:00:13,557  INFO      ============================================================
-2026-04-02 23:00:13,557  INFO      FOLD 1 — Training
-2026-04-02 23:00:14,350  INFO      Loading datasets...
-2026-04-02 23:00:55,625  INFO          Index built: 94067 samples from 104 files
-2026-04-02 23:01:06,519  INFO          Index built: 15466 samples from 104 files
-2026-04-02 23:01:06,520  INFO        Train samples: 94067  Val samples: 15466
-2026-04-02 23:01:17,842  INFO      Starting training — max 200 epochs, patience 20
-2026-04-02 23:06:42,971  INFO      Epoch   1 | TrainLoss 0.0904 (BCE 0.1734 Huber 0.0074) | ValLoss 0.0906 (BCE 0.1731 Huber 0.0081) | Gap -0.0002 | ValAcc H1=0.530 H5=0.519 H20=0.498 | LR 3.00e-05 | GradNorm 0.007
-2026-04-02 23:12:00,594  INFO      Epoch   2 | TrainLoss 0.0901 (BCE 0.1728 Huber 0.0073) | ValLoss 0.0906 (BCE 0.1731 Huber 0.0080) | Gap -0.0005 | ValAcc H1=0.532 H5=0.515 H20=0.510 | LR 6.00e-05 | GradNorm 0.006
-2026-04-02 23:17:16,956  INFO      Epoch   3 | TrainLoss 0.0899 (BCE 0.1725 Huber 0.0073) | ValLoss 0.0906 (BCE 0.1732 Huber 0.0080) | Gap -0.0007 | ValAcc H1=0.534 H5=0.520 H20=0.512 | LR 9.00e-05 | GradNorm 0.006
-2026-04-02 23:22:31,727  INFO      Epoch   4 | TrainLoss 0.0899 (BCE 0.1724 Huber 0.0073) | ValLoss 0.0905 (BCE 0.1729 Huber 0.0080) | Gap -0.0006 | ValAcc H1=0.533 H5=0.530 H20=0.517 | LR 1.20e-04 | GradNorm 0.006
-2026-04-02 23:27:44,848  INFO      Epoch   5 | TrainLoss 0.0898 (BCE 0.1723 Huber 0.0073) | ValLoss 0.0906 (BCE 0.1731 Huber 0.0080) | Gap -0.0008 | ValAcc H1=0.535 H5=0.529 H20=0.519 | LR 1.50e-04 | GradNorm 0.005
-2026-04-02 23:32:57,980  INFO      Epoch   6 | TrainLoss 0.0898 (BCE 0.1723 Huber 0.0073) | ValLoss 0.0905 (BCE 0.1730 Huber 0.0080) | Gap -0.0007 | ValAcc H1=0.532 H5=0.529 H20=0.524 | LR 1.80e-04 | GradNorm 0.005
-2026-04-02 23:38:09,441  INFO      Epoch   7 | TrainLoss 0.0898 (BCE 0.1723 Huber 0.0073) | ValLoss 0.0904 (BCE 0.1728 Huber 0.0080) | Gap -0.0006 | ValAcc H1=0.535 H5=0.525 H20=0.522 | LR 2.10e-04 | GradNorm 0.005
-2026-04-02 23:43:19,940  INFO      Epoch   8 | TrainLoss 0.0897 (BCE 0.1721 Huber 0.0073) | ValLoss 0.0905 (BCE 0.1730 Huber 0.0080) | Gap -0.0008 | ValAcc H1=0.535 H5=0.531 H20=0.522 | LR 2.40e-04 | GradNorm 0.005
-2026-04-02 23:48:29,799  INFO      Epoch   9 | TrainLoss 0.0897 (BCE 0.1720 Huber 0.0073) | ValLoss 0.0906 (BCE 0.1732 Huber 0.0080) | Gap -0.0010 | ValAcc H1=0.535 H5=0.527 H20=0.522 | LR 2.70e-04 | GradNorm 0.005
-2026-04-02 23:53:38,551  INFO      Epoch  10 | TrainLoss 0.0896 (BCE 0.1719 Huber 0.0073) | ValLoss 0.0907 (BCE 0.1734 Huber 0.0081) | Gap -0.0012 | ValAcc H1=0.531 H5=0.529 H20=0.521 | LR 3.00e-04 | GradNorm 0.004
-2026-04-02 23:58:48,802  INFO      Epoch  11 | TrainLoss 0.0896 (BCE 0.1719 Huber 0.0073) | ValLoss 0.0905 (BCE 0.1729 Huber 0.0080) | Gap -0.0009 | ValAcc H1=0.535 H5=0.527 H20=0.524 | LR 2.14e-04 | GradNorm 0.005
-2026-04-03 00:04:21,581  INFO      Epoch  12 | TrainLoss 0.0895 (BCE 0.1717 Huber 0.0073) | ValLoss 0.0906 (BCE 0.1731 Huber 0.0080) | Gap -0.0011 | ValAcc H1=0.534 H5=0.530 H20=0.520 | LR 2.00e-04 | GradNorm 0.005
-2026-04-03 00:10:03,136  INFO      Epoch  13 | TrainLoss 0.0894 (BCE 0.1715 Huber 0.0072) | ValLoss 0.0907 (BCE 0.1733 Huber 0.0080) | Gap -0.0013 | ValAcc H1=0.529 H5=0.529 H20=0.523 | LR 1.85e-04 | GradNorm 0.005
-2026-04-03 00:15:36,087  INFO      Epoch  14 | TrainLoss 0.0893 (BCE 0.1714 Huber 0.0073) | ValLoss 0.0908 (BCE 0.1735 Huber 0.0080) | Gap -0.0014 | ValAcc H1=0.529 H5=0.526 H20=0.520 | LR 1.70e-04 | GradNorm 0.005
-2026-04-03 00:21:09,477  INFO      Epoch  15 | TrainLoss 0.0892 (BCE 0.1712 Huber 0.0072) | ValLoss 0.0908 (BCE 0.1736 Huber 0.0081) | Gap -0.0016 | ValAcc H1=0.533 H5=0.530 H20=0.524 | LR 1.55e-04 | GradNorm 0.006
-2026-04-03 00:26:43,500  INFO      Epoch  16 | TrainLoss 0.0892 (BCE 0.1711 Huber 0.0073) | ValLoss 0.0905 (BCE 0.1730 Huber 0.0080) | Gap -0.0013 | ValAcc H1=0.536 H5=0.531 H20=0.524 | LR 1.40e-04 | GradNorm 0.006
-2026-04-03 00:32:19,228  INFO      Epoch  17 | TrainLoss 0.0891 (BCE 0.1711 Huber 0.0072) | ValLoss 0.0907 (BCE 0.1734 Huber 0.0081) | Gap -0.0016 | ValAcc H1=0.529 H5=0.527 H20=0.525 | LR 1.25e-04 | GradNorm 0.007
-2026-04-03 00:37:54,800  INFO      Epoch  18 | TrainLoss 0.0891 (BCE 0.1709 Huber 0.0072) | ValLoss 0.0908 (BCE 0.1736 Huber 0.0081) | Gap -0.0018 | ValAcc H1=0.529 H5=0.528 H20=0.523 | LR 1.10e-04 | GradNorm 0.007
-2026-04-03 00:43:31,812  INFO      Epoch  19 | TrainLoss 0.0890 (BCE 0.1707 Huber 0.0072) | ValLoss 0.0908 (BCE 0.1735 Huber 0.0080) | Gap -0.0018 | ValAcc H1=0.530 H5=0.526 H20=0.525 | LR 9.61e-05 | GradNorm 0.007
-2026-04-03 00:49:05,493  INFO      Epoch  20 | TrainLoss 0.0889 (BCE 0.1706 Huber 0.0072) | ValLoss 0.0909 (BCE 0.1738 Huber 0.0081) | Gap -0.0020 | ValAcc H1=0.529 H5=0.531 H20=0.525 | LR 8.25e-05 | GradNorm 0.008
-2026-04-03 00:54:40,981  INFO      Epoch  21 | TrainLoss 0.0888 (BCE 0.1704 Huber 0.0072) | ValLoss 0.0909 (BCE 0.1738 Huber 0.0081) | Gap -0.0021 | ValAcc H1=0.532 H5=0.529 H20=0.527 | LR 6.98e-05 | GradNorm 0.008
-2026-04-03 01:00:16,199  INFO      Epoch  22 | TrainLoss 0.0888 (BCE 0.1703 Huber 0.0072) | ValLoss 0.0908 (BCE 0.1736 Huber 0.0081) | Gap -0.0020 | ValAcc H1=0.531 H5=0.528 H20=0.524 | LR 5.80e-05 | GradNorm 0.009
-2026-04-03 01:05:50,936  INFO      Epoch  23 | TrainLoss 0.0887 (BCE 0.1701 Huber 0.0072) | ValLoss 0.0908 (BCE 0.1736 Huber 0.0080) | Gap -0.0021 | ValAcc H1=0.530 H5=0.528 H20=0.527 | LR 4.73e-05 | GradNorm 0.009
-2026-04-03 01:11:28,562  INFO      Epoch  24 | TrainLoss 0.0887 (BCE 0.1701 Huber 0.0072) | ValLoss 0.0908 (BCE 0.1736 Huber 0.0080) | Gap -0.0022 | ValAcc H1=0.530 H5=0.527 H20=0.524 | LR 3.77e-05 | GradNorm 0.010
-2026-04-03 01:11:28,562  INFO        Early stopping at epoch 24 (no improvement for 20 epochs).
-2026-04-03 01:11:28,566  INFO        Restored best weights (val_loss=0.0905  H1=0.533 H5=0.530 H20=0.517)
-2026-04-03 01:11:28,566  INFO        SWA did not start (training ended before epoch 150)
-2026-04-03 01:11:28,567  INFO        Restored best weights (val_loss=0.0905  H1=0.533 H5=0.530 H20=0.517)
-2026-04-03 01:11:28,860  INFO        Saved checkpoint: models/base/checkpoint_fold_1.pt
-2026-04-03 01:11:29,065  INFO        Saved metrics   : logs/training/fold_1_metrics.csv
-2026-04-03 01:11:29,103  INFO      ============================================================
-2026-04-03 01:11:29,104  INFO      FOLD 2 — Training
-2026-04-03 01:11:29,137  INFO      Loading datasets...
-2026-04-03 01:11:29,539  INFO          Index built: 99916 samples from 104 files
-2026-04-03 01:11:43,198  INFO          Index built: 15428 samples from 104 files
-2026-04-03 01:11:43,199  INFO        Train samples: 99916  Val samples: 15428
-2026-04-03 01:11:43,286  INFO      Starting training — max 200 epochs, patience 20
-2026-04-03 01:17:44,767  INFO      Epoch   1 | TrainLoss 0.0906 (BCE 0.1737 Huber 0.0075) | ValLoss 0.0897 (BCE 0.1724 Huber 0.0070) | Gap 0.0009 | ValAcc H1=0.542 H5=0.531 H20=0.513 | LR 3.00e-05 | GradNorm 0.008
-2026-04-03 01:23:48,101  INFO      Epoch   2 | TrainLoss 0.0901 (BCE 0.1728 Huber 0.0075) | ValLoss 0.0896 (BCE 0.1722 Huber 0.0070) | Gap 0.0005 | ValAcc H1=0.544 H5=0.538 H20=0.519 | LR 6.00e-05 | GradNorm 0.007
-2026-04-03 01:29:51,093  INFO      Epoch   3 | TrainLoss 0.0900 (BCE 0.1726 Huber 0.0074) | ValLoss 0.0895 (BCE 0.1721 Huber 0.0070) | Gap 0.0005 | ValAcc H1=0.545 H5=0.539 H20=0.526 | LR 9.00e-05 | GradNorm 0.006
-2026-04-03 01:35:53,944  INFO      Epoch   4 | TrainLoss 0.0900 (BCE 0.1726 Huber 0.0074) | ValLoss 0.0896 (BCE 0.1723 Huber 0.0069) | Gap 0.0004 | ValAcc H1=0.544 H5=0.541 H20=0.515 | LR 1.20e-04 | GradNorm 0.006
-2026-04-03 01:41:55,664  INFO      Epoch   5 | TrainLoss 0.0899 (BCE 0.1724 Huber 0.0074) | ValLoss 0.0896 (BCE 0.1722 Huber 0.0069) | Gap 0.0004 | ValAcc H1=0.541 H5=0.544 H20=0.528 | LR 1.50e-04 | GradNorm 0.005
-2026-04-03 01:47:56,198  INFO      Epoch   6 | TrainLoss 0.0899 (BCE 0.1724 Huber 0.0074) | ValLoss 0.0896 (BCE 0.1722 Huber 0.0069) | Gap 0.0004 | ValAcc H1=0.547 H5=0.543 H20=0.529 | LR 1.80e-04 | GradNorm 0.005
-2026-04-03 01:53:55,223  INFO      Epoch   7 | TrainLoss 0.0899 (BCE 0.1724 Huber 0.0074) | ValLoss 0.0897 (BCE 0.1724 Huber 0.0070) | Gap 0.0002 | ValAcc H1=0.542 H5=0.538 H20=0.526 | LR 2.10e-04 | GradNorm 0.005
-2026-04-03 01:59:55,345  INFO      Epoch   8 | TrainLoss 0.0898 (BCE 0.1723 Huber 0.0074) | ValLoss 0.0897 (BCE 0.1724 Huber 0.0070) | Gap 0.0002 | ValAcc H1=0.544 H5=0.541 H20=0.527 | LR 2.40e-04 | GradNorm 0.005
-2026-04-03 02:05:53,715  INFO      Epoch   9 | TrainLoss 0.0897 (BCE 0.1721 Huber 0.0074) | ValLoss 0.0896 (BCE 0.1722 Huber 0.0069) | Gap 0.0002 | ValAcc H1=0.547 H5=0.539 H20=0.528 | LR 2.70e-04 | GradNorm 0.004
-2026-04-03 02:11:51,850  INFO      Epoch  10 | TrainLoss 0.0897 (BCE 0.1720 Huber 0.0074) | ValLoss 0.0897 (BCE 0.1725 Huber 0.0070) | Gap -0.0000 | ValAcc H1=0.540 H5=0.545 H20=0.523 | LR 3.00e-04 | GradNorm 0.005
-2026-04-03 02:17:50,367  INFO      Epoch  11 | TrainLoss 0.0897 (BCE 0.1719 Huber 0.0074) | ValLoss 0.0896 (BCE 0.1722 Huber 0.0070) | Gap 0.0001 | ValAcc H1=0.544 H5=0.544 H20=0.521 | LR 2.14e-04 | GradNorm 0.005
-2026-04-03 02:23:48,019  INFO      Epoch  12 | TrainLoss 0.0896 (BCE 0.1718 Huber 0.0074) | ValLoss 0.0894 (BCE 0.1719 Huber 0.0069) | Gap 0.0002 | ValAcc H1=0.551 H5=0.547 H20=0.532 | LR 2.00e-04 | GradNorm 0.005
-2026-04-03 02:29:45,572  INFO      Epoch  13 | TrainLoss 0.0895 (BCE 0.1717 Huber 0.0074) | ValLoss 0.0895 (BCE 0.1721 Huber 0.0069) | Gap 0.0000 | ValAcc H1=0.546 H5=0.544 H20=0.535 | LR 1.85e-04 | GradNorm 0.005
-2026-04-03 02:35:42,654  INFO      Epoch  14 | TrainLoss 0.0895 (BCE 0.1716 Huber 0.0074) | ValLoss 0.0896 (BCE 0.1723 Huber 0.0070) | Gap -0.0002 | ValAcc H1=0.549 H5=0.545 H20=0.530 | LR 1.70e-04 | GradNorm 0.005
-2026-04-03 02:41:38,790  INFO      Epoch  15 | TrainLoss 0.0894 (BCE 0.1714 Huber 0.0074) | ValLoss 0.0896 (BCE 0.1723 Huber 0.0070) | Gap -0.0002 | ValAcc H1=0.546 H5=0.540 H20=0.529 | LR 1.55e-04 | GradNorm 0.006
-2026-04-03 02:47:34,816  INFO      Epoch  16 | TrainLoss 0.0893 (BCE 0.1713 Huber 0.0074) | ValLoss 0.0899 (BCE 0.1728 Huber 0.0070) | Gap -0.0006 | ValAcc H1=0.537 H5=0.542 H20=0.528 | LR 1.40e-04 | GradNorm 0.006
-2026-04-03 02:53:31,277  INFO      Epoch  17 | TrainLoss 0.0892 (BCE 0.1711 Huber 0.0074) | ValLoss 0.0898 (BCE 0.1726 Huber 0.0070) | Gap -0.0005 | ValAcc H1=0.547 H5=0.539 H20=0.533 | LR 1.25e-04 | GradNorm 0.007
-2026-04-03 02:59:28,430  INFO      Epoch  18 | TrainLoss 0.0892 (BCE 0.1710 Huber 0.0074) | ValLoss 0.0897 (BCE 0.1724 Huber 0.0070) | Gap -0.0005 | ValAcc H1=0.546 H5=0.536 H20=0.532 | LR 1.10e-04 | GradNorm 0.007
-2026-04-03 03:05:26,103  INFO      Epoch  19 | TrainLoss 0.0890 (BCE 0.1707 Huber 0.0074) | ValLoss 0.0898 (BCE 0.1726 Huber 0.0070) | Gap -0.0007 | ValAcc H1=0.544 H5=0.539 H20=0.529 | LR 9.61e-05 | GradNorm 0.008
-2026-04-03 03:11:23,887  INFO      Epoch  20 | TrainLoss 0.0890 (BCE 0.1707 Huber 0.0074) | ValLoss 0.0898 (BCE 0.1726 Huber 0.0070) | Gap -0.0007 | ValAcc H1=0.546 H5=0.540 H20=0.532 | LR 8.25e-05 | GradNorm 0.008
-2026-04-03 03:17:21,841  INFO      Epoch  21 | TrainLoss 0.0889 (BCE 0.1706 Huber 0.0073) | ValLoss 0.0896 (BCE 0.1723 Huber 0.0070) | Gap -0.0007 | ValAcc H1=0.544 H5=0.541 H20=0.533 | LR 6.98e-05 | GradNorm 0.009
-2026-04-03 03:23:20,384  INFO      Epoch  22 | TrainLoss 0.0889 (BCE 0.1704 Huber 0.0074) | ValLoss 0.0899 (BCE 0.1727 Huber 0.0070) | Gap -0.0010 | ValAcc H1=0.548 H5=0.541 H20=0.529 | LR 5.80e-05 | GradNorm 0.009
-2026-04-03 03:29:18,450  INFO      Epoch  23 | TrainLoss 0.0887 (BCE 0.1702 Huber 0.0073) | ValLoss 0.0899 (BCE 0.1728 Huber 0.0070) | Gap -0.0011 | ValAcc H1=0.548 H5=0.541 H20=0.533 | LR 4.73e-05 | GradNorm 0.009
-2026-04-03 03:35:16,755  INFO      Epoch  24 | TrainLoss 0.0887 (BCE 0.1702 Huber 0.0073) | ValLoss 0.0899 (BCE 0.1728 Huber 0.0070) | Gap -0.0011 | ValAcc H1=0.547 H5=0.540 H20=0.532 | LR 3.77e-05 | GradNorm 0.010
-2026-04-03 03:41:15,286  INFO      Epoch  25 | TrainLoss 0.0888 (BCE 0.1702 Huber 0.0073) | ValLoss 0.0898 (BCE 0.1727 Huber 0.0070) | Gap -0.0010 | ValAcc H1=0.546 H5=0.542 H20=0.531 | LR 2.94e-05 | GradNorm 0.010
-2026-04-03 03:46:48,857  INFO      Epoch  26 | TrainLoss 0.0886 (BCE 0.1699 Huber 0.0073) | ValLoss 0.0899 (BCE 0.1728 Huber 0.0070) | Gap -0.0013 | ValAcc H1=0.547 H5=0.541 H20=0.532 | LR 2.26e-05 | GradNorm 0.010
-2026-04-03 03:52:22,687  INFO      Epoch  27 | TrainLoss 0.0887 (BCE 0.1701 Huber 0.0073) | ValLoss 0.0898 (BCE 0.1727 Huber 0.0070) | Gap -0.0011 | ValAcc H1=0.546 H5=0.542 H20=0.530 | LR 1.71e-05 | GradNorm 0.010
-2026-04-03 03:57:55,775  INFO      Epoch  28 | TrainLoss 0.0886 (BCE 0.1698 Huber 0.0073) | ValLoss 0.0899 (BCE 0.1729 Huber 0.0070) | Gap -0.0014 | ValAcc H1=0.544 H5=0.536 H20=0.532 | LR 1.32e-05 | GradNorm 0.011
-2026-04-03 04:03:29,337  INFO      Epoch  29 | TrainLoss 0.0886 (BCE 0.1699 Huber 0.0073) | ValLoss 0.0899 (BCE 0.1728 Huber 0.0070) | Gap -0.0013 | ValAcc H1=0.547 H5=0.540 H20=0.533 | LR 1.08e-05 | GradNorm 0.011
-2026-04-03 04:09:01,889  INFO      Epoch  30 | TrainLoss 0.0886 (BCE 0.1698 Huber 0.0073) | ValLoss 0.0899 (BCE 0.1727 Huber 0.0070) | Gap -0.0013 | ValAcc H1=0.547 H5=0.541 H20=0.529 | LR 1.00e-05 | GradNorm 0.011
-2026-04-03 04:14:35,990  INFO      Epoch  31 | TrainLoss 0.0889 (BCE 0.1705 Huber 0.0073) | ValLoss 0.0898 (BCE 0.1727 Huber 0.0070) | Gap -0.0009 | ValAcc H1=0.545 H5=0.543 H20=0.528 | LR 3.00e-04 | GradNorm 0.010
-2026-04-03 04:20:08,246  INFO      Epoch  32 | TrainLoss 0.0889 (BCE 0.1705 Huber 0.0074) | ValLoss 0.0901 (BCE 0.1731 Huber 0.0070) | Gap -0.0011 | ValAcc H1=0.544 H5=0.536 H20=0.530 | LR 2.99e-04 | GradNorm 0.009
-2026-04-03 04:20:08,246  INFO        Early stopping at epoch 32 (no improvement for 20 epochs).
-2026-04-03 04:20:08,256  INFO        Restored best weights (val_loss=0.0894  H1=0.551 H5=0.547 H20=0.532)
-2026-04-03 04:20:08,257  INFO        SWA did not start (training ended before epoch 150)
-2026-04-03 04:20:08,259  INFO        Restored best weights (val_loss=0.0894  H1=0.551 H5=0.547 H20=0.532)
-2026-04-03 04:20:08,309  INFO        Saved checkpoint: models/base/checkpoint_fold_2.pt
-2026-04-03 04:20:08,396  INFO        Saved metrics   : logs/training/fold_2_metrics.csv
-2026-04-03 04:20:08,556  INFO      ============================================================
-2026-04-03 04:20:08,557  INFO      FOLD 3 — Training
-2026-04-03 04:20:08,662  INFO      Loading datasets...
-2026-04-03 04:20:10,192  INFO          Index built: 102600 samples from 104 files
-2026-04-03 04:20:26,155  INFO          Index built: 23431 samples from 144 files
-2026-04-03 04:20:26,156  INFO        Train samples: 102600  Val samples: 23431
-2026-04-03 04:20:26,220  INFO      Starting training — max 200 epochs, patience 20
-2026-04-03 04:26:18,754  INFO      Epoch   1 | TrainLoss 0.0908 (BCE 0.1742 Huber 0.0075) | ValLoss 0.0899 (BCE 0.1726 Huber 0.0071) | Gap 0.0010 | ValAcc H1=0.537 H5=0.532 H20=0.519 | LR 3.00e-05 | GradNorm 0.010
-2026-04-03 04:32:09,246  INFO      Epoch   2 | TrainLoss 0.0901 (BCE 0.1728 Huber 0.0074) | ValLoss 0.0897 (BCE 0.1724 Huber 0.0071) | Gap 0.0004 | ValAcc H1=0.543 H5=0.537 H20=0.526 | LR 6.00e-05 | GradNorm 0.006
-2026-04-03 04:37:58,562  INFO      Epoch   3 | TrainLoss 0.0900 (BCE 0.1726 Huber 0.0074) | ValLoss 0.0897 (BCE 0.1722 Huber 0.0071) | Gap 0.0003 | ValAcc H1=0.544 H5=0.540 H20=0.532 | LR 9.00e-05 | GradNorm 0.006
-2026-04-03 04:43:47,550  INFO      Epoch   4 | TrainLoss 0.0899 (BCE 0.1725 Huber 0.0074) | ValLoss 0.0896 (BCE 0.1722 Huber 0.0071) | Gap 0.0003 | ValAcc H1=0.545 H5=0.542 H20=0.529 | LR 1.20e-04 | GradNorm 0.005
-2026-04-03 04:49:36,709  INFO      Epoch   5 | TrainLoss 0.0899 (BCE 0.1725 Huber 0.0074) | ValLoss 0.0896 (BCE 0.1722 Huber 0.0070) | Gap 0.0003 | ValAcc H1=0.544 H5=0.539 H20=0.525 | LR 1.50e-04 | GradNorm 0.005
-2026-04-03 04:55:24,814  INFO      Epoch   6 | TrainLoss 0.0899 (BCE 0.1724 Huber 0.0074) | ValLoss 0.0896 (BCE 0.1721 Huber 0.0070) | Gap 0.0003 | ValAcc H1=0.547 H5=0.546 H20=0.531 | LR 1.80e-04 | GradNorm 0.005
-2026-04-03 05:01:11,221  INFO      Epoch   7 | TrainLoss 0.0898 (BCE 0.1723 Huber 0.0074) | ValLoss 0.0896 (BCE 0.1722 Huber 0.0070) | Gap 0.0002 | ValAcc H1=0.546 H5=0.542 H20=0.526 | LR 2.10e-04 | GradNorm 0.004
-2026-04-03 05:06:56,199  INFO      Epoch   8 | TrainLoss 0.0898 (BCE 0.1722 Huber 0.0074) | ValLoss 0.0896 (BCE 0.1721 Huber 0.0070) | Gap 0.0002 | ValAcc H1=0.547 H5=0.546 H20=0.522 | LR 2.40e-04 | GradNorm 0.004
-2026-04-03 05:12:40,905  INFO      Epoch   9 | TrainLoss 0.0898 (BCE 0.1721 Huber 0.0074) | ValLoss 0.0897 (BCE 0.1724 Huber 0.0071) | Gap 0.0000 | ValAcc H1=0.543 H5=0.543 H20=0.529 | LR 2.70e-04 | GradNorm 0.004
-2026-04-03 05:18:24,629  INFO      Epoch  10 | TrainLoss 0.0897 (BCE 0.1721 Huber 0.0074) | ValLoss 0.0897 (BCE 0.1724 Huber 0.0071) | Gap -0.0000 | ValAcc H1=0.545 H5=0.531 H20=0.530 | LR 3.00e-04 | GradNorm 0.004
-2026-04-03 05:24:07,258  INFO      Epoch  11 | TrainLoss 0.0897 (BCE 0.1720 Huber 0.0074) | ValLoss 0.0895 (BCE 0.1720 Huber 0.0070) | Gap 0.0001 | ValAcc H1=0.550 H5=0.550 H20=0.532 | LR 2.14e-04 | GradNorm 0.004
-2026-04-03 05:29:51,660  INFO      Epoch  12 | TrainLoss 0.0896 (BCE 0.1718 Huber 0.0074) | ValLoss 0.0895 (BCE 0.1721 Huber 0.0070) | Gap 0.0000 | ValAcc H1=0.548 H5=0.544 H20=0.532 | LR 2.00e-04 | GradNorm 0.005
-2026-04-03 05:35:36,533  INFO      Epoch  13 | TrainLoss 0.0896 (BCE 0.1718 Huber 0.0073) | ValLoss 0.0897 (BCE 0.1723 Huber 0.0070) | Gap -0.0001 | ValAcc H1=0.544 H5=0.548 H20=0.528 | LR 1.85e-04 | GradNorm 0.005
-2026-04-03 05:41:22,198  INFO      Epoch  14 | TrainLoss 0.0895 (BCE 0.1716 Huber 0.0074) | ValLoss 0.0896 (BCE 0.1722 Huber 0.0070) | Gap -0.0001 | ValAcc H1=0.547 H5=0.548 H20=0.533 | LR 1.70e-04 | GradNorm 0.005
-2026-04-03 05:47:07,870  INFO      Epoch  15 | TrainLoss 0.0894 (BCE 0.1714 Huber 0.0074) | ValLoss 0.0897 (BCE 0.1724 Huber 0.0071) | Gap -0.0004 | ValAcc H1=0.550 H5=0.547 H20=0.529 | LR 1.55e-04 | GradNorm 0.005
-2026-04-03 05:52:53,535  INFO      Epoch  16 | TrainLoss 0.0894 (BCE 0.1714 Huber 0.0073) | ValLoss 0.0896 (BCE 0.1722 Huber 0.0070) | Gap -0.0002 | ValAcc H1=0.545 H5=0.546 H20=0.529 | LR 1.40e-04 | GradNorm 0.006
-2026-04-03 05:58:40,573  INFO      Epoch  17 | TrainLoss 0.0892 (BCE 0.1711 Huber 0.0073) | ValLoss 0.0897 (BCE 0.1724 Huber 0.0071) | Gap -0.0005 | ValAcc H1=0.545 H5=0.550 H20=0.530 | LR 1.25e-04 | GradNorm 0.006
-2026-04-03 06:04:27,996  INFO      Epoch  18 | TrainLoss 0.0892 (BCE 0.1711 Huber 0.0073) | ValLoss 0.0897 (BCE 0.1723 Huber 0.0071) | Gap -0.0005 | ValAcc H1=0.546 H5=0.545 H20=0.532 | LR 1.10e-04 | GradNorm 0.007
-2026-04-03 06:10:14,772  INFO      Epoch  19 | TrainLoss 0.0891 (BCE 0.1709 Huber 0.0073) | ValLoss 0.0896 (BCE 0.1722 Huber 0.0070) | Gap -0.0005 | ValAcc H1=0.549 H5=0.549 H20=0.531 | LR 9.61e-05 | GradNorm 0.007
-2026-04-03 06:16:02,095  INFO      Epoch  20 | TrainLoss 0.0890 (BCE 0.1707 Huber 0.0073) | ValLoss 0.0898 (BCE 0.1725 Huber 0.0071) | Gap -0.0007 | ValAcc H1=0.548 H5=0.546 H20=0.531 | LR 8.25e-05 | GradNorm 0.008
-2026-04-03 06:21:49,186  INFO      Epoch  21 | TrainLoss 0.0889 (BCE 0.1704 Huber 0.0073) | ValLoss 0.0898 (BCE 0.1725 Huber 0.0071) | Gap -0.0009 | ValAcc H1=0.549 H5=0.544 H20=0.533 | LR 6.98e-05 | GradNorm 0.008
-2026-04-03 06:27:36,579  INFO      Epoch  22 | TrainLoss 0.0889 (BCE 0.1705 Huber 0.0073) | ValLoss 0.0897 (BCE 0.1723 Huber 0.0071) | Gap -0.0008 | ValAcc H1=0.547 H5=0.542 H20=0.531 | LR 5.80e-05 | GradNorm 0.009
-2026-04-03 06:33:23,762  INFO      Epoch  23 | TrainLoss 0.0888 (BCE 0.1702 Huber 0.0073) | ValLoss 0.0899 (BCE 0.1726 Huber 0.0071) | Gap -0.0011 | ValAcc H1=0.548 H5=0.545 H20=0.535 | LR 4.73e-05 | GradNorm 0.010
-2026-04-03 06:39:10,788  INFO      Epoch  24 | TrainLoss 0.0887 (BCE 0.1702 Huber 0.0073) | ValLoss 0.0898 (BCE 0.1725 Huber 0.0071) | Gap -0.0011 | ValAcc H1=0.547 H5=0.544 H20=0.532 | LR 3.77e-05 | GradNorm 0.010
-2026-04-03 06:39:10,788  INFO        Early stopping at epoch 24 (no improvement for 20 epochs).
-2026-04-03 06:39:10,789  INFO        Restored best weights (val_loss=0.0896  H1=0.545 H5=0.542 H20=0.529)
-2026-04-03 06:39:10,789  INFO        SWA did not start (training ended before epoch 150)
-2026-04-03 06:39:10,790  INFO        Restored best weights (val_loss=0.0896  H1=0.545 H5=0.542 H20=0.529)
-2026-04-03 06:39:10,794  INFO        Saved checkpoint: models/base/checkpoint_fold_3.pt
-2026-04-03 06:39:10,797  INFO        Saved metrics   : logs/training/fold_3_metrics.csv
-2026-04-03 06:39:10,840  INFO      ============================================================
-2026-04-03 06:39:10,840  INFO      Training complete. Cross-fold summary:
-2026-04-03 06:39:10,840  INFO        Fold 1: best_val_loss=0.0905  best_val_acc H1=0.533 H5=0.530 H20=0.517  epochs=24
-2026-04-03 06:39:10,840  INFO        Fold 2: best_val_loss=0.0894  best_val_acc H1=0.551 H5=0.547 H20=0.532  epochs=32
-2026-04-03 06:39:10,840  INFO        Fold 3: best_val_loss=0.0896  best_val_acc H1=0.545 H5=0.542 H20=0.529  epochs=24
-2026-04-03 06:39:10,842  INFO        Mean val loss : 0.0898 ± 0.0004
-2026-04-03 06:39:10,842  INFO        Mean val acc  : 0.302 ± 0.003
-2026-04-03 06:39:10,847  INFO        Base checkpoint saved: models/base/checkpoint_base_v1.pt  (from fold 2)
-2026-04-03 06:39:10,847  INFO      Stage 5 complete.
-2026-04-03 06:39:10,847  INFO      Next step: run evaluation.py (Stage 7) on the test splits.
-2026-04-03 22:54:08,016  INFO      Stage 5 Training Loop — Start
-2026-04-03 22:54:08,041  INFO      Device : cpu
-2026-04-03 22:54:08,041  INFO      Config : LR=3e-04  Batch=256  MaxEpochs=200  Patience=20
-2026-04-03 22:54:08,042  INFO      Folds to train: [1, 2, 3]
-2026-04-03 22:54:08,042  INFO      ============================================================
-2026-04-03 22:54:08,042  INFO      FOLD 1 — Training
-2026-04-03 22:54:08,149  INFO      Loading datasets...
-2026-04-03 22:54:46,842  INFO          Index built: 94067 samples from 104 files
-2026-04-03 22:54:52,975  INFO          Index built: 15466 samples from 104 files
-2026-04-03 22:54:52,975  INFO        Train samples: 94067  Val samples: 15466
-2026-04-03 22:55:03,518  INFO      Starting training — max 200 epochs, patience 20
-2026-04-03 23:00:48,126  INFO      Epoch   1 | TrainLoss 0.2488 (BCE 0.4903 Huber 0.0074) | ValLoss 0.2487 (BCE 0.4894 Huber 0.0081) | Gap 0.0001 | ValAcc H1=0.529 H5=0.520 H20=0.515 | LR 3.00e-05 | GradNorm 0.021
-2026-04-03 23:06:38,545  INFO      Epoch   2 | TrainLoss 0.2478 (BCE 0.4883 Huber 0.0073) | ValLoss 0.2486 (BCE 0.4892 Huber 0.0080) | Gap -0.0008 | ValAcc H1=0.532 H5=0.519 H20=0.515 | LR 6.00e-05 | GradNorm 0.020
-2026-04-03 23:12:23,311  INFO      Epoch   3 | TrainLoss 0.2474 (BCE 0.4875 Huber 0.0073) | ValLoss 0.2487 (BCE 0.4893 Huber 0.0080) | Gap -0.0012 | ValAcc H1=0.534 H5=0.528 H20=0.515 | LR 9.00e-05 | GradNorm 0.020
-2026-04-03 23:18:11,518  INFO      Epoch   4 | TrainLoss 0.2475 (BCE 0.4876 Huber 0.0073) | ValLoss 0.2487 (BCE 0.4893 Huber 0.0080) | Gap -0.0012 | ValAcc H1=0.534 H5=0.528 H20=0.516 | LR 1.20e-04 | GradNorm 0.020
-2026-04-03 23:23:56,072  INFO      Epoch   5 | TrainLoss 0.2473 (BCE 0.4872 Huber 0.0073) | ValLoss 0.2486 (BCE 0.4892 Huber 0.0080) | Gap -0.0014 | ValAcc H1=0.532 H5=0.531 H20=0.516 | LR 1.50e-04 | GradNorm 0.018
-2026-04-03 23:29:38,642  INFO      Epoch   6 | TrainLoss 0.2471 (BCE 0.4869 Huber 0.0073) | ValLoss 0.2490 (BCE 0.4899 Huber 0.0080) | Gap -0.0019 | ValAcc H1=0.532 H5=0.529 H20=0.522 | LR 1.80e-04 | GradNorm 0.019
-2026-04-03 23:35:19,979  INFO      Epoch   7 | TrainLoss 0.2470 (BCE 0.4867 Huber 0.0073) | ValLoss 0.2487 (BCE 0.4894 Huber 0.0080) | Gap -0.0018 | ValAcc H1=0.535 H5=0.531 H20=0.522 | LR 2.10e-04 | GradNorm 0.019
-2026-04-03 23:41:00,812  INFO      Epoch   8 | TrainLoss 0.2468 (BCE 0.4863 Huber 0.0073) | ValLoss 0.2490 (BCE 0.4900 Huber 0.0080) | Gap -0.0022 | ValAcc H1=0.529 H5=0.529 H20=0.523 | LR 2.40e-04 | GradNorm 0.018
-2026-04-03 23:47:02,485  INFO      Epoch   9 | TrainLoss 0.2466 (BCE 0.4860 Huber 0.0073) | ValLoss 0.2489 (BCE 0.4897 Huber 0.0080) | Gap -0.0022 | ValAcc H1=0.533 H5=0.529 H20=0.524 | LR 2.70e-04 | GradNorm 0.019
-2026-04-03 23:52:55,851  INFO      Epoch  10 | TrainLoss 0.2466 (BCE 0.4859 Huber 0.0073) | ValLoss 0.2493 (BCE 0.4906 Huber 0.0081) | Gap -0.0027 | ValAcc H1=0.532 H5=0.524 H20=0.522 | LR 3.00e-04 | GradNorm 0.018
-2026-04-03 23:58:55,443  INFO      Epoch  11 | TrainLoss 0.2463 (BCE 0.4853 Huber 0.0073) | ValLoss 0.2488 (BCE 0.4895 Huber 0.0080) | Gap -0.0025 | ValAcc H1=0.530 H5=0.520 H20=0.513 | LR 2.14e-04 | GradNorm 0.020
-2026-04-04 00:05:03,600  INFO      Epoch  12 | TrainLoss 0.2462 (BCE 0.4851 Huber 0.0073) | ValLoss 0.2492 (BCE 0.4903 Huber 0.0080) | Gap -0.0030 | ValAcc H1=0.532 H5=0.530 H20=0.521 | LR 2.00e-04 | GradNorm 0.021
-2026-04-04 00:11:22,987  INFO      Epoch  13 | TrainLoss 0.2460 (BCE 0.4848 Huber 0.0073) | ValLoss 0.2491 (BCE 0.4902 Huber 0.0080) | Gap -0.0031 | ValAcc H1=0.527 H5=0.529 H20=0.521 | LR 1.85e-04 | GradNorm 0.022
-2026-04-04 00:17:30,171  INFO      Epoch  14 | TrainLoss 0.2459 (BCE 0.4845 Huber 0.0073) | ValLoss 0.2491 (BCE 0.4901 Huber 0.0080) | Gap -0.0032 | ValAcc H1=0.533 H5=0.529 H20=0.520 | LR 1.70e-04 | GradNorm 0.024
-2026-04-04 00:23:38,220  INFO      Epoch  15 | TrainLoss 0.2456 (BCE 0.4839 Huber 0.0072) | ValLoss 0.2494 (BCE 0.4907 Huber 0.0081) | Gap -0.0038 | ValAcc H1=0.533 H5=0.528 H20=0.525 | LR 1.55e-04 | GradNorm 0.027
-2026-04-04 00:29:45,930  INFO      Epoch  16 | TrainLoss 0.2454 (BCE 0.4836 Huber 0.0072) | ValLoss 0.2491 (BCE 0.4902 Huber 0.0080) | Gap -0.0037 | ValAcc H1=0.534 H5=0.525 H20=0.524 | LR 1.40e-04 | GradNorm 0.029
-2026-04-04 00:35:56,929  INFO      Epoch  17 | TrainLoss 0.2450 (BCE 0.4828 Huber 0.0072) | ValLoss 0.2499 (BCE 0.4918 Huber 0.0081) | Gap -0.0049 | ValAcc H1=0.525 H5=0.525 H20=0.519 | LR 1.25e-04 | GradNorm 0.032
-2026-04-04 00:42:02,709  INFO      Epoch  18 | TrainLoss 0.2449 (BCE 0.4825 Huber 0.0072) | ValLoss 0.2499 (BCE 0.4917 Huber 0.0081) | Gap -0.0050 | ValAcc H1=0.532 H5=0.530 H20=0.524 | LR 1.10e-04 | GradNorm 0.033
-2026-04-04 00:48:04,151  INFO      Epoch  19 | TrainLoss 0.2444 (BCE 0.4816 Huber 0.0072) | ValLoss 0.2501 (BCE 0.4921 Huber 0.0081) | Gap -0.0056 | ValAcc H1=0.531 H5=0.525 H20=0.524 | LR 9.61e-05 | GradNorm 0.036
-2026-04-04 00:54:13,424  INFO      Epoch  20 | TrainLoss 0.2444 (BCE 0.4816 Huber 0.0072) | ValLoss 0.2501 (BCE 0.4921 Huber 0.0081) | Gap -0.0057 | ValAcc H1=0.535 H5=0.526 H20=0.524 | LR 8.25e-05 | GradNorm 0.040
-2026-04-04 01:00:17,844  INFO      Epoch  21 | TrainLoss 0.2439 (BCE 0.4807 Huber 0.0072) | ValLoss 0.2505 (BCE 0.4930 Huber 0.0081) | Gap -0.0066 | ValAcc H1=0.529 H5=0.524 H20=0.524 | LR 6.98e-05 | GradNorm 0.042
-2026-04-04 01:06:25,415  INFO      Epoch  22 | TrainLoss 0.2438 (BCE 0.4804 Huber 0.0072) | ValLoss 0.2505 (BCE 0.4930 Huber 0.0081) | Gap -0.0067 | ValAcc H1=0.528 H5=0.523 H20=0.523 | LR 5.80e-05 | GradNorm 0.043
-2026-04-04 01:06:25,415  INFO        Early stopping at epoch 22 (no improvement for 20 epochs).
-2026-04-04 01:06:25,475  INFO        Restored best weights (val_loss=0.2486  H1=0.532 H5=0.519 H20=0.515)
-2026-04-04 01:06:25,475  INFO        SWA did not start (training ended before epoch 100)
-2026-04-04 01:06:25,478  INFO        Restored best weights (val_loss=0.2486  H1=0.532 H5=0.519 H20=0.515)
-2026-04-04 01:06:25,600  INFO        Saved checkpoint: models/base/checkpoint_fold_1.pt
-2026-04-04 01:06:25,882  INFO        Saved metrics   : logs/training/fold_1_metrics.csv
-2026-04-04 01:06:26,105  INFO      ============================================================
-2026-04-04 01:06:26,106  INFO      FOLD 2 — Training
-2026-04-04 01:06:26,279  INFO      Loading datasets...
-2026-04-04 01:06:28,071  INFO          Index built: 99916 samples from 104 files
-2026-04-04 01:06:32,974  INFO          Index built: 15428 samples from 104 files
-2026-04-04 01:06:32,974  INFO        Train samples: 99916  Val samples: 15428
-2026-04-04 01:06:33,136  INFO      Starting training — max 200 epochs, patience 20
-2026-04-04 01:13:01,350  INFO      Epoch   1 | TrainLoss 0.2492 (BCE 0.4910 Huber 0.0075) | ValLoss 0.2472 (BCE 0.4874 Huber 0.0070) | Gap 0.0021 | ValAcc H1=0.545 H5=0.535 H20=0.515 | LR 3.00e-05 | GradNorm 0.022
-2026-04-04 01:19:24,184  INFO      Epoch   2 | TrainLoss 0.2479 (BCE 0.4884 Huber 0.0075) | ValLoss 0.2471 (BCE 0.4872 Huber 0.0070) | Gap 0.0009 | ValAcc H1=0.543 H5=0.540 H20=0.515 | LR 6.00e-05 | GradNorm 0.020
-2026-04-04 01:26:07,538  INFO      Stage 5 Training Loop — Start
-2026-04-04 01:26:07,538  INFO      Device : cpu
-2026-04-04 01:26:07,539  INFO      Config : LR=3e-04  Batch=256  MaxEpochs=200  Patience=20
-2026-04-04 01:26:07,539  INFO      Folds to train: [1, 2, 3]
-2026-04-04 01:26:07,539  INFO      Fold 1 checkpoint already exists — skipping.
-2026-04-04 01:26:07,592  INFO        Recovered from metrics CSV — H1=0.532 H5=0.519 H20=0.515
-2026-04-04 01:26:07,593  INFO      ============================================================
-2026-04-04 01:26:07,593  INFO      FOLD 2 — Training
-2026-04-04 01:26:07,685  INFO      Loading datasets...
-2026-04-04 01:26:08,735  INFO          Index built: 99916 samples from 104 files
-2026-04-04 01:26:08,827  INFO          Index built: 15428 samples from 104 files
-2026-04-04 01:26:08,827  INFO        Train samples: 99916  Val samples: 15428
-2026-04-04 01:26:11,634  INFO      Starting training — max 200 epochs, patience 20
-2026-04-04 01:26:35,440  INFO      Stage 5 Training Loop — Start
-2026-04-04 01:26:35,441  INFO      Device : cpu
-2026-04-04 01:26:35,441  INFO      Config : LR=3e-04  Batch=256  MaxEpochs=200  Patience=20
-2026-04-04 01:26:35,441  INFO      Folds to train: [1, 2, 3]
-2026-04-04 01:26:35,441  INFO      ============================================================
-2026-04-04 01:26:35,441  INFO      FOLD 1 — Training
-2026-04-04 01:26:35,472  INFO      Loading datasets...
-2026-04-04 01:26:36,647  INFO          Index built: 94067 samples from 104 files
-2026-04-04 01:26:36,783  INFO          Index built: 15466 samples from 104 files
-2026-04-04 01:26:36,786  INFO        Train samples: 94067  Val samples: 15466
-2026-04-04 01:26:38,548  INFO      Starting training — max 200 epochs, patience 20
-2026-04-04 01:32:47,442  INFO      Epoch   1 | TrainLoss 0.2487 (BCE 0.4900 Huber 0.0074) | ValLoss 0.2488 (BCE 0.4896 Huber 0.0081) | Gap -0.0002 | ValAcc H1=0.528 H5=0.518 H20=0.514 | LR 3.00e-05 | GradNorm 0.020
-2026-04-04 01:38:57,264  INFO      Epoch   2 | TrainLoss 0.2478 (BCE 0.4883 Huber 0.0073) | ValLoss 0.2488 (BCE 0.4895 Huber 0.0080) | Gap -0.0009 | ValAcc H1=0.528 H5=0.523 H20=0.515 | LR 6.00e-05 | GradNorm 0.020
-2026-04-04 01:45:01,361  INFO      Epoch   3 | TrainLoss 0.2476 (BCE 0.4878 Huber 0.0073) | ValLoss 0.2487 (BCE 0.4893 Huber 0.0080) | Gap -0.0011 | ValAcc H1=0.534 H5=0.524 H20=0.517 | LR 9.00e-05 | GradNorm 0.019
-2026-04-04 01:50:59,752  INFO      Epoch   4 | TrainLoss 0.2473 (BCE 0.4874 Huber 0.0073) | ValLoss 0.2484 (BCE 0.4889 Huber 0.0080) | Gap -0.0011 | ValAcc H1=0.536 H5=0.527 H20=0.520 | LR 1.20e-04 | GradNorm 0.019
-2026-04-04 01:57:04,372  INFO      Epoch   5 | TrainLoss 0.2472 (BCE 0.4870 Huber 0.0073) | ValLoss 0.2490 (BCE 0.4899 Huber 0.0080) | Gap -0.0018 | ValAcc H1=0.535 H5=0.530 H20=0.521 | LR 1.50e-04 | GradNorm 0.019
-2026-04-04 02:03:09,026  INFO      Epoch   6 | TrainLoss 0.2471 (BCE 0.4868 Huber 0.0073) | ValLoss 0.2489 (BCE 0.4898 Huber 0.0080) | Gap -0.0018 | ValAcc H1=0.531 H5=0.531 H20=0.521 | LR 1.80e-04 | GradNorm 0.018
-2026-04-04 02:09:17,600  INFO      Epoch   7 | TrainLoss 0.2468 (BCE 0.4864 Huber 0.0073) | ValLoss 0.2488 (BCE 0.4896 Huber 0.0080) | Gap -0.0020 | ValAcc H1=0.535 H5=0.531 H20=0.517 | LR 2.10e-04 | GradNorm 0.018
-2026-04-04 02:15:24,314  INFO      Epoch   8 | TrainLoss 0.2468 (BCE 0.4864 Huber 0.0073) | ValLoss 0.2489 (BCE 0.4897 Huber 0.0080) | Gap -0.0020 | ValAcc H1=0.534 H5=0.528 H20=0.520 | LR 2.40e-04 | GradNorm 0.017
-2026-04-04 02:21:27,677  INFO      Epoch   9 | TrainLoss 0.2466 (BCE 0.4860 Huber 0.0073) | ValLoss 0.2485 (BCE 0.4889 Huber 0.0080) | Gap -0.0018 | ValAcc H1=0.533 H5=0.530 H20=0.523 | LR 2.70e-04 | GradNorm 0.018
-2026-04-04 02:27:28,384  INFO      Epoch  10 | TrainLoss 0.2465 (BCE 0.4858 Huber 0.0073) | ValLoss 0.2496 (BCE 0.4911 Huber 0.0081) | Gap -0.0030 | ValAcc H1=0.532 H5=0.525 H20=0.518 | LR 3.00e-04 | GradNorm 0.018
-2026-04-04 04:40:11,593  INFO      Stage 5 Training Loop — Start
-2026-04-04 04:40:11,594  INFO      Device : cpu
-2026-04-04 04:40:11,594  INFO      Config : LR=3e-04  Batch=256  MaxEpochs=200  Patience=20
-2026-04-04 04:40:11,594  INFO      Folds to train: [1, 2, 3]
-2026-04-04 04:40:11,595  INFO      ============================================================
-2026-04-04 04:40:11,595  INFO      FOLD 1 — Training
-2026-04-04 04:40:12,453  INFO      Loading datasets...
-2026-04-04 04:41:04,715  INFO          Index built: 94067 samples from 104 files
-2026-04-04 04:41:15,711  INFO          Index built: 15466 samples from 104 files
-2026-04-04 04:41:15,712  INFO        Train samples: 94067  Val samples: 15466
-2026-04-04 04:41:26,618  INFO      Starting training — max 200 epochs, patience 20
-2026-04-04 04:47:07,936  INFO      Epoch   1 | TrainLoss 0.2488 (BCE 0.4903 Huber 0.0074) | ValLoss 0.2487 (BCE 0.4892 Huber 0.0081) | Gap 0.0002 | ValAcc H1=0.529 H5=0.517 H20=0.512 | LR 3.00e-05 | GradNorm 0.021
-2026-04-04 04:52:45,472  INFO      Epoch   2 | TrainLoss 0.2478 (BCE 0.4882 Huber 0.0073) | ValLoss 0.2486 (BCE 0.4892 Huber 0.0080) | Gap -0.0008 | ValAcc H1=0.530 H5=0.523 H20=0.517 | LR 6.00e-05 | GradNorm 0.021
-2026-04-04 04:58:20,848  INFO      Epoch   3 | TrainLoss 0.2476 (BCE 0.4880 Huber 0.0073) | ValLoss 0.2491 (BCE 0.4901 Huber 0.0080) | Gap -0.0014 | ValAcc H1=0.529 H5=0.525 H20=0.519 | LR 9.00e-05 | GradNorm 0.020
-2026-04-04 05:03:55,381  INFO      Epoch   4 | TrainLoss 0.2474 (BCE 0.4875 Huber 0.0073) | ValLoss 0.2487 (BCE 0.4894 Huber 0.0080) | Gap -0.0013 | ValAcc H1=0.529 H5=0.518 H20=0.511 | LR 1.20e-04 | GradNorm 0.020
-2026-04-04 05:09:29,527  INFO      Epoch   5 | TrainLoss 0.2471 (BCE 0.4869 Huber 0.0073) | ValLoss 0.2484 (BCE 0.4888 Huber 0.0080) | Gap -0.0013 | ValAcc H1=0.536 H5=0.528 H20=0.521 | LR 1.50e-04 | GradNorm 0.020
-2026-04-04 05:15:02,908  INFO      Epoch   6 | TrainLoss 0.2472 (BCE 0.4871 Huber 0.0073) | ValLoss 0.2484 (BCE 0.4887 Huber 0.0080) | Gap -0.0012 | ValAcc H1=0.536 H5=0.532 H20=0.515 | LR 1.80e-04 | GradNorm 0.018
-2026-04-04 05:20:34,110  INFO      Epoch   7 | TrainLoss 0.2470 (BCE 0.4867 Huber 0.0073) | ValLoss 0.2488 (BCE 0.4896 Huber 0.0080) | Gap -0.0018 | ValAcc H1=0.534 H5=0.529 H20=0.522 | LR 2.10e-04 | GradNorm 0.019
-2026-04-04 05:26:05,185  INFO      Epoch   8 | TrainLoss 0.2469 (BCE 0.4865 Huber 0.0073) | ValLoss 0.2488 (BCE 0.4896 Huber 0.0080) | Gap -0.0019 | ValAcc H1=0.534 H5=0.532 H20=0.517 | LR 2.40e-04 | GradNorm 0.018
-2026-04-04 05:31:35,734  INFO      Epoch   9 | TrainLoss 0.2468 (BCE 0.4864 Huber 0.0073) | ValLoss 0.2488 (BCE 0.4895 Huber 0.0080) | Gap -0.0019 | ValAcc H1=0.533 H5=0.532 H20=0.521 | LR 2.70e-04 | GradNorm 0.017
-2026-04-04 05:37:28,511  INFO      Epoch  10 | TrainLoss 0.2466 (BCE 0.4859 Huber 0.0073) | ValLoss 0.2488 (BCE 0.4896 Huber 0.0080) | Gap -0.0022 | ValAcc H1=0.532 H5=0.530 H20=0.522 | LR 3.00e-04 | GradNorm 0.019
-2026-04-04 05:43:27,044  INFO      Epoch  11 | TrainLoss 0.2463 (BCE 0.4853 Huber 0.0073) | ValLoss 0.2491 (BCE 0.4901 Huber 0.0080) | Gap -0.0028 | ValAcc H1=0.528 H5=0.518 H20=0.522 | LR 2.14e-04 | GradNorm 0.021
-2026-04-04 05:49:21,783  INFO      Epoch  12 | TrainLoss 0.2462 (BCE 0.4851 Huber 0.0073) | ValLoss 0.2496 (BCE 0.4912 Huber 0.0081) | Gap -0.0034 | ValAcc H1=0.531 H5=0.530 H20=0.523 | LR 2.00e-04 | GradNorm 0.021
-2026-04-04 05:55:16,988  INFO      Epoch  13 | TrainLoss 0.2460 (BCE 0.4846 Huber 0.0073) | ValLoss 0.2492 (BCE 0.4904 Huber 0.0080) | Gap -0.0032 | ValAcc H1=0.533 H5=0.527 H20=0.519 | LR 1.85e-04 | GradNorm 0.024
-2026-04-04 06:01:11,365  INFO      Epoch  14 | TrainLoss 0.2456 (BCE 0.4840 Huber 0.0072) | ValLoss 0.2499 (BCE 0.4918 Huber 0.0081) | Gap -0.0043 | ValAcc H1=0.534 H5=0.530 H20=0.519 | LR 1.70e-04 | GradNorm 0.026
-2026-04-04 06:07:06,089  INFO      Epoch  15 | TrainLoss 0.2456 (BCE 0.4839 Huber 0.0073) | ValLoss 0.2498 (BCE 0.4915 Huber 0.0081) | Gap -0.0042 | ValAcc H1=0.531 H5=0.529 H20=0.524 | LR 1.55e-04 | GradNorm 0.027
-2026-04-04 06:13:04,379  INFO      Epoch  16 | TrainLoss 0.2450 (BCE 0.4829 Huber 0.0072) | ValLoss 0.2504 (BCE 0.4927 Huber 0.0081) | Gap -0.0053 | ValAcc H1=0.527 H5=0.527 H20=0.526 | LR 1.40e-04 | GradNorm 0.031
-2026-04-04 06:19:03,834  INFO      Epoch  17 | TrainLoss 0.2451 (BCE 0.4830 Huber 0.0073) | ValLoss 0.2509 (BCE 0.4937 Huber 0.0081) | Gap -0.0058 | ValAcc H1=0.529 H5=0.529 H20=0.525 | LR 1.25e-04 | GradNorm 0.033
-2026-04-04 06:23:27,486  INFO      Stage 5 Training Loop — Start
-2026-04-04 06:23:27,488  INFO      Device : cpu
-2026-04-04 06:23:27,488  INFO      Config : LR=3e-04  Batch=256  MaxEpochs=200  Patience=20
-2026-04-04 06:23:27,488  INFO      Folds to train: [1, 2, 3]
-2026-04-04 06:23:27,489  INFO      ============================================================
-2026-04-04 06:23:27,489  INFO      FOLD 1 — Training
-2026-04-04 06:23:28,409  INFO      Loading datasets...
-2026-04-04 06:24:18,765  INFO          Index built: 94067 samples from 104 files
-2026-04-04 06:24:30,922  INFO          Index built: 15466 samples from 104 files
-2026-04-04 06:24:30,923  INFO        Train samples: 94067  Val samples: 15466
-2026-04-04 06:24:42,533  INFO      Starting training — max 200 epochs, patience 20
-2026-04-04 06:30:13,832  INFO      Epoch   1 | TrainLoss 0.2487 (BCE 0.4900 Huber 0.0074) | ValLoss 0.2488 (BCE 0.4895 Huber 0.0081) | Gap -0.0001 | ValAcc H1=0.526 H5=0.518 H20=0.509 | LR 3.00e-05 | GradNorm 0.019
-2026-04-04 06:35:36,032  INFO      Epoch   2 | TrainLoss 0.2476 (BCE 0.4879 Huber 0.0074) | ValLoss 0.2489 (BCE 0.4898 Huber 0.0080) | Gap -0.0013 | ValAcc H1=0.530 H5=0.524 H20=0.508 | LR 6.00e-05 | GradNorm 0.020
-2026-04-04 06:40:54,185  INFO      Epoch   3 | TrainLoss 0.2475 (BCE 0.4878 Huber 0.0073) | ValLoss 0.2485 (BCE 0.4890 Huber 0.0080) | Gap -0.0010 | ValAcc H1=0.535 H5=0.527 H20=0.518 | LR 9.00e-05 | GradNorm 0.019
-2026-04-04 06:46:12,044  INFO      Epoch   4 | TrainLoss 0.2474 (BCE 0.4875 Huber 0.0073) | ValLoss 0.2487 (BCE 0.4894 Huber 0.0080) | Gap -0.0013 | ValAcc H1=0.534 H5=0.526 H20=0.518 | LR 1.20e-04 | GradNorm 0.019
-2026-04-04 06:51:29,317  INFO      Epoch   5 | TrainLoss 0.2473 (BCE 0.4874 Huber 0.0073) | ValLoss 0.2484 (BCE 0.4887 Huber 0.0080) | Gap -0.0010 | ValAcc H1=0.538 H5=0.530 H20=0.521 | LR 1.50e-04 | GradNorm 0.018
-2026-04-04 06:56:45,696  INFO      Epoch   6 | TrainLoss 0.2471 (BCE 0.4869 Huber 0.0073) | ValLoss 0.2486 (BCE 0.4892 Huber 0.0080) | Gap -0.0015 | ValAcc H1=0.537 H5=0.531 H20=0.523 | LR 1.80e-04 | GradNorm 0.019
-2026-04-04 07:02:01,697  INFO      Epoch   7 | TrainLoss 0.2471 (BCE 0.4868 Huber 0.0073) | ValLoss 0.2489 (BCE 0.4898 Huber 0.0080) | Gap -0.0019 | ValAcc H1=0.536 H5=0.531 H20=0.521 | LR 2.10e-04 | GradNorm 0.017
-2026-04-04 07:07:15,736  INFO      Epoch   8 | TrainLoss 0.2469 (BCE 0.4864 Huber 0.0073) | ValLoss 0.2490 (BCE 0.4900 Huber 0.0080) | Gap -0.0022 | ValAcc H1=0.536 H5=0.532 H20=0.518 | LR 2.40e-04 | GradNorm 0.018
-2026-04-04 07:12:29,694  INFO      Epoch   9 | TrainLoss 0.2466 (BCE 0.4860 Huber 0.0073) | ValLoss 0.2494 (BCE 0.4907 Huber 0.0081) | Gap -0.0027 | ValAcc H1=0.534 H5=0.522 H20=0.519 | LR 2.70e-04 | GradNorm 0.018
-2026-04-04 07:17:43,444  INFO      Epoch  10 | TrainLoss 0.2466 (BCE 0.4860 Huber 0.0072) | ValLoss 0.2492 (BCE 0.4903 Huber 0.0080) | Gap -0.0026 | ValAcc H1=0.530 H5=0.527 H20=0.519 | LR 3.00e-04 | GradNorm 0.018
-2026-04-04 07:23:17,461  INFO      Epoch  11 | TrainLoss 0.2464 (BCE 0.4855 Huber 0.0073) | ValLoss 0.2491 (BCE 0.4902 Huber 0.0080) | Gap -0.0027 | ValAcc H1=0.526 H5=0.522 H20=0.523 | LR 2.14e-04 | GradNorm 0.018
-2026-04-04 07:28:54,393  INFO      Epoch  12 | TrainLoss 0.2462 (BCE 0.4852 Huber 0.0073) | ValLoss 0.2492 (BCE 0.4903 Huber 0.0080) | Gap -0.0029 | ValAcc H1=0.531 H5=0.527 H20=0.518 | LR 2.00e-04 | GradNorm 0.020
-2026-04-04 07:34:32,868  INFO      Epoch  13 | TrainLoss 0.2459 (BCE 0.4845 Huber 0.0073) | ValLoss 0.2492 (BCE 0.4904 Huber 0.0080) | Gap -0.0033 | ValAcc H1=0.528 H5=0.524 H20=0.524 | LR 1.85e-04 | GradNorm 0.022
-2026-04-04 07:40:09,906  INFO      Epoch  14 | TrainLoss 0.2458 (BCE 0.4843 Huber 0.0072) | ValLoss 0.2490 (BCE 0.4900 Huber 0.0080) | Gap -0.0033 | ValAcc H1=0.527 H5=0.530 H20=0.518 | LR 1.70e-04 | GradNorm 0.024
-2026-04-04 07:45:48,811  INFO      Epoch  15 | TrainLoss 0.2456 (BCE 0.4840 Huber 0.0072) | ValLoss 0.2490 (BCE 0.4900 Huber 0.0080) | Gap -0.0034 | ValAcc H1=0.527 H5=0.528 H20=0.521 | LR 1.55e-04 | GradNorm 0.026
-2026-04-04 07:51:27,717  INFO      Epoch  16 | TrainLoss 0.2451 (BCE 0.4829 Huber 0.0072) | ValLoss 0.2495 (BCE 0.4910 Huber 0.0081) | Gap -0.0045 | ValAcc H1=0.525 H5=0.527 H20=0.524 | LR 1.40e-04 | GradNorm 0.029
-2026-04-04 07:57:07,192  INFO      Epoch  17 | TrainLoss 0.2452 (BCE 0.4831 Huber 0.0072) | ValLoss 0.2499 (BCE 0.4917 Huber 0.0081) | Gap -0.0047 | ValAcc H1=0.526 H5=0.526 H20=0.524 | LR 1.25e-04 | GradNorm 0.030
-2026-04-04 08:02:47,243  INFO      Epoch  18 | TrainLoss 0.2448 (BCE 0.4824 Huber 0.0073) | ValLoss 0.2495 (BCE 0.4910 Huber 0.0081) | Gap -0.0047 | ValAcc H1=0.529 H5=0.526 H20=0.523 | LR 1.10e-04 | GradNorm 0.034
-2026-04-04 08:08:26,083  INFO      Epoch  19 | TrainLoss 0.2446 (BCE 0.4819 Huber 0.0072) | ValLoss 0.2500 (BCE 0.4919 Huber 0.0081) | Gap -0.0054 | ValAcc H1=0.532 H5=0.526 H20=0.522 | LR 9.61e-05 | GradNorm 0.035
-2026-04-04 08:14:06,645  INFO      Epoch  20 | TrainLoss 0.2443 (BCE 0.4814 Huber 0.0072) | ValLoss 0.2503 (BCE 0.4925 Huber 0.0081) | Gap -0.0060 | ValAcc H1=0.528 H5=0.521 H20=0.522 | LR 8.25e-05 | GradNorm 0.039
-2026-04-04 08:19:45,725  INFO      Epoch  21 | TrainLoss 0.2442 (BCE 0.4812 Huber 0.0072) | ValLoss 0.2499 (BCE 0.4917 Huber 0.0081) | Gap -0.0057 | ValAcc H1=0.527 H5=0.525 H20=0.524 | LR 6.98e-05 | GradNorm 0.041
-2026-04-04 08:25:26,089  INFO      Epoch  22 | TrainLoss 0.2440 (BCE 0.4808 Huber 0.0072) | ValLoss 0.2512 (BCE 0.4943 Huber 0.0081) | Gap -0.0072 | ValAcc H1=0.530 H5=0.526 H20=0.524 | LR 5.80e-05 | GradNorm 0.043
-2026-04-04 08:31:07,941  INFO      Epoch  23 | TrainLoss 0.2437 (BCE 0.4803 Huber 0.0072) | ValLoss 0.2501 (BCE 0.4921 Huber 0.0081) | Gap -0.0063 | ValAcc H1=0.528 H5=0.523 H20=0.523 | LR 4.73e-05 | GradNorm 0.044
-2026-04-04 08:36:49,845  INFO      Epoch  24 | TrainLoss 0.2437 (BCE 0.4803 Huber 0.0072) | ValLoss 0.2501 (BCE 0.4922 Huber 0.0081) | Gap -0.0064 | ValAcc H1=0.524 H5=0.524 H20=0.522 | LR 3.77e-05 | GradNorm 0.045
-2026-04-04 08:42:31,191  INFO      Epoch  25 | TrainLoss 0.2435 (BCE 0.4798 Huber 0.0072) | ValLoss 0.2501 (BCE 0.4921 Huber 0.0081) | Gap -0.0065 | ValAcc H1=0.527 H5=0.525 H20=0.526 | LR 2.94e-05 | GradNorm 0.047
-2026-04-04 08:42:31,191  INFO        Early stopping at epoch 25 (no improvement for 20 epochs).
-2026-04-04 08:42:31,193  INFO        Restored best weights (val_loss=0.2484  H1=0.538 H5=0.530 H20=0.521)
-2026-04-04 08:42:31,193  INFO        SWA did not start (training ended before epoch 100)
-2026-04-04 08:42:31,194  INFO        Restored best weights (val_loss=0.2484  H1=0.538 H5=0.530 H20=0.521)
-2026-04-04 08:42:31,330  INFO        Saved checkpoint: models/base/checkpoint_fold_1.pt
-2026-04-04 08:42:31,526  INFO        Saved metrics   : logs/training/fold_1_metrics.csv
-2026-04-04 08:42:31,561  INFO      ============================================================
-2026-04-04 08:42:31,561  INFO      FOLD 2 — Training
-2026-04-04 08:42:31,598  INFO      Loading datasets...
-2026-04-04 08:42:31,965  INFO          Index built: 99916 samples from 104 files
-2026-04-04 08:42:45,546  INFO          Index built: 15428 samples from 104 files
-2026-04-04 08:42:45,546  INFO        Train samples: 99916  Val samples: 15428
-2026-04-04 08:42:45,569  INFO      Starting training — max 200 epochs, patience 20
-2026-04-04 08:48:51,913  INFO      Epoch   1 | TrainLoss 0.2488 (BCE 0.4900 Huber 0.0075) | ValLoss 0.2471 (BCE 0.4873 Huber 0.0070) | Gap 0.0016 | ValAcc H1=0.542 H5=0.537 H20=0.521 | LR 3.00e-05 | GradNorm 0.017
-2026-04-04 08:54:57,383  INFO      Epoch   2 | TrainLoss 0.2479 (BCE 0.4883 Huber 0.0075) | ValLoss 0.2468 (BCE 0.4867 Huber 0.0070) | Gap 0.0011 | ValAcc H1=0.546 H5=0.544 H20=0.522 | LR 6.00e-05 | GradNorm 0.019
-2026-04-04 09:01:10,264  INFO      Epoch   3 | TrainLoss 0.2477 (BCE 0.4880 Huber 0.0074) | ValLoss 0.2469 (BCE 0.4869 Huber 0.0070) | Gap 0.0008 | ValAcc H1=0.543 H5=0.540 H20=0.517 | LR 9.00e-05 | GradNorm 0.018
-2026-04-04 09:07:19,325  INFO      Epoch   4 | TrainLoss 0.2476 (BCE 0.4878 Huber 0.0074) | ValLoss 0.2468 (BCE 0.4866 Huber 0.0069) | Gap 0.0008 | ValAcc H1=0.545 H5=0.546 H20=0.518 | LR 1.20e-04 | GradNorm 0.020
-2026-04-04 09:13:25,296  INFO      Epoch   5 | TrainLoss 0.2475 (BCE 0.4876 Huber 0.0074) | ValLoss 0.2468 (BCE 0.4867 Huber 0.0070) | Gap 0.0007 | ValAcc H1=0.545 H5=0.546 H20=0.525 | LR 1.50e-04 | GradNorm 0.018
-2026-04-04 09:19:29,726  INFO      Epoch   6 | TrainLoss 0.2473 (BCE 0.4872 Huber 0.0074) | ValLoss 0.2469 (BCE 0.4868 Huber 0.0069) | Gap 0.0004 | ValAcc H1=0.545 H5=0.540 H20=0.532 | LR 1.80e-04 | GradNorm 0.018
-2026-04-04 09:25:33,110  INFO      Epoch   7 | TrainLoss 0.2471 (BCE 0.4869 Huber 0.0074) | ValLoss 0.2469 (BCE 0.4869 Huber 0.0070) | Gap 0.0002 | ValAcc H1=0.543 H5=0.541 H20=0.526 | LR 2.10e-04 | GradNorm 0.018
-2026-04-04 09:31:35,281  INFO      Epoch   8 | TrainLoss 0.2470 (BCE 0.4866 Huber 0.0074) | ValLoss 0.2466 (BCE 0.4863 Huber 0.0069) | Gap 0.0004 | ValAcc H1=0.550 H5=0.543 H20=0.531 | LR 2.40e-04 | GradNorm 0.018
-2026-04-04 09:37:36,576  INFO      Epoch   9 | TrainLoss 0.2471 (BCE 0.4869 Huber 0.0074) | ValLoss 0.2467 (BCE 0.4865 Huber 0.0069) | Gap 0.0004 | ValAcc H1=0.547 H5=0.545 H20=0.531 | LR 2.70e-04 | GradNorm 0.017
-2026-04-04 09:43:36,392  INFO      Epoch  10 | TrainLoss 0.2468 (BCE 0.4861 Huber 0.0074) | ValLoss 0.2466 (BCE 0.4862 Huber 0.0069) | Gap 0.0002 | ValAcc H1=0.550 H5=0.547 H20=0.536 | LR 3.00e-04 | GradNorm 0.018
-2026-04-04 09:49:36,089  INFO      Epoch  11 | TrainLoss 0.2466 (BCE 0.4858 Huber 0.0074) | ValLoss 0.2467 (BCE 0.4865 Huber 0.0070) | Gap -0.0001 | ValAcc H1=0.550 H5=0.545 H20=0.530 | LR 2.14e-04 | GradNorm 0.018
-2026-04-04 09:55:35,351  INFO      Epoch  12 | TrainLoss 0.2465 (BCE 0.4856 Huber 0.0074) | ValLoss 0.2469 (BCE 0.4868 Huber 0.0070) | Gap -0.0004 | ValAcc H1=0.543 H5=0.544 H20=0.532 | LR 2.00e-04 | GradNorm 0.020
-2026-04-04 10:01:35,624  INFO      Epoch  13 | TrainLoss 0.2462 (BCE 0.4850 Huber 0.0074) | ValLoss 0.2471 (BCE 0.4872 Huber 0.0070) | Gap -0.0009 | ValAcc H1=0.548 H5=0.544 H20=0.532 | LR 1.85e-04 | GradNorm 0.021
-2026-04-04 10:07:35,388  INFO      Epoch  14 | TrainLoss 0.2459 (BCE 0.4844 Huber 0.0074) | ValLoss 0.2471 (BCE 0.4872 Huber 0.0070) | Gap -0.0012 | ValAcc H1=0.546 H5=0.543 H20=0.530 | LR 1.70e-04 | GradNorm 0.024
-2026-04-04 10:13:36,328  INFO      Epoch  15 | TrainLoss 0.2458 (BCE 0.4843 Huber 0.0074) | ValLoss 0.2471 (BCE 0.4873 Huber 0.0070) | Gap -0.0013 | ValAcc H1=0.540 H5=0.543 H20=0.534 | LR 1.55e-04 | GradNorm 0.026
-2026-04-04 10:19:37,208  INFO      Epoch  16 | TrainLoss 0.2456 (BCE 0.4839 Huber 0.0074) | ValLoss 0.2472 (BCE 0.4874 Huber 0.0070) | Gap -0.0016 | ValAcc H1=0.546 H5=0.539 H20=0.531 | LR 1.40e-04 | GradNorm 0.028
-2026-04-04 10:25:39,380  INFO      Epoch  17 | TrainLoss 0.2455 (BCE 0.4836 Huber 0.0074) | ValLoss 0.2472 (BCE 0.4874 Huber 0.0070) | Gap -0.0017 | ValAcc H1=0.545 H5=0.542 H20=0.532 | LR 1.25e-04 | GradNorm 0.030
-2026-04-04 10:31:41,895  INFO      Epoch  18 | TrainLoss 0.2451 (BCE 0.4828 Huber 0.0074) | ValLoss 0.2474 (BCE 0.4879 Huber 0.0070) | Gap -0.0024 | ValAcc H1=0.545 H5=0.538 H20=0.532 | LR 1.10e-04 | GradNorm 0.033
-2026-04-04 10:37:44,629  INFO      Epoch  19 | TrainLoss 0.2451 (BCE 0.4829 Huber 0.0073) | ValLoss 0.2478 (BCE 0.4886 Huber 0.0070) | Gap -0.0027 | ValAcc H1=0.541 H5=0.542 H20=0.534 | LR 9.61e-05 | GradNorm 0.033
-2026-04-04 10:43:47,452  INFO      Epoch  20 | TrainLoss 0.2448 (BCE 0.4822 Huber 0.0073) | ValLoss 0.2477 (BCE 0.4885 Huber 0.0070) | Gap -0.0030 | ValAcc H1=0.542 H5=0.538 H20=0.531 | LR 8.25e-05 | GradNorm 0.036
-2026-04-04 10:49:50,796  INFO      Epoch  21 | TrainLoss 0.2446 (BCE 0.4819 Huber 0.0073) | ValLoss 0.2476 (BCE 0.4882 Huber 0.0070) | Gap -0.0030 | ValAcc H1=0.546 H5=0.539 H20=0.532 | LR 6.98e-05 | GradNorm 0.040
-2026-04-04 10:55:42,922  INFO      Epoch  22 | TrainLoss 0.2442 (BCE 0.4811 Huber 0.0073) | ValLoss 0.2481 (BCE 0.4892 Huber 0.0070) | Gap -0.0039 | ValAcc H1=0.545 H5=0.535 H20=0.530 | LR 5.80e-05 | GradNorm 0.041
-2026-04-04 11:01:46,220  INFO      Epoch  23 | TrainLoss 0.2441 (BCE 0.4809 Huber 0.0074) | ValLoss 0.2483 (BCE 0.4896 Huber 0.0070) | Gap -0.0041 | ValAcc H1=0.542 H5=0.539 H20=0.534 | LR 4.73e-05 | GradNorm 0.043
-2026-04-04 11:07:45,723  INFO      Epoch  24 | TrainLoss 0.2441 (BCE 0.4808 Huber 0.0073) | ValLoss 0.2482 (BCE 0.4895 Huber 0.0070) | Gap -0.0042 | ValAcc H1=0.538 H5=0.538 H20=0.532 | LR 3.77e-05 | GradNorm 0.045
-2026-04-04 11:13:43,086  INFO      Epoch  25 | TrainLoss 0.2441 (BCE 0.4808 Huber 0.0073) | ValLoss 0.2479 (BCE 0.4888 Huber 0.0070) | Gap -0.0038 | ValAcc H1=0.545 H5=0.540 H20=0.531 | LR 2.94e-05 | GradNorm 0.046
-2026-04-04 11:19:19,515  INFO      Epoch  26 | TrainLoss 0.2438 (BCE 0.4802 Huber 0.0073) | ValLoss 0.2480 (BCE 0.4890 Huber 0.0070) | Gap -0.0042 | ValAcc H1=0.544 H5=0.538 H20=0.534 | LR 2.26e-05 | GradNorm 0.047
-2026-04-04 11:24:55,171  INFO      Epoch  27 | TrainLoss 0.2439 (BCE 0.4805 Huber 0.0073) | ValLoss 0.2479 (BCE 0.4888 Huber 0.0070) | Gap -0.0040 | ValAcc H1=0.543 H5=0.538 H20=0.532 | LR 1.71e-05 | GradNorm 0.048
-2026-04-04 11:30:32,711  INFO      Epoch  28 | TrainLoss 0.2435 (BCE 0.4797 Huber 0.0073) | ValLoss 0.2481 (BCE 0.4891 Huber 0.0070) | Gap -0.0045 | ValAcc H1=0.545 H5=0.539 H20=0.533 | LR 1.32e-05 | GradNorm 0.050
-2026-04-04 11:30:32,711  INFO        Early stopping at epoch 28 (no improvement for 20 epochs).
-2026-04-04 11:30:32,718  INFO        Restored best weights (val_loss=0.2466  H1=0.550 H5=0.543 H20=0.531)
-2026-04-04 11:30:32,718  INFO        SWA did not start (training ended before epoch 100)
-2026-04-04 11:30:32,719  INFO        Restored best weights (val_loss=0.2466  H1=0.550 H5=0.543 H20=0.531)
-2026-04-04 11:30:32,764  INFO        Saved checkpoint: models/base/checkpoint_fold_2.pt
-2026-04-04 11:30:32,824  INFO        Saved metrics   : logs/training/fold_2_metrics.csv
-2026-04-04 11:30:32,867  INFO      ============================================================
-2026-04-04 11:30:32,867  INFO      FOLD 3 — Training
-2026-04-04 11:30:33,084  INFO      Loading datasets...
-2026-04-04 11:30:33,799  INFO          Index built: 102600 samples from 104 files
-2026-04-04 11:30:53,020  INFO          Index built: 23431 samples from 144 files
-2026-04-04 11:30:53,020  INFO        Train samples: 102600  Val samples: 23431
-2026-04-04 11:30:53,075  INFO      Starting training — max 200 epochs, patience 20
-2026-04-04 11:36:49,318  INFO      Epoch   1 | TrainLoss 0.2490 (BCE 0.4905 Huber 0.0075) | ValLoss 0.2478 (BCE 0.4884 Huber 0.0071) | Gap 0.0012 | ValAcc H1=0.535 H5=0.530 H20=0.526 | LR 3.00e-05 | GradNorm 0.019
-2026-04-04 11:42:43,623  INFO      Epoch   2 | TrainLoss 0.2479 (BCE 0.4884 Huber 0.0074) | ValLoss 0.2471 (BCE 0.4872 Huber 0.0071) | Gap 0.0008 | ValAcc H1=0.544 H5=0.541 H20=0.527 | LR 6.00e-05 | GradNorm 0.020
-2026-04-04 11:48:48,449  INFO      Epoch   3 | TrainLoss 0.2477 (BCE 0.4881 Huber 0.0074) | ValLoss 0.2470 (BCE 0.4869 Huber 0.0070) | Gap 0.0008 | ValAcc H1=0.545 H5=0.542 H20=0.531 | LR 9.00e-05 | GradNorm 0.020
-2026-04-04 11:54:48,446  INFO      Epoch   4 | TrainLoss 0.2476 (BCE 0.4877 Huber 0.0074) | ValLoss 0.2469 (BCE 0.4868 Huber 0.0071) | Gap 0.0006 | ValAcc H1=0.545 H5=0.538 H20=0.532 | LR 1.20e-04 | GradNorm 0.019
-2026-04-04 12:00:52,034  INFO      Epoch   5 | TrainLoss 0.2473 (BCE 0.4873 Huber 0.0074) | ValLoss 0.2469 (BCE 0.4867 Huber 0.0070) | Gap 0.0004 | ValAcc H1=0.547 H5=0.543 H20=0.529 | LR 1.50e-04 | GradNorm 0.018
-2026-04-04 12:06:45,802  INFO      Epoch   6 | TrainLoss 0.2473 (BCE 0.4873 Huber 0.0074) | ValLoss 0.2469 (BCE 0.4868 Huber 0.0070) | Gap 0.0004 | ValAcc H1=0.548 H5=0.545 H20=0.526 | LR 1.80e-04 | GradNorm 0.018
-2026-04-04 12:12:36,922  INFO      Epoch   7 | TrainLoss 0.2472 (BCE 0.4870 Huber 0.0074) | ValLoss 0.2468 (BCE 0.4866 Huber 0.0070) | Gap 0.0004 | ValAcc H1=0.546 H5=0.543 H20=0.525 | LR 2.10e-04 | GradNorm 0.018
-2026-04-04 12:18:27,055  INFO      Epoch   8 | TrainLoss 0.2471 (BCE 0.4869 Huber 0.0074) | ValLoss 0.2469 (BCE 0.4867 Huber 0.0070) | Gap 0.0003 | ValAcc H1=0.546 H5=0.546 H20=0.531 | LR 2.40e-04 | GradNorm 0.017
-2026-04-04 12:24:16,409  INFO      Epoch   9 | TrainLoss 0.2471 (BCE 0.4868 Huber 0.0074) | ValLoss 0.2468 (BCE 0.4866 Huber 0.0070) | Gap 0.0002 | ValAcc H1=0.545 H5=0.543 H20=0.528 | LR 2.70e-04 | GradNorm 0.017
-2026-04-04 12:30:05,140  INFO      Epoch  10 | TrainLoss 0.2468 (BCE 0.4863 Huber 0.0074) | ValLoss 0.2471 (BCE 0.4871 Huber 0.0071) | Gap -0.0003 | ValAcc H1=0.545 H5=0.544 H20=0.520 | LR 3.00e-04 | GradNorm 0.017
-2026-04-04 12:35:53,547  INFO      Epoch  11 | TrainLoss 0.2466 (BCE 0.4859 Huber 0.0074) | ValLoss 0.2470 (BCE 0.4870 Huber 0.0070) | Gap -0.0004 | ValAcc H1=0.547 H5=0.541 H20=0.526 | LR 2.14e-04 | GradNorm 0.018
-2026-04-04 12:41:42,302  INFO      Epoch  12 | TrainLoss 0.2463 (BCE 0.4853 Huber 0.0074) | ValLoss 0.2472 (BCE 0.4873 Huber 0.0071) | Gap -0.0008 | ValAcc H1=0.542 H5=0.543 H20=0.528 | LR 2.00e-04 | GradNorm 0.020
-2026-04-04 12:47:30,426  INFO      Epoch  13 | TrainLoss 0.2461 (BCE 0.4849 Huber 0.0074) | ValLoss 0.2470 (BCE 0.4870 Huber 0.0070) | Gap -0.0009 | ValAcc H1=0.548 H5=0.543 H20=0.528 | LR 1.85e-04 | GradNorm 0.021
-2026-04-04 12:53:18,280  INFO      Epoch  14 | TrainLoss 0.2460 (BCE 0.4846 Huber 0.0073) | ValLoss 0.2470 (BCE 0.4869 Huber 0.0071) | Gap -0.0010 | ValAcc H1=0.548 H5=0.545 H20=0.526 | LR 1.70e-04 | GradNorm 0.023
-2026-04-04 12:59:07,102  INFO      Epoch  15 | TrainLoss 0.2458 (BCE 0.4843 Huber 0.0073) | ValLoss 0.2474 (BCE 0.4877 Huber 0.0071) | Gap -0.0016 | ValAcc H1=0.544 H5=0.543 H20=0.528 | LR 1.55e-04 | GradNorm 0.024
-2026-04-04 13:04:55,610  INFO      Epoch  16 | TrainLoss 0.2454 (BCE 0.4835 Huber 0.0074) | ValLoss 0.2475 (BCE 0.4879 Huber 0.0071) | Gap -0.0021 | ValAcc H1=0.545 H5=0.540 H20=0.527 | LR 1.40e-04 | GradNorm 0.027
-2026-04-04 13:10:45,005  INFO      Epoch  17 | TrainLoss 0.2452 (BCE 0.4831 Huber 0.0073) | ValLoss 0.2476 (BCE 0.4881 Huber 0.0071) | Gap -0.0024 | ValAcc H1=0.544 H5=0.543 H20=0.524 | LR 1.25e-04 | GradNorm 0.030
-2026-04-04 13:16:35,335  INFO      Epoch  18 | TrainLoss 0.2451 (BCE 0.4828 Huber 0.0073) | ValLoss 0.2485 (BCE 0.4899 Huber 0.0071) | Gap -0.0034 | ValAcc H1=0.542 H5=0.541 H20=0.527 | LR 1.10e-04 | GradNorm 0.033
-2026-04-04 13:22:26,049  INFO      Epoch  19 | TrainLoss 0.2449 (BCE 0.4825 Huber 0.0073) | ValLoss 0.2475 (BCE 0.4880 Huber 0.0071) | Gap -0.0026 | ValAcc H1=0.545 H5=0.541 H20=0.528 | LR 9.61e-05 | GradNorm 0.034
-2026-04-04 13:28:15,845  INFO      Epoch  20 | TrainLoss 0.2447 (BCE 0.4821 Huber 0.0073) | ValLoss 0.2475 (BCE 0.4878 Huber 0.0071) | Gap -0.0028 | ValAcc H1=0.546 H5=0.544 H20=0.528 | LR 8.25e-05 | GradNorm 0.037
-2026-04-04 13:34:06,788  INFO      Epoch  21 | TrainLoss 0.2445 (BCE 0.4816 Huber 0.0073) | ValLoss 0.2484 (BCE 0.4897 Huber 0.0071) | Gap -0.0039 | ValAcc H1=0.546 H5=0.539 H20=0.527 | LR 6.98e-05 | GradNorm 0.039
-2026-04-04 13:39:57,482  INFO      Epoch  22 | TrainLoss 0.2443 (BCE 0.4813 Huber 0.0073) | ValLoss 0.2480 (BCE 0.4889 Huber 0.0071) | Gap -0.0037 | ValAcc H1=0.545 H5=0.543 H20=0.531 | LR 5.80e-05 | GradNorm 0.042
-2026-04-04 13:45:48,512  INFO      Epoch  23 | TrainLoss 0.2438 (BCE 0.4804 Huber 0.0073) | ValLoss 0.2479 (BCE 0.4887 Huber 0.0071) | Gap -0.0041 | ValAcc H1=0.544 H5=0.541 H20=0.529 | LR 4.73e-05 | GradNorm 0.044
-2026-04-04 13:51:39,258  INFO      Epoch  24 | TrainLoss 0.2439 (BCE 0.4804 Huber 0.0073) | ValLoss 0.2483 (BCE 0.4896 Huber 0.0071) | Gap -0.0045 | ValAcc H1=0.543 H5=0.541 H20=0.528 | LR 3.77e-05 | GradNorm 0.046
-2026-04-04 13:57:29,510  INFO      Epoch  25 | TrainLoss 0.2437 (BCE 0.4801 Huber 0.0073) | ValLoss 0.2480 (BCE 0.4889 Huber 0.0071) | Gap -0.0043 | ValAcc H1=0.546 H5=0.545 H20=0.532 | LR 2.94e-05 | GradNorm 0.048
-2026-04-04 14:03:19,876  INFO      Epoch  26 | TrainLoss 0.2439 (BCE 0.4806 Huber 0.0073) | ValLoss 0.2478 (BCE 0.4886 Huber 0.0071) | Gap -0.0039 | ValAcc H1=0.547 H5=0.545 H20=0.530 | LR 2.26e-05 | GradNorm 0.046
-2026-04-04 14:09:10,889  INFO      Epoch  27 | TrainLoss 0.2436 (BCE 0.4799 Huber 0.0073) | ValLoss 0.2480 (BCE 0.4890 Huber 0.0071) | Gap -0.0044 | ValAcc H1=0.545 H5=0.544 H20=0.531 | LR 1.71e-05 | GradNorm 0.048
-2026-04-04 14:09:10,890  INFO        Early stopping at epoch 27 (no improvement for 20 epochs).
-2026-04-04 14:09:10,891  INFO        Restored best weights (val_loss=0.2468  H1=0.546 H5=0.543 H20=0.525)
-2026-04-04 14:09:10,891  INFO        SWA did not start (training ended before epoch 100)
-2026-04-04 14:09:10,892  INFO        Restored best weights (val_loss=0.2468  H1=0.546 H5=0.543 H20=0.525)
-2026-04-04 14:09:10,895  INFO        Saved checkpoint: models/base/checkpoint_fold_3.pt
-2026-04-04 14:09:10,899  INFO        Saved metrics   : logs/training/fold_3_metrics.csv
-2026-04-04 14:09:10,950  INFO      ============================================================
-2026-04-04 14:09:10,951  INFO      Training complete. Cross-fold summary:
-2026-04-04 14:09:10,951  INFO        Fold 1: best_val_loss=0.2484  best_val_acc H1=0.538 H5=0.530 H20=0.521  epochs=25
-2026-04-04 14:09:10,951  INFO        Fold 2: best_val_loss=0.2466  best_val_acc H1=0.550 H5=0.543 H20=0.531  epochs=28
-2026-04-04 14:09:10,951  INFO        Fold 3: best_val_loss=0.2468  best_val_acc H1=0.546 H5=0.543 H20=0.525  epochs=27
-2026-04-04 14:09:10,951  INFO        Mean val loss : 0.2473 ± 0.0008
-2026-04-04 14:09:10,952  INFO        Mean val acc  : 0.361 ± 0.002
-2026-04-04 14:09:11,071  INFO        Base checkpoint saved: models/base/checkpoint_base_v1.pt  (from fold 2)
-2026-04-04 14:09:11,071  INFO      Stage 5 complete.
-2026-04-04 14:09:11,071  INFO      Next step: run evaluation.py (Stage 7) on the test splits.
-2026-04-04 19:56:46,406  INFO      Stage 5 Training Loop — Start
-2026-04-04 19:56:46,521  INFO      Device : cpu
-2026-04-04 19:56:46,521  INFO      Config : LR=3e-04  Batch=256  MaxEpochs=200  Patience=30
-2026-04-04 19:56:46,523  INFO      Folds to train: [1, 2, 3]
-2026-04-04 19:56:46,523  INFO      Fold 1 checkpoint already exists — skipping.
-2026-04-04 19:56:46,892  INFO        Recovered from metrics CSV — H1=0.538 H5=0.530 H20=0.521
-2026-04-04 19:56:46,893  INFO      Fold 2 checkpoint already exists — skipping.
-2026-04-04 19:56:46,967  INFO        Recovered from metrics CSV — H1=0.550 H5=0.547 H20=0.536
-2026-04-04 19:56:46,967  INFO      Fold 3 checkpoint already exists — skipping.
-2026-04-04 19:56:47,167  INFO        Recovered from metrics CSV — H1=0.546 H5=0.543 H20=0.525
-2026-04-04 19:56:47,167  INFO      ============================================================
-2026-04-04 19:56:47,167  INFO      Training complete. Cross-fold summary:
-2026-04-04 19:56:47,167  INFO        Fold 1: best_val_loss=0.2484  best_val_acc H1=0.538 H5=0.530 H20=0.521  epochs=25
-2026-04-04 19:56:47,167  INFO        Fold 2: best_val_loss=0.2466  best_val_acc H1=0.550 H5=0.547 H20=0.536  epochs=28
-2026-04-04 19:56:47,167  INFO        Fold 3: best_val_loss=0.2468  best_val_acc H1=0.546 H5=0.543 H20=0.525  epochs=27
-2026-04-04 19:56:47,169  INFO        Mean val loss : 0.2473 ± 0.0008
-2026-04-04 19:56:47,169  INFO        Mean val acc  : 0.537 ± 0.006
-2026-04-04 19:56:47,169  INFO        Base checkpoint already exists — not overwritten: models/base/checkpoint_base_v1.pt
-2026-04-04 19:56:47,169  INFO      Stage 5 complete.
-2026-04-04 19:56:47,170  INFO      Next step: run evaluation.py (Stage 7) on the test splits.
-2026-04-04 19:57:14,729  INFO      Stage 5 Training Loop — Start
-2026-04-04 19:57:14,729  INFO      Device : cpu
-2026-04-04 19:57:14,729  INFO      Config : LR=3e-04  Batch=256  MaxEpochs=200  Patience=30
-2026-04-04 19:57:14,730  INFO      Folds to train: [1, 2, 3]
-2026-04-04 19:57:14,730  INFO      Fold 1 checkpoint already exists — skipping.
-2026-04-04 19:57:14,743  INFO        Recovered from metrics CSV — H1=0.538 H5=0.530 H20=0.521
-2026-04-04 19:57:14,743  INFO      Fold 2 checkpoint already exists — skipping.
-2026-04-04 19:57:14,750  INFO        Recovered from metrics CSV — H1=0.550 H5=0.547 H20=0.536
-2026-04-04 19:57:14,750  INFO      Fold 3 checkpoint already exists — skipping.
-2026-04-04 19:57:14,758  INFO        Recovered from metrics CSV — H1=0.546 H5=0.543 H20=0.525
-2026-04-04 19:57:14,758  INFO      ============================================================
-2026-04-04 19:57:14,758  INFO      Training complete. Cross-fold summary:
-2026-04-04 19:57:14,758  INFO        Fold 1: best_val_loss=0.2484  best_val_acc H1=0.538 H5=0.530 H20=0.521  epochs=25
-2026-04-04 19:57:14,758  INFO        Fold 2: best_val_loss=0.2466  best_val_acc H1=0.550 H5=0.547 H20=0.536  epochs=28
-2026-04-04 19:57:14,758  INFO        Fold 3: best_val_loss=0.2468  best_val_acc H1=0.546 H5=0.543 H20=0.525  epochs=27
-2026-04-04 19:57:14,758  INFO        Mean val loss : 0.2473 ± 0.0008
-2026-04-04 19:57:14,758  INFO        Mean val acc  : 0.537 ± 0.006
-2026-04-04 19:57:14,759  INFO        Base checkpoint already exists — not overwritten: models/base/checkpoint_base_v1.pt
-2026-04-04 19:57:14,759  INFO      Stage 5 complete.
-2026-04-04 19:57:14,759  INFO      Next step: run evaluation.py (Stage 7) on the test splits.
-2026-04-04 20:02:46,320  INFO      Stage 5 Training Loop — Start
-2026-04-04 20:02:46,320  INFO      Device : cpu
-2026-04-04 20:02:46,320  INFO      Config : LR=3e-04  Batch=256  MaxEpochs=200  Patience=20
-2026-04-04 20:02:46,321  INFO      Folds to train: [1, 2, 3]
-2026-04-04 20:02:46,321  INFO      Fold 1 checkpoint already exists — skipping.
-2026-04-04 20:02:46,334  INFO        Recovered from metrics CSV — H1=0.538 H5=0.530 H20=0.521
-2026-04-04 20:02:46,334  INFO      Fold 2 checkpoint already exists — skipping.
-2026-04-04 20:02:46,342  INFO        Recovered from metrics CSV — H1=0.550 H5=0.547 H20=0.536
-2026-04-04 20:02:46,343  INFO      Fold 3 checkpoint already exists — skipping.
-2026-04-04 20:02:46,353  INFO        Recovered from metrics CSV — H1=0.546 H5=0.543 H20=0.525
-2026-04-04 20:02:46,354  INFO      ============================================================
-2026-04-04 20:02:46,354  INFO      Training complete. Cross-fold summary:
-2026-04-04 20:02:46,354  INFO        Fold 1: best_val_loss=0.2484  best_val_acc H1=0.538 H5=0.530 H20=0.521  epochs=25
-2026-04-04 20:02:46,354  INFO        Fold 2: best_val_loss=0.2466  best_val_acc H1=0.550 H5=0.547 H20=0.536  epochs=28
-2026-04-04 20:02:46,354  INFO        Fold 3: best_val_loss=0.2468  best_val_acc H1=0.546 H5=0.543 H20=0.525  epochs=27
-2026-04-04 20:02:46,354  INFO        Mean val loss : 0.2473 ± 0.0008
-2026-04-04 20:02:46,354  INFO        Mean val acc  : 0.537 ± 0.006
-2026-04-04 20:02:46,354  INFO        Base checkpoint already exists — not overwritten: models/base/checkpoint_base_v1.pt
-2026-04-04 20:02:46,354  INFO      Stage 5 complete.
-2026-04-04 20:02:46,354  INFO      Next step: run evaluation.py (Stage 7) on the test splits.
-2026-04-04 20:03:00,758  INFO      Stage 5 Training Loop — Start
-2026-04-04 20:03:00,758  INFO      Device : cpu
-2026-04-04 20:03:00,758  INFO      Config : LR=3e-04  Batch=256  MaxEpochs=200  Patience=30
-2026-04-04 20:03:00,759  INFO      Folds to train: [1, 2, 3]
-2026-04-04 20:03:00,759  INFO      Fold 1 checkpoint already exists — skipping.
-2026-04-04 20:03:00,773  INFO        Recovered from metrics CSV — H1=0.538 H5=0.530 H20=0.521
-2026-04-04 20:03:00,773  INFO      Fold 2 checkpoint already exists — skipping.
-2026-04-04 20:03:00,782  INFO        Recovered from metrics CSV — H1=0.550 H5=0.547 H20=0.536
-2026-04-04 20:03:00,783  INFO      Fold 3 checkpoint already exists — skipping.
-2026-04-04 20:03:00,790  INFO        Recovered from metrics CSV — H1=0.546 H5=0.543 H20=0.525
-2026-04-04 20:03:00,790  INFO      ============================================================
-2026-04-04 20:03:00,790  INFO      Training complete. Cross-fold summary:
-2026-04-04 20:03:00,791  INFO        Fold 1: best_val_loss=0.2484  best_val_acc H1=0.538 H5=0.530 H20=0.521  epochs=25
-2026-04-04 20:03:00,791  INFO        Fold 2: best_val_loss=0.2466  best_val_acc H1=0.550 H5=0.547 H20=0.536  epochs=28
-2026-04-04 20:03:00,791  INFO        Fold 3: best_val_loss=0.2468  best_val_acc H1=0.546 H5=0.543 H20=0.525  epochs=27
-2026-04-04 20:03:00,791  INFO        Mean val loss : 0.2473 ± 0.0008
-2026-04-04 20:03:00,791  INFO        Mean val acc  : 0.537 ± 0.006
-2026-04-04 20:03:00,791  INFO        Base checkpoint already exists — not overwritten: models/base/checkpoint_base_v1.pt
-2026-04-04 20:03:00,791  INFO      Stage 5 complete.
-2026-04-04 20:03:00,791  INFO      Next step: run evaluation.py (Stage 7) on the test splits.
-2026-04-04 20:04:19,416  INFO      Stage 5 Training Loop — Start
-2026-04-04 20:04:19,417  INFO      Device : cpu
-2026-04-04 20:04:19,417  INFO      Config : LR=3e-04  Batch=256  MaxEpochs=200  Patience=30
-2026-04-04 20:04:19,417  INFO      Folds to train: [1, 2, 3]
-2026-04-04 20:04:19,417  INFO      Fold 1 checkpoint already exists — skipping.
-2026-04-04 20:04:19,430  INFO        Recovered from metrics CSV — H1=0.538 H5=0.530 H20=0.521
-2026-04-04 20:04:19,431  INFO      Fold 2 checkpoint already exists — skipping.
-2026-04-04 20:04:19,438  INFO        Recovered from metrics CSV — H1=0.550 H5=0.547 H20=0.536
-2026-04-04 20:04:19,438  INFO      Fold 3 checkpoint already exists — skipping.
-2026-04-04 20:04:19,448  INFO        Recovered from metrics CSV — H1=0.546 H5=0.543 H20=0.525
-2026-04-04 20:04:19,448  INFO      ============================================================
-2026-04-04 20:04:19,448  INFO      Training complete. Cross-fold summary:
-2026-04-04 20:04:19,448  INFO        Fold 1: best_val_loss=0.2484  best_val_acc H1=0.538 H5=0.530 H20=0.521  epochs=25
-2026-04-04 20:04:19,449  INFO        Fold 2: best_val_loss=0.2466  best_val_acc H1=0.550 H5=0.547 H20=0.536  epochs=28
-2026-04-04 20:04:19,449  INFO        Fold 3: best_val_loss=0.2468  best_val_acc H1=0.546 H5=0.543 H20=0.525  epochs=27
-2026-04-04 20:04:19,449  INFO        Mean val loss : 0.2473 ± 0.0008
-2026-04-04 20:04:19,449  INFO        Mean val acc  : 0.537 ± 0.006
-2026-04-04 20:04:19,449  INFO        Base checkpoint already exists — not overwritten: models/base/checkpoint_base_v1.pt
-2026-04-04 20:04:19,449  INFO      Stage 5 complete.
-2026-04-04 20:04:19,449  INFO      Next step: run evaluation.py (Stage 7) on the test splits.
-2026-04-04 20:10:05,558  INFO      Stage 5 Training Loop — Start
-2026-04-04 20:10:05,558  INFO      Device : cpu
-2026-04-04 20:10:05,558  INFO      Config : LR=3e-04  Batch=256  MaxEpochs=200  Patience=30
-2026-04-04 20:10:05,559  INFO      Folds to train: [1, 2, 3]
-2026-04-04 20:10:05,559  INFO      Fold 1 checkpoint already exists — skipping.
-2026-04-04 20:10:05,572  INFO        Recovered from metrics CSV — H1=0.538 H5=0.530 H20=0.521
-2026-04-04 20:10:05,572  INFO      Fold 2 checkpoint already exists — skipping.
-2026-04-04 20:10:05,580  INFO        Recovered from metrics CSV — H1=0.550 H5=0.547 H20=0.536
-2026-04-04 20:10:05,580  INFO      Fold 3 checkpoint already exists — skipping.
-2026-04-04 20:10:05,587  INFO        Recovered from metrics CSV — H1=0.546 H5=0.543 H20=0.525
-2026-04-04 20:10:05,587  INFO      ============================================================
-2026-04-04 20:10:05,587  INFO      Training complete. Cross-fold summary:
-2026-04-04 20:10:05,587  INFO        Fold 1: best_val_loss=0.2484  best_val_acc H1=0.538 H5=0.530 H20=0.521  epochs=25
-2026-04-04 20:10:05,587  INFO        Fold 2: best_val_loss=0.2466  best_val_acc H1=0.550 H5=0.547 H20=0.536  epochs=28
-2026-04-04 20:10:05,587  INFO        Fold 3: best_val_loss=0.2468  best_val_acc H1=0.546 H5=0.543 H20=0.525  epochs=27
-2026-04-04 20:10:05,588  INFO        Mean val loss : 0.2473 ± 0.0008
-2026-04-04 20:10:05,588  INFO        Mean val acc  : 0.537 ± 0.006
-2026-04-04 20:10:05,588  INFO        Base checkpoint already exists — not overwritten: models/base/checkpoint_base_v1.pt
-2026-04-04 20:10:05,588  INFO      Stage 5 complete.
-2026-04-04 20:10:05,588  INFO      Next step: run evaluation.py (Stage 7) on the test splits.
-2026-04-04 20:11:43,880  INFO      Stage 5 Training Loop — Start
-2026-04-04 20:11:43,916  INFO      Device : cpu
-2026-04-04 20:11:43,916  INFO      Config : LR=3e-04  Batch=256  MaxEpochs=200  Patience=20
-2026-04-04 20:11:43,917  INFO      Folds to train: [1, 2, 3]
-2026-04-04 20:11:43,917  INFO      Fold 1 checkpoint already exists — skipping.
-2026-04-04 20:11:43,935  INFO        Recovered from metrics CSV — H1=0.538 H5=0.530 H20=0.521
-2026-04-04 20:11:43,935  INFO      Fold 2 checkpoint already exists — skipping.
-2026-04-04 20:11:43,945  INFO        Recovered from metrics CSV — H1=0.550 H5=0.547 H20=0.536
-2026-04-04 20:11:43,945  INFO      Fold 3 checkpoint already exists — skipping.
-2026-04-04 20:11:43,955  INFO        Recovered from metrics CSV — H1=0.546 H5=0.543 H20=0.525
-2026-04-04 20:11:43,955  INFO      ============================================================
-2026-04-04 20:11:43,955  INFO      Training complete. Cross-fold summary:
-2026-04-04 20:11:43,955  INFO        Fold 1: best_val_loss=0.2484  best_val_acc H1=0.538 H5=0.530 H20=0.521  epochs=25
-2026-04-04 20:11:43,955  INFO        Fold 2: best_val_loss=0.2466  best_val_acc H1=0.550 H5=0.547 H20=0.536  epochs=28
-2026-04-04 20:11:43,955  INFO        Fold 3: best_val_loss=0.2468  best_val_acc H1=0.546 H5=0.543 H20=0.525  epochs=27
-2026-04-04 20:11:43,955  INFO        Mean val loss : 0.2473 ± 0.0008
-2026-04-04 20:11:43,955  INFO        Mean val acc  : 0.537 ± 0.006
-2026-04-04 20:11:43,956  INFO        Base checkpoint already exists — not overwritten: models/base/checkpoint_base_v1.pt
-2026-04-04 20:11:43,956  INFO      Stage 5 complete.
-2026-04-04 20:11:43,956  INFO      Next step: run evaluation.py (Stage 7) on the test splits.
-2026-04-04 20:11:55,870  INFO      Stage 5 Training Loop — Start
-2026-04-04 20:11:55,870  INFO      Device : cpu
-2026-04-04 20:11:55,870  INFO      Config : LR=3e-04  Batch=256  MaxEpochs=200  Patience=30
-2026-04-04 20:11:55,871  INFO      Folds to train: [1, 2, 3]
-2026-04-04 20:11:55,871  INFO      Fold 1 checkpoint already exists — skipping.
-2026-04-04 20:11:55,883  INFO        Recovered from metrics CSV — H1=0.538 H5=0.530 H20=0.521
-2026-04-04 20:11:55,884  INFO      Fold 2 checkpoint already exists — skipping.
-2026-04-04 20:11:55,891  INFO        Recovered from metrics CSV — H1=0.550 H5=0.547 H20=0.536
-2026-04-04 20:11:55,891  INFO      Fold 3 checkpoint already exists — skipping.
-2026-04-04 20:11:55,902  INFO        Recovered from metrics CSV — H1=0.546 H5=0.543 H20=0.525
-2026-04-04 20:11:55,902  INFO      ============================================================
-2026-04-04 20:11:55,902  INFO      Training complete. Cross-fold summary:
-2026-04-04 20:11:55,902  INFO        Fold 1: best_val_loss=0.2484  best_val_acc H1=0.538 H5=0.530 H20=0.521  epochs=25
-2026-04-04 20:11:55,902  INFO        Fold 2: best_val_loss=0.2466  best_val_acc H1=0.550 H5=0.547 H20=0.536  epochs=28
-2026-04-04 20:11:55,902  INFO        Fold 3: best_val_loss=0.2468  best_val_acc H1=0.546 H5=0.543 H20=0.525  epochs=27
-2026-04-04 20:11:55,903  INFO        Mean val loss : 0.2473 ± 0.0008
-2026-04-04 20:11:55,903  INFO        Mean val acc  : 0.537 ± 0.006
-2026-04-04 20:11:55,903  INFO        Base checkpoint already exists — not overwritten: models/base/checkpoint_base_v1.pt
-2026-04-04 20:11:55,903  INFO      Stage 5 complete.
-2026-04-04 20:11:55,903  INFO      Next step: run evaluation.py (Stage 7) on the test splits.
-2026-04-05 06:18:21,926  INFO      Stage 5 Training Loop — Start
-2026-04-05 06:18:21,930  INFO      Device : cpu
-2026-04-05 06:18:21,930  INFO      Config : LR=3e-04  Batch=256  MaxEpochs=200  Patience=20
-2026-04-05 06:18:21,931  INFO      Folds to train: [1, 2, 3]
-2026-04-05 06:18:21,931  INFO      Fold 1 checkpoint already exists — skipping.
-2026-04-05 06:18:21,981  INFO        Recovered from metrics CSV — H1=0.538 H5=0.530 H20=0.521
-2026-04-05 06:18:21,981  INFO      Fold 2 checkpoint already exists — skipping.
-2026-04-05 06:18:21,998  INFO        Recovered from metrics CSV — H1=0.550 H5=0.547 H20=0.536
-2026-04-05 06:18:21,998  INFO      Fold 3 checkpoint already exists — skipping.
-2026-04-05 06:18:22,020  INFO        Recovered from metrics CSV — H1=0.546 H5=0.543 H20=0.525
-2026-04-05 06:18:22,020  INFO      ============================================================
-2026-04-05 06:18:22,020  INFO      Training complete. Cross-fold summary:
-2026-04-05 06:18:22,020  INFO        Fold 1: best_val_loss=0.2484  best_val_acc H1=0.538 H5=0.530 H20=0.521  epochs=25
-2026-04-05 06:18:22,020  INFO        Fold 2: best_val_loss=0.2466  best_val_acc H1=0.550 H5=0.547 H20=0.536  epochs=28
-2026-04-05 06:18:22,020  INFO        Fold 3: best_val_loss=0.2468  best_val_acc H1=0.546 H5=0.543 H20=0.525  epochs=27
-2026-04-05 06:18:22,020  INFO        Mean val loss : 0.2473 ± 0.0008
-2026-04-05 06:18:22,021  INFO        Mean val acc  : 0.537 ± 0.006
-2026-04-05 06:18:22,021  INFO        Base checkpoint already exists — not overwritten: models/base/checkpoint_base_v1.pt
-2026-04-05 06:18:22,021  INFO      Stage 5 complete.
-2026-04-05 06:18:22,021  INFO      Next step: run evaluation.py (Stage 7) on the test splits.
-2026-04-05 06:19:04,204  INFO      Stage 5 Training Loop — Start
-2026-04-05 06:19:04,204  INFO      Device : cpu
-2026-04-05 06:19:04,204  INFO      Config : LR=3e-04  Batch=256  MaxEpochs=200  Patience=20
-2026-04-05 06:19:04,204  INFO      Folds to train: [1, 2, 3]
-2026-04-05 06:19:04,205  INFO      ============================================================
-2026-04-05 06:19:04,205  INFO      FOLD 1 — Training
-2026-04-05 06:19:04,420  INFO      Loading datasets...
-2026-04-05 06:19:11,871  INFO          Index built: 96170 samples from 118 files
-2026-04-05 06:19:13,717  INFO          Index built: 15914 samples from 118 files
-2026-04-05 06:19:13,718  INFO        Train samples: 96170  Val samples: 15914
-2026-04-05 06:19:24,864  INFO      Starting training — max 200 epochs, patience 20
-2026-04-05 06:26:26,678  INFO      Epoch   1 | TrainLoss 0.2486 (BCE 0.4897 Huber 0.0075) | ValLoss 0.2487 (BCE 0.4893 Huber 0.0081) | Gap -0.0001 | ValAcc H1=0.530 H5=0.522 H20=0.512 | LR 3.00e-05 | GradNorm 0.017
-2026-04-05 06:33:30,296  INFO      Epoch   2 | TrainLoss 0.2477 (BCE 0.4881 Huber 0.0073) | ValLoss 0.2488 (BCE 0.4896 Huber 0.0080) | Gap -0.0011 | ValAcc H1=0.529 H5=0.525 H20=0.516 | LR 6.00e-05 | GradNorm 0.020
-2026-04-05 06:40:33,848  INFO      Epoch   3 | TrainLoss 0.2476 (BCE 0.4880 Huber 0.0073) | ValLoss 0.2487 (BCE 0.4894 Huber 0.0080) | Gap -0.0011 | ValAcc H1=0.533 H5=0.525 H20=0.516 | LR 9.00e-05 | GradNorm 0.019
-2026-04-05 06:47:38,461  INFO      Epoch   4 | TrainLoss 0.2474 (BCE 0.4875 Huber 0.0073) | ValLoss 0.2489 (BCE 0.4897 Huber 0.0080) | Gap -0.0014 | ValAcc H1=0.532 H5=0.528 H20=0.519 | LR 1.20e-04 | GradNorm 0.019
-2026-04-05 06:54:41,328  INFO      Epoch   5 | TrainLoss 0.2473 (BCE 0.4872 Huber 0.0073) | ValLoss 0.2482 (BCE 0.4885 Huber 0.0080) | Gap -0.0010 | ValAcc H1=0.532 H5=0.531 H20=0.523 | LR 1.50e-04 | GradNorm 0.018
-2026-04-05 07:01:43,169  INFO      Epoch   6 | TrainLoss 0.2470 (BCE 0.4867 Huber 0.0073) | ValLoss 0.2495 (BCE 0.4909 Huber 0.0081) | Gap -0.0025 | ValAcc H1=0.532 H5=0.526 H20=0.524 | LR 1.80e-04 | GradNorm 0.018
-2026-04-05 07:08:57,267  INFO      Epoch   7 | TrainLoss 0.2469 (BCE 0.4865 Huber 0.0073) | ValLoss 0.2496 (BCE 0.4911 Huber 0.0081) | Gap -0.0027 | ValAcc H1=0.535 H5=0.526 H20=0.525 | LR 2.10e-04 | GradNorm 0.019
-2026-04-05 07:16:06,988  INFO      Epoch   8 | TrainLoss 0.2468 (BCE 0.4863 Huber 0.0073) | ValLoss 0.2482 (BCE 0.4884 Huber 0.0080) | Gap -0.0014 | ValAcc H1=0.534 H5=0.528 H20=0.525 | LR 2.40e-04 | GradNorm 0.018
-2026-04-05 07:23:15,868  INFO      Epoch   9 | TrainLoss 0.2467 (BCE 0.4862 Huber 0.0073) | ValLoss 0.2488 (BCE 0.4896 Huber 0.0081) | Gap -0.0021 | ValAcc H1=0.534 H5=0.525 H20=0.523 | LR 2.70e-04 | GradNorm 0.018
-2026-04-05 07:30:24,698  INFO      Epoch  10 | TrainLoss 0.2464 (BCE 0.4855 Huber 0.0073) | ValLoss 0.2490 (BCE 0.4899 Huber 0.0081) | Gap -0.0026 | ValAcc H1=0.534 H5=0.530 H20=0.524 | LR 3.00e-04 | GradNorm 0.018
-2026-04-05 07:37:42,111  INFO      Epoch  11 | TrainLoss 0.2461 (BCE 0.4850 Huber 0.0073) | ValLoss 0.2489 (BCE 0.4896 Huber 0.0081) | Gap -0.0027 | ValAcc H1=0.532 H5=0.532 H20=0.521 | LR 2.14e-04 | GradNorm 0.020
-2026-04-05 07:44:50,804  INFO      Epoch  12 | TrainLoss 0.2461 (BCE 0.4849 Huber 0.0073) | ValLoss 0.2491 (BCE 0.4901 Huber 0.0081) | Gap -0.0030 | ValAcc H1=0.535 H5=0.524 H20=0.524 | LR 2.00e-04 | GradNorm 0.020
-2026-04-05 07:52:04,315  INFO      Epoch  13 | TrainLoss 0.2458 (BCE 0.4844 Huber 0.0072) | ValLoss 0.2497 (BCE 0.4913 Huber 0.0081) | Gap -0.0039 | ValAcc H1=0.532 H5=0.526 H20=0.526 | LR 1.85e-04 | GradNorm 0.022
-2026-04-05 07:59:14,983  INFO      Epoch  14 | TrainLoss 0.2457 (BCE 0.4841 Huber 0.0072) | ValLoss 0.2498 (BCE 0.4915 Huber 0.0081) | Gap -0.0041 | ValAcc H1=0.531 H5=0.525 H20=0.527 | LR 1.70e-04 | GradNorm 0.024
-2026-04-05 08:06:31,747  INFO      Epoch  15 | TrainLoss 0.2456 (BCE 0.4839 Huber 0.0072) | ValLoss 0.2491 (BCE 0.4901 Huber 0.0081) | Gap -0.0035 | ValAcc H1=0.534 H5=0.528 H20=0.530 | LR 1.55e-04 | GradNorm 0.026
-2026-04-05 08:13:43,512  INFO      Epoch  16 | TrainLoss 0.2451 (BCE 0.4830 Huber 0.0072) | ValLoss 0.2499 (BCE 0.4917 Huber 0.0081) | Gap -0.0048 | ValAcc H1=0.533 H5=0.531 H20=0.526 | LR 1.40e-04 | GradNorm 0.029
-2026-04-05 08:20:52,797  INFO      Epoch  17 | TrainLoss 0.2450 (BCE 0.4828 Huber 0.0072) | ValLoss 0.2495 (BCE 0.4909 Huber 0.0081) | Gap -0.0045 | ValAcc H1=0.532 H5=0.530 H20=0.530 | LR 1.25e-04 | GradNorm 0.031
-2026-04-05 08:28:00,358  INFO      Epoch  18 | TrainLoss 0.2446 (BCE 0.4820 Huber 0.0072) | ValLoss 0.2493 (BCE 0.4905 Huber 0.0081) | Gap -0.0047 | ValAcc H1=0.533 H5=0.526 H20=0.528 | LR 1.10e-04 | GradNorm 0.035
-2026-04-05 08:35:08,871  INFO      Epoch  19 | TrainLoss 0.2446 (BCE 0.4819 Huber 0.0072) | ValLoss 0.2498 (BCE 0.4915 Huber 0.0081) | Gap -0.0052 | ValAcc H1=0.533 H5=0.526 H20=0.526 | LR 9.61e-05 | GradNorm 0.035
-2026-04-05 08:42:16,811  INFO      Epoch  20 | TrainLoss 0.2443 (BCE 0.4814 Huber 0.0072) | ValLoss 0.2499 (BCE 0.4916 Huber 0.0081) | Gap -0.0056 | ValAcc H1=0.532 H5=0.526 H20=0.528 | LR 8.25e-05 | GradNorm 0.038
-2026-04-05 08:49:26,504  INFO      Epoch  21 | TrainLoss 0.2444 (BCE 0.4816 Huber 0.0072) | ValLoss 0.2498 (BCE 0.4916 Huber 0.0081) | Gap -0.0054 | ValAcc H1=0.529 H5=0.524 H20=0.528 | LR 6.98e-05 | GradNorm 0.039
-2026-04-05 08:56:34,640  INFO      Epoch  22 | TrainLoss 0.2437 (BCE 0.4802 Huber 0.0072) | ValLoss 0.2503 (BCE 0.4926 Huber 0.0081) | Gap -0.0066 | ValAcc H1=0.531 H5=0.528 H20=0.529 | LR 5.80e-05 | GradNorm 0.043
-2026-04-05 09:03:43,627  INFO      Epoch  23 | TrainLoss 0.2438 (BCE 0.4804 Huber 0.0072) | ValLoss 0.2506 (BCE 0.4930 Huber 0.0081) | Gap -0.0068 | ValAcc H1=0.530 H5=0.525 H20=0.528 | LR 4.73e-05 | GradNorm 0.044
-2026-04-05 09:10:50,394  INFO      Epoch  24 | TrainLoss 0.2437 (BCE 0.4802 Huber 0.0072) | ValLoss 0.2502 (BCE 0.4924 Huber 0.0081) | Gap -0.0065 | ValAcc H1=0.530 H5=0.527 H20=0.526 | LR 3.77e-05 | GradNorm 0.046
-2026-04-05 09:18:00,107  INFO      Epoch  25 | TrainLoss 0.2435 (BCE 0.4798 Huber 0.0072) | ValLoss 0.2501 (BCE 0.4922 Huber 0.0081) | Gap -0.0066 | ValAcc H1=0.530 H5=0.525 H20=0.529 | LR 2.94e-05 | GradNorm 0.046
-2026-04-05 09:18:00,128  INFO        Early stopping at epoch 25 (no improvement for 20 epochs).
-2026-04-05 09:18:00,170  INFO        Restored best weights (val_loss=0.2482  H1=0.532 H5=0.531 H20=0.523)
-2026-04-05 09:18:00,171  INFO        SWA did not start (training ended before epoch 100)
-2026-04-05 09:18:00,172  INFO        Restored best weights (val_loss=0.2482  H1=0.532 H5=0.531 H20=0.523)
-2026-04-05 09:18:00,263  INFO        Saved checkpoint: models/base/checkpoint_fold_1.pt
-2026-04-05 09:18:00,389  INFO        Saved metrics   : logs/training/fold_1_metrics.csv
-2026-04-05 09:18:00,426  INFO      ============================================================
-2026-04-05 09:18:00,426  INFO      FOLD 2 — Training
-2026-04-05 09:18:00,567  INFO      Loading datasets...
-2026-04-05 09:18:07,176  INFO          Index built: 102747 samples from 118 files
-2026-04-05 09:18:09,727  INFO          Index built: 15876 samples from 118 files
-2026-04-05 09:18:09,727  INFO        Train samples: 102747  Val samples: 15876
-2026-04-05 09:18:10,159  INFO      Starting training — max 200 epochs, patience 20
-2026-04-05 09:25:51,147  INFO      Epoch   1 | TrainLoss 0.2495 (BCE 0.4914 Huber 0.0076) | ValLoss 0.2474 (BCE 0.4878 Huber 0.0070) | Gap 0.0020 | ValAcc H1=0.538 H5=0.537 H20=0.514 | LR 3.00e-05 | GradNorm 0.026
-2026-04-05 09:33:33,191  INFO      Epoch   2 | TrainLoss 0.2480 (BCE 0.4886 Huber 0.0075) | ValLoss 0.2473 (BCE 0.4876 Huber 0.0070) | Gap 0.0007 | ValAcc H1=0.541 H5=0.542 H20=0.516 | LR 6.00e-05 | GradNorm 0.019
-2026-04-05 09:41:13,313  INFO      Epoch   3 | TrainLoss 0.2477 (BCE 0.4881 Huber 0.0074) | ValLoss 0.2468 (BCE 0.4867 Huber 0.0069) | Gap 0.0009 | ValAcc H1=0.547 H5=0.544 H20=0.516 | LR 9.00e-05 | GradNorm 0.019
-2026-04-05 09:48:58,665  INFO      Epoch   4 | TrainLoss 0.2476 (BCE 0.4878 Huber 0.0074) | ValLoss 0.2471 (BCE 0.4872 Huber 0.0069) | Gap 0.0005 | ValAcc H1=0.545 H5=0.539 H20=0.523 | LR 1.20e-04 | GradNorm 0.019
-2026-04-05 09:56:39,895  INFO      Epoch   5 | TrainLoss 0.2473 (BCE 0.4871 Huber 0.0074) | ValLoss 0.2468 (BCE 0.4867 Huber 0.0069) | Gap 0.0005 | ValAcc H1=0.547 H5=0.546 H20=0.527 | LR 1.50e-04 | GradNorm 0.019
-2026-04-05 10:04:17,167  INFO      Epoch   6 | TrainLoss 0.2472 (BCE 0.4871 Huber 0.0074) | ValLoss 0.2469 (BCE 0.4868 Huber 0.0069) | Gap 0.0004 | ValAcc H1=0.543 H5=0.549 H20=0.527 | LR 1.80e-04 | GradNorm 0.019
-2026-04-05 10:11:50,524  INFO      Epoch   7 | TrainLoss 0.2471 (BCE 0.4868 Huber 0.0074) | ValLoss 0.2470 (BCE 0.4871 Huber 0.0069) | Gap 0.0001 | ValAcc H1=0.544 H5=0.548 H20=0.527 | LR 2.10e-04 | GradNorm 0.018
-2026-04-05 10:19:27,764  INFO      Epoch   8 | TrainLoss 0.2472 (BCE 0.4869 Huber 0.0074) | ValLoss 0.2468 (BCE 0.4867 Huber 0.0069) | Gap 0.0004 | ValAcc H1=0.543 H5=0.546 H20=0.526 | LR 2.40e-04 | GradNorm 0.018
-2026-04-05 10:27:04,025  INFO      Epoch   9 | TrainLoss 0.2469 (BCE 0.4865 Huber 0.0074) | ValLoss 0.2468 (BCE 0.4867 Huber 0.0069) | Gap 0.0001 | ValAcc H1=0.548 H5=0.537 H20=0.527 | LR 2.70e-04 | GradNorm 0.017
-2026-04-05 10:34:40,260  INFO      Epoch  10 | TrainLoss 0.2469 (BCE 0.4864 Huber 0.0074) | ValLoss 0.2466 (BCE 0.4864 Huber 0.0069) | Gap 0.0002 | ValAcc H1=0.547 H5=0.550 H20=0.529 | LR 3.00e-04 | GradNorm 0.018
-2026-04-05 10:42:15,471  INFO      Epoch  11 | TrainLoss 0.2467 (BCE 0.4860 Huber 0.0074) | ValLoss 0.2468 (BCE 0.4867 Huber 0.0069) | Gap -0.0001 | ValAcc H1=0.546 H5=0.548 H20=0.528 | LR 2.14e-04 | GradNorm 0.018
-2026-04-05 10:49:51,724  INFO      Epoch  12 | TrainLoss 0.2465 (BCE 0.4856 Huber 0.0074) | ValLoss 0.2468 (BCE 0.4867 Huber 0.0069) | Gap -0.0003 | ValAcc H1=0.548 H5=0.550 H20=0.532 | LR 2.00e-04 | GradNorm 0.019
-2026-04-05 10:57:29,525  INFO      Epoch  13 | TrainLoss 0.2462 (BCE 0.4850 Huber 0.0074) | ValLoss 0.2471 (BCE 0.4872 Huber 0.0069) | Gap -0.0009 | ValAcc H1=0.542 H5=0.548 H20=0.530 | LR 1.85e-04 | GradNorm 0.022
-2026-04-05 11:05:08,352  INFO      Epoch  14 | TrainLoss 0.2460 (BCE 0.4845 Huber 0.0074) | ValLoss 0.2474 (BCE 0.4879 Huber 0.0069) | Gap -0.0015 | ValAcc H1=0.542 H5=0.542 H20=0.525 | LR 1.70e-04 | GradNorm 0.023
-2026-04-05 11:12:49,912  INFO      Epoch  15 | TrainLoss 0.2458 (BCE 0.4843 Huber 0.0074) | ValLoss 0.2471 (BCE 0.4873 Huber 0.0069) | Gap -0.0013 | ValAcc H1=0.547 H5=0.548 H20=0.528 | LR 1.55e-04 | GradNorm 0.024
-2026-04-05 11:20:30,270  INFO      Epoch  16 | TrainLoss 0.2454 (BCE 0.4835 Huber 0.0073) | ValLoss 0.2476 (BCE 0.4883 Huber 0.0070) | Gap -0.0022 | ValAcc H1=0.547 H5=0.548 H20=0.528 | LR 1.40e-04 | GradNorm 0.028
-2026-04-05 11:28:08,967  INFO      Epoch  17 | TrainLoss 0.2453 (BCE 0.4832 Huber 0.0073) | ValLoss 0.2477 (BCE 0.4885 Huber 0.0070) | Gap -0.0024 | ValAcc H1=0.549 H5=0.544 H20=0.527 | LR 1.25e-04 | GradNorm 0.029
-2026-04-05 11:35:46,732  INFO      Epoch  18 | TrainLoss 0.2449 (BCE 0.4824 Huber 0.0073) | ValLoss 0.2475 (BCE 0.4881 Huber 0.0069) | Gap -0.0027 | ValAcc H1=0.547 H5=0.548 H20=0.530 | LR 1.10e-04 | GradNorm 0.034
-2026-04-05 11:43:27,092  INFO      Epoch  19 | TrainLoss 0.2450 (BCE 0.4827 Huber 0.0073) | ValLoss 0.2474 (BCE 0.4878 Huber 0.0069) | Gap -0.0023 | ValAcc H1=0.545 H5=0.542 H20=0.532 | LR 9.61e-05 | GradNorm 0.034
-2026-04-05 11:51:06,845  INFO      Epoch  20 | TrainLoss 0.2447 (BCE 0.4821 Huber 0.0073) | ValLoss 0.2474 (BCE 0.4879 Huber 0.0069) | Gap -0.0027 | ValAcc H1=0.545 H5=0.542 H20=0.530 | LR 8.25e-05 | GradNorm 0.038
-2026-04-05 11:58:47,763  INFO      Epoch  21 | TrainLoss 0.2446 (BCE 0.4819 Huber 0.0073) | ValLoss 0.2475 (BCE 0.4881 Huber 0.0069) | Gap -0.0029 | ValAcc H1=0.546 H5=0.543 H20=0.531 | LR 6.98e-05 | GradNorm 0.039
-2026-04-05 12:06:27,702  INFO      Epoch  22 | TrainLoss 0.2444 (BCE 0.4815 Huber 0.0073) | ValLoss 0.2481 (BCE 0.4892 Huber 0.0070) | Gap -0.0037 | ValAcc H1=0.543 H5=0.539 H20=0.532 | LR 5.80e-05 | GradNorm 0.041
-2026-04-05 12:14:09,078  INFO      Epoch  23 | TrainLoss 0.2441 (BCE 0.4809 Huber 0.0073) | ValLoss 0.2477 (BCE 0.4884 Huber 0.0070) | Gap -0.0036 | ValAcc H1=0.543 H5=0.538 H20=0.534 | LR 4.73e-05 | GradNorm 0.043
-2026-04-05 12:21:48,129  INFO      Epoch  24 | TrainLoss 0.2440 (BCE 0.4807 Huber 0.0073) | ValLoss 0.2479 (BCE 0.4889 Huber 0.0070) | Gap -0.0039 | ValAcc H1=0.542 H5=0.538 H20=0.533 | LR 3.77e-05 | GradNorm 0.045
-2026-04-05 12:29:29,840  INFO      Epoch  25 | TrainLoss 0.2438 (BCE 0.4803 Huber 0.0073) | ValLoss 0.2478 (BCE 0.4886 Huber 0.0070) | Gap -0.0040 | ValAcc H1=0.547 H5=0.539 H20=0.532 | LR 2.94e-05 | GradNorm 0.047
-2026-04-05 12:37:10,674  INFO      Epoch  26 | TrainLoss 0.2437 (BCE 0.4802 Huber 0.0073) | ValLoss 0.2478 (BCE 0.4885 Huber 0.0070) | Gap -0.0040 | ValAcc H1=0.547 H5=0.537 H20=0.534 | LR 2.26e-05 | GradNorm 0.049
-2026-04-05 12:44:54,236  INFO      Epoch  27 | TrainLoss 0.2437 (BCE 0.4801 Huber 0.0073) | ValLoss 0.2478 (BCE 0.4886 Huber 0.0070) | Gap -0.0040 | ValAcc H1=0.545 H5=0.538 H20=0.532 | LR 1.71e-05 | GradNorm 0.049
-2026-04-05 12:52:36,129  INFO      Epoch  28 | TrainLoss 0.2435 (BCE 0.4796 Huber 0.0073) | ValLoss 0.2481 (BCE 0.4892 Huber 0.0070) | Gap -0.0046 | ValAcc H1=0.544 H5=0.537 H20=0.533 | LR 1.32e-05 | GradNorm 0.049
-2026-04-05 13:00:17,568  INFO      Epoch  29 | TrainLoss 0.2436 (BCE 0.4799 Huber 0.0073) | ValLoss 0.2478 (BCE 0.4887 Huber 0.0070) | Gap -0.0042 | ValAcc H1=0.543 H5=0.537 H20=0.533 | LR 1.08e-05 | GradNorm 0.051
-2026-04-05 13:07:55,145  INFO      Epoch  30 | TrainLoss 0.2437 (BCE 0.4802 Huber 0.0073) | ValLoss 0.2478 (BCE 0.4886 Huber 0.0070) | Gap -0.0040 | ValAcc H1=0.545 H5=0.536 H20=0.533 | LR 1.00e-05 | GradNorm 0.050
-2026-04-05 13:07:55,188  INFO        Early stopping at epoch 30 (no improvement for 20 epochs).
-2026-04-05 13:07:55,210  INFO        Restored best weights (val_loss=0.2466  H1=0.547 H5=0.550 H20=0.529)
-2026-04-05 13:07:55,211  INFO        SWA did not start (training ended before epoch 100)
-2026-04-05 13:07:55,213  INFO        Restored best weights (val_loss=0.2466  H1=0.547 H5=0.550 H20=0.529)
-2026-04-05 13:07:55,283  INFO        Saved checkpoint: models/base/checkpoint_fold_2.pt
-2026-04-05 13:07:55,429  INFO        Saved metrics   : logs/training/fold_2_metrics.csv
-2026-04-05 13:07:55,543  INFO      ============================================================
-2026-04-05 13:07:55,543  INFO      FOLD 3 — Training
-2026-04-05 13:07:55,816  INFO      Loading datasets...
-2026-04-05 13:08:03,368  INFO          Index built: 106159 samples from 118 files
-2026-04-05 13:08:09,234  INFO          Index built: 47855 samples from 196 files
-2026-04-05 13:08:09,238  INFO        Train samples: 106159  Val samples: 47855
-2026-04-05 13:08:09,678  INFO      Starting training — max 200 epochs, patience 20
-2026-04-05 13:16:57,360  INFO      Epoch   1 | TrainLoss 0.2492 (BCE 0.4910 Huber 0.0075) | ValLoss 0.2472 (BCE 0.4875 Huber 0.0069) | Gap 0.0020 | ValAcc H1=0.542 H5=0.541 H20=0.524 | LR 3.00e-05 | GradNorm 0.019
-2026-04-05 13:26:21,702  INFO      Epoch   2 | TrainLoss 0.2479 (BCE 0.4883 Huber 0.0074) | ValLoss 0.2469 (BCE 0.4869 Huber 0.0069) | Gap 0.0010 | ValAcc H1=0.546 H5=0.544 H20=0.531 | LR 6.00e-05 | GradNorm 0.018
-2026-04-05 13:35:33,345  INFO      Epoch   3 | TrainLoss 0.2477 (BCE 0.4880 Huber 0.0074) | ValLoss 0.2466 (BCE 0.4863 Huber 0.0069) | Gap 0.0011 | ValAcc H1=0.549 H5=0.546 H20=0.534 | LR 9.00e-05 | GradNorm 0.018
-2026-04-05 13:44:03,036  INFO      Epoch   4 | TrainLoss 0.2476 (BCE 0.4878 Huber 0.0074) | ValLoss 0.2466 (BCE 0.4864 Huber 0.0069) | Gap 0.0010 | ValAcc H1=0.547 H5=0.547 H20=0.533 | LR 1.20e-04 | GradNorm 0.018
-2026-04-05 13:52:32,437  INFO      Epoch   5 | TrainLoss 0.2474 (BCE 0.4875 Huber 0.0074) | ValLoss 0.2465 (BCE 0.4862 Huber 0.0069) | Gap 0.0009 | ValAcc H1=0.546 H5=0.546 H20=0.534 | LR 1.50e-04 | GradNorm 0.018
-2026-04-05 14:00:59,927  INFO      Epoch   6 | TrainLoss 0.2471 (BCE 0.4869 Huber 0.0074) | ValLoss 0.2467 (BCE 0.4866 Huber 0.0069) | Gap 0.0004 | ValAcc H1=0.546 H5=0.546 H20=0.530 | LR 1.80e-04 | GradNorm 0.017
-2026-04-05 14:09:35,002  INFO      Epoch   7 | TrainLoss 0.2471 (BCE 0.4868 Huber 0.0074) | ValLoss 0.2467 (BCE 0.4866 Huber 0.0069) | Gap 0.0004 | ValAcc H1=0.550 H5=0.546 H20=0.531 | LR 2.10e-04 | GradNorm 0.018
-2026-04-05 14:18:07,788  INFO      Epoch   8 | TrainLoss 0.2471 (BCE 0.4869 Huber 0.0074) | ValLoss 0.2464 (BCE 0.4859 Huber 0.0069) | Gap 0.0008 | ValAcc H1=0.552 H5=0.546 H20=0.535 | LR 2.40e-04 | GradNorm 0.017
-2026-04-05 14:26:32,939  INFO      Epoch   9 | TrainLoss 0.2469 (BCE 0.4864 Huber 0.0074) | ValLoss 0.2465 (BCE 0.4861 Huber 0.0069) | Gap 0.0004 | ValAcc H1=0.551 H5=0.549 H20=0.537 | LR 2.70e-04 | GradNorm 0.017
-2026-04-05 14:35:04,544  INFO      Epoch  10 | TrainLoss 0.2467 (BCE 0.4861 Huber 0.0074) | ValLoss 0.2467 (BCE 0.4865 Huber 0.0069) | Gap 0.0001 | ValAcc H1=0.548 H5=0.544 H20=0.535 | LR 3.00e-04 | GradNorm 0.018
-2026-04-05 14:43:29,066  INFO      Epoch  11 | TrainLoss 0.2466 (BCE 0.4857 Huber 0.0074) | ValLoss 0.2465 (BCE 0.4862 Huber 0.0069) | Gap 0.0000 | ValAcc H1=0.550 H5=0.549 H20=0.535 | LR 2.14e-04 | GradNorm 0.018
-2026-04-05 14:51:55,399  INFO      Epoch  12 | TrainLoss 0.2463 (BCE 0.4853 Huber 0.0073) | ValLoss 0.2465 (BCE 0.4862 Huber 0.0069) | Gap -0.0002 | ValAcc H1=0.549 H5=0.547 H20=0.535 | LR 2.00e-04 | GradNorm 0.020
-2026-04-05 15:00:19,968  INFO      Epoch  13 | TrainLoss 0.2462 (BCE 0.4850 Huber 0.0074) | ValLoss 0.2470 (BCE 0.4872 Huber 0.0069) | Gap -0.0009 | ValAcc H1=0.545 H5=0.542 H20=0.536 | LR 1.85e-04 | GradNorm 0.021
-2026-04-05 15:08:44,747  INFO      Epoch  14 | TrainLoss 0.2460 (BCE 0.4846 Huber 0.0073) | ValLoss 0.2466 (BCE 0.4864 Huber 0.0069) | Gap -0.0007 | ValAcc H1=0.551 H5=0.546 H20=0.535 | LR 1.70e-04 | GradNorm 0.024
-2026-04-05 15:17:11,736  INFO      Epoch  15 | TrainLoss 0.2458 (BCE 0.4842 Huber 0.0073) | ValLoss 0.2467 (BCE 0.4866 Huber 0.0069) | Gap -0.0009 | ValAcc H1=0.549 H5=0.547 H20=0.537 | LR 1.55e-04 | GradNorm 0.025
-2026-04-05 15:25:43,279  INFO      Epoch  16 | TrainLoss 0.2456 (BCE 0.4838 Huber 0.0073) | ValLoss 0.2470 (BCE 0.4871 Huber 0.0069) | Gap -0.0014 | ValAcc H1=0.548 H5=0.549 H20=0.536 | LR 1.40e-04 | GradNorm 0.028
-2026-04-05 15:34:13,495  INFO      Epoch  17 | TrainLoss 0.2453 (BCE 0.4833 Huber 0.0073) | ValLoss 0.2470 (BCE 0.4872 Huber 0.0069) | Gap -0.0017 | ValAcc H1=0.548 H5=0.547 H20=0.535 | LR 1.25e-04 | GradNorm 0.030
-2026-04-05 15:42:42,136  INFO      Epoch  18 | TrainLoss 0.2452 (BCE 0.4830 Huber 0.0073) | ValLoss 0.2472 (BCE 0.4875 Huber 0.0069) | Gap -0.0021 | ValAcc H1=0.546 H5=0.546 H20=0.536 | LR 1.10e-04 | GradNorm 0.033
-2026-04-05 15:51:12,408  INFO      Epoch  19 | TrainLoss 0.2447 (BCE 0.4820 Huber 0.0073) | ValLoss 0.2472 (BCE 0.4876 Huber 0.0069) | Gap -0.0026 | ValAcc H1=0.546 H5=0.544 H20=0.533 | LR 9.61e-05 | GradNorm 0.036
-2026-04-05 16:34:30,600  INFO      Stage 5 Training Loop — Start
-2026-04-05 16:34:30,753  INFO      Device : cpu
-2026-04-05 16:34:30,754  INFO      Config : LR=3e-04  Batch=256  MaxEpochs=200  Patience=20
-2026-04-05 16:34:30,754  INFO      Folds to train: [1, 2, 3]
-2026-04-05 16:34:30,754  INFO      Fold 1 checkpoint already exists — skipping.
-2026-04-05 16:34:31,078  INFO        Recovered from metrics CSV — H1=0.534 H5=0.528 H20=0.525
-2026-04-05 16:34:31,079  INFO      Fold 2 checkpoint already exists — skipping.
-2026-04-05 16:34:31,090  INFO        Recovered from metrics CSV — H1=0.547 H5=0.550 H20=0.529
-2026-04-05 16:34:31,090  INFO      ============================================================
-2026-04-05 16:34:31,090  INFO      FOLD 3 — Training
-2026-04-05 16:34:31,261  INFO      Loading datasets...
-2026-04-05 16:35:32,514  INFO          Index built: 106159 samples from 118 files
-2026-04-05 16:36:10,881  INFO          Index built: 47855 samples from 196 files
-2026-04-05 16:36:10,884  INFO        Train samples: 106159  Val samples: 47855
-2026-04-05 16:36:23,984  INFO      Starting training — max 200 epochs, patience 20
-2026-04-05 16:42:54,552  INFO      Epoch   1 | TrainLoss 0.2487 (BCE 0.4899 Huber 0.0075) | ValLoss 0.2474 (BCE 0.4877 Huber 0.0070) | Gap 0.0013 | ValAcc H1=0.543 H5=0.542 H20=0.528 | LR 3.00e-05 | GradNorm 0.020
-2026-04-05 16:49:01,372  INFO      Epoch   2 | TrainLoss 0.2479 (BCE 0.4883 Huber 0.0074) | ValLoss 0.2469 (BCE 0.4869 Huber 0.0069) | Gap 0.0009 | ValAcc H1=0.548 H5=0.540 H20=0.530 | LR 6.00e-05 | GradNorm 0.020
-2026-04-05 16:55:02,562  INFO      Epoch   3 | TrainLoss 0.2477 (BCE 0.4879 Huber 0.0074) | ValLoss 0.2467 (BCE 0.4865 Huber 0.0069) | Gap 0.0010 | ValAcc H1=0.545 H5=0.546 H20=0.532 | LR 9.00e-05 | GradNorm 0.020
-2026-04-05 17:01:03,192  INFO      Epoch   4 | TrainLoss 0.2474 (BCE 0.4875 Huber 0.0074) | ValLoss 0.2466 (BCE 0.4864 Huber 0.0069) | Gap 0.0008 | ValAcc H1=0.547 H5=0.540 H20=0.533 | LR 1.20e-04 | GradNorm 0.020
-2026-04-05 17:07:09,375  INFO      Epoch   5 | TrainLoss 0.2474 (BCE 0.4874 Huber 0.0074) | ValLoss 0.2464 (BCE 0.4860 Huber 0.0069) | Gap 0.0009 | ValAcc H1=0.549 H5=0.546 H20=0.535 | LR 1.50e-04 | GradNorm 0.019
-2026-04-05 17:13:15,934  INFO      Epoch   6 | TrainLoss 0.2473 (BCE 0.4873 Huber 0.0074) | ValLoss 0.2465 (BCE 0.4862 Huber 0.0069) | Gap 0.0008 | ValAcc H1=0.546 H5=0.545 H20=0.535 | LR 1.80e-04 | GradNorm 0.018
-2026-04-05 17:19:23,737  INFO      Epoch   7 | TrainLoss 0.2472 (BCE 0.4870 Huber 0.0074) | ValLoss 0.2464 (BCE 0.4859 Huber 0.0069) | Gap 0.0008 | ValAcc H1=0.550 H5=0.548 H20=0.534 | LR 2.10e-04 | GradNorm 0.017
-2026-04-05 17:25:47,832  INFO      Epoch   8 | TrainLoss 0.2469 (BCE 0.4865 Huber 0.0074) | ValLoss 0.2464 (BCE 0.4860 Huber 0.0069) | Gap 0.0005 | ValAcc H1=0.552 H5=0.547 H20=0.535 | LR 2.40e-04 | GradNorm 0.018
-2026-04-05 17:32:22,040  INFO      Epoch   9 | TrainLoss 0.2470 (BCE 0.4866 Huber 0.0074) | ValLoss 0.2467 (BCE 0.4866 Huber 0.0069) | Gap 0.0003 | ValAcc H1=0.546 H5=0.542 H20=0.534 | LR 2.70e-04 | GradNorm 0.017
-2026-04-05 17:38:48,498  INFO      Epoch  10 | TrainLoss 0.2468 (BCE 0.4863 Huber 0.0074) | ValLoss 0.2463 (BCE 0.4858 Huber 0.0068) | Gap 0.0005 | ValAcc H1=0.553 H5=0.550 H20=0.534 | LR 3.00e-04 | GradNorm 0.017
-2026-04-05 17:45:19,832  INFO      Epoch  11 | TrainLoss 0.2465 (BCE 0.4857 Huber 0.0074) | ValLoss 0.2464 (BCE 0.4859 Huber 0.0069) | Gap 0.0002 | ValAcc H1=0.553 H5=0.549 H20=0.534 | LR 2.14e-04 | GradNorm 0.019
-2026-04-05 17:52:19,800  INFO      Epoch  12 | TrainLoss 0.2462 (BCE 0.4851 Huber 0.0073) | ValLoss 0.2467 (BCE 0.4865 Huber 0.0069) | Gap -0.0005 | ValAcc H1=0.551 H5=0.546 H20=0.533 | LR 2.00e-04 | GradNorm 0.020
-2026-04-05 17:59:34,105  INFO      Epoch  13 | TrainLoss 0.2460 (BCE 0.4847 Huber 0.0074) | ValLoss 0.2468 (BCE 0.4867 Huber 0.0069) | Gap -0.0008 | ValAcc H1=0.549 H5=0.542 H20=0.532 | LR 1.85e-04 | GradNorm 0.022
-2026-04-05 18:06:49,345  INFO      Epoch  14 | TrainLoss 0.2461 (BCE 0.4849 Huber 0.0073) | ValLoss 0.2464 (BCE 0.4859 Huber 0.0069) | Gap -0.0003 | ValAcc H1=0.550 H5=0.546 H20=0.538 | LR 1.70e-04 | GradNorm 0.023
-2026-04-05 18:14:14,584  INFO      Epoch  15 | TrainLoss 0.2456 (BCE 0.4839 Huber 0.0073) | ValLoss 0.2465 (BCE 0.4861 Huber 0.0069) | Gap -0.0009 | ValAcc H1=0.552 H5=0.547 H20=0.536 | LR 1.55e-04 | GradNorm 0.025
-2026-04-05 18:21:36,031  INFO      Epoch  16 | TrainLoss 0.2456 (BCE 0.4839 Huber 0.0073) | ValLoss 0.2466 (BCE 0.4863 Huber 0.0069) | Gap -0.0009 | ValAcc H1=0.550 H5=0.547 H20=0.533 | LR 1.40e-04 | GradNorm 0.027
-2026-04-05 18:28:50,732  INFO      Epoch  17 | TrainLoss 0.2451 (BCE 0.4829 Huber 0.0073) | ValLoss 0.2469 (BCE 0.4868 Huber 0.0069) | Gap -0.0017 | ValAcc H1=0.551 H5=0.546 H20=0.535 | LR 1.25e-04 | GradNorm 0.031
-2026-04-05 18:35:59,365  INFO      Epoch  18 | TrainLoss 0.2449 (BCE 0.4825 Huber 0.0073) | ValLoss 0.2473 (BCE 0.4878 Huber 0.0069) | Gap -0.0025 | ValAcc H1=0.550 H5=0.544 H20=0.535 | LR 1.10e-04 | GradNorm 0.035
-2026-04-05 18:43:19,769  INFO      Epoch  19 | TrainLoss 0.2445 (BCE 0.4817 Huber 0.0073) | ValLoss 0.2472 (BCE 0.4876 Huber 0.0069) | Gap -0.0027 | ValAcc H1=0.548 H5=0.542 H20=0.533 | LR 9.61e-05 | GradNorm 0.038
-2026-04-05 18:50:48,402  INFO      Epoch  20 | TrainLoss 0.2445 (BCE 0.4816 Huber 0.0073) | ValLoss 0.2470 (BCE 0.4871 Huber 0.0069) | Gap -0.0025 | ValAcc H1=0.548 H5=0.545 H20=0.535 | LR 8.25e-05 | GradNorm 0.040
-2026-04-05 18:57:57,289  INFO      Epoch  21 | TrainLoss 0.2442 (BCE 0.4810 Huber 0.0073) | ValLoss 0.2470 (BCE 0.4871 Huber 0.0069) | Gap -0.0028 | ValAcc H1=0.550 H5=0.544 H20=0.535 | LR 6.98e-05 | GradNorm 0.043
-2026-04-05 19:05:13,968  INFO      Epoch  22 | TrainLoss 0.2440 (BCE 0.4806 Huber 0.0073) | ValLoss 0.2474 (BCE 0.4879 Huber 0.0069) | Gap -0.0034 | ValAcc H1=0.549 H5=0.546 H20=0.534 | LR 5.80e-05 | GradNorm 0.047
-2026-04-05 19:12:31,651  INFO      Epoch  23 | TrainLoss 0.2436 (BCE 0.4799 Huber 0.0073) | ValLoss 0.2477 (BCE 0.4886 Huber 0.0069) | Gap -0.0042 | ValAcc H1=0.548 H5=0.544 H20=0.534 | LR 4.73e-05 | GradNorm 0.048
-2026-04-05 19:19:52,996  INFO      Epoch  24 | TrainLoss 0.2437 (BCE 0.4801 Huber 0.0073) | ValLoss 0.2476 (BCE 0.4884 Huber 0.0069) | Gap -0.0039 | ValAcc H1=0.547 H5=0.544 H20=0.532 | LR 3.77e-05 | GradNorm 0.050
-2026-04-05 19:27:20,408  INFO      Epoch  25 | TrainLoss 0.2434 (BCE 0.4795 Huber 0.0073) | ValLoss 0.2477 (BCE 0.4885 Huber 0.0069) | Gap -0.0043 | ValAcc H1=0.548 H5=0.543 H20=0.533 | LR 2.94e-05 | GradNorm 0.050
-2026-04-05 19:34:40,622  INFO      Epoch  26 | TrainLoss 0.2434 (BCE 0.4796 Huber 0.0073) | ValLoss 0.2476 (BCE 0.4883 Huber 0.0069) | Gap -0.0042 | ValAcc H1=0.548 H5=0.543 H20=0.534 | LR 2.26e-05 | GradNorm 0.054
-2026-04-05 19:41:56,734  INFO      Epoch  27 | TrainLoss 0.2431 (BCE 0.4790 Huber 0.0072) | ValLoss 0.2477 (BCE 0.4885 Huber 0.0069) | Gap -0.0046 | ValAcc H1=0.548 H5=0.543 H20=0.534 | LR 1.71e-05 | GradNorm 0.054
-2026-04-05 19:49:12,853  INFO      Epoch  28 | TrainLoss 0.2431 (BCE 0.4790 Huber 0.0073) | ValLoss 0.2478 (BCE 0.4887 Huber 0.0069) | Gap -0.0047 | ValAcc H1=0.548 H5=0.544 H20=0.534 | LR 1.32e-05 | GradNorm 0.054
-2026-04-05 19:56:51,618  INFO      Epoch  29 | TrainLoss 0.2432 (BCE 0.4791 Huber 0.0073) | ValLoss 0.2477 (BCE 0.4885 Huber 0.0069) | Gap -0.0045 | ValAcc H1=0.548 H5=0.544 H20=0.534 | LR 1.08e-05 | GradNorm 0.055
-2026-04-05 20:04:18,482  INFO      Epoch  30 | TrainLoss 0.2431 (BCE 0.4790 Huber 0.0073) | ValLoss 0.2477 (BCE 0.4885 Huber 0.0069) | Gap -0.0046 | ValAcc H1=0.548 H5=0.545 H20=0.534 | LR 1.00e-05 | GradNorm 0.054
-2026-04-05 20:04:18,505  INFO        Early stopping at epoch 30 (no improvement for 20 epochs).
-2026-04-05 20:04:18,544  INFO        Restored best weights (val_loss=0.2463  H1=0.553 H5=0.550 H20=0.534)
-2026-04-05 20:04:18,545  INFO        SWA did not start (training ended before epoch 100)
-2026-04-05 20:04:18,546  INFO        Restored best weights (val_loss=0.2463  H1=0.553 H5=0.550 H20=0.534)
-2026-04-05 20:04:18,612  INFO        Saved checkpoint: models/base/checkpoint_fold_3.pt
-2026-04-05 20:04:18,788  INFO        Saved metrics   : logs/training/fold_3_metrics.csv
-2026-04-05 20:04:18,890  INFO      ============================================================
-2026-04-05 20:04:18,890  INFO      Training complete. Cross-fold summary:
-2026-04-05 20:04:18,891  INFO        Fold 1: best_val_loss=0.2482  best_val_acc H1=0.534 H5=0.528 H20=0.525  epochs=25
-2026-04-05 20:04:18,891  INFO        Fold 2: best_val_loss=0.2466  best_val_acc H1=0.547 H5=0.550 H20=0.529  epochs=30
-2026-04-05 20:04:18,891  INFO        Fold 3: best_val_loss=0.2463  best_val_acc H1=0.553 H5=0.550 H20=0.534  epochs=30
-2026-04-05 20:04:18,894  INFO        Mean val loss : 0.2471 ± 0.0008
-2026-04-05 20:04:18,894  INFO        Mean val acc  : 0.479 ± 0.080
-2026-04-05 20:04:18,895  INFO        Base checkpoint saved: models/base/checkpoint_base_v1.pt  (from fold 3)
-2026-04-05 20:04:18,895  INFO      Stage 5 complete.
-2026-04-05 20:04:18,896  INFO      Next step: run evaluation.py (Stage 7) on the test splits.
+2026-04-12 20:14:38,204  INFO      Stage 5 Training Loop — Start
+2026-04-12 20:14:38,205  INFO      Device : cpu
+2026-04-12 20:14:38,205  INFO      Config : LR=3e-04  Batch=256  MaxEpochs=200  Patience=30
+2026-04-12 20:14:38,211  INFO      Folds to train: [1, 2, 3]
+2026-04-12 20:14:38,211  INFO      ============================================================
+2026-04-12 20:14:38,211  INFO      FOLD 1 — Training
+2026-04-12 20:14:38,422  INFO      Loading datasets...
+2026-04-12 20:14:54,704  INFO          Index built: 99077 samples from 120 files
+2026-04-12 20:14:56,109  INFO          Index built: 16378 samples from 120 files
+2026-04-12 20:14:56,110  INFO        Train samples: 99077  Val samples: 16378
+2026-04-12 20:14:59,015  INFO      Starting training — max 200 epochs, patience 30
+2026-04-12 20:15:24,128  INFO      Stage 5 Training Loop — Start
+2026-04-12 20:15:24,128  INFO      Device : cpu
+2026-04-12 20:15:24,128  INFO      Config : LR=3e-04  Batch=256  MaxEpochs=200  Patience=20
+2026-04-12 20:15:24,130  INFO      Folds to train: [1, 2, 3]
+2026-04-12 20:15:24,130  INFO      ============================================================
+2026-04-12 20:15:24,130  INFO      FOLD 1 — Training
+2026-04-12 20:15:24,172  INFO      Loading datasets...
+2026-04-12 20:15:24,528  INFO          Index built: 99077 samples from 120 files
+2026-04-12 20:15:24,633  INFO          Index built: 16378 samples from 120 files
+2026-04-12 20:15:24,633  INFO        Train samples: 99077  Val samples: 16378
+2026-04-12 20:15:26,572  INFO      Starting training — max 200 epochs, patience 20
+2026-04-12 20:21:52,684  INFO      Epoch   1 | TrainLoss 0.2485 (BCE 0.4896 Huber 0.0073) | ValLoss 0.2487 (BCE 0.4894 Huber 0.0080) | Gap -0.0002 | ValAcc H1=0.530 H5=0.522 H20=0.509 | LR 3.00e-05 | GradNorm 0.021
+2026-04-12 20:26:50,992  INFO      Stage 5 Training Loop — Start
+2026-04-12 20:26:50,992  INFO      Device : cpu
+2026-04-12 20:26:50,992  INFO      Config : LR=3e-04  Batch=256  MaxEpochs=200  Patience=20
+2026-04-12 20:26:50,993  INFO      Folds to train: [1, 2, 3]
+2026-04-12 20:26:50,993  INFO      ============================================================
+2026-04-12 20:26:50,993  INFO      FOLD 1 — Training
+2026-04-12 20:26:51,053  INFO      Loading datasets...
+2026-04-12 20:26:51,475  INFO          Index built: 99077 samples from 120 files
+2026-04-12 20:26:51,580  INFO          Index built: 16378 samples from 120 files
+2026-04-12 20:26:51,580  INFO        Train samples: 99077  Val samples: 16378
+2026-04-12 20:26:54,635  INFO      Starting training — max 200 epochs, patience 20
+2026-04-12 20:33:33,440  INFO      Epoch   1 | TrainLoss 0.2487 (BCE 0.4901 Huber 0.0073) | ValLoss 0.2487 (BCE 0.4893 Huber 0.0080) | Gap 0.0000 | ValAcc H1=0.531 H5=0.520 H20=0.503 | LR 3.00e-05 | GradNorm 0.018
+2026-04-12 20:41:14,560  INFO      Epoch   2 | TrainLoss 0.2478 (BCE 0.4883 Huber 0.0073) | ValLoss 0.2489 (BCE 0.4897 Huber 0.0080) | Gap -0.0011 | ValAcc H1=0.533 H5=0.524 H20=0.516 | LR 6.00e-05 | GradNorm 0.020
+2026-04-12 20:49:10,820  INFO      Epoch   3 | TrainLoss 0.2475 (BCE 0.4878 Huber 0.0073) | ValLoss 0.2488 (BCE 0.4895 Huber 0.0080) | Gap -0.0012 | ValAcc H1=0.532 H5=0.525 H20=0.516 | LR 9.00e-05 | GradNorm 0.019
+2026-04-12 20:57:17,998  INFO      Epoch   4 | TrainLoss 0.2474 (BCE 0.4876 Huber 0.0073) | ValLoss 0.2488 (BCE 0.4895 Huber 0.0080) | Gap -0.0013 | ValAcc H1=0.531 H5=0.527 H20=0.519 | LR 1.20e-04 | GradNorm 0.019
+2026-04-12 21:06:07,115  INFO      Epoch   5 | TrainLoss 0.2474 (BCE 0.4875 Huber 0.0073) | ValLoss 0.2487 (BCE 0.4894 Huber 0.0080) | Gap -0.0013 | ValAcc H1=0.534 H5=0.526 H20=0.519 | LR 1.50e-04 | GradNorm 0.020
+2026-04-12 21:15:06,007  INFO      Epoch   6 | TrainLoss 0.2473 (BCE 0.4873 Huber 0.0073) | ValLoss 0.2488 (BCE 0.4895 Huber 0.0080) | Gap -0.0015 | ValAcc H1=0.533 H5=0.521 H20=0.524 | LR 1.80e-04 | GradNorm 0.017
+2026-04-12 21:24:04,241  INFO      Epoch   7 | TrainLoss 0.2470 (BCE 0.4867 Huber 0.0073) | ValLoss 0.2490 (BCE 0.4900 Huber 0.0080) | Gap -0.0020 | ValAcc H1=0.533 H5=0.525 H20=0.520 | LR 2.10e-04 | GradNorm 0.018
+2026-04-12 21:33:01,475  INFO      Epoch   8 | TrainLoss 0.2468 (BCE 0.4864 Huber 0.0073) | ValLoss 0.2485 (BCE 0.4889 Huber 0.0080) | Gap -0.0016 | ValAcc H1=0.531 H5=0.526 H20=0.521 | LR 2.40e-04 | GradNorm 0.018
+2026-04-12 21:41:56,601  INFO      Epoch   9 | TrainLoss 0.2465 (BCE 0.4858 Huber 0.0073) | ValLoss 0.2489 (BCE 0.4897 Huber 0.0080) | Gap -0.0024 | ValAcc H1=0.531 H5=0.528 H20=0.520 | LR 2.70e-04 | GradNorm 0.019
+2026-04-12 21:50:55,021  INFO      Epoch  10 | TrainLoss 0.2465 (BCE 0.4857 Huber 0.0073) | ValLoss 0.2490 (BCE 0.4899 Huber 0.0080) | Gap -0.0025 | ValAcc H1=0.528 H5=0.524 H20=0.519 | LR 3.00e-04 | GradNorm 0.018
+2026-04-12 21:59:48,835  INFO      Epoch  11 | TrainLoss 0.2464 (BCE 0.4854 Huber 0.0073) | ValLoss 0.2494 (BCE 0.4908 Huber 0.0080) | Gap -0.0031 | ValAcc H1=0.531 H5=0.527 H20=0.522 | LR 2.14e-04 | GradNorm 0.020
+2026-04-12 22:08:43,438  INFO      Epoch  12 | TrainLoss 0.2462 (BCE 0.4851 Huber 0.0073) | ValLoss 0.2490 (BCE 0.4900 Huber 0.0080) | Gap -0.0028 | ValAcc H1=0.530 H5=0.527 H20=0.523 | LR 2.00e-04 | GradNorm 0.022
+2026-04-12 22:17:37,899  INFO      Epoch  13 | TrainLoss 0.2458 (BCE 0.4843 Huber 0.0072) | ValLoss 0.2492 (BCE 0.4903 Huber 0.0080) | Gap -0.0034 | ValAcc H1=0.529 H5=0.525 H20=0.525 | LR 1.85e-04 | GradNorm 0.023
+2026-04-12 22:26:35,253  INFO      Epoch  14 | TrainLoss 0.2456 (BCE 0.4840 Huber 0.0072) | ValLoss 0.2507 (BCE 0.4933 Huber 0.0081) | Gap -0.0051 | ValAcc H1=0.529 H5=0.522 H20=0.521 | LR 1.70e-04 | GradNorm 0.024
+2026-04-12 22:35:33,349  INFO      Epoch  15 | TrainLoss 0.2454 (BCE 0.4836 Huber 0.0072) | ValLoss 0.2500 (BCE 0.4920 Huber 0.0081) | Gap -0.0046 | ValAcc H1=0.529 H5=0.521 H20=0.517 | LR 1.55e-04 | GradNorm 0.027
+2026-04-12 22:44:33,304  INFO      Epoch  16 | TrainLoss 0.2449 (BCE 0.4826 Huber 0.0072) | ValLoss 0.2500 (BCE 0.4919 Huber 0.0081) | Gap -0.0051 | ValAcc H1=0.525 H5=0.526 H20=0.520 | LR 1.40e-04 | GradNorm 0.030
+2026-04-12 22:53:31,313  INFO      Epoch  17 | TrainLoss 0.2448 (BCE 0.4824 Huber 0.0072) | ValLoss 0.2509 (BCE 0.4937 Huber 0.0081) | Gap -0.0061 | ValAcc H1=0.528 H5=0.520 H20=0.519 | LR 1.25e-04 | GradNorm 0.032
+2026-04-12 23:02:28,223  INFO      Epoch  18 | TrainLoss 0.2447 (BCE 0.4821 Huber 0.0072) | ValLoss 0.2502 (BCE 0.4923 Huber 0.0081) | Gap -0.0055 | ValAcc H1=0.526 H5=0.526 H20=0.523 | LR 1.10e-04 | GradNorm 0.033
+2026-04-12 23:11:24,648  INFO      Epoch  19 | TrainLoss 0.2443 (BCE 0.4815 Huber 0.0072) | ValLoss 0.2507 (BCE 0.4933 Huber 0.0081) | Gap -0.0063 | ValAcc H1=0.528 H5=0.524 H20=0.522 | LR 9.61e-05 | GradNorm 0.036
+2026-04-12 23:20:18,903  INFO      Epoch  20 | TrainLoss 0.2443 (BCE 0.4815 Huber 0.0072) | ValLoss 0.2510 (BCE 0.4939 Huber 0.0081) | Gap -0.0067 | ValAcc H1=0.528 H5=0.524 H20=0.520 | LR 8.25e-05 | GradNorm 0.039
+2026-04-12 23:29:18,343  INFO      Epoch  21 | TrainLoss 0.2440 (BCE 0.4807 Huber 0.0072) | ValLoss 0.2508 (BCE 0.4934 Huber 0.0081) | Gap -0.0068 | ValAcc H1=0.527 H5=0.525 H20=0.519 | LR 6.98e-05 | GradNorm 0.041
+2026-04-12 23:38:19,947  INFO      Epoch  22 | TrainLoss 0.2440 (BCE 0.4807 Huber 0.0072) | ValLoss 0.2507 (BCE 0.4933 Huber 0.0081) | Gap -0.0067 | ValAcc H1=0.527 H5=0.523 H20=0.521 | LR 5.80e-05 | GradNorm 0.042
+2026-04-12 23:47:19,158  INFO      Epoch  23 | TrainLoss 0.2436 (BCE 0.4801 Huber 0.0072) | ValLoss 0.2509 (BCE 0.4937 Huber 0.0081) | Gap -0.0073 | ValAcc H1=0.527 H5=0.524 H20=0.521 | LR 4.73e-05 | GradNorm 0.044
+2026-04-12 23:56:16,464  INFO      Epoch  24 | TrainLoss 0.2434 (BCE 0.4795 Huber 0.0072) | ValLoss 0.2509 (BCE 0.4938 Huber 0.0081) | Gap -0.0076 | ValAcc H1=0.529 H5=0.525 H20=0.521 | LR 3.77e-05 | GradNorm 0.047
+2026-04-13 00:05:13,192  INFO      Epoch  25 | TrainLoss 0.2433 (BCE 0.4794 Huber 0.0072) | ValLoss 0.2513 (BCE 0.4945 Huber 0.0081) | Gap -0.0080 | ValAcc H1=0.529 H5=0.522 H20=0.519 | LR 2.94e-05 | GradNorm 0.049
+2026-04-13 00:14:10,863  INFO      Epoch  26 | TrainLoss 0.2431 (BCE 0.4791 Huber 0.0072) | ValLoss 0.2512 (BCE 0.4943 Huber 0.0081) | Gap -0.0081 | ValAcc H1=0.528 H5=0.524 H20=0.519 | LR 2.26e-05 | GradNorm 0.048
+2026-04-13 00:23:08,953  INFO      Epoch  27 | TrainLoss 0.2433 (BCE 0.4794 Huber 0.0071) | ValLoss 0.2514 (BCE 0.4947 Huber 0.0081) | Gap -0.0081 | ValAcc H1=0.527 H5=0.523 H20=0.521 | LR 1.71e-05 | GradNorm 0.050
+2026-04-13 00:32:02,014  INFO      Epoch  28 | TrainLoss 0.2430 (BCE 0.4789 Huber 0.0072) | ValLoss 0.2515 (BCE 0.4949 Huber 0.0081) | Gap -0.0084 | ValAcc H1=0.527 H5=0.522 H20=0.519 | LR 1.32e-05 | GradNorm 0.051
+2026-04-13 00:32:02,049  INFO        Early stopping at epoch 28 (no improvement for 20 epochs).
+2026-04-13 00:32:02,083  INFO        Restored best weights (val_loss=0.2485  H1=0.531 H5=0.526 H20=0.521)
+2026-04-13 00:32:02,083  INFO        SWA did not start (training ended before epoch 40)
+2026-04-13 00:32:02,084  INFO        Restored best weights (val_loss=0.2485  H1=0.531 H5=0.526 H20=0.521)
+2026-04-13 00:32:02,263  INFO        Saved checkpoint: models/base/checkpoint_fold_1.pt
+2026-04-13 00:32:02,648  INFO        Saved metrics   : logs/training/fold_1_metrics.csv
+2026-04-13 00:32:02,699  INFO      ============================================================
+2026-04-13 00:32:02,700  INFO      FOLD 2 — Training
+2026-04-13 00:32:02,845  INFO      Loading datasets...
+2026-04-13 00:32:09,391  INFO          Index built: 105765 samples from 120 files
+2026-04-13 00:32:11,427  INFO          Index built: 16338 samples from 120 files
+2026-04-13 00:32:11,428  INFO        Train samples: 105765  Val samples: 16338
+2026-04-13 00:32:11,732  INFO      Starting training — max 200 epochs, patience 20
+2026-04-13 01:09:15,448  INFO      Stage 5 Training Loop — Start
+2026-04-13 01:09:15,450  INFO      Device : cpu
+2026-04-13 01:09:15,450  INFO      Config : LR=3e-04  Batch=256  MaxEpochs=200  Patience=20
+2026-04-13 01:09:15,451  INFO      Folds to train: [1, 2, 3]
+2026-04-13 01:09:15,451  INFO      Fold 1 checkpoint already exists — skipping.
+2026-04-13 01:09:15,772  INFO        Recovered from metrics CSV — H1=0.531 H5=0.526 H20=0.521
+2026-04-13 01:09:15,772  INFO      ============================================================
+2026-04-13 01:09:15,772  INFO      FOLD 2 — Training
+2026-04-13 01:09:16,364  INFO      Loading datasets...
+2026-04-13 01:10:16,346  INFO          Index built: 105765 samples from 120 files
+2026-04-13 01:10:29,645  INFO          Index built: 16338 samples from 120 files
+2026-04-13 01:10:29,647  INFO        Train samples: 105765  Val samples: 16338
+2026-04-13 01:10:40,654  INFO      Starting training — max 200 epochs, patience 20
+2026-04-13 01:18:02,096  INFO      Epoch   1 | TrainLoss 0.2488 (BCE 0.4901 Huber 0.0075) | ValLoss 0.2474 (BCE 0.4879 Huber 0.0070) | Gap 0.0014 | ValAcc H1=0.539 H5=0.531 H20=0.512 | LR 3.00e-05 | GradNorm 0.019
+2026-04-13 01:24:59,854  INFO      Epoch   2 | TrainLoss 0.2479 (BCE 0.4884 Huber 0.0074) | ValLoss 0.2470 (BCE 0.4870 Huber 0.0070) | Gap 0.0009 | ValAcc H1=0.543 H5=0.539 H20=0.515 | LR 6.00e-05 | GradNorm 0.020
+2026-04-13 01:31:50,421  INFO      Epoch   3 | TrainLoss 0.2476 (BCE 0.4878 Huber 0.0074) | ValLoss 0.2474 (BCE 0.4878 Huber 0.0070) | Gap 0.0003 | ValAcc H1=0.541 H5=0.538 H20=0.521 | LR 9.00e-05 | GradNorm 0.020
+2026-04-13 01:38:39,086  INFO      Epoch   4 | TrainLoss 0.2476 (BCE 0.4878 Huber 0.0074) | ValLoss 0.2469 (BCE 0.4869 Huber 0.0070) | Gap 0.0007 | ValAcc H1=0.544 H5=0.541 H20=0.526 | LR 1.20e-04 | GradNorm 0.020
+2026-04-13 01:45:31,738  INFO      Epoch   5 | TrainLoss 0.2474 (BCE 0.4875 Huber 0.0074) | ValLoss 0.2473 (BCE 0.4877 Huber 0.0070) | Gap 0.0001 | ValAcc H1=0.541 H5=0.535 H20=0.527 | LR 1.50e-04 | GradNorm 0.018
+2026-04-13 01:52:24,310  INFO      Epoch   6 | TrainLoss 0.2473 (BCE 0.4872 Huber 0.0074) | ValLoss 0.2471 (BCE 0.4872 Huber 0.0070) | Gap 0.0002 | ValAcc H1=0.546 H5=0.542 H20=0.524 | LR 1.80e-04 | GradNorm 0.018
+2026-04-13 01:59:04,791  INFO      Epoch   7 | TrainLoss 0.2472 (BCE 0.4869 Huber 0.0074) | ValLoss 0.2474 (BCE 0.4878 Huber 0.0070) | Gap -0.0002 | ValAcc H1=0.544 H5=0.537 H20=0.524 | LR 2.10e-04 | GradNorm 0.019
+2026-04-13 02:05:42,780  INFO      Epoch   8 | TrainLoss 0.2470 (BCE 0.4865 Huber 0.0074) | ValLoss 0.2471 (BCE 0.4872 Huber 0.0070) | Gap -0.0001 | ValAcc H1=0.543 H5=0.538 H20=0.527 | LR 2.40e-04 | GradNorm 0.018
+2026-04-13 02:12:53,536  INFO      Epoch   9 | TrainLoss 0.2469 (BCE 0.4863 Huber 0.0074) | ValLoss 0.2473 (BCE 0.4875 Huber 0.0070) | Gap -0.0004 | ValAcc H1=0.541 H5=0.540 H20=0.522 | LR 2.70e-04 | GradNorm 0.018
+2026-04-13 02:20:03,571  INFO      Epoch  10 | TrainLoss 0.2466 (BCE 0.4858 Huber 0.0074) | ValLoss 0.2468 (BCE 0.4867 Huber 0.0070) | Gap -0.0002 | ValAcc H1=0.547 H5=0.543 H20=0.522 | LR 3.00e-04 | GradNorm 0.019
+2026-04-13 02:54:56,438  INFO      Stage 5 Training Loop — Start
+2026-04-13 02:54:56,438  INFO      Device : cpu
+2026-04-13 02:54:56,439  INFO      Config : LR=3e-04  Batch=256  MaxEpochs=200  Patience=15
+2026-04-13 02:54:56,439  INFO      Folds to train: [1, 2, 3]
+2026-04-13 02:54:56,439  INFO      Fold 1 checkpoint already exists — skipping.
+2026-04-13 02:54:56,705  INFO        Recovered from metrics CSV — H1=0.531 H5=0.526 H20=0.521
+2026-04-13 02:54:56,706  INFO      ============================================================
+2026-04-13 02:54:56,706  INFO      FOLD 2 — Training
+2026-04-13 02:54:57,239  INFO      Loading datasets...
+2026-04-13 02:55:56,525  INFO          Index built: 105765 samples from 120 files
+2026-04-13 02:56:10,721  INFO          Index built: 16338 samples from 120 files
+2026-04-13 02:56:10,721  INFO        Train samples: 105765  Val samples: 16338
+2026-04-13 02:56:22,373  INFO      Starting training — max 200 epochs, patience 15
+2026-04-13 03:03:12,425  INFO      Epoch   1 | TrainLoss 0.2486 (BCE 0.4897 Huber 0.0075) | ValLoss 0.2472 (BCE 0.4874 Huber 0.0070) | Gap 0.0014 | ValAcc H1=0.546 H5=0.537 H20=0.514 | LR 3.00e-05 | GradNorm 0.017
+2026-04-13 03:09:52,175  INFO      Epoch   2 | TrainLoss 0.2479 (BCE 0.4883 Huber 0.0074) | ValLoss 0.2471 (BCE 0.4873 Huber 0.0070) | Gap 0.0007 | ValAcc H1=0.542 H5=0.539 H20=0.515 | LR 6.00e-05 | GradNorm 0.019
+2026-04-13 03:16:31,904  INFO      Epoch   3 | TrainLoss 0.2476 (BCE 0.4878 Huber 0.0074) | ValLoss 0.2469 (BCE 0.4869 Huber 0.0070) | Gap 0.0007 | ValAcc H1=0.544 H5=0.539 H20=0.515 | LR 9.00e-05 | GradNorm 0.019
+2026-04-13 03:23:07,950  INFO      Epoch   4 | TrainLoss 0.2475 (BCE 0.4876 Huber 0.0074) | ValLoss 0.2468 (BCE 0.4866 Huber 0.0070) | Gap 0.0007 | ValAcc H1=0.545 H5=0.545 H20=0.519 | LR 1.20e-04 | GradNorm 0.020
+2026-04-13 03:29:42,289  INFO      Epoch   5 | TrainLoss 0.2474 (BCE 0.4874 Huber 0.0074) | ValLoss 0.2470 (BCE 0.4871 Huber 0.0070) | Gap 0.0004 | ValAcc H1=0.542 H5=0.536 H20=0.522 | LR 1.50e-04 | GradNorm 0.020
+2026-04-13 03:36:14,213  INFO      Epoch   6 | TrainLoss 0.2472 (BCE 0.4869 Huber 0.0074) | ValLoss 0.2469 (BCE 0.4868 Huber 0.0070) | Gap 0.0003 | ValAcc H1=0.545 H5=0.543 H20=0.524 | LR 1.80e-04 | GradNorm 0.019
+2026-04-13 03:42:45,565  INFO      Epoch   7 | TrainLoss 0.2472 (BCE 0.4869 Huber 0.0074) | ValLoss 0.2469 (BCE 0.4868 Huber 0.0070) | Gap 0.0003 | ValAcc H1=0.546 H5=0.543 H20=0.529 | LR 2.10e-04 | GradNorm 0.019
+2026-04-13 03:49:14,442  INFO      Epoch   8 | TrainLoss 0.2468 (BCE 0.4862 Huber 0.0074) | ValLoss 0.2472 (BCE 0.4875 Huber 0.0070) | Gap -0.0004 | ValAcc H1=0.534 H5=0.541 H20=0.527 | LR 2.40e-04 | GradNorm 0.020
+2026-04-13 03:55:59,504  INFO      Epoch   9 | TrainLoss 0.2469 (BCE 0.4864 Huber 0.0074) | ValLoss 0.2469 (BCE 0.4868 Huber 0.0070) | Gap 0.0000 | ValAcc H1=0.552 H5=0.546 H20=0.528 | LR 2.70e-04 | GradNorm 0.019
+2026-04-13 04:02:57,053  INFO      Epoch  10 | TrainLoss 0.2467 (BCE 0.4860 Huber 0.0074) | ValLoss 0.2467 (BCE 0.4865 Huber 0.0070) | Gap -0.0001 | ValAcc H1=0.547 H5=0.547 H20=0.528 | LR 3.00e-04 | GradNorm 0.020
+2026-04-13 04:10:07,209  INFO      Epoch  11 | TrainLoss 0.2462 (BCE 0.4851 Huber 0.0074) | ValLoss 0.2473 (BCE 0.4877 Huber 0.0070) | Gap -0.0011 | ValAcc H1=0.540 H5=0.540 H20=0.534 | LR 2.14e-04 | GradNorm 0.021
+2026-04-13 04:17:43,223  INFO      Epoch  12 | TrainLoss 0.2459 (BCE 0.4845 Huber 0.0073) | ValLoss 0.2476 (BCE 0.4882 Huber 0.0070) | Gap -0.0017 | ValAcc H1=0.547 H5=0.543 H20=0.533 | LR 2.00e-04 | GradNorm 0.025
+2026-04-13 04:25:12,856  INFO      Epoch  13 | TrainLoss 0.2459 (BCE 0.4844 Huber 0.0074) | ValLoss 0.2472 (BCE 0.4875 Huber 0.0070) | Gap -0.0014 | ValAcc H1=0.544 H5=0.537 H20=0.528 | LR 1.85e-04 | GradNorm 0.027
+2026-04-13 04:32:44,763  INFO      Epoch  14 | TrainLoss 0.2455 (BCE 0.4836 Huber 0.0073) | ValLoss 0.2472 (BCE 0.4875 Huber 0.0070) | Gap -0.0018 | ValAcc H1=0.544 H5=0.541 H20=0.534 | LR 1.70e-04 | GradNorm 0.029
+2026-04-13 04:40:14,858  INFO      Epoch  15 | TrainLoss 0.2451 (BCE 0.4829 Huber 0.0073) | ValLoss 0.2475 (BCE 0.4880 Huber 0.0070) | Gap -0.0023 | ValAcc H1=0.541 H5=0.539 H20=0.535 | LR 1.55e-04 | GradNorm 0.032
+2026-04-13 04:47:52,511  INFO      Epoch  16 | TrainLoss 0.2448 (BCE 0.4823 Huber 0.0073) | ValLoss 0.2480 (BCE 0.4889 Huber 0.0070) | Gap -0.0031 | ValAcc H1=0.541 H5=0.540 H20=0.533 | LR 1.40e-04 | GradNorm 0.034
+2026-04-13 04:55:31,214  INFO      Epoch  17 | TrainLoss 0.2448 (BCE 0.4823 Huber 0.0073) | ValLoss 0.2478 (BCE 0.4886 Huber 0.0070) | Gap -0.0030 | ValAcc H1=0.539 H5=0.539 H20=0.534 | LR 1.25e-04 | GradNorm 0.036
+2026-04-13 05:03:14,518  INFO      Epoch  18 | TrainLoss 0.2445 (BCE 0.4816 Huber 0.0073) | ValLoss 0.2483 (BCE 0.4897 Huber 0.0070) | Gap -0.0039 | ValAcc H1=0.534 H5=0.535 H20=0.534 | LR 1.10e-04 | GradNorm 0.040
+2026-04-13 05:10:50,381  INFO      Epoch  19 | TrainLoss 0.2442 (BCE 0.4811 Huber 0.0073) | ValLoss 0.2483 (BCE 0.4896 Huber 0.0070) | Gap -0.0041 | ValAcc H1=0.534 H5=0.530 H20=0.528 | LR 9.61e-05 | GradNorm 0.043
+2026-04-13 05:21:40,415  INFO      Stage 5 Training Loop — Start
+2026-04-13 05:21:40,446  INFO      Device : cpu
+2026-04-13 05:21:40,446  INFO      Config : LR=3e-04  Batch=256  MaxEpochs=50  Patience=15
+2026-04-13 05:21:40,447  INFO      Folds to train: [1, 2, 3]
+2026-04-13 05:21:40,447  INFO      Fold 1 checkpoint already exists — skipping.
+2026-04-13 05:21:40,799  INFO        Recovered from metrics CSV — H1=0.531 H5=0.526 H20=0.521
+2026-04-13 05:21:40,800  INFO      ============================================================
+2026-04-13 05:21:40,800  INFO      FOLD 2 — Training
+2026-04-13 05:21:41,362  INFO      Loading datasets...
+2026-04-13 05:22:39,969  INFO          Index built: 105765 samples from 120 files
+2026-04-13 05:22:52,935  INFO          Index built: 16338 samples from 120 files
+2026-04-13 05:22:52,935  INFO        Train samples: 105765  Val samples: 16338
+2026-04-13 05:23:04,326  INFO      Starting training — max 50 epochs, patience 15
+2026-04-13 05:30:05,453  INFO      Epoch   1 | TrainLoss 0.2483 (BCE 0.4892 Huber 0.0075) | ValLoss 0.2472 (BCE 0.4873 Huber 0.0070) | Gap 0.0012 | ValAcc H1=0.545 H5=0.541 H20=0.522 | LR 1.20e-04 | GradNorm 0.019
+2026-04-13 05:36:58,603  INFO      Epoch   2 | TrainLoss 0.2478 (BCE 0.4882 Huber 0.0074) | ValLoss 0.2471 (BCE 0.4872 Huber 0.0070) | Gap 0.0007 | ValAcc H1=0.541 H5=0.534 H20=0.521 | LR 2.40e-04 | GradNorm 0.017
+2026-04-13 05:43:42,887  INFO      Epoch   3 | TrainLoss 0.2475 (BCE 0.4875 Huber 0.0074) | ValLoss 0.2469 (BCE 0.4869 Huber 0.0070) | Gap 0.0006 | ValAcc H1=0.545 H5=0.541 H20=0.522 | LR 2.93e-04 | GradNorm 0.015
+2026-04-13 05:50:25,590  INFO      Epoch   4 | TrainLoss 0.2473 (BCE 0.4872 Huber 0.0074) | ValLoss 0.2470 (BCE 0.4870 Huber 0.0070) | Gap 0.0003 | ValAcc H1=0.546 H5=0.541 H20=0.524 | LR 2.87e-04 | GradNorm 0.014
+2026-04-13 05:57:06,140  INFO      Epoch   5 | TrainLoss 0.2470 (BCE 0.4867 Huber 0.0074) | ValLoss 0.2468 (BCE 0.4867 Huber 0.0070) | Gap 0.0002 | ValAcc H1=0.545 H5=0.546 H20=0.526 | LR 2.81e-04 | GradNorm 0.014
+2026-04-13 06:03:46,285  INFO      Epoch   6 | TrainLoss 0.2470 (BCE 0.4866 Huber 0.0074) | ValLoss 0.2466 (BCE 0.4863 Huber 0.0069) | Gap 0.0004 | ValAcc H1=0.549 H5=0.544 H20=0.530 | LR 2.72e-04 | GradNorm 0.014
+2026-04-13 06:10:31,540  INFO      Epoch   7 | TrainLoss 0.2467 (BCE 0.4861 Huber 0.0074) | ValLoss 0.2470 (BCE 0.4871 Huber 0.0070) | Gap -0.0003 | ValAcc H1=0.549 H5=0.541 H20=0.526 | LR 2.63e-04 | GradNorm 0.016
+2026-04-13 06:17:11,028  INFO      Epoch   8 | TrainLoss 0.2464 (BCE 0.4854 Huber 0.0074) | ValLoss 0.2468 (BCE 0.4867 Huber 0.0070) | Gap -0.0005 | ValAcc H1=0.546 H5=0.545 H20=0.524 | LR 2.52e-04 | GradNorm 0.017
+2026-04-13 06:24:04,010  INFO      Epoch   9 | TrainLoss 0.2464 (BCE 0.4854 Huber 0.0074) | ValLoss 0.2472 (BCE 0.4874 Huber 0.0070) | Gap -0.0008 | ValAcc H1=0.546 H5=0.539 H20=0.526 | LR 2.40e-04 | GradNorm 0.019
+2026-04-13 06:31:08,698  INFO        SWA started at epoch 10
+2026-04-13 06:31:08,708  INFO      Epoch  10 | TrainLoss 0.2459 (BCE 0.4844 Huber 0.0074) | ValLoss 0.2472 (BCE 0.4875 Huber 0.0070) | Gap -0.0013 | ValAcc H1=0.542 H5=0.541 H20=0.532 | LR 2.11e-04 | GradNorm 0.021
+2026-04-13 06:38:30,370  INFO      Epoch  11 | TrainLoss 0.2459 (BCE 0.4843 Huber 0.0074) | ValLoss 0.2476 (BCE 0.4882 Huber 0.0070) | Gap -0.0017 | ValAcc H1=0.539 H5=0.539 H20=0.529 | LR 1.69e-04 | GradNorm 0.023
+2026-04-13 06:46:09,168  INFO      Epoch  12 | TrainLoss 0.2454 (BCE 0.4835 Huber 0.0073) | ValLoss 0.2481 (BCE 0.4892 Huber 0.0070) | Gap -0.0027 | ValAcc H1=0.540 H5=0.536 H20=0.532 | LR 1.29e-04 | GradNorm 0.026
+2026-04-13 06:53:44,189  INFO      Epoch  13 | TrainLoss 0.2453 (BCE 0.4832 Huber 0.0073) | ValLoss 0.2483 (BCE 0.4896 Huber 0.0070) | Gap -0.0030 | ValAcc H1=0.532 H5=0.529 H20=0.531 | LR 8.74e-05 | GradNorm 0.028
+2026-04-13 07:01:14,442  INFO      Epoch  14 | TrainLoss 0.2449 (BCE 0.4825 Huber 0.0073) | ValLoss 0.2481 (BCE 0.4892 Huber 0.0070) | Gap -0.0031 | ValAcc H1=0.542 H5=0.528 H20=0.533 | LR 5.00e-05 | GradNorm 0.031
+2026-04-13 07:08:45,697  INFO      Epoch  15 | TrainLoss 0.2442 (BCE 0.4812 Huber 0.0073) | ValLoss 0.2476 (BCE 0.4882 Huber 0.0070) | Gap -0.0033 | ValAcc H1=0.549 H5=0.533 H20=0.532 | LR 5.00e-05 | GradNorm 0.035
+2026-04-13 07:16:24,276  INFO      Epoch  16 | TrainLoss 0.2443 (BCE 0.4812 Huber 0.0073) | ValLoss 0.2481 (BCE 0.4893 Huber 0.0070) | Gap -0.0039 | ValAcc H1=0.543 H5=0.530 H20=0.532 | LR 5.00e-05 | GradNorm 0.037
+2026-04-13 07:24:05,333  INFO      Epoch  17 | TrainLoss 0.2439 (BCE 0.4806 Huber 0.0073) | ValLoss 0.2483 (BCE 0.4896 Huber 0.0070) | Gap -0.0043 | ValAcc H1=0.547 H5=0.532 H20=0.531 | LR 5.00e-05 | GradNorm 0.040
+2026-04-13 07:31:45,486  INFO      Epoch  18 | TrainLoss 0.2436 (BCE 0.4799 Huber 0.0073) | ValLoss 0.2484 (BCE 0.4897 Huber 0.0070) | Gap -0.0048 | ValAcc H1=0.546 H5=0.531 H20=0.532 | LR 5.00e-05 | GradNorm 0.042
+2026-04-13 07:39:19,797  INFO      Epoch  19 | TrainLoss 0.2437 (BCE 0.4800 Huber 0.0073) | ValLoss 0.2481 (BCE 0.4893 Huber 0.0070) | Gap -0.0045 | ValAcc H1=0.541 H5=0.526 H20=0.531 | LR 5.00e-05 | GradNorm 0.044
+2026-04-13 07:46:51,541  INFO      Epoch  20 | TrainLoss 0.2431 (BCE 0.4790 Huber 0.0073) | ValLoss 0.2485 (BCE 0.4900 Huber 0.0070) | Gap -0.0054 | ValAcc H1=0.544 H5=0.529 H20=0.529 | LR 5.00e-05 | GradNorm 0.045
+2026-04-13 07:54:25,491  INFO      Epoch  21 | TrainLoss 0.2427 (BCE 0.4781 Huber 0.0073) | ValLoss 0.2490 (BCE 0.4911 Huber 0.0070) | Gap -0.0063 | ValAcc H1=0.543 H5=0.529 H20=0.528 | LR 5.00e-05 | GradNorm 0.050
+2026-04-13 07:54:25,514  INFO        Early stopping at epoch 21 (no improvement for 15 epochs).
+2026-04-13 07:54:25,517  INFO        Restored best weights (val_loss=0.2466  H1=0.549 H5=0.544 H20=0.530)
+2026-04-13 07:54:25,518  INFO        Updating BatchNorm stats for SWA model...
+2026-04-13 07:54:25,533  INFO        SWA model ready.
+2026-04-13 07:54:38,484  INFO        SWA val_loss=0.2479  vs  best single-epoch val_loss=0.2466
+2026-04-13 07:54:38,485  INFO        Using best-epoch checkpoint (lower val_loss than SWA)
+2026-04-13 07:54:38,486  INFO        Restored best weights (val_loss=0.2466  H1=0.549 H5=0.544 H20=0.530)
+2026-04-13 07:54:38,588  INFO        Saved checkpoint: models/base/checkpoint_fold_2.pt
+2026-04-13 07:54:38,706  INFO        Saved metrics   : logs/training/fold_2_metrics.csv
+2026-04-13 07:54:38,781  INFO      ============================================================
+2026-04-13 07:54:38,782  INFO      FOLD 3 — Training
+2026-04-13 07:54:39,005  INFO      Loading datasets...
+2026-04-13 07:54:46,265  INFO          Index built: 109177 samples from 120 files
+2026-04-13 07:55:22,108  INFO          Index built: 43886 samples from 198 files
+2026-04-13 07:55:22,112  INFO        Train samples: 109177  Val samples: 43886
+2026-04-13 07:55:22,431  INFO      Starting training — max 50 epochs, patience 15
+2026-04-13 08:04:04,843  INFO      Epoch   1 | TrainLoss 0.2485 (BCE 0.4895 Huber 0.0074) | ValLoss 0.2470 (BCE 0.4871 Huber 0.0069) | Gap 0.0015 | ValAcc H1=0.547 H5=0.538 H20=0.528 | LR 1.20e-04 | GradNorm 0.019
+2026-04-13 08:12:43,320  INFO      Epoch   2 | TrainLoss 0.2477 (BCE 0.4881 Huber 0.0074) | ValLoss 0.2467 (BCE 0.4865 Huber 0.0069) | Gap 0.0011 | ValAcc H1=0.547 H5=0.544 H20=0.531 | LR 2.40e-04 | GradNorm 0.017
+2026-04-13 08:21:20,097  INFO      Epoch   3 | TrainLoss 0.2474 (BCE 0.4875 Huber 0.0074) | ValLoss 0.2466 (BCE 0.4863 Huber 0.0069) | Gap 0.0008 | ValAcc H1=0.550 H5=0.544 H20=0.531 | LR 2.93e-04 | GradNorm 0.015
+2026-04-13 08:29:51,860  INFO      Epoch   4 | TrainLoss 0.2472 (BCE 0.4870 Huber 0.0074) | ValLoss 0.2466 (BCE 0.4864 Huber 0.0069) | Gap 0.0005 | ValAcc H1=0.551 H5=0.542 H20=0.531 | LR 2.87e-04 | GradNorm 0.014
+2026-04-13 08:38:31,509  INFO      Epoch   5 | TrainLoss 0.2472 (BCE 0.4870 Huber 0.0074) | ValLoss 0.2466 (BCE 0.4864 Huber 0.0069) | Gap 0.0006 | ValAcc H1=0.550 H5=0.548 H20=0.532 | LR 2.81e-04 | GradNorm 0.014
+2026-04-13 08:47:11,654  INFO      Epoch   6 | TrainLoss 0.2469 (BCE 0.4864 Huber 0.0074) | ValLoss 0.2466 (BCE 0.4864 Huber 0.0069) | Gap 0.0002 | ValAcc H1=0.550 H5=0.543 H20=0.535 | LR 2.72e-04 | GradNorm 0.015
+2026-04-13 08:55:57,285  INFO      Epoch   7 | TrainLoss 0.2467 (BCE 0.4861 Huber 0.0073) | ValLoss 0.2463 (BCE 0.4858 Huber 0.0069) | Gap 0.0004 | ValAcc H1=0.552 H5=0.546 H20=0.534 | LR 2.63e-04 | GradNorm 0.015
+2026-04-13 09:04:42,732  INFO      Epoch   8 | TrainLoss 0.2466 (BCE 0.4859 Huber 0.0074) | ValLoss 0.2468 (BCE 0.4867 Huber 0.0069) | Gap -0.0002 | ValAcc H1=0.549 H5=0.543 H20=0.532 | LR 2.52e-04 | GradNorm 0.016
+2026-04-13 09:13:23,363  INFO      Epoch   9 | TrainLoss 0.2462 (BCE 0.4850 Huber 0.0074) | ValLoss 0.2465 (BCE 0.4862 Huber 0.0069) | Gap -0.0003 | ValAcc H1=0.550 H5=0.546 H20=0.532 | LR 2.40e-04 | GradNorm 0.018
+2026-04-13 09:21:56,415  INFO        SWA started at epoch 10
+2026-04-13 09:21:56,478  INFO      Epoch  10 | TrainLoss 0.2461 (BCE 0.4849 Huber 0.0073) | ValLoss 0.2467 (BCE 0.4864 Huber 0.0069) | Gap -0.0005 | ValAcc H1=0.549 H5=0.547 H20=0.537 | LR 2.11e-04 | GradNorm 0.020
+2026-04-13 09:30:36,292  INFO      Epoch  11 | TrainLoss 0.2457 (BCE 0.4841 Huber 0.0073) | ValLoss 0.2470 (BCE 0.4871 Huber 0.0069) | Gap -0.0013 | ValAcc H1=0.548 H5=0.543 H20=0.533 | LR 1.69e-04 | GradNorm 0.022
+2026-04-13 09:39:18,087  INFO      Epoch  12 | TrainLoss 0.2455 (BCE 0.4836 Huber 0.0073) | ValLoss 0.2468 (BCE 0.4867 Huber 0.0069) | Gap -0.0013 | ValAcc H1=0.549 H5=0.546 H20=0.533 | LR 1.29e-04 | GradNorm 0.025
+2026-04-13 09:47:57,862  INFO      Epoch  13 | TrainLoss 0.2452 (BCE 0.4830 Huber 0.0073) | ValLoss 0.2478 (BCE 0.4887 Huber 0.0069) | Gap -0.0027 | ValAcc H1=0.545 H5=0.541 H20=0.526 | LR 8.74e-05 | GradNorm 0.028
+2026-04-13 09:56:43,250  INFO      Epoch  14 | TrainLoss 0.2450 (BCE 0.4826 Huber 0.0073) | ValLoss 0.2471 (BCE 0.4873 Huber 0.0069) | Gap -0.0021 | ValAcc H1=0.551 H5=0.546 H20=0.534 | LR 5.00e-05 | GradNorm 0.031
+2026-04-13 10:04:40,147  INFO      Epoch  15 | TrainLoss 0.2444 (BCE 0.4815 Huber 0.0073) | ValLoss 0.2474 (BCE 0.4878 Huber 0.0069) | Gap -0.0030 | ValAcc H1=0.548 H5=0.546 H20=0.529 | LR 5.00e-05 | GradNorm 0.035
+2026-04-13 10:12:02,759  INFO      Epoch  16 | TrainLoss 0.2440 (BCE 0.4807 Huber 0.0073) | ValLoss 0.2477 (BCE 0.4885 Huber 0.0069) | Gap -0.0037 | ValAcc H1=0.545 H5=0.544 H20=0.534 | LR 5.00e-05 | GradNorm 0.037
+2026-04-13 10:19:23,704  INFO      Epoch  17 | TrainLoss 0.2438 (BCE 0.4803 Huber 0.0073) | ValLoss 0.2483 (BCE 0.4898 Huber 0.0069) | Gap -0.0046 | ValAcc H1=0.546 H5=0.541 H20=0.531 | LR 5.00e-05 | GradNorm 0.040
+2026-04-13 10:26:44,013  INFO      Epoch  18 | TrainLoss 0.2435 (BCE 0.4797 Huber 0.0073) | ValLoss 0.2485 (BCE 0.4901 Huber 0.0069) | Gap -0.0050 | ValAcc H1=0.545 H5=0.544 H20=0.534 | LR 5.00e-05 | GradNorm 0.042
+2026-04-13 10:34:04,476  INFO      Epoch  19 | TrainLoss 0.2431 (BCE 0.4790 Huber 0.0073) | ValLoss 0.2483 (BCE 0.4896 Huber 0.0069) | Gap -0.0051 | ValAcc H1=0.547 H5=0.543 H20=0.534 | LR 5.00e-05 | GradNorm 0.047
+2026-04-13 10:41:23,188  INFO      Epoch  20 | TrainLoss 0.2431 (BCE 0.4789 Huber 0.0073) | ValLoss 0.2486 (BCE 0.4903 Huber 0.0069) | Gap -0.0055 | ValAcc H1=0.546 H5=0.539 H20=0.528 | LR 5.00e-05 | GradNorm 0.048
+2026-04-13 10:48:42,220  INFO      Epoch  21 | TrainLoss 0.2427 (BCE 0.4782 Huber 0.0073) | ValLoss 0.2485 (BCE 0.4901 Huber 0.0069) | Gap -0.0058 | ValAcc H1=0.545 H5=0.542 H20=0.533 | LR 5.00e-05 | GradNorm 0.051
+2026-04-13 10:56:02,455  INFO      Epoch  22 | TrainLoss 0.2424 (BCE 0.4776 Huber 0.0073) | ValLoss 0.2486 (BCE 0.4903 Huber 0.0069) | Gap -0.0061 | ValAcc H1=0.547 H5=0.542 H20=0.533 | LR 5.00e-05 | GradNorm 0.054
+2026-04-13 10:56:02,455  INFO        Early stopping at epoch 22 (no improvement for 15 epochs).
+2026-04-13 10:56:02,459  INFO        Restored best weights (val_loss=0.2463  H1=0.552 H5=0.546 H20=0.534)
+2026-04-13 10:56:02,459  INFO        Updating BatchNorm stats for SWA model...
+2026-04-13 10:56:02,472  INFO        SWA model ready.
+2026-04-13 10:56:37,154  INFO        SWA val_loss=0.2475  vs  best single-epoch val_loss=0.2463
+2026-04-13 10:56:37,154  INFO        Using best-epoch checkpoint (lower val_loss than SWA)
+2026-04-13 10:56:37,156  INFO        Restored best weights (val_loss=0.2463  H1=0.552 H5=0.546 H20=0.534)
+2026-04-13 10:56:37,215  INFO        Saved checkpoint: models/base/checkpoint_fold_3.pt
+2026-04-13 10:56:37,351  INFO        Saved metrics   : logs/training/fold_3_metrics.csv
+2026-04-13 10:56:37,476  INFO      ============================================================
+2026-04-13 10:56:37,476  INFO      Training complete. Cross-fold summary:
+2026-04-13 10:56:37,476  INFO        Fold 1: best_val_loss=0.2485  best_val_acc H1=0.531 H5=0.526 H20=0.521  epochs=28
+2026-04-13 10:56:37,476  INFO        Fold 2: best_val_loss=0.2466  best_val_acc H1=0.549 H5=0.544 H20=0.530  epochs=21
+2026-04-13 10:56:37,476  INFO        Fold 3: best_val_loss=0.2463  best_val_acc H1=0.552 H5=0.546 H20=0.534  epochs=22
+2026-04-13 10:56:37,482  INFO        Mean val loss : 0.2471 ± 0.0010
+2026-04-13 10:56:37,482  INFO        Mean val acc  : 0.418 ± 0.076
+2026-04-13 10:56:37,484  INFO        Base checkpoint saved: models/base/checkpoint_base_v1.pt  (from fold 3)
+2026-04-13 10:56:37,484  INFO      Stage 5 complete.
+2026-04-13 10:56:37,484  INFO      Next step: run evaluation.py (Stage 7) on the test splits.
+2026-04-13 14:57:56,293  INFO      Stage 5 Training Loop — Start
+2026-04-13 14:57:56,294  INFO      Device : cpu
+2026-04-13 14:57:56,294  INFO      Config : LR=3e-04  Batch=256  MaxEpochs=50  Patience=15
+2026-04-13 14:57:56,295  INFO      Folds to train: [1, 2, 3]
+2026-04-13 14:57:56,295  INFO      Fold 1 checkpoint already exists — skipping.
+2026-04-13 14:57:56,321  INFO        Recovered from metrics CSV — H1=0.531 H5=0.526 H20=0.521
+2026-04-13 14:57:56,321  INFO      Fold 2 checkpoint already exists — skipping.
+2026-04-13 14:57:56,420  INFO        Recovered from metrics CSV — H1=0.549 H5=0.544 H20=0.530
+2026-04-13 14:57:56,420  INFO      Fold 3 checkpoint already exists — skipping.
+2026-04-13 14:57:56,459  INFO        Recovered from metrics CSV — H1=0.552 H5=0.546 H20=0.534
+2026-04-13 14:57:56,459  INFO      ============================================================
+2026-04-13 14:57:56,459  INFO      Training complete. Cross-fold summary:
+2026-04-13 14:57:56,460  INFO        Fold 1: best_val_loss=0.2485  best_val_acc H1=0.531 H5=0.526 H20=0.521  epochs=28
+2026-04-13 14:57:56,460  INFO        Fold 2: best_val_loss=0.2466  best_val_acc H1=0.549 H5=0.544 H20=0.530  epochs=21
+2026-04-13 14:57:56,460  INFO        Fold 3: best_val_loss=0.2463  best_val_acc H1=0.552 H5=0.546 H20=0.534  epochs=22
+2026-04-13 14:57:56,460  INFO        Mean val loss : 0.2471 ± 0.0010
+2026-04-13 14:57:56,460  INFO        Mean val acc  : 0.537 ± 0.008
+2026-04-13 14:57:56,461  INFO        Base checkpoint already exists — not overwritten: models/base/checkpoint_base_v1.pt
+2026-04-13 14:57:56,461  INFO      Stage 5 complete.
+2026-04-13 14:57:56,461  INFO      Next step: run evaluation.py (Stage 7) on the test splits.

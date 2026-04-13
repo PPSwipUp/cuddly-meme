@@ -1,0 +1,51 @@
+2026-04-13 17:19:18,728  INFO      ============================================================
+2026-04-13 17:19:18,728  INFO      Stage 6 Fine-Tuning — Start
+2026-04-13 17:19:18,728  INFO      Instrument  : LSE_BPL
+2026-04-13 17:19:18,728  INFO      Resolution  : 1D
+2026-04-13 17:19:18,728  INFO      Device      : cpu
+2026-04-13 17:19:18,729  INFO      Base checkpoint: models/base/checkpoint_base_v1.pt
+2026-04-13 17:19:18,730  INFO      Loading: LSE_BPL_1D_20150101_20260412.npy
+2026-04-13 17:19:20,029  INFO        Shape: (2668, 60, 47)  (2668 windows)
+2026-04-13 17:19:20,042  INFO        Date range: 2015-09-17 → 2026-04-10  (10.6 years)
+2026-04-13 17:19:20,042  INFO        Train windows: 2605  Val windows: 63
+2026-04-13 17:19:20,042  INFO      Years of data: 10.6
+2026-04-13 17:19:20,119  INFO      Loading base checkpoint: models/base/checkpoint_base_v1.pt
+2026-04-13 17:19:20,133  INFO        Base val_loss: 0.2463  (fold 3, epoch 22)
+2026-04-13 17:19:20,133  INFO      --------------------------------------------------
+2026-04-13 17:19:20,133  INFO      Phase 1 — Head-only adaptation (encoder frozen)
+2026-04-13 17:19:23,761  INFO        P1 Epoch  1 | TrainLoss 0.2461 | ValLoss 0.2579 | ValAcc H1=0.460 H5=0.444 H20=0.381
+2026-04-13 17:19:25,989  INFO        P1 Epoch  2 | TrainLoss 0.2460 | ValLoss 0.2581 | ValAcc H1=0.460 H5=0.429 H20=0.429
+2026-04-13 17:19:28,569  INFO        P1 Epoch  3 | TrainLoss 0.2461 | ValLoss 0.2583 | ValAcc H1=0.460 H5=0.429 H20=0.429
+2026-04-13 17:19:30,780  INFO        P1 Epoch  4 | TrainLoss 0.2461 | ValLoss 0.2585 | ValAcc H1=0.460 H5=0.413 H20=0.429
+2026-04-13 17:19:33,324  INFO        P1 Epoch  5 | TrainLoss 0.2462 | ValLoss 0.2584 | ValAcc H1=0.460 H5=0.413 H20=0.429
+2026-04-13 17:19:35,478  INFO        P1 Epoch  6 | TrainLoss 0.2461 | ValLoss 0.2585 | ValAcc H1=0.460 H5=0.413 H20=0.349
+2026-04-13 17:19:37,832  INFO        P1 Epoch  7 | TrainLoss 0.2461 | ValLoss 0.2588 | ValAcc H1=0.460 H5=0.413 H20=0.349
+2026-04-13 17:19:40,144  INFO        P1 Epoch  8 | TrainLoss 0.2462 | ValLoss 0.2587 | ValAcc H1=0.460 H5=0.413 H20=0.349
+2026-04-13 17:19:42,461  INFO        P1 Epoch  9 | TrainLoss 0.2460 | ValLoss 0.2587 | ValAcc H1=0.460 H5=0.413 H20=0.349
+2026-04-13 17:19:44,895  INFO        P1 Epoch 10 | TrainLoss 0.2461 | ValLoss 0.2589 | ValAcc H1=0.460 H5=0.413 H20=0.317
+2026-04-13 17:19:47,081  INFO        P1 Epoch 11 | TrainLoss 0.2458 | ValLoss 0.2589 | ValAcc H1=0.460 H5=0.413 H20=0.333
+2026-04-13 17:19:47,081  INFO        Phase 1 early stopping at epoch 11
+2026-04-13 17:19:47,147  INFO        Phase 1 complete. Best val_loss: 0.2579  H1=0.460 H5=0.444 H20=0.381
+2026-04-13 17:19:47,156  INFO      Phase 1 checkpoint saved: models/fine_tuned/checkpoint_LSE_BPL_1D_phase1_20260413.pt
+2026-04-13 17:19:47,156  INFO      Loading base checkpoint: models/base/checkpoint_base_v1.pt
+2026-04-13 17:19:47,175  INFO        Base val_loss: 0.2463  (fold 3, epoch 22)
+2026-04-13 17:19:47,231  INFO      Base model H1 accuracy on instrument val set: 0.460
+2026-04-13 17:19:47,231  INFO      Fine-tuned  H1 accuracy (Phase 1)           : 0.460
+2026-04-13 17:19:47,232  INFO      --------------------------------------------------
+2026-04-13 17:19:47,232  INFO      Phase 2 — Verification gate
+2026-04-13 17:19:47,232  INFO        Fine-tuned accuracy — H1=0.460  H5=0.444  H20=0.381  Mean=0.429
+2026-04-13 17:19:47,233  INFO        Minimum required (mean across horizons) : 0.510
+2026-04-13 17:19:47,233  WARNING     ✗ Phase 2 FAILED — mean accuracy 0.429 is below 0.510
+2026-04-13 17:19:47,233  WARNING     H1=0.460  H5=0.444  H20=0.381
+2026-04-13 17:19:47,233  WARNING     Instrument may be unpredictable at this resolution.
+2026-04-13 17:19:47,234  WARNING     Using Phase 1 checkpoint as final output.
+2026-04-13 17:19:47,234  INFO      ============================================================
+2026-04-13 17:19:47,234  INFO      Fine-Tuning Summary
+2026-04-13 17:19:47,234  INFO        Instrument     : LSE_BPL 1D
+2026-04-13 17:19:47,234  INFO        Final phase    : 1
+2026-04-13 17:19:47,235  INFO        Final checkpoint: models/fine_tuned/checkpoint_LSE_BPL_1D_phase1_20260413.pt
+2026-04-13 17:19:47,285  INFO        Base model — H1=0.460  H5=0.460  H20=0.381  Mean=0.434
+2026-04-13 17:19:47,285  INFO        Fine-tuned — H1=0.460  H5=0.444  H20=0.381  Mean=0.429  (Phase 1)
+2026-04-13 17:19:47,285  WARNING     Delta mean accuracy : -0.005  ⚠  Fine-tuning degraded mean accuracy. Consider using the base model for this instrument. H1 delta=+0.000  H5 delta=-0.016  H20 delta=+0.000
+2026-04-13 17:19:47,288  INFO        Metrics saved  : logs/finetune/LSE_BPL_1D_20260413_metrics.csv
+2026-04-13 17:19:47,288  INFO      Stage 6 complete.

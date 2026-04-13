@@ -47,7 +47,10 @@ MODELS_FT      = "models/fine_tuned"
 LOG_DIR        = "logs/finetune"
 
 LOOKBACK       = 60
-N_FEATURES = 44
+N_FEATURES = 49   # Update to 49 when retraining with Stage 8
+                  # (feature_engineering.py --exogenous adds 5 features:
+                  # exo_vix_level, exo_vix_momentum, exo_dxy_return,
+                  # exo_dxy_trend, exo_spx_return)
 HORIZONS       = [1, 5, 20]
 
 # Phase 1

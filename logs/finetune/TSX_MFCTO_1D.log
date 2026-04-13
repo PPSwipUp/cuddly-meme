@@ -1,0 +1,66 @@
+2026-04-13 18:40:35,527  INFO      ============================================================
+2026-04-13 18:40:35,528  INFO      Stage 6 Fine-Tuning — Start
+2026-04-13 18:40:35,528  INFO      Instrument  : TSX_MFCTO
+2026-04-13 18:40:35,528  INFO      Resolution  : 1D
+2026-04-13 18:40:35,528  INFO      Device      : cpu
+2026-04-13 18:40:35,528  INFO      Base checkpoint: models/base/checkpoint_base_v1.pt
+2026-04-13 18:40:35,530  INFO      Loading: TSX_MFCTO_1D_20150101_20260412.npy
+2026-04-13 18:40:36,951  INFO        Shape: (2650, 60, 47)  (2650 windows)
+2026-04-13 18:40:36,976  INFO        Date range: 2015-09-18 → 2026-04-10  (10.6 years)
+2026-04-13 18:40:36,976  INFO        Train windows: 2587  Val windows: 63
+2026-04-13 18:40:36,976  INFO      Years of data: 10.6
+2026-04-13 18:40:37,051  INFO      Loading base checkpoint: models/base/checkpoint_base_v1.pt
+2026-04-13 18:40:37,066  INFO        Base val_loss: 0.2463  (fold 3, epoch 22)
+2026-04-13 18:40:37,067  INFO      --------------------------------------------------
+2026-04-13 18:40:37,067  INFO      Phase 1 — Head-only adaptation (encoder frozen)
+2026-04-13 18:40:40,855  INFO        P1 Epoch  1 | TrainLoss 0.2467 | ValLoss 0.2425 | ValAcc H1=0.556 H5=0.619 H20=0.762
+2026-04-13 18:40:43,209  INFO        P1 Epoch  2 | TrainLoss 0.2466 | ValLoss 0.2426 | ValAcc H1=0.556 H5=0.619 H20=0.778
+2026-04-13 18:40:46,031  INFO        P1 Epoch  3 | TrainLoss 0.2467 | ValLoss 0.2426 | ValAcc H1=0.571 H5=0.619 H20=0.778
+2026-04-13 18:40:48,464  INFO        P1 Epoch  4 | TrainLoss 0.2467 | ValLoss 0.2427 | ValAcc H1=0.571 H5=0.619 H20=0.778
+2026-04-13 18:40:51,198  INFO        P1 Epoch  5 | TrainLoss 0.2465 | ValLoss 0.2428 | ValAcc H1=0.571 H5=0.619 H20=0.778
+2026-04-13 18:40:53,545  INFO        P1 Epoch  6 | TrainLoss 0.2466 | ValLoss 0.2428 | ValAcc H1=0.571 H5=0.619 H20=0.762
+2026-04-13 18:40:56,291  INFO        P1 Epoch  7 | TrainLoss 0.2468 | ValLoss 0.2428 | ValAcc H1=0.571 H5=0.619 H20=0.762
+2026-04-13 18:40:58,593  INFO        P1 Epoch  8 | TrainLoss 0.2465 | ValLoss 0.2429 | ValAcc H1=0.571 H5=0.619 H20=0.762
+2026-04-13 18:41:01,311  INFO        P1 Epoch  9 | TrainLoss 0.2467 | ValLoss 0.2429 | ValAcc H1=0.571 H5=0.619 H20=0.762
+2026-04-13 18:41:03,588  INFO        P1 Epoch 10 | TrainLoss 0.2467 | ValLoss 0.2429 | ValAcc H1=0.571 H5=0.619 H20=0.762
+2026-04-13 18:41:06,480  INFO        P1 Epoch 11 | TrainLoss 0.2467 | ValLoss 0.2430 | ValAcc H1=0.571 H5=0.619 H20=0.762
+2026-04-13 18:41:06,480  INFO        Phase 1 early stopping at epoch 11
+2026-04-13 18:41:06,533  INFO        Phase 1 complete. Best val_loss: 0.2425  H1=0.556 H5=0.619 H20=0.762
+2026-04-13 18:41:06,538  INFO      Phase 1 checkpoint saved: models/fine_tuned/checkpoint_TSX_MFCTO_1D_phase1_20260413.pt
+2026-04-13 18:41:06,538  INFO      Loading base checkpoint: models/base/checkpoint_base_v1.pt
+2026-04-13 18:41:06,549  INFO        Base val_loss: 0.2463  (fold 3, epoch 22)
+2026-04-13 18:41:06,599  INFO      Base model H1 accuracy on instrument val set: 0.556
+2026-04-13 18:41:06,599  INFO      Fine-tuned  H1 accuracy (Phase 1)           : 0.556
+2026-04-13 18:41:06,599  INFO      --------------------------------------------------
+2026-04-13 18:41:06,599  INFO      Phase 2 — Verification gate
+2026-04-13 18:41:06,600  INFO        Fine-tuned accuracy — H1=0.556  H5=0.619  H20=0.762  Mean=0.646
+2026-04-13 18:41:06,600  INFO        Minimum required (mean across horizons) : 0.510
+2026-04-13 18:41:06,600  INFO        ✓ Phase 2 PASSED (H1=0.556  H5=0.619  H20=0.762) — proceeding to Phase 3
+2026-04-13 18:41:06,600  INFO      --------------------------------------------------
+2026-04-13 18:41:06,600  INFO      Phase 3 — Selective encoder unfreeze
+2026-04-13 18:41:06,601  INFO        Encoder layers 1 & 2 unfrozen (layer 0 frozen)
+2026-04-13 18:41:06,601  INFO        Encoder LR: 1e-05  Head LR: 3e-05
+2026-04-13 18:41:06,601  INFO        Dropout: encoder=0.40  head=0.45
+2026-04-13 18:41:15,036  INFO        P3 Epoch  1 | TrainLoss 0.2468 | ValLoss 0.2426 | Gap 0.0041 | ValAcc H1=0.571 H5=0.619 H20=0.778
+2026-04-13 18:41:23,609  INFO        P3 Epoch  2 | TrainLoss 0.2466 | ValLoss 0.2427 | Gap 0.0039 | ValAcc H1=0.571 H5=0.619 H20=0.778
+2026-04-13 18:41:31,942  INFO        P3 Epoch  3 | TrainLoss 0.2470 | ValLoss 0.2427 | Gap 0.0042 | ValAcc H1=0.571 H5=0.619 H20=0.778
+2026-04-13 18:41:40,194  INFO        P3 Epoch  4 | TrainLoss 0.2468 | ValLoss 0.2428 | Gap 0.0039 | ValAcc H1=0.556 H5=0.619 H20=0.778
+2026-04-13 18:41:48,249  INFO        P3 Epoch  5 | TrainLoss 0.2464 | ValLoss 0.2429 | Gap 0.0036 | ValAcc H1=0.571 H5=0.619 H20=0.778
+2026-04-13 18:41:56,493  INFO        P3 Epoch  6 | TrainLoss 0.2467 | ValLoss 0.2429 | Gap 0.0038 | ValAcc H1=0.571 H5=0.619 H20=0.778
+2026-04-13 18:42:04,860  INFO        P3 Epoch  7 | TrainLoss 0.2467 | ValLoss 0.2430 | Gap 0.0038 | ValAcc H1=0.571 H5=0.619 H20=0.762
+2026-04-13 18:42:13,206  INFO        P3 Epoch  8 | TrainLoss 0.2465 | ValLoss 0.2429 | Gap 0.0036 | ValAcc H1=0.556 H5=0.619 H20=0.778
+2026-04-13 18:42:21,542  INFO        P3 Epoch  9 | TrainLoss 0.2468 | ValLoss 0.2430 | Gap 0.0038 | ValAcc H1=0.571 H5=0.619 H20=0.762
+2026-04-13 18:42:21,542  INFO        Phase 3 early stopping at epoch 9
+2026-04-13 18:42:21,543  INFO        Phase 3 complete. Best val_loss: 0.2426
+2026-04-13 18:42:21,596  INFO      Phase 3 checkpoint saved: models/fine_tuned/checkpoint_TSX_MFCTO_1D_phase3_20260413.pt
+2026-04-13 18:42:21,597  INFO      ============================================================
+2026-04-13 18:42:21,597  INFO      Fine-Tuning Summary
+2026-04-13 18:42:21,597  INFO        Instrument     : TSX_MFCTO 1D
+2026-04-13 18:42:21,597  INFO        Final phase    : 3
+2026-04-13 18:42:21,597  INFO        Final checkpoint: models/fine_tuned/checkpoint_TSX_MFCTO_1D_phase3_20260413.pt
+2026-04-13 18:42:21,652  INFO        Base model — H1=0.556  H5=0.603  H20=0.778  Mean=0.646
+2026-04-13 18:42:21,652  INFO        Fine-tuned — H1=0.571  H5=0.619  H20=0.778  Mean=0.656  (Phase 3)
+2026-04-13 18:42:21,653  INFO        Delta mean accuracy : +0.011  ✓ Fine-tuning improved accuracy.
+2026-04-13 18:42:21,653  INFO        Per-horizon delta   :  H1=+0.016  H5=+0.016  H20=+0.000
+2026-04-13 18:42:21,657  INFO        Metrics saved  : logs/finetune/TSX_MFCTO_1D_20260413_metrics.csv
+2026-04-13 18:42:21,658  INFO      Stage 6 complete.

@@ -46,14 +46,17 @@ MODELS_DIR    = "models/base"
 LOG_DIR       = "logs/training"
 
 LOOKBACK      = 60
-N_FEATURES = 44
+N_FEATURES = 49
+                  # (feature_engineering.py --exogenous adds 5 features:
+                  # exo_vix_level, exo_vix_momentum, exo_dxy_return,
+                  # exo_dxy_trend, exo_spx_return)
 HORIZONS      = [1, 5, 20]
 BATCH_SIZE    = 256
-MAX_EPOCHS    = 200
+MAX_EPOCHS    = 50
 LR_INITIAL    = 3e-4
 LR_MIN        = 1e-5
 WARMUP_FRAC   = 0.05
-PATIENCE      = 20
+PATIENCE      = 15
 MIN_DELTA     = 0.0001
 GRAD_CLIP     = 1.0
 GAP_THRESHOLD = 0.10   # train/val loss gap halt condition (lowered: catches overfitting earlier)
@@ -68,10 +71,9 @@ TIME_MASK_MAX    = 12     # max bars to zero in contiguous time-step masking
 # SWA starts after SWA_START_FRAC of MAX_EPOCHS and averages weights over the
 # remaining epochs using a high constant LR. This finds flatter loss basins
 # which generalise better than the single best-loss checkpoint.
-SWA_START_FRAC  = 0.50    # start SWA after 50% of epochs
-                           # Lowered from 0.75: early stopping typically fires
-                           # at epoch 20-30 so 75% = epoch 150 never triggered.
-                           # At 50%, a 24-epoch run starts SWA at epoch 12.
+SWA_START_FRAC  = 0.20    # start SWA after 20% of epochs
+                           # At 20%, a 22-epoch run starts SWA at epoch 4,
+                           # giving ~18 epochs of weight averaging.
 SWA_LR          = 5e-5    # constant LR during SWA phase
 
 # ── Cosine annealing with warm restarts ───────────────────────────────────────
@@ -413,7 +415,9 @@ class EarlyStopping:
                 (improvement=0.0001, not strictly > MIN_DELTA=0.0001)
                 → NOW saved: same loss tier, H1 improved by 0.005 > acc_delta
     """
-    ACC_DELTA = 0.002   # minimum H1 accuracy improvement to trigger tiebreaker save
+    ACC_DELTA = 0.001   # minimum H1 accuracy improvement to trigger tiebreaker save
+                        # Lowered from 0.002: with accuracy in a 0.525-0.535 range,
+                        # a 0.001 improvement (0.1pp) is a real signal worth saving.
 
     def __init__(self, patience=PATIENCE, min_delta=MIN_DELTA):
         self.patience    = patience
@@ -431,11 +435,16 @@ class EarlyStopping:
         loss_improv  = self.best_loss - val_loss
         acc_improv   = h1_acc - self.best_h1_acc
 
+        # Float-safe tolerance: floating point subtraction of 4dp loss values
+        # (e.g. 0.2487 - 0.2486) produces 0.00010000000000001674, not 0.0001 exactly.
+        # Use a small epsilon to make boundary comparisons reliable.
+        EPS = 1e-9
+
         # Criterion 1: loss improved meaningfully
-        loss_better = loss_improv > self.min_delta
+        loss_better = loss_improv > self.min_delta - EPS
         # Criterion 2: loss in same tier (within min_delta) but accuracy improved
-        same_tier    = abs(loss_improv) <= self.min_delta
-        acc_better   = same_tier and (acc_improv > self.ACC_DELTA)
+        same_tier    = abs(loss_improv) <= self.min_delta + EPS
+        acc_better   = same_tier and (acc_improv > self.ACC_DELTA - EPS)
 
         if loss_better or acc_better:
             reason = "loss" if loss_better else "accuracy"

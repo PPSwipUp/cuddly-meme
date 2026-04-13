@@ -1,0 +1,61 @@
+2026-04-13 18:23:59,961  INFO      ============================================================
+2026-04-13 18:23:59,961  INFO      Stage 6 Fine-Tuning — Start
+2026-04-13 18:23:59,961  INFO      Instrument  : NYSE_TSLA
+2026-04-13 18:23:59,961  INFO      Resolution  : 1H
+2026-04-13 18:23:59,961  INFO      Device      : cpu
+2026-04-13 18:23:59,961  INFO      Base checkpoint: models/base/checkpoint_base_v1.pt
+2026-04-13 18:23:59,964  INFO      Loading: NYSE_TSLA_1H_20240422_20260412.npy
+2026-04-13 18:24:01,683  INFO        Shape: (3255, 60, 53)  (3255 windows)
+2026-04-13 18:24:01,718  INFO        Date range: 2024-05-28 → 2026-04-10  (1.9 years)
+2026-04-13 18:24:01,718  INFO        Train windows: 2821  Val windows: 434
+2026-04-13 18:24:01,718  INFO      Years of data: 1.9
+2026-04-13 18:24:01,762  INFO      Loading base checkpoint: models/base/checkpoint_base_v1.pt
+2026-04-13 18:24:01,777  INFO        Base val_loss: 0.2463  (fold 3, epoch 22)
+2026-04-13 18:24:01,777  INFO      --------------------------------------------------
+2026-04-13 18:24:01,777  INFO      Phase 1 — Head-only adaptation (encoder frozen)
+2026-04-13 18:24:06,046  INFO        P1 Epoch  1 | TrainLoss 0.2461 | ValLoss 0.2471 | ValAcc H1=0.528 H5=0.508 H20=0.516
+2026-04-13 18:24:09,365  INFO        P1 Epoch  2 | TrainLoss 0.2461 | ValLoss 0.2471 | ValAcc H1=0.531 H5=0.515 H20=0.507
+2026-04-13 18:24:12,411  INFO        P1 Epoch  3 | TrainLoss 0.2460 | ValLoss 0.2470 | ValAcc H1=0.531 H5=0.529 H20=0.515
+2026-04-13 18:24:15,554  INFO        P1 Epoch  4 | TrainLoss 0.2462 | ValLoss 0.2469 | ValAcc H1=0.528 H5=0.524 H20=0.512
+2026-04-13 18:24:19,013  INFO        P1 Epoch  5 | TrainLoss 0.2458 | ValLoss 0.2469 | ValAcc H1=0.533 H5=0.526 H20=0.507
+2026-04-13 18:24:22,207  INFO        P1 Epoch  6 | TrainLoss 0.2456 | ValLoss 0.2469 | ValAcc H1=0.533 H5=0.535 H20=0.510
+2026-04-13 18:24:25,516  INFO        P1 Epoch  7 | TrainLoss 0.2458 | ValLoss 0.2468 | ValAcc H1=0.528 H5=0.542 H20=0.515
+2026-04-13 18:24:28,635  INFO        P1 Epoch  8 | TrainLoss 0.2459 | ValLoss 0.2469 | ValAcc H1=0.531 H5=0.542 H20=0.510
+2026-04-13 18:24:31,699  INFO        P1 Epoch  9 | TrainLoss 0.2458 | ValLoss 0.2469 | ValAcc H1=0.531 H5=0.534 H20=0.521
+2026-04-13 18:24:34,657  INFO        P1 Epoch 10 | TrainLoss 0.2460 | ValLoss 0.2469 | ValAcc H1=0.528 H5=0.539 H20=0.512
+2026-04-13 18:24:37,634  INFO        P1 Epoch 11 | TrainLoss 0.2462 | ValLoss 0.2468 | ValAcc H1=0.535 H5=0.539 H20=0.514
+2026-04-13 18:24:40,716  INFO        P1 Epoch 12 | TrainLoss 0.2459 | ValLoss 0.2468 | ValAcc H1=0.526 H5=0.537 H20=0.519
+2026-04-13 18:24:43,631  INFO        P1 Epoch 13 | TrainLoss 0.2457 | ValLoss 0.2468 | ValAcc H1=0.526 H5=0.535 H20=0.510
+2026-04-13 18:24:46,634  INFO        P1 Epoch 14 | TrainLoss 0.2461 | ValLoss 0.2468 | ValAcc H1=0.533 H5=0.537 H20=0.515
+2026-04-13 18:24:49,672  INFO        P1 Epoch 15 | TrainLoss 0.2460 | ValLoss 0.2468 | ValAcc H1=0.526 H5=0.542 H20=0.516
+2026-04-13 18:24:52,653  INFO        P1 Epoch 16 | TrainLoss 0.2460 | ValLoss 0.2468 | ValAcc H1=0.533 H5=0.539 H20=0.514
+2026-04-13 18:24:55,537  INFO        P1 Epoch 17 | TrainLoss 0.2462 | ValLoss 0.2468 | ValAcc H1=0.537 H5=0.542 H20=0.518
+2026-04-13 18:24:55,537  INFO        Phase 1 early stopping at epoch 17
+2026-04-13 18:24:55,884  INFO        Phase 1 complete. Best val_loss: 0.2468  H1=0.528 H5=0.542 H20=0.515
+2026-04-13 18:24:55,889  INFO      Phase 1 checkpoint saved: models/fine_tuned/checkpoint_NYSE_TSLA_1H_phase1_20260413.pt
+2026-04-13 18:24:55,890  INFO      Loading base checkpoint: models/base/checkpoint_base_v1.pt
+2026-04-13 18:24:55,905  INFO        Base val_loss: 0.2463  (fold 3, epoch 22)
+2026-04-13 18:24:56,281  INFO      Base model H1 accuracy on instrument val set: 0.531
+2026-04-13 18:24:56,281  INFO      Fine-tuned  H1 accuracy (Phase 1)           : 0.528
+2026-04-13 18:24:56,281  INFO      --------------------------------------------------
+2026-04-13 18:24:56,281  INFO      Phase 2 — Verification gate
+2026-04-13 18:24:56,281  INFO        Fine-tuned accuracy — H1=0.528  H5=0.542  H20=0.515  Mean=0.528
+2026-04-13 18:24:56,281  INFO        Minimum required (mean across horizons) : 0.510
+2026-04-13 18:24:56,282  INFO        ✓ Phase 2 PASSED (H1=0.528  H5=0.542  H20=0.515) — proceeding to Phase 3
+2026-04-13 18:24:56,282  INFO      --------------------------------------------------
+2026-04-13 18:24:56,282  INFO      Phase 3 — Selective encoder unfreeze
+2026-04-13 18:24:56,282  WARNING     ✗ Skipping Phase 3 — only 1.9 years of data (need 2.0)
+2026-04-13 18:24:56,282  WARNING     Using Phase 1 checkpoint as final output.
+2026-04-13 18:24:56,283  INFO      Reverted to Phase 1 checkpoint.
+2026-04-13 18:24:56,707  INFO      Phase 1 H1 accuracy (recheck): 0.528
+2026-04-13 18:24:56,707  INFO      ============================================================
+2026-04-13 18:24:56,707  INFO      Fine-Tuning Summary
+2026-04-13 18:24:56,707  INFO        Instrument     : NYSE_TSLA 1H
+2026-04-13 18:24:56,707  INFO        Final phase    : 1
+2026-04-13 18:24:56,707  INFO        Final checkpoint: models/fine_tuned/checkpoint_NYSE_TSLA_1H_phase1_20260413.pt
+2026-04-13 18:24:57,083  INFO        Base model — H1=0.531  H5=0.508  H20=0.535  Mean=0.524
+2026-04-13 18:24:57,083  INFO        Fine-tuned — H1=0.528  H5=0.542  H20=0.515  Mean=0.528  (Phase 1)
+2026-04-13 18:24:57,083  INFO        Delta mean accuracy : +0.004  ✓ Fine-tuning improved accuracy.
+2026-04-13 18:24:57,083  INFO        Per-horizon delta   :  H1=-0.002  H5=+0.034  H20=-0.021
+2026-04-13 18:24:57,086  INFO        Metrics saved  : logs/finetune/NYSE_TSLA_1H_20260413_metrics.csv
+2026-04-13 18:24:57,086  INFO      Stage 6 complete.

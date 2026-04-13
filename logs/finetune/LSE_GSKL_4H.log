@@ -1,0 +1,55 @@
+2026-04-13 17:24:59,142  INFO      ============================================================
+2026-04-13 17:24:59,142  INFO      Stage 6 Fine-Tuning — Start
+2026-04-13 17:24:59,142  INFO      Instrument  : LSE_GSKL
+2026-04-13 17:24:59,142  INFO      Resolution  : 4H
+2026-04-13 17:24:59,142  INFO      Device      : cpu
+2026-04-13 17:24:59,142  INFO      Base checkpoint: models/base/checkpoint_base_v1.pt
+2026-04-13 17:24:59,144  INFO      Loading: LSE_GSKL_4H_20240422_20260412.npy
+2026-04-13 17:24:59,841  INFO        Shape: (1310, 60, 53)  (1310 windows)
+2026-04-13 17:24:59,848  INFO        Date range: 2024-07-16 → 2026-04-10  (1.7 years)
+2026-04-13 17:24:59,848  INFO        Train windows: 1121  Val windows: 189
+2026-04-13 17:24:59,849  INFO      Years of data: 1.7
+2026-04-13 17:24:59,855  INFO      Loading base checkpoint: models/base/checkpoint_base_v1.pt
+2026-04-13 17:24:59,877  INFO        Base val_loss: 0.2463  (fold 3, epoch 22)
+2026-04-13 17:24:59,877  INFO      --------------------------------------------------
+2026-04-13 17:24:59,877  INFO      Phase 1 — Head-only adaptation (encoder frozen)
+2026-04-13 17:25:02,150  INFO        P1 Epoch  1 | TrainLoss 0.2476 | ValLoss 0.2424 | ValAcc H1=0.565 H5=0.603 H20=0.602
+2026-04-13 17:25:03,461  INFO        P1 Epoch  2 | TrainLoss 0.2475 | ValLoss 0.2426 | ValAcc H1=0.576 H5=0.603 H20=0.602
+2026-04-13 17:25:04,666  INFO        P1 Epoch  3 | TrainLoss 0.2472 | ValLoss 0.2428 | ValAcc H1=0.581 H5=0.603 H20=0.602
+2026-04-13 17:25:05,884  INFO        P1 Epoch  4 | TrainLoss 0.2470 | ValLoss 0.2430 | ValAcc H1=0.576 H5=0.603 H20=0.592
+2026-04-13 17:25:07,038  INFO        P1 Epoch  5 | TrainLoss 0.2471 | ValLoss 0.2432 | ValAcc H1=0.576 H5=0.608 H20=0.597
+2026-04-13 17:25:08,263  INFO        P1 Epoch  6 | TrainLoss 0.2475 | ValLoss 0.2432 | ValAcc H1=0.576 H5=0.608 H20=0.597
+2026-04-13 17:25:09,542  INFO        P1 Epoch  7 | TrainLoss 0.2471 | ValLoss 0.2434 | ValAcc H1=0.582 H5=0.608 H20=0.597
+2026-04-13 17:25:10,866  INFO        P1 Epoch  8 | TrainLoss 0.2469 | ValLoss 0.2434 | ValAcc H1=0.582 H5=0.608 H20=0.597
+2026-04-13 17:25:12,110  INFO        P1 Epoch  9 | TrainLoss 0.2471 | ValLoss 0.2435 | ValAcc H1=0.582 H5=0.608 H20=0.597
+2026-04-13 17:25:13,274  INFO        P1 Epoch 10 | TrainLoss 0.2471 | ValLoss 0.2436 | ValAcc H1=0.582 H5=0.609 H20=0.597
+2026-04-13 17:25:14,547  INFO        P1 Epoch 11 | TrainLoss 0.2468 | ValLoss 0.2437 | ValAcc H1=0.582 H5=0.609 H20=0.602
+2026-04-13 17:25:14,547  INFO        Phase 1 early stopping at epoch 11
+2026-04-13 17:25:14,719  INFO        Phase 1 complete. Best val_loss: 0.2424  H1=0.565 H5=0.603 H20=0.602
+2026-04-13 17:25:14,724  INFO      Phase 1 checkpoint saved: models/fine_tuned/checkpoint_LSE_GSKL_4H_phase1_20260413.pt
+2026-04-13 17:25:14,724  INFO      Loading base checkpoint: models/base/checkpoint_base_v1.pt
+2026-04-13 17:25:14,736  INFO        Base val_loss: 0.2463  (fold 3, epoch 22)
+2026-04-13 17:25:14,912  INFO      Base model H1 accuracy on instrument val set: 0.560
+2026-04-13 17:25:14,913  INFO      Fine-tuned  H1 accuracy (Phase 1)           : 0.565
+2026-04-13 17:25:14,913  INFO      --------------------------------------------------
+2026-04-13 17:25:14,913  INFO      Phase 2 — Verification gate
+2026-04-13 17:25:14,913  INFO        Fine-tuned accuracy — H1=0.565  H5=0.603  H20=0.602  Mean=0.590
+2026-04-13 17:25:14,913  INFO        Minimum required (mean across horizons) : 0.510
+2026-04-13 17:25:14,913  INFO        ✓ Phase 2 PASSED (H1=0.565  H5=0.603  H20=0.602) — proceeding to Phase 3
+2026-04-13 17:25:14,913  INFO      --------------------------------------------------
+2026-04-13 17:25:14,914  INFO      Phase 3 — Selective encoder unfreeze
+2026-04-13 17:25:14,914  WARNING     ✗ Skipping Phase 3 — only 1.7 years of data (need 2.0)
+2026-04-13 17:25:14,914  WARNING     Using Phase 1 checkpoint as final output.
+2026-04-13 17:25:14,915  INFO      Reverted to Phase 1 checkpoint.
+2026-04-13 17:25:15,070  INFO      Phase 1 H1 accuracy (recheck): 0.565
+2026-04-13 17:25:15,070  INFO      ============================================================
+2026-04-13 17:25:15,070  INFO      Fine-Tuning Summary
+2026-04-13 17:25:15,070  INFO        Instrument     : LSE_GSKL 4H
+2026-04-13 17:25:15,070  INFO        Final phase    : 1
+2026-04-13 17:25:15,070  INFO        Final checkpoint: models/fine_tuned/checkpoint_LSE_GSKL_4H_phase1_20260413.pt
+2026-04-13 17:25:15,244  INFO        Base model — H1=0.560  H5=0.603  H20=0.597  Mean=0.587
+2026-04-13 17:25:15,245  INFO        Fine-tuned — H1=0.565  H5=0.603  H20=0.602  Mean=0.590  (Phase 1)
+2026-04-13 17:25:15,245  INFO        Delta mean accuracy : +0.004  ✓ Fine-tuning improved accuracy.
+2026-04-13 17:25:15,245  INFO        Per-horizon delta   :  H1=+0.005  H5=+0.000  H20=+0.005
+2026-04-13 17:25:15,248  INFO        Metrics saved  : logs/finetune/LSE_GSKL_4H_20260413_metrics.csv
+2026-04-13 17:25:15,248  INFO      Stage 6 complete.

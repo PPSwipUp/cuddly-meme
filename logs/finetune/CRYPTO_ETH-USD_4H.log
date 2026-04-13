@@ -1,0 +1,63 @@
+2026-04-13 15:42:54,350  INFO      ============================================================
+2026-04-13 15:42:54,350  INFO      Stage 6 Fine-Tuning — Start
+2026-04-13 15:42:54,350  INFO      Instrument  : CRYPTO_ETH-USD
+2026-04-13 15:42:54,350  INFO      Resolution  : 4H
+2026-04-13 15:42:54,350  INFO      Device      : cpu
+2026-04-13 15:42:54,350  INFO      Base checkpoint: models/base/checkpoint_base_v1.pt
+2026-04-13 15:42:54,352  INFO      Loading: CRYPTO_ETH-USD_4H_20240422_20260412.npy
+2026-04-13 15:42:56,872  INFO        Shape: (3565, 60, 53)  (3565 windows)
+2026-04-13 15:42:56,883  INFO        Date range: 2024-05-21 → 2026-04-05  (1.9 years)
+2026-04-13 15:42:56,883  INFO        Train windows: 3087  Val windows: 478
+2026-04-13 15:42:56,883  INFO      Years of data: 1.9
+2026-04-13 15:42:56,894  INFO      Loading base checkpoint: models/base/checkpoint_base_v1.pt
+2026-04-13 15:42:56,909  INFO        Base val_loss: 0.2463  (fold 3, epoch 22)
+2026-04-13 15:42:56,909  INFO      --------------------------------------------------
+2026-04-13 15:42:56,909  INFO      Phase 1 — Head-only adaptation (encoder frozen)
+2026-04-13 15:43:01,340  INFO        P1 Epoch  1 | TrainLoss 0.2461 | ValLoss 0.2462 | ValAcc H1=0.564 H5=0.549 H20=0.513
+2026-04-13 15:43:04,866  INFO        P1 Epoch  2 | TrainLoss 0.2460 | ValLoss 0.2462 | ValAcc H1=0.562 H5=0.552 H20=0.511
+2026-04-13 15:43:08,046  INFO        P1 Epoch  3 | TrainLoss 0.2459 | ValLoss 0.2462 | ValAcc H1=0.560 H5=0.556 H20=0.485
+2026-04-13 15:43:11,580  INFO        P1 Epoch  4 | TrainLoss 0.2461 | ValLoss 0.2462 | ValAcc H1=0.564 H5=0.556 H20=0.483
+2026-04-13 15:43:15,141  INFO        P1 Epoch  5 | TrainLoss 0.2458 | ValLoss 0.2461 | ValAcc H1=0.564 H5=0.550 H20=0.485
+2026-04-13 15:43:18,318  INFO        P1 Epoch  6 | TrainLoss 0.2461 | ValLoss 0.2461 | ValAcc H1=0.562 H5=0.548 H20=0.485
+2026-04-13 15:43:21,860  INFO        P1 Epoch  7 | TrainLoss 0.2459 | ValLoss 0.2461 | ValAcc H1=0.564 H5=0.556 H20=0.485
+2026-04-13 15:43:25,295  INFO        P1 Epoch  8 | TrainLoss 0.2457 | ValLoss 0.2461 | ValAcc H1=0.560 H5=0.552 H20=0.483
+2026-04-13 15:43:28,409  INFO        P1 Epoch  9 | TrainLoss 0.2459 | ValLoss 0.2461 | ValAcc H1=0.562 H5=0.554 H20=0.483
+2026-04-13 15:43:31,955  INFO        P1 Epoch 10 | TrainLoss 0.2461 | ValLoss 0.2461 | ValAcc H1=0.562 H5=0.554 H20=0.485
+2026-04-13 15:43:35,592  INFO        P1 Epoch 11 | TrainLoss 0.2458 | ValLoss 0.2461 | ValAcc H1=0.564 H5=0.552 H20=0.485
+2026-04-13 15:43:38,641  INFO        P1 Epoch 12 | TrainLoss 0.2457 | ValLoss 0.2461 | ValAcc H1=0.562 H5=0.552 H20=0.485
+2026-04-13 15:43:42,130  INFO        P1 Epoch 13 | TrainLoss 0.2460 | ValLoss 0.2461 | ValAcc H1=0.562 H5=0.552 H20=0.487
+2026-04-13 15:43:45,523  INFO        P1 Epoch 14 | TrainLoss 0.2458 | ValLoss 0.2461 | ValAcc H1=0.564 H5=0.556 H20=0.487
+2026-04-13 15:43:48,946  INFO        P1 Epoch 15 | TrainLoss 0.2460 | ValLoss 0.2461 | ValAcc H1=0.562 H5=0.552 H20=0.487
+2026-04-13 15:43:52,700  INFO        P1 Epoch 16 | TrainLoss 0.2458 | ValLoss 0.2461 | ValAcc H1=0.562 H5=0.556 H20=0.487
+2026-04-13 15:43:56,266  INFO        P1 Epoch 17 | TrainLoss 0.2458 | ValLoss 0.2461 | ValAcc H1=0.564 H5=0.554 H20=0.489
+2026-04-13 15:43:59,873  INFO        P1 Epoch 18 | TrainLoss 0.2460 | ValLoss 0.2461 | ValAcc H1=0.564 H5=0.554 H20=0.487
+2026-04-13 15:44:03,477  INFO        P1 Epoch 19 | TrainLoss 0.2459 | ValLoss 0.2461 | ValAcc H1=0.564 H5=0.554 H20=0.483
+2026-04-13 15:44:07,324  INFO        P1 Epoch 20 | TrainLoss 0.2460 | ValLoss 0.2461 | ValAcc H1=0.562 H5=0.554 H20=0.485
+2026-04-13 15:44:07,324  INFO        Phase 1 early stopping at epoch 20
+2026-04-13 15:44:07,820  INFO        Phase 1 complete. Best val_loss: 0.2461  H1=0.562 H5=0.554 H20=0.485
+2026-04-13 15:44:07,824  INFO      Phase 1 checkpoint saved: models/fine_tuned/checkpoint_CRYPTO_ETH-USD_4H_phase1_20260413.pt
+2026-04-13 15:44:07,825  INFO      Loading base checkpoint: models/base/checkpoint_base_v1.pt
+2026-04-13 15:44:07,835  INFO        Base val_loss: 0.2463  (fold 3, epoch 22)
+2026-04-13 15:44:08,408  INFO      Base model H1 accuracy on instrument val set: 0.564
+2026-04-13 15:44:08,408  INFO      Fine-tuned  H1 accuracy (Phase 1)           : 0.562
+2026-04-13 15:44:08,408  INFO      --------------------------------------------------
+2026-04-13 15:44:08,408  INFO      Phase 2 — Verification gate
+2026-04-13 15:44:08,408  INFO        Fine-tuned accuracy — H1=0.562  H5=0.554  H20=0.485  Mean=0.534
+2026-04-13 15:44:08,409  INFO        Minimum required (mean across horizons) : 0.510
+2026-04-13 15:44:08,409  INFO        ✓ Phase 2 PASSED (H1=0.562  H5=0.554  H20=0.485) — proceeding to Phase 3
+2026-04-13 15:44:08,409  INFO      --------------------------------------------------
+2026-04-13 15:44:08,409  INFO      Phase 3 — Selective encoder unfreeze
+2026-04-13 15:44:08,409  WARNING     ✗ Skipping Phase 3 — only 1.9 years of data (need 2.0)
+2026-04-13 15:44:08,409  WARNING     Using Phase 1 checkpoint as final output.
+2026-04-13 15:44:08,411  INFO      Reverted to Phase 1 checkpoint.
+2026-04-13 15:44:08,912  INFO      Phase 1 H1 accuracy (recheck): 0.562
+2026-04-13 15:44:08,912  INFO      ============================================================
+2026-04-13 15:44:08,912  INFO      Fine-Tuning Summary
+2026-04-13 15:44:08,912  INFO        Instrument     : CRYPTO_ETH-USD 4H
+2026-04-13 15:44:08,912  INFO        Final phase    : 1
+2026-04-13 15:44:08,913  INFO        Final checkpoint: models/fine_tuned/checkpoint_CRYPTO_ETH-USD_4H_phase1_20260413.pt
+2026-04-13 15:44:09,402  INFO        Base model — H1=0.564  H5=0.547  H20=0.513  Mean=0.541
+2026-04-13 15:44:09,402  INFO        Fine-tuned — H1=0.562  H5=0.554  H20=0.485  Mean=0.534  (Phase 1)
+2026-04-13 15:44:09,402  WARNING     Delta mean accuracy : -0.008  ⚠  Fine-tuning degraded mean accuracy. Consider using the base model for this instrument. H1 delta=-0.002  H5 delta=+0.007  H20 delta=-0.028
+2026-04-13 15:44:09,405  INFO        Metrics saved  : logs/finetune/CRYPTO_ETH-USD_4H_20260413_metrics.csv
+2026-04-13 15:44:09,406  INFO      Stage 6 complete.

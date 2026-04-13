@@ -1,0 +1,86 @@
+2026-04-13 17:30:55,416  INFO      ============================================================
+2026-04-13 17:30:55,416  INFO      Stage 6 Fine-Tuning — Start
+2026-04-13 17:30:55,416  INFO      Instrument  : NIKKEI_N225
+2026-04-13 17:30:55,416  INFO      Resolution  : 1D
+2026-04-13 17:30:55,417  INFO      Device      : cpu
+2026-04-13 17:30:55,417  INFO      Base checkpoint: models/base/checkpoint_base_v1.pt
+2026-04-13 17:30:55,418  INFO      Loading: NIKKEI_N225_1D_20150101_20260412.npy
+2026-04-13 17:30:56,894  INFO        Shape: (2575, 60, 47)  (2575 windows)
+2026-04-13 17:30:56,905  INFO        Date range: 2015-09-25 → 2026-04-10  (10.5 years)
+2026-04-13 17:30:56,905  INFO        Train windows: 2514  Val windows: 61
+2026-04-13 17:30:56,905  INFO      Years of data: 10.5
+2026-04-13 17:30:56,940  INFO      Loading base checkpoint: models/base/checkpoint_base_v1.pt
+2026-04-13 17:30:56,955  INFO        Base val_loss: 0.2463  (fold 3, epoch 22)
+2026-04-13 17:30:56,955  INFO      --------------------------------------------------
+2026-04-13 17:30:56,955  INFO      Phase 1 — Head-only adaptation (encoder frozen)
+2026-04-13 17:31:00,129  INFO        P1 Epoch  1 | TrainLoss 0.2464 | ValLoss 0.2497 | ValAcc H1=0.525 H5=0.492 H20=0.705
+2026-04-13 17:31:02,224  INFO        P1 Epoch  2 | TrainLoss 0.2463 | ValLoss 0.2495 | ValAcc H1=0.492 H5=0.525 H20=0.738
+2026-04-13 17:31:04,292  INFO        P1 Epoch  3 | TrainLoss 0.2465 | ValLoss 0.2494 | ValAcc H1=0.492 H5=0.525 H20=0.738
+2026-04-13 17:31:06,377  INFO        P1 Epoch  4 | TrainLoss 0.2465 | ValLoss 0.2493 | ValAcc H1=0.492 H5=0.541 H20=0.721
+2026-04-13 17:31:08,433  INFO        P1 Epoch  5 | TrainLoss 0.2464 | ValLoss 0.2492 | ValAcc H1=0.525 H5=0.541 H20=0.721
+2026-04-13 17:31:10,652  INFO        P1 Epoch  6 | TrainLoss 0.2465 | ValLoss 0.2491 | ValAcc H1=0.492 H5=0.557 H20=0.721
+2026-04-13 17:31:12,739  INFO        P1 Epoch  7 | TrainLoss 0.2464 | ValLoss 0.2491 | ValAcc H1=0.492 H5=0.557 H20=0.721
+2026-04-13 17:31:14,801  INFO        P1 Epoch  8 | TrainLoss 0.2464 | ValLoss 0.2490 | ValAcc H1=0.492 H5=0.574 H20=0.721
+2026-04-13 17:31:16,927  INFO        P1 Epoch  9 | TrainLoss 0.2464 | ValLoss 0.2490 | ValAcc H1=0.508 H5=0.557 H20=0.738
+2026-04-13 17:31:19,019  INFO        P1 Epoch 10 | TrainLoss 0.2464 | ValLoss 0.2489 | ValAcc H1=0.492 H5=0.590 H20=0.705
+2026-04-13 17:31:21,270  INFO        P1 Epoch 11 | TrainLoss 0.2464 | ValLoss 0.2489 | ValAcc H1=0.492 H5=0.590 H20=0.705
+2026-04-13 17:31:23,330  INFO        P1 Epoch 12 | TrainLoss 0.2462 | ValLoss 0.2489 | ValAcc H1=0.492 H5=0.590 H20=0.738
+2026-04-13 17:31:25,417  INFO        P1 Epoch 13 | TrainLoss 0.2464 | ValLoss 0.2489 | ValAcc H1=0.508 H5=0.590 H20=0.705
+2026-04-13 17:31:27,628  INFO        P1 Epoch 14 | TrainLoss 0.2462 | ValLoss 0.2489 | ValAcc H1=0.492 H5=0.590 H20=0.705
+2026-04-13 17:31:29,687  INFO        P1 Epoch 15 | TrainLoss 0.2463 | ValLoss 0.2488 | ValAcc H1=0.508 H5=0.590 H20=0.721
+2026-04-13 17:31:31,958  INFO        P1 Epoch 16 | TrainLoss 0.2463 | ValLoss 0.2488 | ValAcc H1=0.508 H5=0.590 H20=0.705
+2026-04-13 17:31:34,010  INFO        P1 Epoch 17 | TrainLoss 0.2464 | ValLoss 0.2488 | ValAcc H1=0.508 H5=0.590 H20=0.721
+2026-04-13 17:31:36,045  INFO        P1 Epoch 18 | TrainLoss 0.2463 | ValLoss 0.2488 | ValAcc H1=0.508 H5=0.590 H20=0.705
+2026-04-13 17:31:38,193  INFO        P1 Epoch 19 | TrainLoss 0.2462 | ValLoss 0.2488 | ValAcc H1=0.508 H5=0.590 H20=0.721
+2026-04-13 17:31:40,336  INFO        P1 Epoch 20 | TrainLoss 0.2465 | ValLoss 0.2488 | ValAcc H1=0.508 H5=0.590 H20=0.721
+2026-04-13 17:31:42,460  INFO        P1 Epoch 21 | TrainLoss 0.2461 | ValLoss 0.2488 | ValAcc H1=0.508 H5=0.590 H20=0.721
+2026-04-13 17:31:44,546  INFO        P1 Epoch 22 | TrainLoss 0.2461 | ValLoss 0.2488 | ValAcc H1=0.508 H5=0.590 H20=0.721
+2026-04-13 17:31:46,635  INFO        P1 Epoch 23 | TrainLoss 0.2464 | ValLoss 0.2488 | ValAcc H1=0.508 H5=0.590 H20=0.721
+2026-04-13 17:31:46,636  INFO        Phase 1 early stopping at epoch 23
+2026-04-13 17:31:46,728  INFO        Phase 1 complete. Best val_loss: 0.2489  H1=0.508 H5=0.590 H20=0.705
+2026-04-13 17:31:46,736  INFO      Phase 1 checkpoint saved: models/fine_tuned/checkpoint_NIKKEI_N225_1D_phase1_20260413.pt
+2026-04-13 17:31:46,737  INFO      Loading base checkpoint: models/base/checkpoint_base_v1.pt
+2026-04-13 17:31:46,766  INFO        Base val_loss: 0.2463  (fold 3, epoch 22)
+2026-04-13 17:31:46,823  INFO      Base model H1 accuracy on instrument val set: 0.525
+2026-04-13 17:31:46,823  INFO      Fine-tuned  H1 accuracy (Phase 1)           : 0.508
+2026-04-13 17:31:46,823  INFO      --------------------------------------------------
+2026-04-13 17:31:46,823  INFO      Phase 2 — Verification gate
+2026-04-13 17:31:46,824  INFO        Fine-tuned accuracy — H1=0.508  H5=0.590  H20=0.705  Mean=0.601
+2026-04-13 17:31:46,824  INFO        Minimum required (mean across horizons) : 0.510
+2026-04-13 17:31:46,824  INFO        ✓ Phase 2 PASSED (H1=0.508  H5=0.590  H20=0.705) — proceeding to Phase 3
+2026-04-13 17:31:46,824  INFO      --------------------------------------------------
+2026-04-13 17:31:46,824  INFO      Phase 3 — Selective encoder unfreeze
+2026-04-13 17:31:46,825  INFO        Encoder layers 1 & 2 unfrozen (layer 0 frozen)
+2026-04-13 17:31:46,825  INFO        Encoder LR: 1e-05  Head LR: 3e-05
+2026-04-13 17:31:46,825  INFO        Dropout: encoder=0.40  head=0.45
+2026-04-13 17:31:55,122  INFO        P3 Epoch  1 | TrainLoss 0.2464 | ValLoss 0.2489 | Gap -0.0024 | ValAcc H1=0.508 H5=0.590 H20=0.721
+2026-04-13 17:32:03,717  INFO        P3 Epoch  2 | TrainLoss 0.2462 | ValLoss 0.2488 | Gap -0.0026 | ValAcc H1=0.508 H5=0.590 H20=0.721
+2026-04-13 17:32:11,678  INFO        P3 Epoch  3 | TrainLoss 0.2463 | ValLoss 0.2488 | Gap -0.0025 | ValAcc H1=0.508 H5=0.590 H20=0.738
+2026-04-13 17:32:19,388  INFO        P3 Epoch  4 | TrainLoss 0.2463 | ValLoss 0.2488 | Gap -0.0025 | ValAcc H1=0.508 H5=0.590 H20=0.738
+2026-04-13 17:32:27,167  INFO        P3 Epoch  5 | TrainLoss 0.2461 | ValLoss 0.2488 | Gap -0.0026 | ValAcc H1=0.508 H5=0.590 H20=0.738
+2026-04-13 17:32:34,954  INFO        P3 Epoch  6 | TrainLoss 0.2461 | ValLoss 0.2488 | Gap -0.0027 | ValAcc H1=0.492 H5=0.590 H20=0.721
+2026-04-13 17:32:42,857  INFO        P3 Epoch  7 | TrainLoss 0.2463 | ValLoss 0.2487 | Gap -0.0024 | ValAcc H1=0.508 H5=0.590 H20=0.738
+2026-04-13 17:32:50,538  INFO        P3 Epoch  8 | TrainLoss 0.2461 | ValLoss 0.2487 | Gap -0.0026 | ValAcc H1=0.508 H5=0.607 H20=0.738
+2026-04-13 17:32:58,285  INFO        P3 Epoch  9 | TrainLoss 0.2463 | ValLoss 0.2486 | Gap -0.0023 | ValAcc H1=0.525 H5=0.607 H20=0.754
+2026-04-13 17:33:06,201  INFO        P3 Epoch 10 | TrainLoss 0.2463 | ValLoss 0.2486 | Gap -0.0024 | ValAcc H1=0.508 H5=0.607 H20=0.738
+2026-04-13 17:33:14,058  INFO        P3 Epoch 11 | TrainLoss 0.2463 | ValLoss 0.2486 | Gap -0.0023 | ValAcc H1=0.508 H5=0.607 H20=0.738
+2026-04-13 17:33:21,889  INFO        P3 Epoch 12 | TrainLoss 0.2461 | ValLoss 0.2486 | Gap -0.0025 | ValAcc H1=0.508 H5=0.607 H20=0.738
+2026-04-13 17:33:29,323  INFO        P3 Epoch 13 | TrainLoss 0.2462 | ValLoss 0.2486 | Gap -0.0024 | ValAcc H1=0.525 H5=0.607 H20=0.754
+2026-04-13 17:33:36,777  INFO        P3 Epoch 14 | TrainLoss 0.2463 | ValLoss 0.2486 | Gap -0.0024 | ValAcc H1=0.525 H5=0.607 H20=0.754
+2026-04-13 17:33:44,187  INFO        P3 Epoch 15 | TrainLoss 0.2463 | ValLoss 0.2486 | Gap -0.0023 | ValAcc H1=0.508 H5=0.607 H20=0.754
+2026-04-13 17:33:51,486  INFO        P3 Epoch 16 | TrainLoss 0.2463 | ValLoss 0.2486 | Gap -0.0023 | ValAcc H1=0.508 H5=0.607 H20=0.738
+2026-04-13 17:33:58,853  INFO        P3 Epoch 17 | TrainLoss 0.2461 | ValLoss 0.2486 | Gap -0.0025 | ValAcc H1=0.508 H5=0.607 H20=0.738
+2026-04-13 17:33:58,853  INFO        Phase 3 early stopping at epoch 17
+2026-04-13 17:33:58,854  INFO        Phase 3 complete. Best val_loss: 0.2486
+2026-04-13 17:33:58,935  INFO      Phase 3 checkpoint saved: models/fine_tuned/checkpoint_NIKKEI_N225_1D_phase3_20260413.pt
+2026-04-13 17:33:58,936  INFO      ============================================================
+2026-04-13 17:33:58,936  INFO      Fine-Tuning Summary
+2026-04-13 17:33:58,936  INFO        Instrument     : NIKKEI_N225 1D
+2026-04-13 17:33:58,936  INFO        Final phase    : 3
+2026-04-13 17:33:58,936  INFO        Final checkpoint: models/fine_tuned/checkpoint_NIKKEI_N225_1D_phase3_20260413.pt
+2026-04-13 17:33:59,001  INFO        Base model — H1=0.525  H5=0.459  H20=0.689  Mean=0.557
+2026-04-13 17:33:59,002  INFO        Fine-tuned — H1=0.525  H5=0.607  H20=0.754  Mean=0.628  (Phase 3)
+2026-04-13 17:33:59,002  INFO        Delta mean accuracy : +0.071  ✓ Fine-tuning improved accuracy.
+2026-04-13 17:33:59,002  INFO        Per-horizon delta   :  H1=+0.000  H5=+0.148  H20=+0.066
+2026-04-13 17:33:59,006  INFO        Metrics saved  : logs/finetune/NIKKEI_N225_1D_20260413_metrics.csv
+2026-04-13 17:33:59,006  INFO      Stage 6 complete.

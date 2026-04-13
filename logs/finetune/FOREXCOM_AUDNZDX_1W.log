@@ -1,0 +1,52 @@
+2026-04-13 16:13:23,133  INFO      ============================================================
+2026-04-13 16:13:23,134  INFO      Stage 6 Fine-Tuning — Start
+2026-04-13 16:13:23,134  INFO      Instrument  : FOREXCOM_AUDNZDX
+2026-04-13 16:13:23,134  INFO      Resolution  : 1W
+2026-04-13 16:13:23,134  INFO      Device      : cpu
+2026-04-13 16:13:23,134  INFO      Base checkpoint: models/base/checkpoint_base_v1.pt
+2026-04-13 16:13:23,135  INFO      Loading: FOREXCOM_AUDNZDX_1W_20150101_20260412.npy
+2026-04-13 16:13:23,400  INFO        Shape: (410, 60, 47)  (410 windows)
+2026-04-13 16:13:23,405  INFO        Date range: 2018-06-07 → 2026-04-09  (7.8 years)
+2026-04-13 16:13:23,405  INFO        Train windows: 397  Val windows: 13
+2026-04-13 16:13:23,405  INFO      Years of data: 7.8
+2026-04-13 16:13:23,411  INFO      Loading base checkpoint: models/base/checkpoint_base_v1.pt
+2026-04-13 16:13:23,427  INFO        Base val_loss: 0.2463  (fold 3, epoch 22)
+2026-04-13 16:13:23,427  INFO      --------------------------------------------------
+2026-04-13 16:13:23,427  INFO      Phase 1 — Head-only adaptation (encoder frozen)
+2026-04-13 16:13:24,958  INFO        P1 Epoch  1 | TrainLoss 0.2463 | ValLoss 0.2535 | ValAcc H1=0.231 H5=0.385 H20=0.077
+2026-04-13 16:13:25,338  INFO        P1 Epoch  2 | TrainLoss 0.2482 | ValLoss 0.2535 | ValAcc H1=0.231 H5=0.385 H20=0.077
+2026-04-13 16:13:25,698  INFO        P1 Epoch  3 | TrainLoss 0.2480 | ValLoss 0.2538 | ValAcc H1=0.231 H5=0.385 H20=0.077
+2026-04-13 16:13:26,068  INFO        P1 Epoch  4 | TrainLoss 0.2469 | ValLoss 0.2540 | ValAcc H1=0.231 H5=0.308 H20=0.077
+2026-04-13 16:13:26,462  INFO        P1 Epoch  5 | TrainLoss 0.2451 | ValLoss 0.2542 | ValAcc H1=0.231 H5=0.308 H20=0.077
+2026-04-13 16:13:26,858  INFO        P1 Epoch  6 | TrainLoss 0.2463 | ValLoss 0.2543 | ValAcc H1=0.231 H5=0.231 H20=0.077
+2026-04-13 16:13:27,238  INFO        P1 Epoch  7 | TrainLoss 0.2463 | ValLoss 0.2544 | ValAcc H1=0.231 H5=0.231 H20=0.077
+2026-04-13 16:13:27,610  INFO        P1 Epoch  8 | TrainLoss 0.2462 | ValLoss 0.2546 | ValAcc H1=0.231 H5=0.077 H20=0.077
+2026-04-13 16:13:27,991  INFO        P1 Epoch  9 | TrainLoss 0.2463 | ValLoss 0.2546 | ValAcc H1=0.231 H5=0.077 H20=0.077
+2026-04-13 16:13:28,494  INFO        P1 Epoch 10 | TrainLoss 0.2467 | ValLoss 0.2547 | ValAcc H1=0.231 H5=0.077 H20=0.077
+2026-04-13 16:13:28,880  INFO        P1 Epoch 11 | TrainLoss 0.2459 | ValLoss 0.2548 | ValAcc H1=0.231 H5=0.154 H20=0.077
+2026-04-13 16:13:28,880  INFO        Phase 1 early stopping at epoch 11
+2026-04-13 16:13:28,893  INFO        Phase 1 complete. Best val_loss: 0.2535  H1=0.231 H5=0.385 H20=0.077
+2026-04-13 16:13:28,900  INFO      Phase 1 checkpoint saved: models/fine_tuned/checkpoint_FOREXCOM_AUDNZDX_1W_phase1_20260413.pt
+2026-04-13 16:13:28,900  INFO      Loading base checkpoint: models/base/checkpoint_base_v1.pt
+2026-04-13 16:13:28,915  INFO        Base val_loss: 0.2463  (fold 3, epoch 22)
+2026-04-13 16:13:28,928  INFO      Base model H1 accuracy on instrument val set: 0.231
+2026-04-13 16:13:28,928  INFO      Fine-tuned  H1 accuracy (Phase 1)           : 0.231
+2026-04-13 16:13:28,928  INFO      --------------------------------------------------
+2026-04-13 16:13:28,928  INFO      Phase 2 — Verification gate
+2026-04-13 16:13:28,929  INFO        Fine-tuned accuracy — H1=0.231  H5=0.385  H20=0.077  Mean=0.231
+2026-04-13 16:13:28,929  INFO        Minimum required (mean across horizons) : 0.510
+2026-04-13 16:13:28,929  WARNING     ✗ Phase 2 FAILED — mean accuracy 0.231 is below 0.510
+2026-04-13 16:13:28,929  WARNING     H1=0.231  H5=0.385  H20=0.077
+2026-04-13 16:13:28,929  WARNING     Instrument may be unpredictable at this resolution.
+2026-04-13 16:13:28,929  WARNING     Using Phase 1 checkpoint as final output.
+2026-04-13 16:13:28,929  INFO      ============================================================
+2026-04-13 16:13:28,929  INFO      Fine-Tuning Summary
+2026-04-13 16:13:28,929  INFO        Instrument     : FOREXCOM_AUDNZDX 1W
+2026-04-13 16:13:28,929  INFO        Final phase    : 1
+2026-04-13 16:13:28,930  INFO        Final checkpoint: models/fine_tuned/checkpoint_FOREXCOM_AUDNZDX_1W_phase1_20260413.pt
+2026-04-13 16:13:28,943  INFO        Base model — H1=0.231  H5=0.462  H20=0.000  Mean=0.231
+2026-04-13 16:13:28,943  INFO        Fine-tuned — H1=0.231  H5=0.385  H20=0.077  Mean=0.231  (Phase 1)
+2026-04-13 16:13:28,943  INFO        Delta mean accuracy : +0.000  = Fine-tuning matched base model.
+2026-04-13 16:13:28,944  INFO        Per-horizon delta   :  H1=+0.000  H5=-0.077  H20=+0.077
+2026-04-13 16:13:28,946  INFO        Metrics saved  : logs/finetune/FOREXCOM_AUDNZDX_1W_20260413_metrics.csv
+2026-04-13 16:13:28,946  INFO      Stage 6 complete.

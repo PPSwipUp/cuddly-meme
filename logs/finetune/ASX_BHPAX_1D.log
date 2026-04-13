@@ -1,0 +1,141 @@
+2026-04-13 14:51:09,903  INFO      ============================================================
+2026-04-13 14:51:09,903  INFO      Stage 6 Fine-Tuning — Start
+2026-04-13 14:51:09,903  INFO      Instrument  : ASX_BHPAX
+2026-04-13 14:51:09,903  INFO      Resolution  : 1D
+2026-04-13 14:51:09,903  INFO      Device      : cpu
+2026-04-13 14:51:09,903  INFO      Base checkpoint: models/base/checkpoint_base_v1.pt
+2026-04-13 14:51:09,905  INFO      Loading: ASX_BHPAX_1D_20150101_20260412.npy
+2026-04-13 14:51:11,638  INFO        Shape: (2674, 60, 47)  (2674 windows)
+2026-04-13 14:51:11,681  INFO        Date range: 2015-09-16 → 2026-04-10  (10.6 years)
+2026-04-13 14:51:11,681  INFO        Train windows: 2612  Val windows: 62
+2026-04-13 14:51:11,681  INFO      Years of data: 10.6
+2026-04-13 14:51:11,703  INFO      Loading base checkpoint: models/base/checkpoint_base_v1.pt
+2026-04-13 14:51:11,721  INFO        Base val_loss: 0.2463  (fold 3, epoch 22)
+2026-04-13 14:51:11,721  INFO      --------------------------------------------------
+2026-04-13 14:51:11,721  INFO      Phase 1 — Head-only adaptation (encoder frozen)
+Traceback (most recent call last):
+  File "/workspaces/cuddly-meme/finetune.py", line 731, in <module>
+    main()
+  File "/workspaces/cuddly-meme/finetune.py", line 608, in main
+    p1_val_loss, p1_val_acc, p1_metrics = phase1(
+                                          ^^^^^^^
+  File "/workspaces/cuddly-meme/finetune.py", line 325, in phase1
+    preds = model(x)
+            ^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1779, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1790, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/cuddly-meme/model.py", line 205, in forward
+    encoded = self.encoder(x)
+              ^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1779, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1790, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/cuddly-meme/model.py", line 128, in forward
+    x = self.network(x)               # [batch, hidden_dim, seq_len]
+        ^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1779, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1790, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/torch/nn/modules/container.py", line 253, in forward
+    input = module(input)
+            ^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1779, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1790, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/cuddly-meme/model.py", line 79, in forward
+    residual = self.residual_proj(x)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1779, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1790, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/torch/nn/modules/conv.py", line 375, in forward
+    return self._conv_forward(input, self.weight, self.bias)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/torch/nn/modules/conv.py", line 370, in _conv_forward
+    return F.conv1d(
+           ^^^^^^^^^
+RuntimeError: Given groups=1, weight of size [128, 49, 1], expected input[64, 44, 60] to have 49 channels, but got 44 channels instead
+2026-04-13 15:04:43,751  INFO      ============================================================
+2026-04-13 15:04:43,751  INFO      Stage 6 Fine-Tuning — Start
+2026-04-13 15:04:43,751  INFO      Instrument  : ASX_BHPAX
+2026-04-13 15:04:43,751  INFO      Resolution  : 1D
+2026-04-13 15:04:43,751  INFO      Device      : cpu
+2026-04-13 15:04:43,751  INFO      Base checkpoint: models/base/checkpoint_base_v1.pt
+2026-04-13 15:04:43,753  INFO      Loading: ASX_BHPAX_1D_20150101_20260412.npy
+2026-04-13 15:04:43,810  INFO        Shape: (2674, 60, 47)  (2674 windows)
+2026-04-13 15:04:43,819  INFO        Date range: 2015-09-16 → 2026-04-10  (10.6 years)
+2026-04-13 15:04:43,819  INFO        Train windows: 2612  Val windows: 62
+2026-04-13 15:04:43,819  INFO      Years of data: 10.6
+2026-04-13 15:04:43,836  INFO      Loading base checkpoint: models/base/checkpoint_base_v1.pt
+2026-04-13 15:04:43,852  INFO        Base val_loss: 0.2463  (fold 3, epoch 22)
+2026-04-13 15:04:43,853  INFO      --------------------------------------------------
+2026-04-13 15:04:43,853  INFO      Phase 1 — Head-only adaptation (encoder frozen)
+2026-04-13 15:04:47,086  INFO        P1 Epoch  1 | TrainLoss 0.2478 | ValLoss 0.2554 | ValAcc H1=0.452 H5=0.500 H20=0.452
+2026-04-13 15:04:49,519  INFO        P1 Epoch  2 | TrainLoss 0.2476 | ValLoss 0.2551 | ValAcc H1=0.452 H5=0.516 H20=0.452
+2026-04-13 15:04:51,780  INFO        P1 Epoch  3 | TrainLoss 0.2476 | ValLoss 0.2549 | ValAcc H1=0.435 H5=0.500 H20=0.435
+2026-04-13 15:04:54,276  INFO        P1 Epoch  4 | TrainLoss 0.2475 | ValLoss 0.2547 | ValAcc H1=0.435 H5=0.500 H20=0.435
+2026-04-13 15:04:56,629  INFO        P1 Epoch  5 | TrainLoss 0.2475 | ValLoss 0.2547 | ValAcc H1=0.435 H5=0.500 H20=0.419
+2026-04-13 15:04:59,005  INFO        P1 Epoch  6 | TrainLoss 0.2475 | ValLoss 0.2545 | ValAcc H1=0.435 H5=0.500 H20=0.419
+2026-04-13 15:05:01,217  INFO        P1 Epoch  7 | TrainLoss 0.2474 | ValLoss 0.2544 | ValAcc H1=0.435 H5=0.484 H20=0.403
+2026-04-13 15:05:03,660  INFO        P1 Epoch  8 | TrainLoss 0.2475 | ValLoss 0.2543 | ValAcc H1=0.435 H5=0.484 H20=0.419
+2026-04-13 15:05:05,813  INFO        P1 Epoch  9 | TrainLoss 0.2474 | ValLoss 0.2542 | ValAcc H1=0.435 H5=0.484 H20=0.419
+2026-04-13 15:05:08,390  INFO        P1 Epoch 10 | TrainLoss 0.2474 | ValLoss 0.2541 | ValAcc H1=0.435 H5=0.484 H20=0.403
+2026-04-13 15:05:10,584  INFO        P1 Epoch 11 | TrainLoss 0.2474 | ValLoss 0.2541 | ValAcc H1=0.435 H5=0.484 H20=0.387
+2026-04-13 15:05:13,418  INFO        P1 Epoch 12 | TrainLoss 0.2475 | ValLoss 0.2541 | ValAcc H1=0.435 H5=0.468 H20=0.387
+2026-04-13 15:05:16,041  INFO        P1 Epoch 13 | TrainLoss 0.2475 | ValLoss 0.2540 | ValAcc H1=0.435 H5=0.484 H20=0.387
+2026-04-13 15:05:18,651  INFO        P1 Epoch 14 | TrainLoss 0.2475 | ValLoss 0.2540 | ValAcc H1=0.435 H5=0.484 H20=0.387
+2026-04-13 15:05:20,774  INFO        P1 Epoch 15 | TrainLoss 0.2474 | ValLoss 0.2540 | ValAcc H1=0.435 H5=0.484 H20=0.387
+2026-04-13 15:05:23,010  INFO        P1 Epoch 16 | TrainLoss 0.2475 | ValLoss 0.2540 | ValAcc H1=0.435 H5=0.484 H20=0.387
+2026-04-13 15:05:25,618  INFO        P1 Epoch 17 | TrainLoss 0.2475 | ValLoss 0.2539 | ValAcc H1=0.435 H5=0.484 H20=0.387
+2026-04-13 15:05:27,920  INFO        P1 Epoch 18 | TrainLoss 0.2474 | ValLoss 0.2539 | ValAcc H1=0.435 H5=0.484 H20=0.387
+2026-04-13 15:05:30,557  INFO        P1 Epoch 19 | TrainLoss 0.2476 | ValLoss 0.2539 | ValAcc H1=0.435 H5=0.484 H20=0.387
+2026-04-13 15:05:32,758  INFO        P1 Epoch 20 | TrainLoss 0.2475 | ValLoss 0.2539 | ValAcc H1=0.435 H5=0.484 H20=0.387
+2026-04-13 15:05:35,191  INFO        P1 Epoch 21 | TrainLoss 0.2475 | ValLoss 0.2539 | ValAcc H1=0.435 H5=0.468 H20=0.387
+2026-04-13 15:05:37,385  INFO        P1 Epoch 22 | TrainLoss 0.2474 | ValLoss 0.2539 | ValAcc H1=0.435 H5=0.484 H20=0.387
+2026-04-13 15:05:39,808  INFO        P1 Epoch 23 | TrainLoss 0.2475 | ValLoss 0.2539 | ValAcc H1=0.435 H5=0.468 H20=0.387
+2026-04-13 15:05:42,010  INFO        P1 Epoch 24 | TrainLoss 0.2473 | ValLoss 0.2539 | ValAcc H1=0.435 H5=0.484 H20=0.387
+2026-04-13 15:05:44,304  INFO        P1 Epoch 25 | TrainLoss 0.2474 | ValLoss 0.2538 | ValAcc H1=0.435 H5=0.484 H20=0.387
+2026-04-13 15:05:46,474  INFO        P1 Epoch 26 | TrainLoss 0.2475 | ValLoss 0.2538 | ValAcc H1=0.435 H5=0.484 H20=0.387
+2026-04-13 15:05:48,749  INFO        P1 Epoch 27 | TrainLoss 0.2475 | ValLoss 0.2538 | ValAcc H1=0.435 H5=0.468 H20=0.387
+2026-04-13 15:05:51,273  INFO        P1 Epoch 28 | TrainLoss 0.2475 | ValLoss 0.2538 | ValAcc H1=0.435 H5=0.484 H20=0.387
+2026-04-13 15:05:51,273  INFO        Phase 1 early stopping at epoch 28
+2026-04-13 15:05:51,318  INFO        Phase 1 complete. Best val_loss: 0.2539  H1=0.435 H5=0.484 H20=0.387
+2026-04-13 15:05:51,323  INFO      Phase 1 checkpoint saved: models/fine_tuned/checkpoint_ASX_BHPAX_1D_phase1_20260413.pt
+2026-04-13 15:05:51,323  INFO      Loading base checkpoint: models/base/checkpoint_base_v1.pt
+2026-04-13 15:05:51,335  INFO        Base val_loss: 0.2463  (fold 3, epoch 22)
+2026-04-13 15:05:51,379  INFO      Base model H1 accuracy on instrument val set: 0.452
+2026-04-13 15:05:51,380  INFO      Fine-tuned  H1 accuracy (Phase 1)           : 0.435
+2026-04-13 15:05:51,380  INFO      --------------------------------------------------
+2026-04-13 15:05:51,380  INFO      Phase 2 — Verification gate
+2026-04-13 15:05:51,380  INFO        Fine-tuned accuracy — H1=0.435  H5=0.484  H20=0.387  Mean=0.435
+2026-04-13 15:05:51,380  INFO        Minimum required (mean across horizons) : 0.510
+2026-04-13 15:05:51,380  WARNING     ✗ Phase 2 FAILED — mean accuracy 0.435 is below 0.510
+2026-04-13 15:05:51,380  WARNING     H1=0.435  H5=0.484  H20=0.387
+2026-04-13 15:05:51,381  WARNING     Instrument may be unpredictable at this resolution.
+2026-04-13 15:05:51,381  WARNING     Using Phase 1 checkpoint as final output.
+2026-04-13 15:05:51,381  INFO      ============================================================
+2026-04-13 15:05:51,381  INFO      Fine-Tuning Summary
+2026-04-13 15:05:51,381  INFO        Instrument     : ASX_BHPAX 1D
+2026-04-13 15:05:51,381  INFO        Final phase    : 1
+2026-04-13 15:05:51,381  INFO        Final checkpoint: models/fine_tuned/checkpoint_ASX_BHPAX_1D_phase1_20260413.pt
+2026-04-13 15:05:51,436  INFO        Base model — H1=0.452  H5=0.468  H20=0.500  Mean=0.473
+2026-04-13 15:05:51,436  INFO        Fine-tuned — H1=0.435  H5=0.484  H20=0.387  Mean=0.435  (Phase 1)
+2026-04-13 15:05:51,436  WARNING     Delta mean accuracy : -0.038  ⚠  Fine-tuning degraded mean accuracy. Consider using the base model for this instrument. H1 delta=-0.016  H5 delta=+0.016  H20 delta=-0.113
+2026-04-13 15:05:51,440  INFO        Metrics saved  : logs/finetune/ASX_BHPAX_1D_20260413_metrics.csv
+2026-04-13 15:05:51,440  INFO      Stage 6 complete.

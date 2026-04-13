@@ -1,0 +1,55 @@
+2026-04-13 17:10:12,560  INFO      ============================================================
+2026-04-13 17:10:12,561  INFO      Stage 6 Fine-Tuning — Start
+2026-04-13 17:10:12,561  INFO      Instrument  : FTSE_FTSE
+2026-04-13 17:10:12,561  INFO      Resolution  : 4H
+2026-04-13 17:10:12,562  INFO      Device      : cpu
+2026-04-13 17:10:12,562  INFO      Base checkpoint: models/base/checkpoint_base_v1.pt
+2026-04-13 17:10:12,564  INFO      Loading: FTSE_FTSE_4H_20240422_20260412.npy
+2026-04-13 17:10:13,290  INFO        Shape: (1310, 60, 53)  (1310 windows)
+2026-04-13 17:10:13,300  INFO        Date range: 2024-07-16 → 2026-04-10  (1.7 years)
+2026-04-13 17:10:13,301  INFO        Train windows: 1121  Val windows: 189
+2026-04-13 17:10:13,301  INFO      Years of data: 1.7
+2026-04-13 17:10:13,308  INFO      Loading base checkpoint: models/base/checkpoint_base_v1.pt
+2026-04-13 17:10:13,327  INFO        Base val_loss: 0.2463  (fold 3, epoch 22)
+2026-04-13 17:10:13,328  INFO      --------------------------------------------------
+2026-04-13 17:10:13,328  INFO      Phase 1 — Head-only adaptation (encoder frozen)
+2026-04-13 17:10:15,539  INFO        P1 Epoch  1 | TrainLoss 0.2478 | ValLoss 0.2460 | ValAcc H1=0.545 H5=0.551 H20=0.574
+2026-04-13 17:10:17,046  INFO        P1 Epoch  2 | TrainLoss 0.2475 | ValLoss 0.2460 | ValAcc H1=0.551 H5=0.551 H20=0.574
+2026-04-13 17:10:18,276  INFO        P1 Epoch  3 | TrainLoss 0.2475 | ValLoss 0.2460 | ValAcc H1=0.551 H5=0.546 H20=0.574
+2026-04-13 17:10:19,642  INFO        P1 Epoch  4 | TrainLoss 0.2475 | ValLoss 0.2460 | ValAcc H1=0.551 H5=0.546 H20=0.574
+2026-04-13 17:10:20,880  INFO        P1 Epoch  5 | TrainLoss 0.2473 | ValLoss 0.2460 | ValAcc H1=0.551 H5=0.546 H20=0.568
+2026-04-13 17:10:22,217  INFO        P1 Epoch  6 | TrainLoss 0.2472 | ValLoss 0.2460 | ValAcc H1=0.551 H5=0.546 H20=0.578
+2026-04-13 17:10:23,497  INFO        P1 Epoch  7 | TrainLoss 0.2475 | ValLoss 0.2460 | ValAcc H1=0.551 H5=0.562 H20=0.573
+2026-04-13 17:10:24,781  INFO        P1 Epoch  8 | TrainLoss 0.2473 | ValLoss 0.2460 | ValAcc H1=0.556 H5=0.562 H20=0.578
+2026-04-13 17:10:26,028  INFO        P1 Epoch  9 | TrainLoss 0.2474 | ValLoss 0.2460 | ValAcc H1=0.556 H5=0.562 H20=0.578
+2026-04-13 17:10:27,449  INFO        P1 Epoch 10 | TrainLoss 0.2476 | ValLoss 0.2460 | ValAcc H1=0.556 H5=0.562 H20=0.578
+2026-04-13 17:10:28,709  INFO        P1 Epoch 11 | TrainLoss 0.2471 | ValLoss 0.2460 | ValAcc H1=0.556 H5=0.562 H20=0.589
+2026-04-13 17:10:28,710  INFO        Phase 1 early stopping at epoch 11
+2026-04-13 17:10:28,891  INFO        Phase 1 complete. Best val_loss: 0.2460  H1=0.545 H5=0.551 H20=0.574
+2026-04-13 17:10:28,897  INFO      Phase 1 checkpoint saved: models/fine_tuned/checkpoint_FTSE_FTSE_4H_phase1_20260413.pt
+2026-04-13 17:10:28,897  INFO      Loading base checkpoint: models/base/checkpoint_base_v1.pt
+2026-04-13 17:10:28,911  INFO        Base val_loss: 0.2463  (fold 3, epoch 22)
+2026-04-13 17:10:29,074  INFO      Base model H1 accuracy on instrument val set: 0.545
+2026-04-13 17:10:29,074  INFO      Fine-tuned  H1 accuracy (Phase 1)           : 0.545
+2026-04-13 17:10:29,074  INFO      --------------------------------------------------
+2026-04-13 17:10:29,074  INFO      Phase 2 — Verification gate
+2026-04-13 17:10:29,074  INFO        Fine-tuned accuracy — H1=0.545  H5=0.551  H20=0.574  Mean=0.557
+2026-04-13 17:10:29,074  INFO        Minimum required (mean across horizons) : 0.510
+2026-04-13 17:10:29,074  INFO        ✓ Phase 2 PASSED (H1=0.545  H5=0.551  H20=0.574) — proceeding to Phase 3
+2026-04-13 17:10:29,075  INFO      --------------------------------------------------
+2026-04-13 17:10:29,075  INFO      Phase 3 — Selective encoder unfreeze
+2026-04-13 17:10:29,075  WARNING     ✗ Skipping Phase 3 — only 1.7 years of data (need 2.0)
+2026-04-13 17:10:29,075  WARNING     Using Phase 1 checkpoint as final output.
+2026-04-13 17:10:29,076  INFO      Reverted to Phase 1 checkpoint.
+2026-04-13 17:10:29,271  INFO      Phase 1 H1 accuracy (recheck): 0.545
+2026-04-13 17:10:29,271  INFO      ============================================================
+2026-04-13 17:10:29,272  INFO      Fine-Tuning Summary
+2026-04-13 17:10:29,272  INFO        Instrument     : FTSE_FTSE 4H
+2026-04-13 17:10:29,272  INFO        Final phase    : 1
+2026-04-13 17:10:29,273  INFO        Final checkpoint: models/fine_tuned/checkpoint_FTSE_FTSE_4H_phase1_20260413.pt
+2026-04-13 17:10:29,482  INFO        Base model — H1=0.545  H5=0.546  H20=0.574  Mean=0.555
+2026-04-13 17:10:29,482  INFO        Fine-tuned — H1=0.545  H5=0.551  H20=0.574  Mean=0.557  (Phase 1)
+2026-04-13 17:10:29,482  INFO        Delta mean accuracy : +0.002  ✓ Fine-tuning improved accuracy.
+2026-04-13 17:10:29,482  INFO        Per-horizon delta   :  H1=+0.000  H5=+0.005  H20=+0.000
+2026-04-13 17:10:29,485  INFO        Metrics saved  : logs/finetune/FTSE_FTSE_4H_20260413_metrics.csv
+2026-04-13 17:10:29,485  INFO      Stage 6 complete.

@@ -1,0 +1,76 @@
+2026-04-13 16:37:02,872  INFO      ============================================================
+2026-04-13 16:37:02,872  INFO      Stage 6 Fine-Tuning — Start
+2026-04-13 16:37:02,873  INFO      Instrument  : FOREXCOM_GBPJPYX
+2026-04-13 16:37:02,873  INFO      Resolution  : 1D
+2026-04-13 16:37:02,873  INFO      Device      : cpu
+2026-04-13 16:37:02,873  INFO      Base checkpoint: models/base/checkpoint_base_v1.pt
+2026-04-13 16:37:02,874  INFO      Loading: FOREXCOM_GBPJPYX_1D_20150101_20260412.npy
+2026-04-13 16:37:04,416  INFO        Shape: (2756, 60, 47)  (2756 windows)
+2026-04-13 16:37:04,426  INFO        Date range: 2015-09-09 → 2026-04-10  (10.6 years)
+2026-04-13 16:37:04,426  INFO        Train windows: 2691  Val windows: 65
+2026-04-13 16:37:04,426  INFO      Years of data: 10.6
+2026-04-13 16:37:04,442  INFO      Loading base checkpoint: models/base/checkpoint_base_v1.pt
+2026-04-13 16:37:04,456  INFO        Base val_loss: 0.2463  (fold 3, epoch 22)
+2026-04-13 16:37:04,456  INFO      --------------------------------------------------
+2026-04-13 16:37:04,457  INFO      Phase 1 — Head-only adaptation (encoder frozen)
+2026-04-13 16:37:07,755  INFO        P1 Epoch  1 | TrainLoss 0.2465 | ValLoss 0.2485 | ValAcc H1=0.750 H5=0.773 H20=0.836
+2026-04-13 16:37:10,017  INFO        P1 Epoch  2 | TrainLoss 0.2460 | ValLoss 0.2485 | ValAcc H1=0.742 H5=0.773 H20=0.836
+2026-04-13 16:37:12,188  INFO        P1 Epoch  3 | TrainLoss 0.2464 | ValLoss 0.2485 | ValAcc H1=0.750 H5=0.773 H20=0.836
+2026-04-13 16:37:14,456  INFO        P1 Epoch  4 | TrainLoss 0.2467 | ValLoss 0.2484 | ValAcc H1=0.758 H5=0.781 H20=0.836
+2026-04-13 16:37:16,742  INFO        P1 Epoch  5 | TrainLoss 0.2464 | ValLoss 0.2484 | ValAcc H1=0.766 H5=0.781 H20=0.836
+2026-04-13 16:37:18,962  INFO        P1 Epoch  6 | TrainLoss 0.2468 | ValLoss 0.2484 | ValAcc H1=0.758 H5=0.781 H20=0.836
+2026-04-13 16:37:21,212  INFO        P1 Epoch  7 | TrainLoss 0.2466 | ValLoss 0.2483 | ValAcc H1=0.758 H5=0.781 H20=0.836
+2026-04-13 16:37:23,388  INFO        P1 Epoch  8 | TrainLoss 0.2464 | ValLoss 0.2483 | ValAcc H1=0.750 H5=0.773 H20=0.836
+2026-04-13 16:37:25,640  INFO        P1 Epoch  9 | TrainLoss 0.2468 | ValLoss 0.2483 | ValAcc H1=0.758 H5=0.773 H20=0.836
+2026-04-13 16:37:27,909  INFO        P1 Epoch 10 | TrainLoss 0.2460 | ValLoss 0.2483 | ValAcc H1=0.766 H5=0.781 H20=0.836
+2026-04-13 16:37:30,083  INFO        P1 Epoch 11 | TrainLoss 0.2465 | ValLoss 0.2483 | ValAcc H1=0.766 H5=0.781 H20=0.836
+2026-04-13 16:37:32,253  INFO        P1 Epoch 12 | TrainLoss 0.2462 | ValLoss 0.2483 | ValAcc H1=0.766 H5=0.781 H20=0.836
+2026-04-13 16:37:34,422  INFO        P1 Epoch 13 | TrainLoss 0.2460 | ValLoss 0.2483 | ValAcc H1=0.758 H5=0.773 H20=0.836
+2026-04-13 16:37:36,771  INFO        P1 Epoch 14 | TrainLoss 0.2465 | ValLoss 0.2483 | ValAcc H1=0.766 H5=0.766 H20=0.836
+2026-04-13 16:37:38,946  INFO        P1 Epoch 15 | TrainLoss 0.2459 | ValLoss 0.2483 | ValAcc H1=0.758 H5=0.766 H20=0.836
+2026-04-13 16:37:41,091  INFO        P1 Epoch 16 | TrainLoss 0.2464 | ValLoss 0.2483 | ValAcc H1=0.766 H5=0.766 H20=0.836
+2026-04-13 16:37:43,239  INFO        P1 Epoch 17 | TrainLoss 0.2458 | ValLoss 0.2483 | ValAcc H1=0.758 H5=0.766 H20=0.836
+2026-04-13 16:37:43,239  INFO        Phase 1 early stopping at epoch 17
+2026-04-13 16:37:43,288  INFO        Phase 1 complete. Best val_loss: 0.2483  H1=0.758 H5=0.781 H20=0.836
+2026-04-13 16:37:43,292  INFO      Phase 1 checkpoint saved: models/fine_tuned/checkpoint_FOREXCOM_GBPJPYX_1D_phase1_20260413.pt
+2026-04-13 16:37:43,293  INFO      Loading base checkpoint: models/base/checkpoint_base_v1.pt
+2026-04-13 16:37:43,308  INFO        Base val_loss: 0.2463  (fold 3, epoch 22)
+2026-04-13 16:37:43,358  INFO      Base model H1 accuracy on instrument val set: 0.750
+2026-04-13 16:37:43,358  INFO      Fine-tuned  H1 accuracy (Phase 1)           : 0.758
+2026-04-13 16:37:43,358  INFO      --------------------------------------------------
+2026-04-13 16:37:43,358  INFO      Phase 2 — Verification gate
+2026-04-13 16:37:43,358  INFO        Fine-tuned accuracy — H1=0.758  H5=0.781  H20=0.836  Mean=0.792
+2026-04-13 16:37:43,358  INFO        Minimum required (mean across horizons) : 0.510
+2026-04-13 16:37:43,359  INFO        ✓ Phase 2 PASSED (H1=0.758  H5=0.781  H20=0.836) — proceeding to Phase 3
+2026-04-13 16:37:43,359  INFO      --------------------------------------------------
+2026-04-13 16:37:43,359  INFO      Phase 3 — Selective encoder unfreeze
+2026-04-13 16:37:43,359  INFO        Encoder layers 1 & 2 unfrozen (layer 0 frozen)
+2026-04-13 16:37:43,360  INFO        Encoder LR: 1e-05  Head LR: 3e-05
+2026-04-13 16:37:43,360  INFO        Dropout: encoder=0.40  head=0.45
+2026-04-13 16:37:51,126  INFO        P3 Epoch  1 | TrainLoss 0.2466 | ValLoss 0.2483 | Gap -0.0017 | ValAcc H1=0.758 H5=0.773 H20=0.836
+2026-04-13 16:37:58,853  INFO        P3 Epoch  2 | TrainLoss 0.2471 | ValLoss 0.2483 | Gap -0.0012 | ValAcc H1=0.766 H5=0.773 H20=0.836
+2026-04-13 16:38:07,282  INFO        P3 Epoch  3 | TrainLoss 0.2468 | ValLoss 0.2482 | Gap -0.0014 | ValAcc H1=0.750 H5=0.773 H20=0.836
+2026-04-13 16:38:15,904  INFO        P3 Epoch  4 | TrainLoss 0.2466 | ValLoss 0.2482 | Gap -0.0016 | ValAcc H1=0.750 H5=0.766 H20=0.836
+2026-04-13 16:38:23,868  INFO        P3 Epoch  5 | TrainLoss 0.2463 | ValLoss 0.2481 | Gap -0.0019 | ValAcc H1=0.750 H5=0.773 H20=0.836
+2026-04-13 16:38:31,804  INFO        P3 Epoch  6 | TrainLoss 0.2465 | ValLoss 0.2481 | Gap -0.0016 | ValAcc H1=0.758 H5=0.773 H20=0.836
+2026-04-13 16:38:39,607  INFO        P3 Epoch  7 | TrainLoss 0.2462 | ValLoss 0.2481 | Gap -0.0019 | ValAcc H1=0.758 H5=0.773 H20=0.836
+2026-04-13 16:38:47,532  INFO        P3 Epoch  8 | TrainLoss 0.2461 | ValLoss 0.2481 | Gap -0.0020 | ValAcc H1=0.758 H5=0.773 H20=0.836
+2026-04-13 16:38:55,190  INFO        P3 Epoch  9 | TrainLoss 0.2463 | ValLoss 0.2481 | Gap -0.0018 | ValAcc H1=0.750 H5=0.773 H20=0.836
+2026-04-13 16:39:02,705  INFO        P3 Epoch 10 | TrainLoss 0.2466 | ValLoss 0.2481 | Gap -0.0015 | ValAcc H1=0.758 H5=0.766 H20=0.836
+2026-04-13 16:39:10,220  INFO        P3 Epoch 11 | TrainLoss 0.2465 | ValLoss 0.2481 | Gap -0.0016 | ValAcc H1=0.758 H5=0.758 H20=0.836
+2026-04-13 16:39:17,683  INFO        P3 Epoch 12 | TrainLoss 0.2458 | ValLoss 0.2481 | Gap -0.0023 | ValAcc H1=0.750 H5=0.766 H20=0.836
+2026-04-13 16:39:25,247  INFO        P3 Epoch 13 | TrainLoss 0.2456 | ValLoss 0.2481 | Gap -0.0025 | ValAcc H1=0.750 H5=0.750 H20=0.836
+2026-04-13 16:39:25,248  INFO        Phase 3 early stopping at epoch 13
+2026-04-13 16:39:25,248  INFO        Phase 3 complete. Best val_loss: 0.2481
+2026-04-13 16:39:25,311  INFO      Phase 3 checkpoint saved: models/fine_tuned/checkpoint_FOREXCOM_GBPJPYX_1D_phase3_20260413.pt
+2026-04-13 16:39:25,311  INFO      ============================================================
+2026-04-13 16:39:25,311  INFO      Fine-Tuning Summary
+2026-04-13 16:39:25,312  INFO        Instrument     : FOREXCOM_GBPJPYX 1D
+2026-04-13 16:39:25,312  INFO        Final phase    : 3
+2026-04-13 16:39:25,312  INFO        Final checkpoint: models/fine_tuned/checkpoint_FOREXCOM_GBPJPYX_1D_phase3_20260413.pt
+2026-04-13 16:39:25,372  INFO        Base model — H1=0.750  H5=0.773  H20=0.836  Mean=0.786
+2026-04-13 16:39:25,372  INFO        Fine-tuned — H1=0.750  H5=0.773  H20=0.836  Mean=0.786  (Phase 3)
+2026-04-13 16:39:25,373  INFO        Delta mean accuracy : +0.000  = Fine-tuning matched base model.
+2026-04-13 16:39:25,373  INFO        Per-horizon delta   :  H1=+0.000  H5=+0.000  H20=+0.000
+2026-04-13 16:39:25,376  INFO        Metrics saved  : logs/finetune/FOREXCOM_GBPJPYX_1D_20260413_metrics.csv
+2026-04-13 16:39:25,376  INFO      Stage 6 complete.

@@ -1,0 +1,25 @@
+Traceback (most recent call last):
+  File "/workspaces/cuddly-meme/evaluation.py", line 38, in <module>
+    import torch
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/torch/__init__.py", line 2804, in <module>
+    from torch import _meta_registrations
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/torch/_meta_registrations.py", line 12, in <module>
+    from torch._decomp import (
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/torch/_decomp/__init__.py", line 287, in <module>
+    import torch._decomp.decompositions
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/torch/_decomp/decompositions.py", line 17, in <module>
+    import torch._prims as prims
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/torch/_prims/__init__.py", line 1042, in <module>
+    eq = _make_elementwise_binary_prim(
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/torch/_prims/__init__.py", line 526, in _make_elementwise_binary_prim
+    return _make_prim(
+           ^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/torch/_prims/__init__.py", line 353, in _make_prim
+    getattr(aten_packet, overload).tags for overload in aten_packet.overloads()
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/torch/_ops.py", line 1239, in __getattr__
+    OpOverload(self, op_, op_dk_, schema, tags)
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/torch/_ops.py", line 832, in __init__
+    continue
+KeyboardInterrupt

@@ -1,0 +1,66 @@
+2026-04-13 17:04:56,642  INFO      ============================================================
+2026-04-13 17:04:56,642  INFO      Stage 6 Fine-Tuning — Start
+2026-04-13 17:04:56,643  INFO      Instrument  : FOREXCOM_USDJPYX
+2026-04-13 17:04:56,643  INFO      Resolution  : 1W
+2026-04-13 17:04:56,643  INFO      Device      : cpu
+2026-04-13 17:04:56,643  INFO      Base checkpoint: models/base/checkpoint_base_v1.pt
+2026-04-13 17:04:56,644  INFO      Loading: FOREXCOM_USDJPYX_1W_20150101_20260412.npy
+2026-04-13 17:04:56,946  INFO        Shape: (410, 60, 47)  (410 windows)
+2026-04-13 17:04:56,950  INFO        Date range: 2018-06-07 → 2026-04-09  (7.8 years)
+2026-04-13 17:04:56,950  INFO        Train windows: 397  Val windows: 13
+2026-04-13 17:04:56,950  INFO      Years of data: 7.8
+2026-04-13 17:04:56,954  INFO      Loading base checkpoint: models/base/checkpoint_base_v1.pt
+2026-04-13 17:04:56,969  INFO        Base val_loss: 0.2463  (fold 3, epoch 22)
+2026-04-13 17:04:56,969  INFO      --------------------------------------------------
+2026-04-13 17:04:56,969  INFO      Phase 1 — Head-only adaptation (encoder frozen)
+2026-04-13 17:04:58,348  INFO        P1 Epoch  1 | TrainLoss 0.2506 | ValLoss 0.2425 | ValAcc H1=0.538 H5=0.462 H20=0.615
+2026-04-13 17:04:58,791  INFO        P1 Epoch  2 | TrainLoss 0.2515 | ValLoss 0.2425 | ValAcc H1=0.538 H5=0.462 H20=0.615
+2026-04-13 17:04:59,167  INFO        P1 Epoch  3 | TrainLoss 0.2505 | ValLoss 0.2426 | ValAcc H1=0.538 H5=0.462 H20=0.615
+2026-04-13 17:04:59,561  INFO        P1 Epoch  4 | TrainLoss 0.2502 | ValLoss 0.2426 | ValAcc H1=0.538 H5=0.462 H20=0.615
+2026-04-13 17:04:59,966  INFO        P1 Epoch  5 | TrainLoss 0.2517 | ValLoss 0.2427 | ValAcc H1=0.538 H5=0.462 H20=0.615
+2026-04-13 17:05:00,333  INFO        P1 Epoch  6 | TrainLoss 0.2510 | ValLoss 0.2427 | ValAcc H1=0.538 H5=0.462 H20=0.615
+2026-04-13 17:05:00,706  INFO        P1 Epoch  7 | TrainLoss 0.2502 | ValLoss 0.2428 | ValAcc H1=0.538 H5=0.462 H20=0.615
+2026-04-13 17:05:01,156  INFO        P1 Epoch  8 | TrainLoss 0.2501 | ValLoss 0.2428 | ValAcc H1=0.538 H5=0.462 H20=0.615
+2026-04-13 17:05:01,572  INFO        P1 Epoch  9 | TrainLoss 0.2486 | ValLoss 0.2429 | ValAcc H1=0.538 H5=0.462 H20=0.615
+2026-04-13 17:05:02,005  INFO        P1 Epoch 10 | TrainLoss 0.2508 | ValLoss 0.2429 | ValAcc H1=0.538 H5=0.462 H20=0.615
+2026-04-13 17:05:02,364  INFO        P1 Epoch 11 | TrainLoss 0.2511 | ValLoss 0.2429 | ValAcc H1=0.538 H5=0.462 H20=0.615
+2026-04-13 17:05:02,364  INFO        Phase 1 early stopping at epoch 11
+2026-04-13 17:05:02,376  INFO        Phase 1 complete. Best val_loss: 0.2425  H1=0.538 H5=0.462 H20=0.615
+2026-04-13 17:05:02,381  INFO      Phase 1 checkpoint saved: models/fine_tuned/checkpoint_FOREXCOM_USDJPYX_1W_phase1_20260413.pt
+2026-04-13 17:05:02,381  INFO      Loading base checkpoint: models/base/checkpoint_base_v1.pt
+2026-04-13 17:05:02,392  INFO        Base val_loss: 0.2463  (fold 3, epoch 22)
+2026-04-13 17:05:02,407  INFO      Base model H1 accuracy on instrument val set: 0.538
+2026-04-13 17:05:02,407  INFO      Fine-tuned  H1 accuracy (Phase 1)           : 0.538
+2026-04-13 17:05:02,407  INFO      --------------------------------------------------
+2026-04-13 17:05:02,407  INFO      Phase 2 — Verification gate
+2026-04-13 17:05:02,407  INFO        Fine-tuned accuracy — H1=0.538  H5=0.462  H20=0.615  Mean=0.538
+2026-04-13 17:05:02,407  INFO        Minimum required (mean across horizons) : 0.510
+2026-04-13 17:05:02,408  INFO        ✓ Phase 2 PASSED (H1=0.538  H5=0.462  H20=0.615) — proceeding to Phase 3
+2026-04-13 17:05:02,408  INFO      --------------------------------------------------
+2026-04-13 17:05:02,408  INFO      Phase 3 — Selective encoder unfreeze
+2026-04-13 17:05:02,409  INFO        Encoder layers 1 & 2 unfrozen (layer 0 frozen)
+2026-04-13 17:05:02,409  INFO        Encoder LR: 1e-05  Head LR: 3e-05
+2026-04-13 17:05:02,409  INFO        Dropout: encoder=0.40  head=0.45
+2026-04-13 17:05:03,579  INFO        P3 Epoch  1 | TrainLoss 0.2493 | ValLoss 0.2425 | Gap 0.0067 | ValAcc H1=0.538 H5=0.462 H20=0.615
+2026-04-13 17:05:04,732  INFO        P3 Epoch  2 | TrainLoss 0.2511 | ValLoss 0.2426 | Gap 0.0085 | ValAcc H1=0.538 H5=0.462 H20=0.615
+2026-04-13 17:05:05,919  INFO        P3 Epoch  3 | TrainLoss 0.2521 | ValLoss 0.2427 | Gap 0.0095 | ValAcc H1=0.538 H5=0.538 H20=0.615
+2026-04-13 17:05:07,103  INFO        P3 Epoch  4 | TrainLoss 0.2512 | ValLoss 0.2427 | Gap 0.0085 | ValAcc H1=0.538 H5=0.615 H20=0.615
+2026-04-13 17:05:08,370  INFO        P3 Epoch  5 | TrainLoss 0.2498 | ValLoss 0.2428 | Gap 0.0070 | ValAcc H1=0.538 H5=0.692 H20=0.615
+2026-04-13 17:05:09,573  INFO        P3 Epoch  6 | TrainLoss 0.2502 | ValLoss 0.2428 | Gap 0.0074 | ValAcc H1=0.538 H5=0.692 H20=0.615
+2026-04-13 17:05:10,754  INFO        P3 Epoch  7 | TrainLoss 0.2513 | ValLoss 0.2429 | Gap 0.0084 | ValAcc H1=0.538 H5=0.692 H20=0.769
+2026-04-13 17:05:11,912  INFO        P3 Epoch  8 | TrainLoss 0.2484 | ValLoss 0.2429 | Gap 0.0055 | ValAcc H1=0.538 H5=0.692 H20=0.769
+2026-04-13 17:05:13,119  INFO        P3 Epoch  9 | TrainLoss 0.2500 | ValLoss 0.2429 | Gap 0.0071 | ValAcc H1=0.538 H5=0.692 H20=0.769
+2026-04-13 17:05:13,119  INFO        Phase 3 early stopping at epoch 9
+2026-04-13 17:05:13,121  INFO        Phase 3 complete. Best val_loss: 0.2425
+2026-04-13 17:05:13,145  INFO      Phase 3 checkpoint saved: models/fine_tuned/checkpoint_FOREXCOM_USDJPYX_1W_phase3_20260413.pt
+2026-04-13 17:05:13,145  INFO      ============================================================
+2026-04-13 17:05:13,145  INFO      Fine-Tuning Summary
+2026-04-13 17:05:13,145  INFO        Instrument     : FOREXCOM_USDJPYX 1W
+2026-04-13 17:05:13,145  INFO        Final phase    : 3
+2026-04-13 17:05:13,146  INFO        Final checkpoint: models/fine_tuned/checkpoint_FOREXCOM_USDJPYX_1W_phase3_20260413.pt
+2026-04-13 17:05:13,161  INFO        Base model — H1=0.538  H5=0.462  H20=0.615  Mean=0.538
+2026-04-13 17:05:13,161  INFO        Fine-tuned — H1=0.538  H5=0.462  H20=0.615  Mean=0.538  (Phase 3)
+2026-04-13 17:05:13,162  INFO        Delta mean accuracy : +0.000  = Fine-tuning matched base model.
+2026-04-13 17:05:13,162  INFO        Per-horizon delta   :  H1=+0.000  H5=+0.000  H20=+0.000
+2026-04-13 17:05:13,165  INFO        Metrics saved  : logs/finetune/FOREXCOM_USDJPYX_1W_20260413_metrics.csv
+2026-04-13 17:05:13,166  INFO      Stage 6 complete.

@@ -1,0 +1,61 @@
+2026-04-13 16:02:53,831  INFO      ============================================================
+2026-04-13 16:02:53,832  INFO      Stage 6 Fine-Tuning — Start
+2026-04-13 16:02:53,832  INFO      Instrument  : EURONEXT_SAPDE
+2026-04-13 16:02:53,832  INFO      Resolution  : 4H
+2026-04-13 16:02:53,832  INFO      Device      : cpu
+2026-04-13 16:02:53,832  INFO      Base checkpoint: models/base/checkpoint_base_v1.pt
+2026-04-13 16:02:53,834  INFO      Loading: EURONEXT_SAPDE_4H_20240422_20260412.npy
+2026-04-13 16:02:54,558  INFO        Shape: (1316, 60, 53)  (1316 windows)
+2026-04-13 16:02:54,564  INFO        Date range: 2024-07-15 → 2026-04-10  (1.7 years)
+2026-04-13 16:02:54,565  INFO        Train windows: 1127  Val windows: 189
+2026-04-13 16:02:54,565  INFO      Years of data: 1.7
+2026-04-13 16:02:54,571  INFO      Loading base checkpoint: models/base/checkpoint_base_v1.pt
+2026-04-13 16:02:54,589  INFO        Base val_loss: 0.2463  (fold 3, epoch 22)
+2026-04-13 16:02:54,589  INFO      --------------------------------------------------
+2026-04-13 16:02:54,589  INFO      Phase 1 — Head-only adaptation (encoder frozen)
+2026-04-13 16:02:57,020  INFO        P1 Epoch  1 | TrainLoss 0.2466 | ValLoss 0.2480 | ValAcc H1=0.529 H5=0.544 H20=0.615
+2026-04-13 16:02:58,316  INFO        P1 Epoch  2 | TrainLoss 0.2469 | ValLoss 0.2479 | ValAcc H1=0.529 H5=0.544 H20=0.615
+2026-04-13 16:02:59,679  INFO        P1 Epoch  3 | TrainLoss 0.2466 | ValLoss 0.2479 | ValAcc H1=0.529 H5=0.550 H20=0.610
+2026-04-13 16:03:00,926  INFO        P1 Epoch  4 | TrainLoss 0.2467 | ValLoss 0.2479 | ValAcc H1=0.534 H5=0.550 H20=0.615
+2026-04-13 16:03:03,213  INFO        P1 Epoch  5 | TrainLoss 0.2467 | ValLoss 0.2479 | ValAcc H1=0.534 H5=0.550 H20=0.610
+2026-04-13 16:03:04,467  INFO        P1 Epoch  6 | TrainLoss 0.2468 | ValLoss 0.2479 | ValAcc H1=0.534 H5=0.555 H20=0.610
+2026-04-13 16:03:05,728  INFO        P1 Epoch  7 | TrainLoss 0.2465 | ValLoss 0.2479 | ValAcc H1=0.534 H5=0.555 H20=0.605
+2026-04-13 16:03:07,732  INFO        P1 Epoch  8 | TrainLoss 0.2467 | ValLoss 0.2479 | ValAcc H1=0.534 H5=0.555 H20=0.605
+2026-04-13 16:03:08,955  INFO        P1 Epoch  9 | TrainLoss 0.2467 | ValLoss 0.2479 | ValAcc H1=0.534 H5=0.555 H20=0.605
+2026-04-13 16:03:10,287  INFO        P1 Epoch 10 | TrainLoss 0.2465 | ValLoss 0.2479 | ValAcc H1=0.534 H5=0.550 H20=0.605
+2026-04-13 16:03:11,525  INFO        P1 Epoch 11 | TrainLoss 0.2466 | ValLoss 0.2479 | ValAcc H1=0.534 H5=0.555 H20=0.605
+2026-04-13 16:03:13,256  INFO        P1 Epoch 12 | TrainLoss 0.2463 | ValLoss 0.2479 | ValAcc H1=0.534 H5=0.555 H20=0.615
+2026-04-13 16:03:14,486  INFO        P1 Epoch 13 | TrainLoss 0.2464 | ValLoss 0.2479 | ValAcc H1=0.534 H5=0.555 H20=0.610
+2026-04-13 16:03:15,767  INFO        P1 Epoch 14 | TrainLoss 0.2466 | ValLoss 0.2478 | ValAcc H1=0.529 H5=0.555 H20=0.610
+2026-04-13 16:03:17,065  INFO        P1 Epoch 15 | TrainLoss 0.2465 | ValLoss 0.2478 | ValAcc H1=0.529 H5=0.550 H20=0.610
+2026-04-13 16:03:18,767  INFO        P1 Epoch 16 | TrainLoss 0.2465 | ValLoss 0.2478 | ValAcc H1=0.529 H5=0.555 H20=0.615
+2026-04-13 16:03:20,473  INFO        P1 Epoch 17 | TrainLoss 0.2464 | ValLoss 0.2478 | ValAcc H1=0.529 H5=0.555 H20=0.610
+2026-04-13 16:03:20,474  INFO        Phase 1 early stopping at epoch 17
+2026-04-13 16:03:20,648  INFO        Phase 1 complete. Best val_loss: 0.2479  H1=0.534 H5=0.555 H20=0.605
+2026-04-13 16:03:20,654  INFO      Phase 1 checkpoint saved: models/fine_tuned/checkpoint_EURONEXT_SAPDE_4H_phase1_20260413.pt
+2026-04-13 16:03:20,654  INFO      Loading base checkpoint: models/base/checkpoint_base_v1.pt
+2026-04-13 16:03:20,665  INFO        Base val_loss: 0.2463  (fold 3, epoch 22)
+2026-04-13 16:03:20,874  INFO      Base model H1 accuracy on instrument val set: 0.523
+2026-04-13 16:03:20,874  INFO      Fine-tuned  H1 accuracy (Phase 1)           : 0.534
+2026-04-13 16:03:20,874  INFO      --------------------------------------------------
+2026-04-13 16:03:20,874  INFO      Phase 2 — Verification gate
+2026-04-13 16:03:20,875  INFO        Fine-tuned accuracy — H1=0.534  H5=0.555  H20=0.605  Mean=0.564
+2026-04-13 16:03:20,875  INFO        Minimum required (mean across horizons) : 0.510
+2026-04-13 16:03:20,875  INFO        ✓ Phase 2 PASSED (H1=0.534  H5=0.555  H20=0.605) — proceeding to Phase 3
+2026-04-13 16:03:20,875  INFO      --------------------------------------------------
+2026-04-13 16:03:20,875  INFO      Phase 3 — Selective encoder unfreeze
+2026-04-13 16:03:20,875  WARNING     ✗ Skipping Phase 3 — only 1.7 years of data (need 2.0)
+2026-04-13 16:03:20,875  WARNING     Using Phase 1 checkpoint as final output.
+2026-04-13 16:03:20,876  INFO      Reverted to Phase 1 checkpoint.
+2026-04-13 16:03:21,102  INFO      Phase 1 H1 accuracy (recheck): 0.534
+2026-04-13 16:03:21,103  INFO      ============================================================
+2026-04-13 16:03:21,103  INFO      Fine-Tuning Summary
+2026-04-13 16:03:21,103  INFO        Instrument     : EURONEXT_SAPDE 4H
+2026-04-13 16:03:21,103  INFO        Final phase    : 1
+2026-04-13 16:03:21,104  INFO        Final checkpoint: models/fine_tuned/checkpoint_EURONEXT_SAPDE_4H_phase1_20260413.pt
+2026-04-13 16:03:21,375  INFO        Base model — H1=0.523  H5=0.544  H20=0.615  Mean=0.561
+2026-04-13 16:03:21,375  INFO        Fine-tuned — H1=0.534  H5=0.555  H20=0.605  Mean=0.564  (Phase 1)
+2026-04-13 16:03:21,375  INFO        Delta mean accuracy : +0.004  ✓ Fine-tuning improved accuracy.
+2026-04-13 16:03:21,376  INFO        Per-horizon delta   :  H1=+0.011  H5=+0.011  H20=-0.010
+2026-04-13 16:03:21,380  INFO        Metrics saved  : logs/finetune/EURONEXT_SAPDE_4H_20260413_metrics.csv
+2026-04-13 16:03:21,380  INFO      Stage 6 complete.

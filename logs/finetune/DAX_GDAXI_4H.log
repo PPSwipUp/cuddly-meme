@@ -1,0 +1,54 @@
+2026-04-13 15:47:47,486  INFO      ============================================================
+2026-04-13 15:47:47,486  INFO      Stage 6 Fine-Tuning — Start
+2026-04-13 15:47:47,486  INFO      Instrument  : DAX_GDAXI
+2026-04-13 15:47:47,487  INFO      Resolution  : 4H
+2026-04-13 15:47:47,487  INFO      Device      : cpu
+2026-04-13 15:47:47,487  INFO      Base checkpoint: models/base/checkpoint_base_v1.pt
+2026-04-13 15:47:47,488  INFO      Loading: DAX_GDAXI_4H_20240422_20260412.npy
+2026-04-13 15:47:48,515  INFO        Shape: (1322, 60, 53)  (1322 windows)
+2026-04-13 15:47:48,522  INFO        Date range: 2024-07-15 → 2026-04-10  (1.7 years)
+2026-04-13 15:47:48,522  INFO        Train windows: 1133  Val windows: 189
+2026-04-13 15:47:48,522  INFO      Years of data: 1.7
+2026-04-13 15:47:48,527  INFO      Loading base checkpoint: models/base/checkpoint_base_v1.pt
+2026-04-13 15:47:48,543  INFO        Base val_loss: 0.2463  (fold 3, epoch 22)
+2026-04-13 15:47:48,543  INFO      --------------------------------------------------
+2026-04-13 15:47:48,543  INFO      Phase 1 — Head-only adaptation (encoder frozen)
+2026-04-13 15:47:50,706  INFO        P1 Epoch  1 | TrainLoss 0.2444 | ValLoss 0.2462 | ValAcc H1=0.572 H5=0.577 H20=0.572
+2026-04-13 15:47:51,977  INFO        P1 Epoch  2 | TrainLoss 0.2444 | ValLoss 0.2462 | ValAcc H1=0.567 H5=0.577 H20=0.572
+2026-04-13 15:47:53,187  INFO        P1 Epoch  3 | TrainLoss 0.2444 | ValLoss 0.2462 | ValAcc H1=0.567 H5=0.577 H20=0.572
+2026-04-13 15:47:54,435  INFO        P1 Epoch  4 | TrainLoss 0.2445 | ValLoss 0.2462 | ValAcc H1=0.567 H5=0.582 H20=0.572
+2026-04-13 15:47:55,700  INFO        P1 Epoch  5 | TrainLoss 0.2444 | ValLoss 0.2462 | ValAcc H1=0.567 H5=0.577 H20=0.588
+2026-04-13 15:47:56,870  INFO        P1 Epoch  6 | TrainLoss 0.2446 | ValLoss 0.2462 | ValAcc H1=0.567 H5=0.572 H20=0.588
+2026-04-13 15:47:58,237  INFO        P1 Epoch  7 | TrainLoss 0.2444 | ValLoss 0.2462 | ValAcc H1=0.567 H5=0.567 H20=0.588
+2026-04-13 15:47:59,418  INFO        P1 Epoch  8 | TrainLoss 0.2444 | ValLoss 0.2462 | ValAcc H1=0.572 H5=0.562 H20=0.588
+2026-04-13 15:48:00,661  INFO        P1 Epoch  9 | TrainLoss 0.2443 | ValLoss 0.2462 | ValAcc H1=0.572 H5=0.562 H20=0.583
+2026-04-13 15:48:01,912  INFO        P1 Epoch 10 | TrainLoss 0.2444 | ValLoss 0.2463 | ValAcc H1=0.572 H5=0.562 H20=0.583
+2026-04-13 15:48:03,080  INFO        P1 Epoch 11 | TrainLoss 0.2442 | ValLoss 0.2463 | ValAcc H1=0.572 H5=0.562 H20=0.588
+2026-04-13 15:48:03,080  INFO        Phase 1 early stopping at epoch 11
+2026-04-13 15:48:03,231  INFO        Phase 1 complete. Best val_loss: 0.2462  H1=0.572 H5=0.577 H20=0.572
+2026-04-13 15:48:03,236  INFO      Phase 1 checkpoint saved: models/fine_tuned/checkpoint_DAX_GDAXI_4H_phase1_20260413.pt
+2026-04-13 15:48:03,236  INFO      Loading base checkpoint: models/base/checkpoint_base_v1.pt
+2026-04-13 15:48:03,247  INFO        Base val_loss: 0.2463  (fold 3, epoch 22)
+2026-04-13 15:48:03,398  INFO      Base model H1 accuracy on instrument val set: 0.577
+2026-04-13 15:48:03,399  INFO      Fine-tuned  H1 accuracy (Phase 1)           : 0.572
+2026-04-13 15:48:03,399  INFO      --------------------------------------------------
+2026-04-13 15:48:03,399  INFO      Phase 2 — Verification gate
+2026-04-13 15:48:03,399  INFO        Fine-tuned accuracy — H1=0.572  H5=0.577  H20=0.572  Mean=0.574
+2026-04-13 15:48:03,399  INFO        Minimum required (mean across horizons) : 0.510
+2026-04-13 15:48:03,399  INFO        ✓ Phase 2 PASSED (H1=0.572  H5=0.577  H20=0.572) — proceeding to Phase 3
+2026-04-13 15:48:03,399  INFO      --------------------------------------------------
+2026-04-13 15:48:03,400  INFO      Phase 3 — Selective encoder unfreeze
+2026-04-13 15:48:03,400  WARNING     ✗ Skipping Phase 3 — only 1.7 years of data (need 2.0)
+2026-04-13 15:48:03,400  WARNING     Using Phase 1 checkpoint as final output.
+2026-04-13 15:48:03,401  INFO      Reverted to Phase 1 checkpoint.
+2026-04-13 15:48:03,553  INFO      Phase 1 H1 accuracy (recheck): 0.572
+2026-04-13 15:48:03,553  INFO      ============================================================
+2026-04-13 15:48:03,553  INFO      Fine-Tuning Summary
+2026-04-13 15:48:03,553  INFO        Instrument     : DAX_GDAXI 4H
+2026-04-13 15:48:03,554  INFO        Final phase    : 1
+2026-04-13 15:48:03,554  INFO        Final checkpoint: models/fine_tuned/checkpoint_DAX_GDAXI_4H_phase1_20260413.pt
+2026-04-13 15:48:03,707  INFO        Base model — H1=0.577  H5=0.577  H20=0.578  Mean=0.577
+2026-04-13 15:48:03,707  INFO        Fine-tuned — H1=0.572  H5=0.577  H20=0.572  Mean=0.574  (Phase 1)
+2026-04-13 15:48:03,707  WARNING     Delta mean accuracy : -0.003  ⚠  Fine-tuning degraded mean accuracy. Consider using the base model for this instrument. H1 delta=-0.005  H5 delta=+0.000  H20 delta=-0.005
+2026-04-13 15:48:03,709  INFO        Metrics saved  : logs/finetune/DAX_GDAXI_4H_20260413_metrics.csv
+2026-04-13 15:48:03,709  INFO      Stage 6 complete.

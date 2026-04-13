@@ -1,0 +1,127 @@
+2026-04-13 14:51:26,111  INFO      ============================================================
+2026-04-13 14:51:26,111  INFO      Stage 6 Fine-Tuning — Start
+2026-04-13 14:51:26,111  INFO      Instrument  : ASX_BHPAX
+2026-04-13 14:51:26,111  INFO      Resolution  : 4H
+2026-04-13 14:51:26,111  INFO      Device      : cpu
+2026-04-13 14:51:26,111  INFO      Base checkpoint: models/base/checkpoint_base_v1.pt
+2026-04-13 14:51:26,113  INFO      Loading: ASX_BHPAX_4H_20240422_20260412.npy
+2026-04-13 14:51:26,626  INFO        Shape: (599, 60, 53)  (599 windows)
+2026-04-13 14:51:26,632  INFO        Date range: 2024-08-27 → 2026-03-15  (1.5 years)
+2026-04-13 14:51:26,632  INFO        Train windows: 421  Val windows: 178
+2026-04-13 14:51:26,632  INFO      Years of data: 1.5
+2026-04-13 14:51:26,636  INFO      Loading base checkpoint: models/base/checkpoint_base_v1.pt
+2026-04-13 14:51:26,655  INFO        Base val_loss: 0.2463  (fold 3, epoch 22)
+2026-04-13 14:51:26,655  INFO      --------------------------------------------------
+2026-04-13 14:51:26,655  INFO      Phase 1 — Head-only adaptation (encoder frozen)
+Traceback (most recent call last):
+  File "/workspaces/cuddly-meme/finetune.py", line 731, in <module>
+    main()
+  File "/workspaces/cuddly-meme/finetune.py", line 608, in main
+    p1_val_loss, p1_val_acc, p1_metrics = phase1(
+                                          ^^^^^^^
+  File "/workspaces/cuddly-meme/finetune.py", line 325, in phase1
+    preds = model(x)
+            ^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1779, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1790, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/cuddly-meme/model.py", line 205, in forward
+    encoded = self.encoder(x)
+              ^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1779, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1790, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/cuddly-meme/model.py", line 128, in forward
+    x = self.network(x)               # [batch, hidden_dim, seq_len]
+        ^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1779, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1790, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/torch/nn/modules/container.py", line 253, in forward
+    input = module(input)
+            ^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1779, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1790, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/cuddly-meme/model.py", line 79, in forward
+    residual = self.residual_proj(x)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1779, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1790, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/torch/nn/modules/conv.py", line 375, in forward
+    return self._conv_forward(input, self.weight, self.bias)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/torch/nn/modules/conv.py", line 370, in _conv_forward
+    return F.conv1d(
+           ^^^^^^^^^
+RuntimeError: Given groups=1, weight of size [128, 49, 1], expected input[64, 44, 60] to have 49 channels, but got 44 channels instead
+2026-04-13 15:06:44,783  INFO      ============================================================
+2026-04-13 15:06:44,784  INFO      Stage 6 Fine-Tuning — Start
+2026-04-13 15:06:44,784  INFO      Instrument  : ASX_BHPAX
+2026-04-13 15:06:44,784  INFO      Resolution  : 4H
+2026-04-13 15:06:44,784  INFO      Device      : cpu
+2026-04-13 15:06:44,784  INFO      Base checkpoint: models/base/checkpoint_base_v1.pt
+2026-04-13 15:06:44,786  INFO      Loading: ASX_BHPAX_4H_20240422_20260412.npy
+2026-04-13 15:06:44,819  INFO        Shape: (599, 60, 53)  (599 windows)
+2026-04-13 15:06:44,825  INFO        Date range: 2024-08-27 → 2026-03-15  (1.5 years)
+2026-04-13 15:06:44,825  INFO        Train windows: 421  Val windows: 178
+2026-04-13 15:06:44,825  INFO      Years of data: 1.5
+2026-04-13 15:06:44,828  INFO      Loading base checkpoint: models/base/checkpoint_base_v1.pt
+2026-04-13 15:06:44,843  INFO        Base val_loss: 0.2463  (fold 3, epoch 22)
+2026-04-13 15:06:44,843  INFO      --------------------------------------------------
+2026-04-13 15:06:44,843  INFO      Phase 1 — Head-only adaptation (encoder frozen)
+2026-04-13 15:06:46,850  INFO        P1 Epoch  1 | TrainLoss 0.2451 | ValLoss 0.2480 | ValAcc H1=0.542 H5=0.519 H20=0.563
+2026-04-13 15:06:47,400  INFO        P1 Epoch  2 | TrainLoss 0.2450 | ValLoss 0.2480 | ValAcc H1=0.542 H5=0.525 H20=0.568
+2026-04-13 15:06:47,918  INFO        P1 Epoch  3 | TrainLoss 0.2455 | ValLoss 0.2480 | ValAcc H1=0.542 H5=0.525 H20=0.563
+2026-04-13 15:06:48,533  INFO        P1 Epoch  4 | TrainLoss 0.2449 | ValLoss 0.2480 | ValAcc H1=0.542 H5=0.519 H20=0.568
+2026-04-13 15:06:49,146  INFO        P1 Epoch  5 | TrainLoss 0.2452 | ValLoss 0.2480 | ValAcc H1=0.542 H5=0.519 H20=0.568
+2026-04-13 15:06:49,675  INFO        P1 Epoch  6 | TrainLoss 0.2452 | ValLoss 0.2481 | ValAcc H1=0.542 H5=0.519 H20=0.567
+2026-04-13 15:06:50,243  INFO        P1 Epoch  7 | TrainLoss 0.2454 | ValLoss 0.2481 | ValAcc H1=0.536 H5=0.514 H20=0.572
+2026-04-13 15:06:51,092  INFO        P1 Epoch  8 | TrainLoss 0.2448 | ValLoss 0.2481 | ValAcc H1=0.542 H5=0.514 H20=0.572
+2026-04-13 15:06:51,700  INFO        P1 Epoch  9 | TrainLoss 0.2452 | ValLoss 0.2481 | ValAcc H1=0.542 H5=0.514 H20=0.572
+2026-04-13 15:06:52,392  INFO        P1 Epoch 10 | TrainLoss 0.2446 | ValLoss 0.2481 | ValAcc H1=0.542 H5=0.519 H20=0.572
+2026-04-13 15:06:52,918  INFO        P1 Epoch 11 | TrainLoss 0.2450 | ValLoss 0.2482 | ValAcc H1=0.535 H5=0.519 H20=0.572
+2026-04-13 15:06:52,918  INFO        Phase 1 early stopping at epoch 11
+2026-04-13 15:06:53,077  INFO        Phase 1 complete. Best val_loss: 0.2480  H1=0.542 H5=0.519 H20=0.563
+2026-04-13 15:06:53,086  INFO      Phase 1 checkpoint saved: models/fine_tuned/checkpoint_ASX_BHPAX_4H_phase1_20260413.pt
+2026-04-13 15:06:53,086  INFO      Loading base checkpoint: models/base/checkpoint_base_v1.pt
+2026-04-13 15:06:53,106  INFO        Base val_loss: 0.2463  (fold 3, epoch 22)
+2026-04-13 15:06:53,267  INFO      Base model H1 accuracy on instrument val set: 0.542
+2026-04-13 15:06:53,268  INFO      Fine-tuned  H1 accuracy (Phase 1)           : 0.542
+2026-04-13 15:06:53,268  INFO      --------------------------------------------------
+2026-04-13 15:06:53,268  INFO      Phase 2 — Verification gate
+2026-04-13 15:06:53,269  INFO        Fine-tuned accuracy — H1=0.542  H5=0.519  H20=0.563  Mean=0.541
+2026-04-13 15:06:53,269  INFO        Minimum required (mean across horizons) : 0.510
+2026-04-13 15:06:53,269  INFO        ✓ Phase 2 PASSED (H1=0.542  H5=0.519  H20=0.563) — proceeding to Phase 3
+2026-04-13 15:06:53,270  INFO      --------------------------------------------------
+2026-04-13 15:06:53,270  INFO      Phase 3 — Selective encoder unfreeze
+2026-04-13 15:06:53,270  WARNING     ✗ Skipping Phase 3 — only 1.5 years of data (need 2.0)
+2026-04-13 15:06:53,270  WARNING     Using Phase 1 checkpoint as final output.
+2026-04-13 15:06:53,272  INFO      Reverted to Phase 1 checkpoint.
+2026-04-13 15:06:53,426  INFO      Phase 1 H1 accuracy (recheck): 0.542
+2026-04-13 15:06:53,427  INFO      ============================================================
+2026-04-13 15:06:53,427  INFO      Fine-Tuning Summary
+2026-04-13 15:06:53,427  INFO        Instrument     : ASX_BHPAX 4H
+2026-04-13 15:06:53,427  INFO        Final phase    : 1
+2026-04-13 15:06:53,427  INFO        Final checkpoint: models/fine_tuned/checkpoint_ASX_BHPAX_4H_phase1_20260413.pt
+2026-04-13 15:06:53,579  INFO        Base model — H1=0.542  H5=0.526  H20=0.563  Mean=0.544
+2026-04-13 15:06:53,579  INFO        Fine-tuned — H1=0.542  H5=0.519  H20=0.563  Mean=0.541  (Phase 1)
+2026-04-13 15:06:53,579  WARNING     Delta mean accuracy : -0.002  ⚠  Fine-tuning degraded mean accuracy. Consider using the base model for this instrument. H1 delta=+0.000  H5 delta=-0.007  H20 delta=+0.000
+2026-04-13 15:06:53,581  INFO        Metrics saved  : logs/finetune/ASX_BHPAX_4H_20260413_metrics.csv
+2026-04-13 15:06:53,582  INFO      Stage 6 complete.

@@ -1,0 +1,65 @@
+2026-04-13 17:42:17,458  INFO      ============================================================
+2026-04-13 17:42:17,459  INFO      Stage 6 Fine-Tuning — Start
+2026-04-13 17:42:17,459  INFO      Instrument  : NYSE_AAPL
+2026-04-13 17:42:17,459  INFO      Resolution  : 1D
+2026-04-13 17:42:17,459  INFO      Device      : cpu
+2026-04-13 17:42:17,459  INFO      Base checkpoint: models/base/checkpoint_base_v1.pt
+2026-04-13 17:42:17,461  INFO      Loading: NYSE_AAPL_1D_20150101_20260412.npy
+2026-04-13 17:42:18,028  INFO        Shape: (2655, 60, 47)  (2655 windows)
+2026-04-13 17:42:18,053  INFO        Date range: 2015-09-18 → 2026-04-10  (10.6 years)
+2026-04-13 17:42:18,053  INFO        Train windows: 2593  Val windows: 62
+2026-04-13 17:42:18,053  INFO      Years of data: 10.6
+2026-04-13 17:42:18,117  INFO      Loading base checkpoint: models/base/checkpoint_base_v1.pt
+2026-04-13 17:42:18,132  INFO        Base val_loss: 0.2463  (fold 3, epoch 22)
+2026-04-13 17:42:18,133  INFO      --------------------------------------------------
+2026-04-13 17:42:18,133  INFO      Phase 1 — Head-only adaptation (encoder frozen)
+2026-04-13 17:42:21,795  INFO        P1 Epoch  1 | TrainLoss 0.2456 | ValLoss 0.2451 | ValAcc H1=0.581 H5=0.613 H20=0.661
+2026-04-13 17:42:24,033  INFO        P1 Epoch  2 | TrainLoss 0.2454 | ValLoss 0.2453 | ValAcc H1=0.581 H5=0.613 H20=0.645
+2026-04-13 17:42:26,350  INFO        P1 Epoch  3 | TrainLoss 0.2451 | ValLoss 0.2454 | ValAcc H1=0.581 H5=0.613 H20=0.629
+2026-04-13 17:42:28,631  INFO        P1 Epoch  4 | TrainLoss 0.2452 | ValLoss 0.2455 | ValAcc H1=0.581 H5=0.613 H20=0.532
+2026-04-13 17:42:30,844  INFO        P1 Epoch  5 | TrainLoss 0.2452 | ValLoss 0.2455 | ValAcc H1=0.581 H5=0.613 H20=0.548
+2026-04-13 17:42:33,000  INFO        P1 Epoch  6 | TrainLoss 0.2450 | ValLoss 0.2456 | ValAcc H1=0.581 H5=0.613 H20=0.548
+2026-04-13 17:42:35,237  INFO        P1 Epoch  7 | TrainLoss 0.2451 | ValLoss 0.2456 | ValAcc H1=0.581 H5=0.597 H20=0.548
+2026-04-13 17:42:37,518  INFO        P1 Epoch  8 | TrainLoss 0.2449 | ValLoss 0.2456 | ValAcc H1=0.581 H5=0.597 H20=0.532
+2026-04-13 17:42:39,747  INFO        P1 Epoch  9 | TrainLoss 0.2451 | ValLoss 0.2456 | ValAcc H1=0.581 H5=0.597 H20=0.548
+2026-04-13 17:42:41,968  INFO        P1 Epoch 10 | TrainLoss 0.2450 | ValLoss 0.2457 | ValAcc H1=0.581 H5=0.581 H20=0.516
+2026-04-13 17:42:44,122  INFO        P1 Epoch 11 | TrainLoss 0.2451 | ValLoss 0.2457 | ValAcc H1=0.581 H5=0.597 H20=0.516
+2026-04-13 17:42:44,122  INFO        Phase 1 early stopping at epoch 11
+2026-04-13 17:42:44,173  INFO        Phase 1 complete. Best val_loss: 0.2451  H1=0.581 H5=0.613 H20=0.661
+2026-04-13 17:42:44,182  INFO      Phase 1 checkpoint saved: models/fine_tuned/checkpoint_NYSE_AAPL_1D_phase1_20260413.pt
+2026-04-13 17:42:44,182  INFO      Loading base checkpoint: models/base/checkpoint_base_v1.pt
+2026-04-13 17:42:44,205  INFO        Base val_loss: 0.2463  (fold 3, epoch 22)
+2026-04-13 17:42:44,256  INFO      Base model H1 accuracy on instrument val set: 0.581
+2026-04-13 17:42:44,256  INFO      Fine-tuned  H1 accuracy (Phase 1)           : 0.581
+2026-04-13 17:42:44,257  INFO      --------------------------------------------------
+2026-04-13 17:42:44,257  INFO      Phase 2 — Verification gate
+2026-04-13 17:42:44,257  INFO        Fine-tuned accuracy — H1=0.581  H5=0.613  H20=0.661  Mean=0.618
+2026-04-13 17:42:44,257  INFO        Minimum required (mean across horizons) : 0.510
+2026-04-13 17:42:44,257  INFO        ✓ Phase 2 PASSED (H1=0.581  H5=0.613  H20=0.661) — proceeding to Phase 3
+2026-04-13 17:42:44,257  INFO      --------------------------------------------------
+2026-04-13 17:42:44,257  INFO      Phase 3 — Selective encoder unfreeze
+2026-04-13 17:42:44,258  INFO        Encoder layers 1 & 2 unfrozen (layer 0 frozen)
+2026-04-13 17:42:44,258  INFO        Encoder LR: 1e-05  Head LR: 3e-05
+2026-04-13 17:42:44,258  INFO        Dropout: encoder=0.40  head=0.45
+2026-04-13 17:42:51,959  INFO        P3 Epoch  1 | TrainLoss 0.2454 | ValLoss 0.2452 | Gap 0.0002 | ValAcc H1=0.581 H5=0.613 H20=0.629
+2026-04-13 17:42:59,681  INFO        P3 Epoch  2 | TrainLoss 0.2450 | ValLoss 0.2453 | Gap -0.0003 | ValAcc H1=0.581 H5=0.613 H20=0.629
+2026-04-13 17:43:07,363  INFO        P3 Epoch  3 | TrainLoss 0.2452 | ValLoss 0.2454 | Gap -0.0002 | ValAcc H1=0.581 H5=0.613 H20=0.548
+2026-04-13 17:43:15,249  INFO        P3 Epoch  4 | TrainLoss 0.2455 | ValLoss 0.2455 | Gap 0.0001 | ValAcc H1=0.581 H5=0.613 H20=0.597
+2026-04-13 17:43:23,100  INFO        P3 Epoch  5 | TrainLoss 0.2452 | ValLoss 0.2455 | Gap -0.0003 | ValAcc H1=0.565 H5=0.613 H20=0.597
+2026-04-13 17:43:30,802  INFO        P3 Epoch  6 | TrainLoss 0.2452 | ValLoss 0.2456 | Gap -0.0004 | ValAcc H1=0.548 H5=0.613 H20=0.565
+2026-04-13 17:43:38,393  INFO        P3 Epoch  7 | TrainLoss 0.2451 | ValLoss 0.2456 | Gap -0.0004 | ValAcc H1=0.565 H5=0.613 H20=0.565
+2026-04-13 17:43:46,013  INFO        P3 Epoch  8 | TrainLoss 0.2449 | ValLoss 0.2456 | Gap -0.0007 | ValAcc H1=0.548 H5=0.613 H20=0.532
+2026-04-13 17:43:53,670  INFO        P3 Epoch  9 | TrainLoss 0.2450 | ValLoss 0.2456 | Gap -0.0006 | ValAcc H1=0.548 H5=0.613 H20=0.548
+2026-04-13 17:43:53,670  INFO        Phase 3 early stopping at epoch 9
+2026-04-13 17:43:53,672  INFO        Phase 3 complete. Best val_loss: 0.2452
+2026-04-13 17:43:53,740  INFO      Phase 3 checkpoint saved: models/fine_tuned/checkpoint_NYSE_AAPL_1D_phase3_20260413.pt
+2026-04-13 17:43:53,740  INFO      ============================================================
+2026-04-13 17:43:53,740  INFO      Fine-Tuning Summary
+2026-04-13 17:43:53,740  INFO        Instrument     : NYSE_AAPL 1D
+2026-04-13 17:43:53,740  INFO        Final phase    : 3
+2026-04-13 17:43:53,740  INFO        Final checkpoint: models/fine_tuned/checkpoint_NYSE_AAPL_1D_phase3_20260413.pt
+2026-04-13 17:43:53,785  INFO        Base model — H1=0.581  H5=0.613  H20=0.694  Mean=0.629
+2026-04-13 17:43:53,785  INFO        Fine-tuned — H1=0.581  H5=0.613  H20=0.629  Mean=0.608  (Phase 3)
+2026-04-13 17:43:53,785  WARNING     Delta mean accuracy : -0.022  ⚠  Fine-tuning degraded mean accuracy. Consider using the base model for this instrument. H1 delta=+0.000  H5 delta=+0.000  H20 delta=-0.065
+2026-04-13 17:43:53,788  INFO        Metrics saved  : logs/finetune/NYSE_AAPL_1D_20260413_metrics.csv
+2026-04-13 17:43:53,788  INFO      Stage 6 complete.

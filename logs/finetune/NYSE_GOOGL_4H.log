@@ -1,0 +1,72 @@
+2026-04-13 17:59:35,022  INFO      ============================================================
+2026-04-13 17:59:35,022  INFO      Stage 6 Fine-Tuning — Start
+2026-04-13 17:59:35,022  INFO      Instrument  : NYSE_GOOGL
+2026-04-13 17:59:35,022  INFO      Resolution  : 4H
+2026-04-13 17:59:35,022  INFO      Device      : cpu
+2026-04-13 17:59:35,022  INFO      Base checkpoint: models/base/checkpoint_base_v1.pt
+2026-04-13 17:59:35,024  INFO      Loading: NYSE_GOOGL_4H_20240422_20260412.npy
+2026-04-13 17:59:35,539  INFO        Shape: (972, 60, 53)  (972 windows)
+2026-04-13 17:59:35,549  INFO        Date range: 2024-08-29 → 2026-04-10  (1.6 years)
+2026-04-13 17:59:35,550  INFO        Train windows: 810  Val windows: 162
+2026-04-13 17:59:35,550  INFO      Years of data: 1.6
+2026-04-13 17:59:35,558  INFO      Loading base checkpoint: models/base/checkpoint_base_v1.pt
+2026-04-13 17:59:35,573  INFO        Base val_loss: 0.2463  (fold 3, epoch 22)
+2026-04-13 17:59:35,573  INFO      --------------------------------------------------
+2026-04-13 17:59:35,574  INFO      Phase 1 — Head-only adaptation (encoder frozen)
+2026-04-13 17:59:38,168  INFO        P1 Epoch  1 | TrainLoss 0.2438 | ValLoss 0.2416 | ValAcc H1=0.594 H5=0.608 H20=0.646
+2026-04-13 17:59:39,177  INFO        P1 Epoch  2 | TrainLoss 0.2436 | ValLoss 0.2415 | ValAcc H1=0.594 H5=0.608 H20=0.636
+2026-04-13 17:59:40,237  INFO        P1 Epoch  3 | TrainLoss 0.2431 | ValLoss 0.2414 | ValAcc H1=0.594 H5=0.603 H20=0.627
+2026-04-13 17:59:41,230  INFO        P1 Epoch  4 | TrainLoss 0.2436 | ValLoss 0.2413 | ValAcc H1=0.594 H5=0.603 H20=0.617
+2026-04-13 17:59:42,231  INFO        P1 Epoch  5 | TrainLoss 0.2432 | ValLoss 0.2413 | ValAcc H1=0.594 H5=0.608 H20=0.622
+2026-04-13 17:59:43,728  INFO        P1 Epoch  6 | TrainLoss 0.2433 | ValLoss 0.2412 | ValAcc H1=0.589 H5=0.608 H20=0.612
+2026-04-13 17:59:44,734  INFO        P1 Epoch  7 | TrainLoss 0.2435 | ValLoss 0.2411 | ValAcc H1=0.589 H5=0.608 H20=0.612
+2026-04-13 17:59:45,688  INFO        P1 Epoch  8 | TrainLoss 0.2437 | ValLoss 0.2410 | ValAcc H1=0.589 H5=0.608 H20=0.607
+2026-04-13 17:59:46,801  INFO        P1 Epoch  9 | TrainLoss 0.2434 | ValLoss 0.2410 | ValAcc H1=0.589 H5=0.618 H20=0.602
+2026-04-13 17:59:47,740  INFO        P1 Epoch 10 | TrainLoss 0.2432 | ValLoss 0.2409 | ValAcc H1=0.589 H5=0.618 H20=0.602
+2026-04-13 17:59:49,217  INFO        P1 Epoch 11 | TrainLoss 0.2432 | ValLoss 0.2409 | ValAcc H1=0.589 H5=0.608 H20=0.602
+2026-04-13 17:59:50,203  INFO        P1 Epoch 12 | TrainLoss 0.2433 | ValLoss 0.2408 | ValAcc H1=0.589 H5=0.618 H20=0.607
+2026-04-13 17:59:51,259  INFO        P1 Epoch 13 | TrainLoss 0.2431 | ValLoss 0.2408 | ValAcc H1=0.589 H5=0.623 H20=0.607
+2026-04-13 17:59:52,246  INFO        P1 Epoch 14 | TrainLoss 0.2432 | ValLoss 0.2407 | ValAcc H1=0.589 H5=0.623 H20=0.607
+2026-04-13 17:59:53,674  INFO        P1 Epoch 15 | TrainLoss 0.2431 | ValLoss 0.2407 | ValAcc H1=0.589 H5=0.613 H20=0.597
+2026-04-13 17:59:54,682  INFO        P1 Epoch 16 | TrainLoss 0.2430 | ValLoss 0.2407 | ValAcc H1=0.589 H5=0.613 H20=0.597
+2026-04-13 17:59:55,646  INFO        P1 Epoch 17 | TrainLoss 0.2427 | ValLoss 0.2406 | ValAcc H1=0.589 H5=0.613 H20=0.587
+2026-04-13 17:59:56,741  INFO        P1 Epoch 18 | TrainLoss 0.2427 | ValLoss 0.2406 | ValAcc H1=0.594 H5=0.613 H20=0.587
+2026-04-13 17:59:57,785  INFO        P1 Epoch 19 | TrainLoss 0.2428 | ValLoss 0.2406 | ValAcc H1=0.594 H5=0.613 H20=0.587
+2026-04-13 17:59:59,153  INFO        P1 Epoch 20 | TrainLoss 0.2431 | ValLoss 0.2406 | ValAcc H1=0.594 H5=0.613 H20=0.587
+2026-04-13 18:00:00,186  INFO        P1 Epoch 21 | TrainLoss 0.2427 | ValLoss 0.2405 | ValAcc H1=0.594 H5=0.613 H20=0.587
+2026-04-13 18:00:01,237  INFO        P1 Epoch 22 | TrainLoss 0.2429 | ValLoss 0.2405 | ValAcc H1=0.594 H5=0.613 H20=0.587
+2026-04-13 18:00:02,238  INFO        P1 Epoch 23 | TrainLoss 0.2428 | ValLoss 0.2405 | ValAcc H1=0.594 H5=0.613 H20=0.587
+2026-04-13 18:00:03,243  INFO        P1 Epoch 24 | TrainLoss 0.2431 | ValLoss 0.2405 | ValAcc H1=0.594 H5=0.613 H20=0.587
+2026-04-13 18:00:04,573  INFO        P1 Epoch 25 | TrainLoss 0.2429 | ValLoss 0.2405 | ValAcc H1=0.594 H5=0.613 H20=0.587
+2026-04-13 18:00:05,568  INFO        P1 Epoch 26 | TrainLoss 0.2428 | ValLoss 0.2405 | ValAcc H1=0.594 H5=0.613 H20=0.587
+2026-04-13 18:00:06,474  INFO        P1 Epoch 27 | TrainLoss 0.2428 | ValLoss 0.2405 | ValAcc H1=0.594 H5=0.613 H20=0.587
+2026-04-13 18:00:07,474  INFO        P1 Epoch 28 | TrainLoss 0.2429 | ValLoss 0.2405 | ValAcc H1=0.594 H5=0.613 H20=0.587
+2026-04-13 18:00:08,380  INFO        P1 Epoch 29 | TrainLoss 0.2429 | ValLoss 0.2405 | ValAcc H1=0.594 H5=0.613 H20=0.587
+2026-04-13 18:00:09,662  INFO        P1 Epoch 30 | TrainLoss 0.2425 | ValLoss 0.2405 | ValAcc H1=0.594 H5=0.604 H20=0.587
+2026-04-13 18:00:09,809  INFO        Phase 1 complete. Best val_loss: 0.2405  H1=0.594 H5=0.613 H20=0.587
+2026-04-13 18:00:09,815  INFO      Phase 1 checkpoint saved: models/fine_tuned/checkpoint_NYSE_GOOGL_4H_phase1_20260413.pt
+2026-04-13 18:00:09,815  INFO      Loading base checkpoint: models/base/checkpoint_base_v1.pt
+2026-04-13 18:00:09,833  INFO        Base val_loss: 0.2463  (fold 3, epoch 22)
+2026-04-13 18:00:09,971  INFO      Base model H1 accuracy on instrument val set: 0.594
+2026-04-13 18:00:09,972  INFO      Fine-tuned  H1 accuracy (Phase 1)           : 0.594
+2026-04-13 18:00:09,972  INFO      --------------------------------------------------
+2026-04-13 18:00:09,972  INFO      Phase 2 — Verification gate
+2026-04-13 18:00:09,972  INFO        Fine-tuned accuracy — H1=0.594  H5=0.613  H20=0.587  Mean=0.598
+2026-04-13 18:00:09,972  INFO        Minimum required (mean across horizons) : 0.510
+2026-04-13 18:00:09,972  INFO        ✓ Phase 2 PASSED (H1=0.594  H5=0.613  H20=0.587) — proceeding to Phase 3
+2026-04-13 18:00:09,972  INFO      --------------------------------------------------
+2026-04-13 18:00:09,972  INFO      Phase 3 — Selective encoder unfreeze
+2026-04-13 18:00:09,973  WARNING     ✗ Skipping Phase 3 — only 1.6 years of data (need 2.0)
+2026-04-13 18:00:09,973  WARNING     Using Phase 1 checkpoint as final output.
+2026-04-13 18:00:09,974  INFO      Reverted to Phase 1 checkpoint.
+2026-04-13 18:00:10,115  INFO      Phase 1 H1 accuracy (recheck): 0.594
+2026-04-13 18:00:10,115  INFO      ============================================================
+2026-04-13 18:00:10,115  INFO      Fine-Tuning Summary
+2026-04-13 18:00:10,115  INFO        Instrument     : NYSE_GOOGL 4H
+2026-04-13 18:00:10,115  INFO        Final phase    : 1
+2026-04-13 18:00:10,115  INFO        Final checkpoint: models/fine_tuned/checkpoint_NYSE_GOOGL_4H_phase1_20260413.pt
+2026-04-13 18:00:10,260  INFO        Base model — H1=0.594  H5=0.608  H20=0.651  Mean=0.618
+2026-04-13 18:00:10,261  INFO        Fine-tuned — H1=0.594  H5=0.613  H20=0.587  Mean=0.598  (Phase 1)
+2026-04-13 18:00:10,261  WARNING     Delta mean accuracy : -0.020  ⚠  Fine-tuning degraded mean accuracy. Consider using the base model for this instrument. H1 delta=+0.000  H5 delta=+0.005  H20 delta=-0.064
+2026-04-13 18:00:10,265  INFO        Metrics saved  : logs/finetune/NYSE_GOOGL_4H_20260413_metrics.csv
+2026-04-13 18:00:10,265  INFO      Stage 6 complete.

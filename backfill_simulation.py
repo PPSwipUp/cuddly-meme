@@ -161,6 +161,28 @@ def download_all(instruments: list, index_ticker: str,
         else:
             log.warning("  No data for %s (%s)", inst, ticker)
 
+    # ── Stage 8: Download exogenous macro references (VIX, DXY) ─────────────
+    exo_dfs = {}
+    for exo_key, exo_ticker in [("vix", "^VIX"), ("dxy", "DX-Y.NYB")]:
+        try:
+            exo_df = yf.download(exo_ticker, period="2y", interval="1d",
+                                 auto_adjust=False, progress=False)
+            if exo_df is not None and not exo_df.empty:
+                if isinstance(exo_df.columns, pd.MultiIndex):
+                    exo_df.columns = exo_df.columns.get_level_values(0)
+                exo_df.index.name = "Datetime"
+                if exo_df.index.tz is not None:
+                    exo_df.index = exo_df.index.tz_localize(None)
+                exo_dfs[exo_key] = exo_df
+                log.info("  [EXO] %s: %d bars", exo_key.upper(), len(exo_df))
+        except Exception as e:
+            log.warning("  [EXO] %s download failed: %s", exo_key, e)
+            exo_dfs[exo_key] = None
+
+    # Store exo_dfs inside index_dfs for easy passing through to build_feature_window
+    if exo_dfs:
+        index_dfs["_exo"] = exo_dfs
+
     log.info("Downloaded %d / %d instruments", len(inst_dfs), len(instruments))
     return inst_dfs, index_dfs
 
@@ -211,12 +233,30 @@ def simulate_day(sim_date: date, inst_dfs: dict, index_dfs: dict,
         else:
             idx_slice = None
 
-        window = build_feature_window(df, resolution, idx_slice)
-        if window is None:
+        # Load model first to get n_features, then build window accordingly
+        model, source, n_features = load_model(instrument, resolution, device)
+        if model is None:
             continue
 
-        model, source = load_model(instrument, resolution, device)
-        if model is None:
+        exo_dfs = index_dfs.get("_exo")
+        # Slice exo data to sim_date too
+        exo_sliced = None
+        if exo_dfs:
+            exo_sliced = {}
+            for exo_key, exo_df in exo_dfs.items():
+                if exo_df is not None:
+                    if hasattr(exo_df.index, "date"):
+                        exo_sliced[exo_key] = exo_df[exo_df.index.date <= sim_date]
+                    else:
+                        exo_sliced[exo_key] = exo_df[
+                            pd.to_datetime(exo_df.index).date <= sim_date]
+                else:
+                    exo_sliced[exo_key] = None
+
+        window = build_feature_window(df, resolution, idx_slice,
+                                      exo_dfs=exo_sliced,
+                                      n_features_expected=n_features)
+        if window is None:
             continue
 
         pred    = predict(model, window, device)

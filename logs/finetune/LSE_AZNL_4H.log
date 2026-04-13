@@ -1,0 +1,54 @@
+2026-04-13 17:18:58,065  INFO      ============================================================
+2026-04-13 17:18:58,065  INFO      Stage 6 Fine-Tuning — Start
+2026-04-13 17:18:58,065  INFO      Instrument  : LSE_AZNL
+2026-04-13 17:18:58,066  INFO      Resolution  : 4H
+2026-04-13 17:18:58,066  INFO      Device      : cpu
+2026-04-13 17:18:58,066  INFO      Base checkpoint: models/base/checkpoint_base_v1.pt
+2026-04-13 17:18:58,067  INFO      Loading: LSE_AZNL_4H_20240422_20260412.npy
+2026-04-13 17:18:58,775  INFO        Shape: (1310, 60, 53)  (1310 windows)
+2026-04-13 17:18:58,782  INFO        Date range: 2024-07-16 → 2026-04-10  (1.7 years)
+2026-04-13 17:18:58,782  INFO        Train windows: 1121  Val windows: 189
+2026-04-13 17:18:58,782  INFO      Years of data: 1.7
+2026-04-13 17:18:58,792  INFO      Loading base checkpoint: models/base/checkpoint_base_v1.pt
+2026-04-13 17:18:58,820  INFO        Base val_loss: 0.2463  (fold 3, epoch 22)
+2026-04-13 17:18:58,820  INFO      --------------------------------------------------
+2026-04-13 17:18:58,820  INFO      Phase 1 — Head-only adaptation (encoder frozen)
+2026-04-13 17:19:01,184  INFO        P1 Epoch  1 | TrainLoss 0.2464 | ValLoss 0.2441 | ValAcc H1=0.551 H5=0.598 H20=0.587
+2026-04-13 17:19:02,865  INFO        P1 Epoch  2 | TrainLoss 0.2463 | ValLoss 0.2441 | ValAcc H1=0.556 H5=0.598 H20=0.582
+2026-04-13 17:19:04,059  INFO        P1 Epoch  3 | TrainLoss 0.2461 | ValLoss 0.2442 | ValAcc H1=0.561 H5=0.598 H20=0.582
+2026-04-13 17:19:05,325  INFO        P1 Epoch  4 | TrainLoss 0.2463 | ValLoss 0.2442 | ValAcc H1=0.561 H5=0.593 H20=0.582
+2026-04-13 17:19:06,511  INFO        P1 Epoch  5 | TrainLoss 0.2460 | ValLoss 0.2442 | ValAcc H1=0.561 H5=0.598 H20=0.577
+2026-04-13 17:19:08,317  INFO        P1 Epoch  6 | TrainLoss 0.2458 | ValLoss 0.2442 | ValAcc H1=0.556 H5=0.593 H20=0.582
+2026-04-13 17:19:09,566  INFO        P1 Epoch  7 | TrainLoss 0.2459 | ValLoss 0.2442 | ValAcc H1=0.551 H5=0.588 H20=0.571
+2026-04-13 17:19:10,896  INFO        P1 Epoch  8 | TrainLoss 0.2463 | ValLoss 0.2442 | ValAcc H1=0.556 H5=0.593 H20=0.566
+2026-04-13 17:19:12,444  INFO        P1 Epoch  9 | TrainLoss 0.2460 | ValLoss 0.2442 | ValAcc H1=0.551 H5=0.588 H20=0.571
+2026-04-13 17:19:13,772  INFO        P1 Epoch 10 | TrainLoss 0.2463 | ValLoss 0.2442 | ValAcc H1=0.551 H5=0.582 H20=0.577
+2026-04-13 17:19:14,983  INFO        P1 Epoch 11 | TrainLoss 0.2460 | ValLoss 0.2442 | ValAcc H1=0.540 H5=0.582 H20=0.577
+2026-04-13 17:19:14,983  INFO        Phase 1 early stopping at epoch 11
+2026-04-13 17:19:15,149  INFO        Phase 1 complete. Best val_loss: 0.2441  H1=0.551 H5=0.598 H20=0.587
+2026-04-13 17:19:15,154  INFO      Phase 1 checkpoint saved: models/fine_tuned/checkpoint_LSE_AZNL_4H_phase1_20260413.pt
+2026-04-13 17:19:15,154  INFO      Loading base checkpoint: models/base/checkpoint_base_v1.pt
+2026-04-13 17:19:15,165  INFO        Base val_loss: 0.2463  (fold 3, epoch 22)
+2026-04-13 17:19:15,336  INFO      Base model H1 accuracy on instrument val set: 0.551
+2026-04-13 17:19:15,336  INFO      Fine-tuned  H1 accuracy (Phase 1)           : 0.551
+2026-04-13 17:19:15,336  INFO      --------------------------------------------------
+2026-04-13 17:19:15,336  INFO      Phase 2 — Verification gate
+2026-04-13 17:19:15,337  INFO        Fine-tuned accuracy — H1=0.551  H5=0.598  H20=0.587  Mean=0.579
+2026-04-13 17:19:15,337  INFO        Minimum required (mean across horizons) : 0.510
+2026-04-13 17:19:15,337  INFO        ✓ Phase 2 PASSED (H1=0.551  H5=0.598  H20=0.587) — proceeding to Phase 3
+2026-04-13 17:19:15,337  INFO      --------------------------------------------------
+2026-04-13 17:19:15,337  INFO      Phase 3 — Selective encoder unfreeze
+2026-04-13 17:19:15,337  WARNING     ✗ Skipping Phase 3 — only 1.7 years of data (need 2.0)
+2026-04-13 17:19:15,337  WARNING     Using Phase 1 checkpoint as final output.
+2026-04-13 17:19:15,339  INFO      Reverted to Phase 1 checkpoint.
+2026-04-13 17:19:15,552  INFO      Phase 1 H1 accuracy (recheck): 0.551
+2026-04-13 17:19:15,552  INFO      ============================================================
+2026-04-13 17:19:15,552  INFO      Fine-Tuning Summary
+2026-04-13 17:19:15,552  INFO        Instrument     : LSE_AZNL 4H
+2026-04-13 17:19:15,552  INFO        Final phase    : 1
+2026-04-13 17:19:15,552  INFO        Final checkpoint: models/fine_tuned/checkpoint_LSE_AZNL_4H_phase1_20260413.pt
+2026-04-13 17:19:15,772  INFO        Base model — H1=0.551  H5=0.598  H20=0.598  Mean=0.582
+2026-04-13 17:19:15,772  INFO        Fine-tuned — H1=0.551  H5=0.598  H20=0.587  Mean=0.579  (Phase 1)
+2026-04-13 17:19:15,772  WARNING     Delta mean accuracy : -0.003  ⚠  Fine-tuning degraded mean accuracy. Consider using the base model for this instrument. H1 delta=+0.000  H5 delta=+0.000  H20 delta=-0.010
+2026-04-13 17:19:15,775  INFO        Metrics saved  : logs/finetune/LSE_AZNL_4H_20260413_metrics.csv
+2026-04-13 17:19:15,775  INFO      Stage 6 complete.

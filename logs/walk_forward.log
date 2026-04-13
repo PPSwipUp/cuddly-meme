@@ -256,3 +256,91 @@ Summary saved to data/splits/fold_summary.csv
 2026-04-05 06:17:29,632  INFO      
 Summary saved to data/splits/fold_summary.csv
 2026-04-05 06:17:29,632  INFO      Stage 3 complete — 3 folds ready for training.
+2026-04-12 20:04:18,497  INFO      Holdout date: 2026-01-01 — all data on/after this date is reserved
+2026-04-12 20:04:18,497  INFO      Stage 3 Walk-Forward Split Generation — Start
+2026-04-12 20:04:20,440  INFO      Loaded 609382 total windows from 238 files
+2026-04-12 20:04:20,448  INFO      Data range: 2015-06-29 → 2026-04-11
+2026-04-12 20:04:20,472  INFO      Holdout split saved: data/splits/holdout_test.parquet  (63179 bars across 231 instruments)
+2026-04-12 20:04:20,490  INFO      Training data capped at 2026-01-01: 609382 → 546203 bars
+2026-04-12 20:04:20,492  INFO      Revised data range for folds: 2015-06-29 → 2025-12-31
+2026-04-12 20:04:20,492  INFO      Folds generated: 3
+2026-04-12 20:04:20,492  WARNING   Only 3 folds generated — blueprint requires minimum 4. Consider extending data history or reducing TRAIN_YEARS.
+2026-04-12 20:04:20,492  INFO      ============================================================
+2026-04-12 20:04:20,492  INFO      Fold 1:
+2026-04-12 20:04:20,492  INFO        Train : 2015-06-29 → 2021-06-29
+2026-04-12 20:04:20,492  INFO        Val   : 2021-06-29 → 2022-06-29
+2026-04-12 20:04:20,493  INFO        Test  : 2022-06-29 → 2023-06-29
+2026-04-12 20:04:20,630  INFO        Samples — Train: 99077  Val: 16378  Test: 18738
+2026-04-12 20:04:20,631  INFO        Regime distribution [Fold 1 TRAIN]:
+2026-04-12 20:04:20,631  INFO          Class 0:  4470  (  4.5%)  ⚠  BELOW 5%
+2026-04-12 20:04:20,631  INFO          Class 1: 10391  ( 10.5%)
+2026-04-12 20:04:20,632  INFO          Class 2:  6782  (  6.8%)
+2026-04-12 20:04:20,632  INFO          Class 3: 14479  ( 14.6%)
+2026-04-12 20:04:20,632  INFO          Class 4: 40341  ( 40.7%)
+2026-04-12 20:04:20,632  INFO          Class 5: 22614  ( 22.8%)
+2026-04-12 20:04:20,633  INFO        Regime distribution [Fold 1 VAL]:
+2026-04-12 20:04:20,633  INFO          Class 0:   714  (  4.4%)  ⚠  BELOW 5%
+2026-04-12 20:04:20,633  INFO          Class 1:  1709  ( 10.4%)
+2026-04-12 20:04:20,634  INFO          Class 2:  1432  (  8.7%)
+2026-04-12 20:04:20,634  INFO          Class 3:  1861  ( 11.4%)
+2026-04-12 20:04:20,634  INFO          Class 4:  5311  ( 32.4%)
+2026-04-12 20:04:20,634  INFO          Class 5:  5351  ( 32.7%)
+2026-04-12 20:04:20,660  INFO        Saved: data/splits/fold_1_train.parquet
+2026-04-12 20:04:20,660  INFO        Saved: data/splits/fold_1_val.parquet
+2026-04-12 20:04:20,660  INFO        Saved: data/splits/fold_1_test.parquet
+2026-04-12 20:04:20,660  INFO      ============================================================
+2026-04-12 20:04:20,660  INFO      Fold 2:
+2026-04-12 20:04:20,661  INFO        Train : 2016-06-29 → 2022-06-29
+2026-04-12 20:04:20,661  INFO        Val   : 2022-06-29 → 2023-06-29
+2026-04-12 20:04:20,661  INFO        Test  : 2023-06-29 → 2024-06-29
+2026-04-12 20:04:20,796  INFO        Samples — Train: 105765  Val: 16338  Test: 47846
+2026-04-12 20:04:20,797  INFO        Regime distribution [Fold 2 TRAIN]:
+2026-04-12 20:04:20,797  INFO          Class 0:  4901  (  4.6%)  ⚠  BELOW 5%
+2026-04-12 20:04:20,797  INFO          Class 1: 10713  ( 10.1%)
+2026-04-12 20:04:20,798  INFO          Class 2:  7515  (  7.1%)
+2026-04-12 20:04:20,798  INFO          Class 3: 15474  ( 14.6%)
+2026-04-12 20:04:20,798  INFO          Class 4: 41018  ( 38.8%)
+2026-04-12 20:04:20,799  INFO          Class 5: 26144  ( 24.7%)
+2026-04-12 20:04:20,799  INFO        Regime distribution [Fold 2 VAL]:
+2026-04-12 20:04:20,799  INFO          Class 0:   523  (  3.2%)  ⚠  BELOW 5%
+2026-04-12 20:04:20,799  INFO          Class 1:  1909  ( 11.7%)
+2026-04-12 20:04:20,800  INFO          Class 2:  1690  ( 10.3%)
+2026-04-12 20:04:20,800  INFO          Class 3:  1250  (  7.7%)
+2026-04-12 20:04:20,800  INFO          Class 4:  6230  ( 38.1%)
+2026-04-12 20:04:20,800  INFO          Class 5:  4736  ( 29.0%)
+2026-04-12 20:04:20,825  INFO        Saved: data/splits/fold_2_train.parquet
+2026-04-12 20:04:20,826  INFO        Saved: data/splits/fold_2_val.parquet
+2026-04-12 20:04:20,826  INFO        Saved: data/splits/fold_2_test.parquet
+2026-04-12 20:04:20,826  INFO      ============================================================
+2026-04-12 20:04:20,826  INFO      Fold 3:
+2026-04-12 20:04:20,826  INFO        Train : 2017-06-29 → 2023-06-29
+2026-04-12 20:04:20,826  INFO        Val   : 2023-06-29 → 2024-06-29
+2026-04-12 20:04:20,826  INFO        Test  : 2024-06-29 → 2025-06-29
+2026-04-12 20:04:21,075  INFO        Samples — Train: 109177  Val: 43886  Test: 245433
+2026-04-12 20:04:21,076  INFO        Regime distribution [Fold 3 TRAIN]:
+2026-04-12 20:04:21,076  INFO          Class 0:  4654  (  4.3%)  ⚠  BELOW 5%
+2026-04-12 20:04:21,077  INFO          Class 1: 10848  (  9.9%)
+2026-04-12 20:04:21,078  INFO          Class 2:  9158  (  8.4%)
+2026-04-12 20:04:21,080  INFO          Class 3: 13943  ( 12.8%)
+2026-04-12 20:04:21,081  INFO          Class 4: 40042  ( 36.7%)
+2026-04-12 20:04:21,081  INFO          Class 5: 30532  ( 28.0%)
+2026-04-12 20:04:21,082  INFO        Regime distribution [Fold 3 VAL]:
+2026-04-12 20:04:21,082  INFO          Class 0:  6502  ( 14.8%)
+2026-04-12 20:04:21,083  INFO          Class 1:  2376  (  5.4%)
+2026-04-12 20:04:21,084  INFO          Class 2:  1263  (  2.9%)  ⚠  BELOW 5%
+2026-04-12 20:04:21,084  INFO          Class 3: 22096  ( 50.3%)
+2026-04-12 20:04:21,084  INFO          Class 4:  8428  ( 19.2%)
+2026-04-12 20:04:21,085  INFO          Class 5:  3221  (  7.3%)
+2026-04-12 20:04:21,132  INFO        Saved: data/splits/fold_3_train.parquet
+2026-04-12 20:04:21,132  INFO        Saved: data/splits/fold_3_val.parquet
+2026-04-12 20:04:21,132  INFO        Saved: data/splits/fold_3_test.parquet
+2026-04-12 20:04:21,133  INFO      ============================================================
+2026-04-12 20:04:21,133  INFO      Walk-Forward Split Summary:
+2026-04-12 20:04:21,140  INFO      
+ fold train_start  train_end  val_start    val_end test_start   test_end  n_train  n_val  n_test
+    1  2015-06-29 2021-06-29 2021-06-29 2022-06-29 2022-06-29 2023-06-29    99077  16378   18738
+    2  2016-06-29 2022-06-29 2022-06-29 2023-06-29 2023-06-29 2024-06-29   105765  16338   47846
+    3  2017-06-29 2023-06-29 2023-06-29 2024-06-29 2024-06-29 2025-06-29   109177  43886  245433
+2026-04-12 20:04:21,145  INFO      
+Summary saved to data/splits/fold_summary.csv
+2026-04-12 20:04:21,145  INFO      Stage 3 complete — 3 folds ready for training.

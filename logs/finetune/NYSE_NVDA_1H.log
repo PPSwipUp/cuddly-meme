@@ -1,0 +1,55 @@
+2026-04-13 18:17:01,414  INFO      ============================================================
+2026-04-13 18:17:01,415  INFO      Stage 6 Fine-Tuning — Start
+2026-04-13 18:17:01,415  INFO      Instrument  : NYSE_NVDA
+2026-04-13 18:17:01,415  INFO      Resolution  : 1H
+2026-04-13 18:17:01,415  INFO      Device      : cpu
+2026-04-13 18:17:01,415  INFO      Base checkpoint: models/base/checkpoint_base_v1.pt
+2026-04-13 18:17:01,416  INFO      Loading: NYSE_NVDA_1H_20240422_20260412.npy
+2026-04-13 18:17:03,283  INFO        Shape: (3255, 60, 53)  (3255 windows)
+2026-04-13 18:17:03,321  INFO        Date range: 2024-05-28 → 2026-04-10  (1.9 years)
+2026-04-13 18:17:03,321  INFO        Train windows: 2821  Val windows: 434
+2026-04-13 18:17:03,321  INFO      Years of data: 1.9
+2026-04-13 18:17:03,378  INFO      Loading base checkpoint: models/base/checkpoint_base_v1.pt
+2026-04-13 18:17:03,394  INFO        Base val_loss: 0.2463  (fold 3, epoch 22)
+2026-04-13 18:17:03,394  INFO      --------------------------------------------------
+2026-04-13 18:17:03,394  INFO      Phase 1 — Head-only adaptation (encoder frozen)
+2026-04-13 18:17:07,914  INFO        P1 Epoch  1 | TrainLoss 0.2449 | ValLoss 0.2477 | ValAcc H1=0.539 H5=0.529 H20=0.463
+2026-04-13 18:17:11,498  INFO        P1 Epoch  2 | TrainLoss 0.2444 | ValLoss 0.2477 | ValAcc H1=0.547 H5=0.513 H20=0.460
+2026-04-13 18:17:14,973  INFO        P1 Epoch  3 | TrainLoss 0.2444 | ValLoss 0.2476 | ValAcc H1=0.553 H5=0.503 H20=0.430
+2026-04-13 18:17:18,728  INFO        P1 Epoch  4 | TrainLoss 0.2442 | ValLoss 0.2476 | ValAcc H1=0.547 H5=0.513 H20=0.436
+2026-04-13 18:17:22,154  INFO        P1 Epoch  5 | TrainLoss 0.2439 | ValLoss 0.2476 | ValAcc H1=0.542 H5=0.508 H20=0.443
+2026-04-13 18:17:25,482  INFO        P1 Epoch  6 | TrainLoss 0.2442 | ValLoss 0.2477 | ValAcc H1=0.542 H5=0.506 H20=0.454
+2026-04-13 18:17:28,862  INFO        P1 Epoch  7 | TrainLoss 0.2437 | ValLoss 0.2477 | ValAcc H1=0.543 H5=0.504 H20=0.445
+2026-04-13 18:17:32,211  INFO        P1 Epoch  8 | TrainLoss 0.2445 | ValLoss 0.2477 | ValAcc H1=0.542 H5=0.511 H20=0.449
+2026-04-13 18:17:35,502  INFO        P1 Epoch  9 | TrainLoss 0.2437 | ValLoss 0.2477 | ValAcc H1=0.542 H5=0.507 H20=0.445
+2026-04-13 18:17:38,750  INFO        P1 Epoch 10 | TrainLoss 0.2440 | ValLoss 0.2478 | ValAcc H1=0.540 H5=0.510 H20=0.443
+2026-04-13 18:17:42,085  INFO        P1 Epoch 11 | TrainLoss 0.2437 | ValLoss 0.2478 | ValAcc H1=0.540 H5=0.510 H20=0.445
+2026-04-13 18:17:42,085  INFO        Phase 1 early stopping at epoch 11
+2026-04-13 18:17:42,478  INFO        Phase 1 complete. Best val_loss: 0.2477  H1=0.539 H5=0.529 H20=0.463
+2026-04-13 18:17:42,483  INFO      Phase 1 checkpoint saved: models/fine_tuned/checkpoint_NYSE_NVDA_1H_phase1_20260413.pt
+2026-04-13 18:17:42,484  INFO      Loading base checkpoint: models/base/checkpoint_base_v1.pt
+2026-04-13 18:17:42,496  INFO        Base val_loss: 0.2463  (fold 3, epoch 22)
+2026-04-13 18:17:42,893  INFO      Base model H1 accuracy on instrument val set: 0.539
+2026-04-13 18:17:42,893  INFO      Fine-tuned  H1 accuracy (Phase 1)           : 0.539
+2026-04-13 18:17:42,893  INFO      --------------------------------------------------
+2026-04-13 18:17:42,893  INFO      Phase 2 — Verification gate
+2026-04-13 18:17:42,893  INFO        Fine-tuned accuracy — H1=0.539  H5=0.529  H20=0.463  Mean=0.510
+2026-04-13 18:17:42,893  INFO        Minimum required (mean across horizons) : 0.510
+2026-04-13 18:17:42,893  INFO        ✓ Phase 2 PASSED (H1=0.539  H5=0.529  H20=0.463) — proceeding to Phase 3
+2026-04-13 18:17:42,894  INFO      --------------------------------------------------
+2026-04-13 18:17:42,894  INFO      Phase 3 — Selective encoder unfreeze
+2026-04-13 18:17:42,894  WARNING     ✗ Skipping Phase 3 — only 1.9 years of data (need 2.0)
+2026-04-13 18:17:42,894  WARNING     Using Phase 1 checkpoint as final output.
+2026-04-13 18:17:42,895  INFO      Reverted to Phase 1 checkpoint.
+2026-04-13 18:17:43,292  INFO      Phase 1 H1 accuracy (recheck): 0.539
+2026-04-13 18:17:43,292  INFO      ============================================================
+2026-04-13 18:17:43,292  INFO      Fine-Tuning Summary
+2026-04-13 18:17:43,292  INFO        Instrument     : NYSE_NVDA 1H
+2026-04-13 18:17:43,292  INFO        Final phase    : 1
+2026-04-13 18:17:43,292  INFO        Final checkpoint: models/fine_tuned/checkpoint_NYSE_NVDA_1H_phase1_20260413.pt
+2026-04-13 18:17:43,758  INFO        Base model — H1=0.539  H5=0.520  H20=0.451  Mean=0.504
+2026-04-13 18:17:43,758  INFO        Fine-tuned — H1=0.539  H5=0.529  H20=0.463  Mean=0.510  (Phase 1)
+2026-04-13 18:17:43,758  INFO        Delta mean accuracy : +0.006  ✓ Fine-tuning improved accuracy.
+2026-04-13 18:17:43,759  INFO        Per-horizon delta   :  H1=-0.001  H5=+0.009  H20=+0.011
+2026-04-13 18:17:43,761  INFO        Metrics saved  : logs/finetune/NYSE_NVDA_1H_20260413_metrics.csv
+2026-04-13 18:17:43,761  INFO      Stage 6 complete.

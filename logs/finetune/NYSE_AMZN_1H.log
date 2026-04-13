@@ -1,0 +1,55 @@
+2026-04-13 17:47:20,444  INFO      ============================================================
+2026-04-13 17:47:20,444  INFO      Stage 6 Fine-Tuning — Start
+2026-04-13 17:47:20,444  INFO      Instrument  : NYSE_AMZN
+2026-04-13 17:47:20,444  INFO      Resolution  : 1H
+2026-04-13 17:47:20,444  INFO      Device      : cpu
+2026-04-13 17:47:20,445  INFO      Base checkpoint: models/base/checkpoint_base_v1.pt
+2026-04-13 17:47:20,446  INFO      Loading: NYSE_AMZN_1H_20240422_20260412.npy
+2026-04-13 17:47:22,188  INFO        Shape: (3255, 60, 53)  (3255 windows)
+2026-04-13 17:47:22,238  INFO        Date range: 2024-05-28 → 2026-04-10  (1.9 years)
+2026-04-13 17:47:22,239  INFO        Train windows: 2821  Val windows: 434
+2026-04-13 17:47:22,239  INFO      Years of data: 1.9
+2026-04-13 17:47:22,268  INFO      Loading base checkpoint: models/base/checkpoint_base_v1.pt
+2026-04-13 17:47:22,288  INFO        Base val_loss: 0.2463  (fold 3, epoch 22)
+2026-04-13 17:47:22,289  INFO      --------------------------------------------------
+2026-04-13 17:47:22,289  INFO      Phase 1 — Head-only adaptation (encoder frozen)
+2026-04-13 17:47:26,677  INFO        P1 Epoch  1 | TrainLoss 0.2439 | ValLoss 0.2464 | ValAcc H1=0.547 H5=0.532 H20=0.492
+2026-04-13 17:47:29,922  INFO        P1 Epoch  2 | TrainLoss 0.2437 | ValLoss 0.2464 | ValAcc H1=0.547 H5=0.520 H20=0.484
+2026-04-13 17:47:33,294  INFO        P1 Epoch  3 | TrainLoss 0.2439 | ValLoss 0.2464 | ValAcc H1=0.547 H5=0.530 H20=0.484
+2026-04-13 17:47:36,613  INFO        P1 Epoch  4 | TrainLoss 0.2434 | ValLoss 0.2464 | ValAcc H1=0.549 H5=0.528 H20=0.488
+2026-04-13 17:47:39,885  INFO        P1 Epoch  5 | TrainLoss 0.2435 | ValLoss 0.2464 | ValAcc H1=0.551 H5=0.530 H20=0.486
+2026-04-13 17:47:43,267  INFO        P1 Epoch  6 | TrainLoss 0.2433 | ValLoss 0.2464 | ValAcc H1=0.547 H5=0.539 H20=0.486
+2026-04-13 17:47:46,561  INFO        P1 Epoch  7 | TrainLoss 0.2436 | ValLoss 0.2465 | ValAcc H1=0.544 H5=0.539 H20=0.488
+2026-04-13 17:47:50,065  INFO        P1 Epoch  8 | TrainLoss 0.2436 | ValLoss 0.2465 | ValAcc H1=0.544 H5=0.539 H20=0.486
+2026-04-13 17:47:53,521  INFO        P1 Epoch  9 | TrainLoss 0.2432 | ValLoss 0.2465 | ValAcc H1=0.547 H5=0.542 H20=0.484
+2026-04-13 17:47:56,724  INFO        P1 Epoch 10 | TrainLoss 0.2431 | ValLoss 0.2465 | ValAcc H1=0.549 H5=0.539 H20=0.484
+2026-04-13 17:48:00,273  INFO        P1 Epoch 11 | TrainLoss 0.2428 | ValLoss 0.2465 | ValAcc H1=0.549 H5=0.539 H20=0.486
+2026-04-13 17:48:00,274  INFO        Phase 1 early stopping at epoch 11
+2026-04-13 17:48:00,697  INFO        Phase 1 complete. Best val_loss: 0.2464  H1=0.547 H5=0.532 H20=0.492
+2026-04-13 17:48:00,704  INFO      Phase 1 checkpoint saved: models/fine_tuned/checkpoint_NYSE_AMZN_1H_phase1_20260413.pt
+2026-04-13 17:48:00,705  INFO      Loading base checkpoint: models/base/checkpoint_base_v1.pt
+2026-04-13 17:48:00,719  INFO        Base val_loss: 0.2463  (fold 3, epoch 22)
+2026-04-13 17:48:01,112  INFO      Base model H1 accuracy on instrument val set: 0.556
+2026-04-13 17:48:01,113  INFO      Fine-tuned  H1 accuracy (Phase 1)           : 0.547
+2026-04-13 17:48:01,113  INFO      --------------------------------------------------
+2026-04-13 17:48:01,113  INFO      Phase 2 — Verification gate
+2026-04-13 17:48:01,114  INFO        Fine-tuned accuracy — H1=0.547  H5=0.532  H20=0.492  Mean=0.524
+2026-04-13 17:48:01,114  INFO        Minimum required (mean across horizons) : 0.510
+2026-04-13 17:48:01,114  INFO        ✓ Phase 2 PASSED (H1=0.547  H5=0.532  H20=0.492) — proceeding to Phase 3
+2026-04-13 17:48:01,115  INFO      --------------------------------------------------
+2026-04-13 17:48:01,115  INFO      Phase 3 — Selective encoder unfreeze
+2026-04-13 17:48:01,116  WARNING     ✗ Skipping Phase 3 — only 1.9 years of data (need 2.0)
+2026-04-13 17:48:01,116  WARNING     Using Phase 1 checkpoint as final output.
+2026-04-13 17:48:01,120  INFO      Reverted to Phase 1 checkpoint.
+2026-04-13 17:48:01,546  INFO      Phase 1 H1 accuracy (recheck): 0.547
+2026-04-13 17:48:01,546  INFO      ============================================================
+2026-04-13 17:48:01,546  INFO      Fine-Tuning Summary
+2026-04-13 17:48:01,547  INFO        Instrument     : NYSE_AMZN 1H
+2026-04-13 17:48:01,547  INFO        Final phase    : 1
+2026-04-13 17:48:01,547  INFO        Final checkpoint: models/fine_tuned/checkpoint_NYSE_AMZN_1H_phase1_20260413.pt
+2026-04-13 17:48:01,953  INFO        Base model — H1=0.556  H5=0.541  H20=0.472  Mean=0.523
+2026-04-13 17:48:01,954  INFO        Fine-tuned — H1=0.547  H5=0.532  H20=0.492  Mean=0.524  (Phase 1)
+2026-04-13 17:48:01,954  INFO        Delta mean accuracy : +0.001  = Fine-tuning matched base model.
+2026-04-13 17:48:01,954  INFO        Per-horizon delta   :  H1=-0.009  H5=-0.009  H20=+0.020
+2026-04-13 17:48:01,956  INFO        Metrics saved  : logs/finetune/NYSE_AMZN_1H_20260413_metrics.csv
+2026-04-13 17:48:01,956  INFO      Stage 6 complete.

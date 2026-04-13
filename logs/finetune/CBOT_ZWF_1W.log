@@ -1,0 +1,66 @@
+2026-04-13 15:15:26,057  INFO      ============================================================
+2026-04-13 15:15:26,057  INFO      Stage 6 Fine-Tuning — Start
+2026-04-13 15:15:26,057  INFO      Instrument  : CBOT_ZWF
+2026-04-13 15:15:26,057  INFO      Resolution  : 1W
+2026-04-13 15:15:26,057  INFO      Device      : cpu
+2026-04-13 15:15:26,057  INFO      Base checkpoint: models/base/checkpoint_base_v1.pt
+2026-04-13 15:15:26,059  INFO      Loading: CBOT_ZWF_1W_20150101_20260412.npy
+2026-04-13 15:15:26,315  INFO        Shape: (410, 60, 47)  (410 windows)
+2026-04-13 15:15:26,319  INFO        Date range: 2018-06-07 → 2026-04-09  (7.8 years)
+2026-04-13 15:15:26,319  INFO        Train windows: 397  Val windows: 13
+2026-04-13 15:15:26,319  INFO      Years of data: 7.8
+2026-04-13 15:15:26,323  INFO      Loading base checkpoint: models/base/checkpoint_base_v1.pt
+2026-04-13 15:15:26,341  INFO        Base val_loss: 0.2463  (fold 3, epoch 22)
+2026-04-13 15:15:26,342  INFO      --------------------------------------------------
+2026-04-13 15:15:26,342  INFO      Phase 1 — Head-only adaptation (encoder frozen)
+2026-04-13 15:15:27,897  INFO        P1 Epoch  1 | TrainLoss 0.2478 | ValLoss 0.2419 | ValAcc H1=0.615 H5=0.769 H20=0.769
+2026-04-13 15:15:28,264  INFO        P1 Epoch  2 | TrainLoss 0.2479 | ValLoss 0.2420 | ValAcc H1=0.615 H5=0.769 H20=0.769
+2026-04-13 15:15:28,706  INFO        P1 Epoch  3 | TrainLoss 0.2481 | ValLoss 0.2420 | ValAcc H1=0.615 H5=0.769 H20=0.769
+2026-04-13 15:15:29,067  INFO        P1 Epoch  4 | TrainLoss 0.2474 | ValLoss 0.2420 | ValAcc H1=0.615 H5=0.769 H20=0.692
+2026-04-13 15:15:29,448  INFO        P1 Epoch  5 | TrainLoss 0.2499 | ValLoss 0.2420 | ValAcc H1=0.615 H5=0.769 H20=0.692
+2026-04-13 15:15:29,834  INFO        P1 Epoch  6 | TrainLoss 0.2479 | ValLoss 0.2420 | ValAcc H1=0.615 H5=0.769 H20=0.692
+2026-04-13 15:15:30,238  INFO        P1 Epoch  7 | TrainLoss 0.2485 | ValLoss 0.2420 | ValAcc H1=0.615 H5=0.769 H20=0.692
+2026-04-13 15:15:30,683  INFO        P1 Epoch  8 | TrainLoss 0.2472 | ValLoss 0.2420 | ValAcc H1=0.615 H5=0.769 H20=0.692
+2026-04-13 15:15:31,320  INFO        P1 Epoch  9 | TrainLoss 0.2482 | ValLoss 0.2421 | ValAcc H1=0.615 H5=0.769 H20=0.692
+2026-04-13 15:15:31,721  INFO        P1 Epoch 10 | TrainLoss 0.2482 | ValLoss 0.2421 | ValAcc H1=0.615 H5=0.769 H20=0.615
+2026-04-13 15:15:32,172  INFO        P1 Epoch 11 | TrainLoss 0.2474 | ValLoss 0.2421 | ValAcc H1=0.615 H5=0.769 H20=0.615
+2026-04-13 15:15:32,172  INFO        Phase 1 early stopping at epoch 11
+2026-04-13 15:15:32,187  INFO        Phase 1 complete. Best val_loss: 0.2419  H1=0.615 H5=0.769 H20=0.769
+2026-04-13 15:15:32,194  INFO      Phase 1 checkpoint saved: models/fine_tuned/checkpoint_CBOT_ZWF_1W_phase1_20260413.pt
+2026-04-13 15:15:32,195  INFO      Loading base checkpoint: models/base/checkpoint_base_v1.pt
+2026-04-13 15:15:32,211  INFO        Base val_loss: 0.2463  (fold 3, epoch 22)
+2026-04-13 15:15:32,223  INFO      Base model H1 accuracy on instrument val set: 0.615
+2026-04-13 15:15:32,223  INFO      Fine-tuned  H1 accuracy (Phase 1)           : 0.615
+2026-04-13 15:15:32,223  INFO      --------------------------------------------------
+2026-04-13 15:15:32,223  INFO      Phase 2 — Verification gate
+2026-04-13 15:15:32,224  INFO        Fine-tuned accuracy — H1=0.615  H5=0.769  H20=0.769  Mean=0.718
+2026-04-13 15:15:32,224  INFO        Minimum required (mean across horizons) : 0.510
+2026-04-13 15:15:32,224  INFO        ✓ Phase 2 PASSED (H1=0.615  H5=0.769  H20=0.769) — proceeding to Phase 3
+2026-04-13 15:15:32,224  INFO      --------------------------------------------------
+2026-04-13 15:15:32,224  INFO      Phase 3 — Selective encoder unfreeze
+2026-04-13 15:15:32,225  INFO        Encoder layers 1 & 2 unfrozen (layer 0 frozen)
+2026-04-13 15:15:32,225  INFO        Encoder LR: 1e-05  Head LR: 3e-05
+2026-04-13 15:15:32,225  INFO        Dropout: encoder=0.40  head=0.45
+2026-04-13 15:15:33,518  INFO        P3 Epoch  1 | TrainLoss 0.2486 | ValLoss 0.2420 | Gap 0.0066 | ValAcc H1=0.615 H5=0.769 H20=0.769
+2026-04-13 15:15:34,668  INFO        P3 Epoch  2 | TrainLoss 0.2504 | ValLoss 0.2420 | Gap 0.0084 | ValAcc H1=0.615 H5=0.769 H20=0.692
+2026-04-13 15:15:36,113  INFO        P3 Epoch  3 | TrainLoss 0.2480 | ValLoss 0.2420 | Gap 0.0060 | ValAcc H1=0.615 H5=0.769 H20=0.692
+2026-04-13 15:15:37,511  INFO        P3 Epoch  4 | TrainLoss 0.2468 | ValLoss 0.2420 | Gap 0.0048 | ValAcc H1=0.615 H5=0.769 H20=0.692
+2026-04-13 15:15:38,669  INFO        P3 Epoch  5 | TrainLoss 0.2496 | ValLoss 0.2420 | Gap 0.0076 | ValAcc H1=0.615 H5=0.769 H20=0.692
+2026-04-13 15:15:39,855  INFO        P3 Epoch  6 | TrainLoss 0.2489 | ValLoss 0.2421 | Gap 0.0068 | ValAcc H1=0.615 H5=0.769 H20=0.615
+2026-04-13 15:15:41,174  INFO        P3 Epoch  7 | TrainLoss 0.2467 | ValLoss 0.2421 | Gap 0.0046 | ValAcc H1=0.615 H5=0.769 H20=0.615
+2026-04-13 15:15:42,572  INFO        P3 Epoch  8 | TrainLoss 0.2467 | ValLoss 0.2421 | Gap 0.0045 | ValAcc H1=0.615 H5=0.769 H20=0.615
+2026-04-13 15:15:43,967  INFO        P3 Epoch  9 | TrainLoss 0.2485 | ValLoss 0.2421 | Gap 0.0064 | ValAcc H1=0.615 H5=0.769 H20=0.615
+2026-04-13 15:15:43,967  INFO        Phase 3 early stopping at epoch 9
+2026-04-13 15:15:43,969  INFO        Phase 3 complete. Best val_loss: 0.2420
+2026-04-13 15:15:43,994  INFO      Phase 3 checkpoint saved: models/fine_tuned/checkpoint_CBOT_ZWF_1W_phase3_20260413.pt
+2026-04-13 15:15:43,994  INFO      ============================================================
+2026-04-13 15:15:43,994  INFO      Fine-Tuning Summary
+2026-04-13 15:15:43,994  INFO        Instrument     : CBOT_ZWF 1W
+2026-04-13 15:15:43,995  INFO        Final phase    : 3
+2026-04-13 15:15:43,995  INFO        Final checkpoint: models/fine_tuned/checkpoint_CBOT_ZWF_1W_phase3_20260413.pt
+2026-04-13 15:15:44,039  INFO        Base model — H1=0.615  H5=0.769  H20=0.769  Mean=0.718
+2026-04-13 15:15:44,039  INFO        Fine-tuned — H1=0.615  H5=0.769  H20=0.769  Mean=0.718  (Phase 3)
+2026-04-13 15:15:44,040  INFO        Delta mean accuracy : +0.000  = Fine-tuning matched base model.
+2026-04-13 15:15:44,040  INFO        Per-horizon delta   :  H1=+0.000  H5=+0.000  H20=+0.000
+2026-04-13 15:15:44,043  INFO        Metrics saved  : logs/finetune/CBOT_ZWF_1W_20260413_metrics.csv
+2026-04-13 15:15:44,044  INFO      Stage 6 complete.
